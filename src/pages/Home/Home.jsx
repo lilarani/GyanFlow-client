@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import Banner from "../../components/banner/Banner";
 
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
   console.log(user)
   return (
     <div>
-      Hello i am {user?.displayName} , This is home pages
+     <Banner/>
     </div>
   )
 }

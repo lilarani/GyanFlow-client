@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import TrustedPartner from "../../components/TrustedPartner/TrustedPartner";
 
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <div>
       Hello i am {user?.displayName} , This is home pages
+      <TrustedPartner />
     </div>
   )
 }

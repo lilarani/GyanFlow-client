@@ -1,19 +1,24 @@
+
 import { useSelector } from "react-redux"
 import TrustedPartner from "../../components/TrustedPartner/TrustedPartner";
 
+import React from 'react';
+import FeaturesSectionHomePage from '../../components/FeaturesSectionHomePage';
 
-export default function Home() {
 
-  // when we can use information from store , we need useSelector , 
-  // which contain a function 
-
-  let {user} = useSelector((state)=>state.authUser);
-  console.log(user)
+const Home = () => {
   return (
     <div>
+
       Hello i am {user?.displayName} , This is home pages
       <TrustedPartner />
-    </div>
-  )
-}
 
+      <section>
+        <FeaturesSectionHomePage></FeaturesSectionHomePage>
+      </section>
+
+    </div>
+  );
+};
+
+export default Home;

@@ -8,7 +8,7 @@ const Home = () => {
     <div>
       <section>
         <FeaturesSectionHomePage></FeaturesSectionHomePage>
-        {/* Trasted Feature */}
+        {/* Trasted Features */}
         <TrustedPartner />
         {/* Impact at a glance  */}
         <Impact />

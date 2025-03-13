@@ -6,9 +6,9 @@ const Navbar = () => {
   let {user} = useSelector(state => state.authUser)
 console.log(user)
 
-  return <div>
-    this is navbar
-  </div>;
+  return( <div>
+     updated something on navbar  updat++++++++++++++
+  </div>);
 };
 
 export default Navbar;

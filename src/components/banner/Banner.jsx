@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import "./banner.css"
 const Banner = () => {
     return (
-        <div className='w-full banner   h-screen flex md:justify-between items-center flex-col md:flex-row bg-opacity-25  bg-gradient-to-bl to-[#1a044d] from-[#080127]' style={{
+        <div className='w-full banner   h-screen flex md:justify-between items-center flex-col md:flex-row bg-opacity-25  bg-gradient-to-bl to-[#1a044d] from-[#100d1b]' style={{
             padding: "30px"
         }}>
             <div className='w-full md:w-[40%]  flex  justify-start items-start flex-col gap-6 md:gap-3  '>

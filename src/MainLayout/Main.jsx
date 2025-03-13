@@ -5,8 +5,8 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from 'react';
 import { auth } from '../../firebase.config';
 import { setUser } from '../redux/authSlice';
-import Navbar from '../components/Navbar/Navbar';
-import Footer from '../components/Footer/Footer';
+import Navbar from '../components/Home/Navbar/Navbar';
+import Footer from '../components/Home/Footer/Footer';
 
 export default function Main() {
   const dispatch = useDispatch();

@@ -38,14 +38,14 @@ const Navbar = () => {
             <FaBars />
           </div>
           <ul className="xl:flex flex-row hidden">
-            <li className="py-4 px-8 hover:bg-[#ffffff44]">
-              <NavLink to="/">Home</NavLink>
+            <li>
+              <NavLink className="py-4 px-8 hover:bg-[#ffffff44]" to="/">Home</NavLink>
             </li>
-            <li className="py-4 px-8 hover:bg-[#ffffff44]">
-              <NavLink to="/about">About</NavLink>
+            <li>
+              <NavLink className="py-4 px-8 hover:bg-[#ffffff44]" to="/about">About</NavLink>
             </li>
-            <li className="py-4 px-8 hover:bg-[#ffffff44]">
-              <NavLink to="/support">Support</NavLink>
+            <li>
+              <NavLink className="py-4 px-8 hover:bg-[#ffffff44]" to="/support">Support</NavLink>
             </li>
           </ul>
         </div>
@@ -56,9 +56,9 @@ const Navbar = () => {
           <button className="text-md flex flex-row gap-2 items-center font-bold py-4 px-8 hover:bg-[#ffffff44]">
             <CiSearch /> Search
           </button>
-          <button className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+          <Link to={'/login'} className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
             Sign-in
-          </button>
+          </Link>
           <div className="w-fit box-model cursor-pointer h-fit">
             <p className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
               Register
@@ -81,7 +81,7 @@ const Navbar = () => {
       {/* Sidebar (Mobile Menu) */}
 
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-[#2f2753] shadow-lg transform ${
+        className={`fixed top-0 right-0 h-full w-64 bg-[#2f2753] z-50 shadow-lg transform ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } transition-transform duration-300 ease-in-out xl:hidden`}
       >

@@ -1,95 +1,137 @@
 import React, { useState } from 'react';
-
-import './navbar.css';
-import { Link } from 'react-router-dom';
+import { CiSearch } from 'react-icons/ci';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import { Link, NavLink } from 'react-router';
+import { useEffect } from 'react';
+import './Navbar.css';
 
 const Navbar = () => {
-  const [open, setOpen] = useState(true);
-  const [modal, setModal] = useState(false);
-  const toggleModal = () => setModal(!modal);
+  const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (isOpen && !event.target.closest('.sidebar')) {
+        setIsOpen(false);
+      }
+    };
 
-  // add this inside css file
-  // .navbar{
-  //   padding: 20px 40px 20px 40px;
-  // }
-  // .menu{
-  //   border: none;
-  //   margin - right: 30px;
-  //   cursor: pointer;
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
-  // }
+  let { user } = useSelector(state => state.authUser);
+  console.log(user);
 
   return (
-    <div className="navbar  bg-[#0b1221]  backdrop-opacity-30  z-50 sticky top-0 left-0   ">
-      <div className="text-[#7a879b]  flex justify-between items-center gap-10 relative  ">
-        <Link
-          to="/"
-          className="first-letter:text-blue-500 text-3xl cursor-pointer "
-        >
-          GeaynFlow
-        </Link>
-        <div
-          className={`bg-[#0b1221] absolute h-screen md:h-max md:right-[50px] top-[50px] md:top-0 w-screen md:w-max right-0  transform  ${
-            open ? 'translate-x-[120%]' : 'translate-x-[10%]'
-          }  md:translate-x-[0%]  transition-all duration-700 `}
-        >
-          <div className="flex justify-center flex-col md:flex-row items-center gap-4 ">
-            <Link
+    <div>
+      <nav className="flex text-gray-200 font-bold flex-row justify-between bg-gradient-to-bl to-[#1a044d] from-[#080127] items-center ">
+        <div className="flex flex-row justify-between w-full xl:w-fit items-center ">
+          <Link className="py-4 px-8 text-2xl">
+            <span className="text-yellow-300">Gyan</span>Flow
+          </Link>
+          <div
+            className="py-4 w-fit h-fit xl:hidden cursor-pointer px-8 hover:bg-[#ffffff44]"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <FaBars />
+          </div>
+          <ul className="xl:flex flex-row hidden">
+            <li className="py-4 px-8 hover:bg-[#ffffff44]">
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li className="py-4 px-8 hover:bg-[#ffffff44]">
+              <NavLink to="/about">About</NavLink>
+            </li>
+            <li className="py-4 px-8 hover:bg-[#ffffff44]">
+              <NavLink to="/support">Support</NavLink>
+            </li>
+          </ul>
+        </div>
+
+        {/* Before Sign-in/Sign-up */}
+
+        <div className="xl:flex flex-row hidden">
+          <button className="text-md flex flex-row gap-2 items-center font-bold py-4 px-8 hover:bg-[#ffffff44]">
+            <CiSearch /> Search
+          </button>
+          <button className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+            Sign-in
+          </button>
+          <div className="w-fit box-model cursor-pointer h-fit">
+            <p className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+              Register
+            </p>
+            <div className="hidden my-container bg-[#040150]">
+              <button className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+                Student Sign-up
+              </button>
+              <button className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+                Teacher Sign-up
+              </button>
+              <button className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+                Employer Sign-up
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Sidebar (Mobile Menu) */}
+
+      <div
+        className={`fixed top-0 right-0 h-full w-64 bg-[#2f2753] shadow-lg transform ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        } transition-transform duration-300 ease-in-out xl:hidden`}
+      >
+        <div className="flex justify-end p-4">
+          <FaTimes
+            className="text-white text-2xl cursor-pointer"
+            onClick={() => setIsOpen(false)}
+          />
+        </div>
+        <ul className="flex flex-col items-start text-start px-6 text-white">
+          <li className="py-4 w-full">
+            <NavLink
+              to="/"
+              className="block w-full"
+              onClick={() => setIsOpen(false)}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li className="py-4 w-full">
+            <NavLink
               to="/about"
-              className="border  rounded bg-default"
-              style={{
-                padding: '5px 10px',
-              }}
+              className="block w-full"
+              onClick={() => setIsOpen(false)}
             >
-              About{' '}
-            </Link>
-            <Link
-              to="/contact"
-              className="border  rounded bg-default"
-              style={{
-                padding: '5px 10px',
-              }}
+              About
+            </NavLink>
+          </li>
+          <li className="py-4 w-full">
+            <NavLink
+              to="/support"
+              className="block w-full"
+              onClick={() => setIsOpen(false)}
             >
-              Contact{' '}
-            </Link>
-            <button
-              className="border  rounded bg-default"
-              onClick={toggleModal}
-              style={{
-                padding: '5px 10px',
-                borderRadius: '30px',
-              }}
-            >
-              CARD{' '}
-            </button>
-          </div>
-        </div>
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden transition-all duration-700 text-[#7a879b] border menu  rounded text-2xl "
-        >
-          {open ? (
-            <i className="fa-solid fa-bars"></i>
-          ) : (
-            <i className="fa-solid fa-x"></i>
-          )}
-        </button>
+              Support
+            </NavLink>
+          </li>
+          <button className="text-md font-bold py-4 hover:bg-[#ffffff44]">
+            Student Sign-up
+          </button>
+          <button className="text-md font-bold py-4 hover:bg-[#ffffff44]">
+            Teacher Sign-up
+          </button>
+          <button className="text-md font-bold py-4 hover:bg-[#ffffff44]">
+            Employer Sign-up
+          </button>
+        </ul>
       </div>
-      {/* modal */}
-      {modal && (
-        <div className="fixed left-0 top-0 z-50 w-screen h-screen bg-[rgba(0,0,0,0.1)]   flex justify-center items-center ">
-          <div className="bg-default w-[95%] md:w-1/2 h-1/2 rounded  bg-[#0b1120] shadow">
-            <button
-              onClick={toggleModal}
-              className=" text-red-500  cursor-pointer "
-            >
-              <i className="fa-solid fa-x"></i>
-            </button>
-            <h1>card===========</h1>
-          </div>
-        </div>
-      )}
-      {/* modal end here */}
     </div>
   );
 };
+
+export default Navbar;

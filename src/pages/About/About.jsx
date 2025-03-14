@@ -1,9 +1,10 @@
 import React from 'react'
+import OurAchievementSection from '../../components/About/OurAchievementSection/OurAchievementSection'
 
 export default function About() {
   return (
     <div>
-        This is about page
+       <OurAchievementSection></OurAchievementSection>
     </div>
   )
 }

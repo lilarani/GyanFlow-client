@@ -1,4 +1,4 @@
-import newsLetterBg from '../../assets/images/bg-shadow.png';
+import newsLetterBg from '../../../assets/images/bg-shadow.png';
 
 const NewsLetter = () => {
   return (

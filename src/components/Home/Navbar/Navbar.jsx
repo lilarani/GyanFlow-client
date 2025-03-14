@@ -82,9 +82,13 @@ const Navbar = () => {
 
       <div
 
+//         className={`fixed top-0 right-0 h-full w-64 bg-[#2f2753] z-50 shadow-lg transform ${
+
+
         className={`fixed z-50 top-0 right-0 h-full w-64 bg-[#2f2753] shadow-lg transform ${
 
-//         className={`fixed top-0 right-0 h-full w-64 bg-[#2f2753] z-50 shadow-lg transform ${
+  
+
 
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } transition-transform duration-300 ease-in-out xl:hidden`}

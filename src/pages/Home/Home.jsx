@@ -1,30 +1,18 @@
-
-import React from "react";
-import FeaturesSectionHomePage from "../../components/FeaturesSectionHomePage";
-import Impact from "../../components/Home/Impact/Impact";
-
-
-import { useSelector } from "react-redux"
-import TrustedPartner from "../../components/TrustedPartner/TrustedPartner";
-
-import React from 'react';
-import FeaturesSectionHomePage from '../../components/FeaturesSectionHomePage';
-
-
+import { useSelector } from 'react-redux';
+import TrustedPartner from '../../components/Home/TrustedPartner/TrustedPartner';
+import Impact from '../../components/Home/Impact/Impact';
+import FeaturesSectionHomePage from '../../components/Home/FeaturesSection/FeaturesSectionHomePage';
 
 const Home = () => {
   return (
     <div>
-
-      <TrustedPartner />
-
       <section>
         <FeaturesSectionHomePage></FeaturesSectionHomePage>
-
+        {/* Trasted Features */}
+        <TrustedPartner />
         {/* Impact at a glance  */}
         <Impact />
       </section>
-
     </div>
   );
 };

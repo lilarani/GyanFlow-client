@@ -1,13 +1,13 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 // import images
 
-import imageOne from "../../assets/Home/TrustedPartner/Apple.png";
-import image2 from "../../assets/Home/TrustedPartner/Gucci.jpg";
-import image3 from "../../assets/Home/TrustedPartner/cocacola.png";
-import image4 from "../../assets/Home/TrustedPartner/samsung.png";
-import image5 from "../../assets/Home/TrustedPartner/unilever.png";
+import imageOne from '../../../assets/Home/TrustedPartner/Apple.png';
+import image2 from '../../../assets/Home/TrustedPartner/Gucci.jpg';
+import image3 from '../../../assets/Home/TrustedPartner/cocacola.png';
+import image4 from '../../../assets/Home/TrustedPartner/samsung.png';
+import image5 from '../../../assets/Home/TrustedPartner/unilever.png';
 
 export default function TrustedPartner() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,7 +15,7 @@ export default function TrustedPartner() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
     }, 3000);
 
     return () => clearInterval(interval);
@@ -28,13 +28,13 @@ export default function TrustedPartner() {
           <div className="absolute inset-0 flex items-center">
             <motion.div
               className="flex gap-16"
-              initial={{ x: "100%" }}
-              animate={{ x: "-100%" }}
+              initial={{ x: '100%' }}
+              animate={{ x: '-100%' }}
               transition={{
-                duration: 55,
+                duration: 30,
                 repeat: Infinity,
-                ease: "linear",
-                repeatType: "loop",
+                ease: 'linear',
+                repeatType: 'loop',
               }}
             >
               {/* Show all images once */}

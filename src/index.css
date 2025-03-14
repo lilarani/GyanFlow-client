@@ -24,3 +24,17 @@
     background: linear-gradient(to left, #c673c6ed, #a4b9f1);
     color: rgb(54, 54, 59);
 }
+
+button{
+    border-radius: 0px;
+    cursor: pointer;
+    background-image: linear-gradient( rgba(13, 13, 242, 0.956), rgba(249, 46, 10, 0.657));
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right ;
+    transition: background-size 500ms;
+}
+button:hover{
+    background-size: 100% 100%;
+    background-position-x: left;
+}

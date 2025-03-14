@@ -4,12 +4,15 @@ import TrustedPartner from '../../components/Home/TrustedPartner/TrustedPartner'
 import Impact from '../../components/Home/Impact/Impact';
 import FeaturesSectionHomePage from '../../components/Home/FeaturesSection/FeaturesSectionHomePage';
 import Banner from '../../components/Home/banner/Banner';
+import OurMission from '../../components/OurMission/OurMission';
 
 const Home = () => {
   return (
     <div>
       {/* banner section */}
       <Banner />
+
+      <OurMission></OurMission>
 
       <section>
         {/* features section */}

@@ -25,8 +25,8 @@ const Navbar = () => {
   console.log(user);
 
   return (
-    <div>
-      <nav className="flex text-gray-200 font-bold flex-row justify-between bg-gradient-to-bl to-[#1a044d] from-[#080127] items-center ">
+    <div className='sticky top-0 left-0 w-full h-max z-50'>
+      <nav className="flex  text-gray-200 font-bold flex-row justify-between bg-gradient-to-bl to-[#1a044d] from-[#080127] items-center ">
         <div className="flex flex-row justify-between w-full xl:w-fit items-center ">
           <Link className="py-4 px-8 text-2xl">
             <span className="text-yellow-300">Gyan</span>Flow
@@ -53,9 +53,9 @@ const Navbar = () => {
         {/* Before Sign-in/Sign-up */}
 
         <div className="xl:flex flex-row hidden">
-          <button className="text-md flex flex-row gap-2 items-center font-bold py-4 px-8 hover:bg-[#ffffff44]">
+          <Link className="text-md flex flex-row gap-2 items-center font-bold py-4 px-8 hover:bg-[#ffffff44]">
             <CiSearch /> Search
-          </button>
+          </Link>
           <Link to={'/login'} className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
             Sign-in
           </Link>
@@ -63,16 +63,16 @@ const Navbar = () => {
             <p className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
               Register
             </p>
-            <div className="hidden my-container bg-[#040150]">
-              <button className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+            <div className="hidden z-50 my-container bg-[#040150]">
+              <Link to={'/register/Student'} className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
                 Student Sign-up
-              </button>
-              <button className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+              </Link>
+              <Link to={'/register/Teacher'} className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
                 Teacher Sign-up
-              </button>
-              <button className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+              </Link>
+              <Link to={'/register/Employer'} className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
                 Employer Sign-up
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -81,7 +81,15 @@ const Navbar = () => {
       {/* Sidebar (Mobile Menu) */}
 
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-[#2f2753] z-50 shadow-lg transform ${
+
+//         className={`fixed top-0 right-0 h-full w-64 bg-[#2f2753] z-50 shadow-lg transform ${
+
+
+        className={`fixed z-50 top-0 right-0 h-full w-64 bg-[#2f2753] shadow-lg transform ${
+
+  
+
+
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } transition-transform duration-300 ease-in-out xl:hidden`}
       >

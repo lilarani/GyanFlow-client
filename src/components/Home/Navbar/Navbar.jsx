@@ -25,8 +25,8 @@ const Navbar = () => {
   console.log(user);
 
   return (
-    <div>
-      <nav className="flex text-gray-200 font-bold flex-row justify-between bg-gradient-to-bl to-[#1a044d] from-[#080127] items-center ">
+    <div className='sticky top-0 left-0 w-full h-max z-50'>
+      <nav className="flex  text-gray-200 font-bold flex-row justify-between bg-gradient-to-bl to-[#1a044d] from-[#080127] items-center ">
         <div className="flex flex-row justify-between w-full xl:w-fit items-center ">
           <Link className="py-4 px-8 text-2xl">
             <span className="text-yellow-300">Gyan</span>Flow
@@ -63,7 +63,7 @@ const Navbar = () => {
             <p className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
               Register
             </p>
-            <div className="hidden my-container bg-[#040150]">
+            <div className="hidden z-50 my-container bg-[#040150]">
               <button className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
                 Student Sign-up
               </button>

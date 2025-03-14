@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 
+
 .my-shadow {
     box-shadow: 0px 0px 20px rgba(76, 221, 240, 0.482);
 }
@@ -13,4 +14,14 @@
 .btn-1:hover {
     background: linear-gradient(to left, #c673c6ed, #a4b9f1);
     color: rgb(54, 54, 59);
+}
+
+@theme {
+    --color-default: #080127;
+    --color-main: #1a044d;
+    --color-textcolor: lightgray;
+}
+
+body {
+   
 }

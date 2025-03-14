@@ -25,7 +25,7 @@ export default function Main() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className='w-full'>
       <Navbar></Navbar>
       <div>
         <Outlet></Outlet>

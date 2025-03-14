@@ -1,12 +1,12 @@
-import { useParams } from "react-router";
-import { useState } from "react"; // Importing useState for managing form state
-import axios from 'axios'; // You can use axios for making API requests
+import { useNavigate, useParams } from "react-router";
+import { useState } from "react"; 
+import axios from 'axios';
+import { toast } from "react-toastify";
 
 export default function Register() {
-  let { role } = useParams(); // Extract role from URL parameters
-  console.log(role);
+  let { role } = useParams();
+  let navigate = useNavigate()
 
-  // Set up state to hold form values
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -16,23 +16,31 @@ export default function Register() {
     picture : 'https://img.freepik.com/free-photo/top-view-pink-flower-with-drops_1112-450.jpg?uid=R187535479&ga=GA1.1.1477002296.1724664851&semt=ais_hybrid'
   });
 
-  // Handle input change for controlled components
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   }
 
   const handleRegister = async (e) => {
-    e.preventDefault(); // Prevent form submission default behavior
-    
+    e.preventDefault(); 
+
     try {
-      // Make the API call to your backend
-      const response = await axios.post('http://localhost:4000/gyanflow/user/register', formData);
-      console.log(response.data);
-      // Handle success, e.g., redirect to login or dashboard
+  
+      const response = await axios.post('http://localhost:4000/gyanflow/user/regiser', formData , {
+        withCredentials : true
+      });
+      if(response.data.success){
+        navigate('/');
+        toast('done');
+        console.log(response.data)
+      }else{
+        toast('something wrong')
+      }
+      
+      
     } catch (error) {
-      console.error("Error during registration", error);
-      // Handle error, show error message
+      toast('something wrong' , error.message)
+     
     }
   }
 

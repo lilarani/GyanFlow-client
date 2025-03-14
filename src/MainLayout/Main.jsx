@@ -7,6 +7,7 @@ import { auth } from '../../firebase.config';
 import { setUser } from '../redux/authSlice';
 import Navbar from '../components/Home/Navbar/Navbar';
 import Footer from '../components/Home/Footer/Footer';
+import { ToastContainer } from 'react-toastify';
 
 export default function Main() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ export default function Main() {
 
   return (
     <div className="w-full">
+      <ToastContainer />
       <Navbar></Navbar>
       <div>
         <Outlet></Outlet>

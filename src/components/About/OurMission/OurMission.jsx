@@ -1,6 +1,6 @@
-import whyImg from '../../assets/ourMission/why.webp';
-import whatImg from '../../assets/ourMission/what.webp';
-import howImg from '../../assets/ourMission/how.webp';
+import whyImg from '../../../assets/ourMission/why.webp';
+import whatImg from '../../../assets/ourMission/what.webp';
+import howImg from '../../../assets/ourMission/how.webp';
 
 const OurMission = () => {
   return (

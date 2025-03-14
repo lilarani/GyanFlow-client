@@ -6,6 +6,8 @@ import OurMission from '../../components/About/OurMission/OurMission';
 export default function About() {
   return (
     <div>
+      {/*  */}
+
       {/* our achiement section */}
       <OurAchievementSection></OurAchievementSection>
 

@@ -31,7 +31,7 @@ export default function TrustedPartner() {
               initial={{ x: '100%' }}
               animate={{ x: '-100%' }}
               transition={{
-                duration: 55,
+                duration: 30,
                 repeat: Infinity,
                 ease: 'linear',
                 repeatType: 'loop',

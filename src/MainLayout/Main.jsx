@@ -25,14 +25,11 @@ export default function Main() {
   }, [dispatch]);
 
   return (
-    <div className='w-full'>
+    <div className="w-full">
       <Navbar></Navbar>
       <div>
         <Outlet></Outlet>
       </div>
-      <h1 className="text-center uppercase font-bold text-blue-800 text-5xl">
-        This is main page
-      </h1>
       <Footer></Footer>
     </div>
   );

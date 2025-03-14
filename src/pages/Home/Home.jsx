@@ -12,8 +12,6 @@ const Home = () => {
       {/* banner section */}
       <Banner />
 
-      <OurMission></OurMission>
-
       <section>
         {/* features section */}
         <FeaturesSectionHomePage></FeaturesSectionHomePage>

@@ -1,8 +1,12 @@
 
+
 import { useSelector } from "react-redux"
 import Banner from "../../components/banner/Banner";
 
-import FeaturesSectionHomePage from '../../components/FeaturesSectionHomePage';
+import TrustedPartner from '../../components/Home/TrustedPartner/TrustedPartner';
+import Impact from '../../components/Home/Impact/Impact';
+import FeaturesSectionHomePage from '../../components/Home/FeaturesSection/FeaturesSectionHomePage';
+
 
 
 const Home = () => {
@@ -13,6 +17,10 @@ const Home = () => {
 
       <section>
         <FeaturesSectionHomePage></FeaturesSectionHomePage>
+        {/* Trasted Features */}
+        <TrustedPartner />
+        {/* Impact at a glance  */}
+        <Impact />
       </section>
 
     </div>

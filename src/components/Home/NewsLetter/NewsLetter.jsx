@@ -2,9 +2,9 @@ import newsLetterBg from '../../../assets/images/bg-shadow.png';
 
 const NewsLetter = () => {
   return (
-    <div className="bg-sky-50 bg-opacity-20 relative top-32 p-5 container  mx-auto rounded-2xl border-[1px] ">
+    <div className="bg-sky-50 bg-opacity-20 z-30 relative top-32 p-5 container  mx-auto border-[1px] ">
       <div
-        className="hero rounded-2xl p-10 flex justify-center"
+        className="hero p-10 flex justify-center"
         style={{
           backgroundImage: `url(${newsLetterBg})`,
           backgroundColor: '#FFFFFF',

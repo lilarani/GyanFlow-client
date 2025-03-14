@@ -1,0 +1,22 @@
+.bannerAnimation {
+
+    position: relative;
+    animation: upDown 2s infinite alternate ease-in-out;
+}
+
+
+
+
+@keyframes upDown {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(30px);
+    }
+}
+
+.banner {
+    clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%, 0 100%);
+}

@@ -15,7 +15,6 @@ const Home = () => {
         <FeaturesSectionHomePage></FeaturesSectionHomePage>
         {/* Trasted Features */}
         <TrustedPartner />
-        <About />
         {/* Impact at a glance  */}
         <Impact />
       </section>

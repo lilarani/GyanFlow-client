@@ -1,0 +1,16 @@
+.my-container {
+  position: absolute;
+  display: none;
+}
+.box-model {
+  position: relative;
+}
+.box-model:hover .my-container {
+  cursor: pointer;
+  top: 50px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 300px;
+}

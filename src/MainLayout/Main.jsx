@@ -1,44 +1,41 @@
-import { Outlet } from "react-router";
-import Footer from "../footer/Footer";
-import { useDispatch } from "react-redux";
-import { onAuthStateChanged } from "firebase/auth";
-import { useEffect } from "react";
-import { auth } from "../../firebase.config";
-import { setUser } from "../redux/authSlice";
-import Navbar from "../components/Navbar/Navbar";
+import { Outlet } from 'react-router';
 
+import { useDispatch } from 'react-redux';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect } from 'react';
+import { auth } from '../../firebase.config';
+import { setUser } from '../redux/authSlice';
+import Navbar from '../components/Home/Navbar/Navbar';
+import Footer from '../components/Home/Footer/Footer';
+import { ToastContainer } from 'react-toastify';
 
 export default function Main() {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
-   
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      console.log(user);
+      if (user) {
+        dispatch(setUser(user));
+      } else {
+        console.log('user cannot fund');
+      }
+    });
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            console.log(user)
-            if (user) {
-                dispatch(setUser(user));
-            }else{
-                console.log('user cannot fund')
-            }
-        });
+    return () => unsubscribe();
+  }, [dispatch]);
 
-        return () => unsubscribe();
-    }, [dispatch]);
+  return (
+    <div className="w-full">
 
 
-    return (
-        <div>
-            <Navbar></Navbar>
-            <h1 className="text-center uppercase font-bold text-blue-800 text-5xl">This is main page</h1>
-            <div>
-                <Outlet>
+      <ToastContainer />
 
-                </Outlet>
-            </div>
-            <Footer>
-
-            </Footer>
-        </div>
-    )
+      <Navbar></Navbar>
+      <div>
+        <Outlet></Outlet>
+      </div>
+      <Footer></Footer>
+    </div>
+  );
 }

@@ -63,13 +63,13 @@ export default function Login() {
             className="mb-4 w-full rounded-none outline-none border p-2"
             required
           />
-          <button type="submit" className="mb-2 w-full cursor-pointer rounded-none btn-1 p-2 text-white">
+          <button type="submit" className="mb-2 my-button w-full cursor-pointer rounded-none p-2 text-white">
             Sign In
           </button>
         </form>
         <button
           onClick={handleGoogleLogin}
-          className="w-full btn-1 cursor-pointer flex items-center justify-center gap-2 rounded-none border p-2 hover:bg-gray-200"
+          className="mb-2 my-button w-full cursor-pointer rounded-none p-2 text-white"
         >
           Sign in with Google
         </button>

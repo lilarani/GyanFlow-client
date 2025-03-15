@@ -8,7 +8,7 @@ import './Navbar.css';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../../../firebase.config';
 import { toast } from 'react-toastify';
-import Cookies from "js-cookie";
+
 import axios from 'axios';
 
 const Navbar = () => {

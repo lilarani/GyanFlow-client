@@ -1,5 +1,6 @@
 import OurAchievementSection from '../../components/About/OurAchievementSection/OurAchievementSection';
 import Team from './../../components/About/Team/Team';
+
 import OurMission from '../../components/About/OurMission/OurMission';
 
 export default function About() {

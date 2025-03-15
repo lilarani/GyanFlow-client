@@ -1,0 +1,10 @@
+[
+  { "courseName": "JS Basics", "enrolledStudents": 1200 },
+  { "courseName": "Advanced Python", "enrolledStudents": 800 },
+  { "courseName": "Digital Marketing", "enrolledStudents": 1500 },
+  { "courseName": "Next-Js", "enrolledStudents": 900 },
+  { "courseName": "Data Science", "enrolledStudents": 600 },
+  { "courseName": "PHP Laravel", "enrolledStudents": 1100 },
+  { "courseName": "React from Scratch", "enrolledStudents": 950 },
+  { "courseName": "UI/UX Design", "enrolledStudents": 850 }
+]

@@ -32,7 +32,7 @@ const Navbar = () => {
   let signOutUser = () => {
     signOut(auth)
       .then(async () => {
-        const response = await axios.get('http://localhost:4000/gyanflow/user/logout' ,{withCredentials : true})
+        const response = await axios.get('http://localhost:4000/gyanflow/user/logout', { withCredentials: true })
         navigate('/login')
         toast('logout user')
 
@@ -77,25 +77,29 @@ const Navbar = () => {
           <Link className="text-md flex flex-row gap-2 items-center font-bold py-4 px-8 hover:bg-[#ffffff44]">
             <CiSearch /> Search
           </Link>
-          <Link to={'/login'} className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
-            Sign-in
-          </Link>
-          <div className="w-fit box-model cursor-pointer h-fit">
-            <p className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
-              Register
-            </p>
-            <div className="hidden z-50 my-container bg-[#040150]">
-              <button className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
-                Student Sign-up
-              </button>
-              <button className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
-                Teacher Sign-up
-              </button>
-              <button className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
-                Employer Sign-up
-              </button>
-            </div>
-          </div>
+          {
+            !user ? <div className='flex flex-row'> <Link to={'/login'} className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+              Sign-in
+            </Link>
+              <div className="w-fit box-model cursor-pointer h-fit">
+                <p className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+                  Register
+                </p>
+                <div className="hidden z-50 my-container bg-[#040150]">
+                  <Link to={'/register/Student'} className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+                    Student Sign-up
+                  </Link>
+                  <Link to={'/register/Teacher'} className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+                    Teacher Sign-up
+                  </Link>
+                  <Link to={'/register/Employer'} className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
+                    Employer Sign-up
+                  </Link>
+                </div>
+              </div></div> : <button onClick={signOutUser} className="text-md cursor-pointer font-bold py-4 px-8 hover:bg-[#ffffff44]">
+              Logout
+            </button>
+          }
         </div>
       </nav>
 
@@ -103,16 +107,11 @@ const Navbar = () => {
 
       <div
 
-//         className={`fixed top-0 right-0 h-full w-64 bg-[#2f2753] z-50 shadow-lg transform ${
+        //         className={`fixed top-0 right-0 h-full w-64 bg-[#2f2753] z-50 shadow-lg transform ${
 
 
-        className={`fixed z-50 top-0 right-0 h-full w-64 bg-[#2f2753] shadow-lg transform ${
-
-  
-
-
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        } transition-transform duration-300 ease-in-out xl:hidden`}
+        className={`fixed z-50 top-0 right-0 h-full w-64 bg-[#2f2753] shadow-lg transform ${isOpen ? 'translate-x-0' : 'translate-x-full'
+          } transition-transform duration-300 ease-in-out xl:hidden`}
       >
         <div className="flex justify-end p-4">
           <FaTimes
@@ -148,15 +147,15 @@ const Navbar = () => {
               Support
             </NavLink>
           </li>
-          <button className="text-md font-bold py-4 hover:bg-[#ffffff44]">
+          <Link to={'/register/Student'} className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
             Student Sign-up
-          </button>
-          <button className="text-md font-bold py-4 hover:bg-[#ffffff44]">
+          </Link>
+          <Link to={'/register/Teacher'} className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
             Teacher Sign-up
-          </button>
-          <button className="text-md font-bold py-4 hover:bg-[#ffffff44]">
+          </Link>
+          <Link to={'/register/Employer'} className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]">
             Employer Sign-up
-          </button>
+          </Link>
         </ul>
       </div>
     </div>

@@ -5,6 +5,17 @@
     box-shadow: 0px 0px 20px rgba(76, 221, 240, 0.482);
 }
 
+.button:active .front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+
+.button:active .shadow-2 {
+    transform: translateY(-6px);
+    transition: transform 34ms;
+}
+
+
 .btn-1 {
     background: linear-gradient(to bottom left, #a4b8f1a9, #c673c68f);
     transition: background 0.5s ease-in-out;
@@ -16,12 +27,32 @@
     color: rgb(54, 54, 59);
 }
 
+.my-button {
+    border-radius: 0px;
+    cursor: pointer;
+    background-image: linear-gradient(90deg, rgba(2, 18, 58, 0.956), #3d023f );
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+    transition: background-size 1000ms;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 30px rgb(197, 197, 255);
+    color: rgb(255, 253, 247);
+    padding: 10px 20px;
+    color: black;
+    
+
+}
+
+.my-button:hover {
+    box-shadow: 0px 0px 20px rgba(76, 221, 240, 0.482);
+    color: rgb(61, 216, 40);
+    background-size: 100% 100%;
+    background-position-x: left;
+}
+
 @theme {
     --color-default: #080127;
     --color-main: #1a044d;
     --color-textcolor: lightgray;
-}
-
-body {
-   
 }

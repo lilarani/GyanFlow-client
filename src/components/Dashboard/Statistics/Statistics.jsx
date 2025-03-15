@@ -1,4 +1,4 @@
-import "chart.js/auto";
+import 'chart.js/auto';
 import {
   Chart as ChartJS,
   ArcElement,
@@ -8,10 +8,10 @@ import {
   LinearScale,
   BarElement,
   Title,
-} from "chart.js";
-import { Bar, Doughnut, Line } from "react-chartjs-2";
-import lineData from "./data/lineData.json";
-import doughnutData from "./data/doughnutData.json";
+} from 'chart.js';
+import { Bar, Doughnut, Line } from 'react-chartjs-2';
+import lineData from './data/lineData.json';
+import doughnutData from './data/doughnutData.json';
 
 ChartJS.register(
   ArcElement,
@@ -26,30 +26,30 @@ ChartJS.register(
 const Statistics = () => {
   const data = {
     labels: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "June",
-      "July",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'June',
+      'July',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ],
     datasets: [
       {
-        label: "Monthly Sales",
+        label: 'Monthly Sales',
         data: [
           2000, 4000, 1000, 9000, 10000, 3000, 1600, 8900, 3300, 4000, 12000,
           4300, 6700,
         ],
         backgroundColor: [
-          "rgba(43,63,229, 0.8)",
-          "rgba(250,192,19, 0.8)",
-          "rgba(253,135,135, 0.8)",
+          'rgba(43,63,229, 0.8)',
+          'rgba(250,192,19, 0.8)',
+          'rgba(253,135,135, 0.8)',
         ],
         borderRadius: 2,
       },
@@ -61,15 +61,15 @@ const Statistics = () => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "top",
+        position: 'top',
         labels: {
-          color: "white", // Change this to the color you want
+          color: 'white', // Change this to the color you want
         },
       },
       title: {
         display: true,
-        color: "white",
-        text: "Profit by Month",
+        color: 'white',
+        text: 'Profit by Month',
         font: { size: 18 },
       },
     },
@@ -80,42 +80,42 @@ const Statistics = () => {
         <div className="w-full md:w-[500px] h-[400px] bg-[#0b1739] p-2 rounded-lg shadow-lg">
           <Doughnut
             data={{
-              labels: doughnutData.map((data) => data.courseName),
+              labels: doughnutData.map(data => data.courseName),
               datasets: [
                 {
-                  label: "Courses",
-                  data: doughnutData.map((data) => data.enrolledStudents),
+                  label: 'Courses',
+                  data: doughnutData.map(data => data.enrolledStudents),
                   backgroundColor: [
-                    "rgba(54, 162, 235, 0.8)", // Blue
-                    "rgba(255, 99, 132, 0.8)", // Red
-                    "rgba(255, 159, 64, 0.8)", // Orange
-                    "rgba(75, 192, 192, 0.8)", // Teal
-                    "rgba(153, 102, 255, 0.8)", // Purple
-                    "rgba(255, 159, 223, 0.8)", // Pink
-                    "rgba(255, 99, 71, 0.8)", // Tomato Red
+                    'rgba(54, 162, 235, 0.8)', // Blue
+                    'rgba(255, 99, 132, 0.8)', // Red
+                    'rgba(255, 159, 64, 0.8)', // Orange
+                    'rgba(75, 192, 192, 0.8)', // Teal
+                    'rgba(153, 102, 255, 0.8)', // Purple
+                    'rgba(255, 159, 223, 0.8)', // Pink
+                    'rgba(255, 99, 71, 0.8)', // Tomato Red
                   ],
                   borderRadius: 2,
                 },
               ],
             }}
             options={{
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                  legend: {
-                    position: "top",
-                    labels: {
-                      color: "white", // Change this to the color you want
-                    },
-                  },
-                  title: {
-                    display: true,
-                    color: "white",
-                    text: "Courses",
-                    font: { size: 18 },
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  position: 'top',
+                  labels: {
+                    color: 'white', // Change this to the color you want
                   },
                 },
-              }}
+                title: {
+                  display: true,
+                  color: 'white',
+                  text: 'Courses',
+                  font: { size: 18 },
+                },
+              },
+            }}
           />
         </div>
         <div className="mt-10 w-full lg:w-[500px] h-[300px] bg-[#0b1739] p-5 rounded-lg shadow-lg">
@@ -126,19 +126,19 @@ const Statistics = () => {
         <div className="w-full h-[500px] bg-[#0b1739] rounded-lg shadow-lg">
           <Line
             data={{
-              labels: lineData.map((data) => data.label),
+              labels: lineData.map(data => data.label),
               datasets: [
                 {
-                  label: "Revenue",
-                  data: lineData.map((data) => data.revenue),
-                  backgroundColor: "#4CAF50",
-                  borderColor: "#388E3C",
+                  label: 'Revenue',
+                  data: lineData.map(data => data.revenue),
+                  backgroundColor: '#4CAF50',
+                  borderColor: '#388E3C',
                 },
                 {
-                  label: "Cost",
-                  data: lineData.map((data) => data.cost),
-                  backgroundColor: "#FF9800",
-                  borderColor: "#F57C00",
+                  label: 'Cost',
+                  data: lineData.map(data => data.cost),
+                  backgroundColor: '#FF9800',
+                  borderColor: '#F57C00',
                 },
               ],
             }}
@@ -147,16 +147,16 @@ const Statistics = () => {
               maintainAspectRatio: false,
               plugins: {
                 legend: {
-                  position: "top",
+                  position: 'top',
                   labels: {
-                    color: "white", // Change this to the color you want
+                    color: 'white', // Change this to the color you want
                   },
                 },
                 title: {
                   display: true,
-                  text: "Revenue & Cost By Month",
+                  text: 'Revenue & Cost By Month',
                   font: { size: 18 },
-                  color: "white",
+                  color: 'white',
                 },
               },
             }}

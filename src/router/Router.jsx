@@ -1,11 +1,9 @@
-
 // import { createBrowserRouter } from "react-router";
 // import Main from "../MainLayout/Main";
 // import Home from "../pages/Home/Home";
 // import Login from "../authentication/Login/Login";
 // import Register from "../authentication/Register/Register";
 // import About from "../pages/About/About";
-
 
 // export const router = createBrowserRouter([
 //     {
@@ -31,7 +29,6 @@
 //         element : <Register></Register>
 //     }
 // ])
-
 
 import { createBrowserRouter } from 'react-router';
 import Main from '../MainLayout/Main';
@@ -75,4 +72,3 @@ export const router = createBrowserRouter([
     children: [],
   },
 ]);
-

@@ -3,6 +3,8 @@ import ukFlagImg from '../../../assets/images/dashboardNavImg/uk.png';
 import chinaFlagImg from '../../../assets/images/dashboardNavImg/china.png';
 import turkeyFlagImg from '../../../assets/images/dashboardNavImg/turkey.png';
 import bdFlagImg from '../../../assets/images/dashboardNavImg/bangladesh.png';
+import { IoMdNotificationsOutline } from 'react-icons/io';
+import { TbHelpSquare } from 'react-icons/tb';
 
 const flags = [
   { img: usaFlagImg, name: 'English(US)', code: 'en-Us' },
@@ -15,6 +17,7 @@ const flags = [
 import { MdOutlineNotificationsNone } from 'react-icons/md';
 import { useState } from 'react';
 import { FaRegUser } from 'react-icons/fa';
+import { Link } from 'react-router';
 const DashboardNavbar = () => {
   const [openFlagModal, setOpenFlagModal] = useState(false);
   const [selectedFlag, setSelectedFlag] = useState(flags[0]);
@@ -77,12 +80,37 @@ const DashboardNavbar = () => {
             className="w-12 h-12 rounded-full"
           />
           {openUserModal && (
-            <div className="absolute top-18 bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white w-60 h-56  right-4 space-y-6 p-6">
-              <div className="text-white">
-                <p className="text-white">
+            <div className="absolute top-18 bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white w-60 h-56  right-4  p-6">
+              <div className="flex gap-2 items-center border-b-[1px] border-gray-700 p-2">
+                <img src={''} alt="User image" />
+                <div>
+                  <p>name</p>
+                  <p>email</p>
+                </div>
+              </div>
+
+              <div className="text-white space-y-5 mt-4">
+                <Link
+                  to={'#'}
+                  className="text-base font-bold flex gap-2 items-center cursor-pointer"
+                >
                   <FaRegUser />
                   View Profile
-                </p>
+                </Link>
+                <Link
+                  to={'#'}
+                  className="text-base font-bold flex gap-2 items-center cursor-pointer"
+                >
+                  <IoMdNotificationsOutline />
+                  Notification
+                </Link>
+                <Link
+                  to={'#'}
+                  className="text-base font-bold flex gap-2 items-center cursor-pointer"
+                >
+                  <TbHelpSquare />
+                  Help Center
+                </Link>
               </div>
             </div>
           )}

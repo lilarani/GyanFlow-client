@@ -10,7 +10,7 @@ const Sidebar = () => {
 
   const role = 'admin';
   return (
-    <div className="w-72 min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-8">
+    <div className="w-full min-h-screen bg-gradient-to-bl  to-[#1a044d] from-[#080127] text-white p-8">
       <h2 className="font-bold text-2xl ">
         <span className="text-yellow-300">G</span>yanFlow
       </h2>

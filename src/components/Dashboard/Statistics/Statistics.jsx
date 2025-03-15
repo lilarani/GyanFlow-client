@@ -75,7 +75,7 @@ const Statistics = () => {
     },
   };
   return (
-    <div className="wfull lg:w-10/12 mx-auto bg-[#070f25] p-2">
+    <div className="w-full mx-auto bg-[#070f25] p-2">
       <div className="flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-10">
         <div className="w-full md:w-[500px] h-[400px] bg-[#0b1739] p-2 rounded-lg shadow-lg">
           <Doughnut

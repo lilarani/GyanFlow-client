@@ -4,11 +4,19 @@ import Sidebar from '../../../components/Dashboard/Sidebar/Sidebar';
 
 const DashboardPage = () => {
   return (
-    <div>
+    <div className="relative">
+      {/* <div className="absolute w-full"></div> */}
       <div className="flex">
-        <Sidebar></Sidebar>
-        <DashboardNavbar></DashboardNavbar>
-        <Outlet></Outlet>
+        <div className="grid grid-cols-12">
+          <div className="col-span-3">
+            <Sidebar></Sidebar>
+          </div>
+
+          <div className="col-span-9 overflow-y-scroll h-screen">
+            <DashboardNavbar></DashboardNavbar>
+            <Outlet></Outlet>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -30,9 +30,6 @@ export default function Main() {
       <div>
         <Outlet></Outlet>
       </div>
-      <h1 className="text-center uppercase font-bold text-blue-800 text-5xl">
-        This is main page
-      </h1>
       <Footer></Footer>
     </div>
   );

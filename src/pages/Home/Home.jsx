@@ -4,8 +4,6 @@ import Impact from '../../components/Home/Impact/Impact';
 import FeaturesSectionHomePage from '../../components/Home/FeaturesSection/FeaturesSectionHomePage';
 import Banner from '../../components/Home/banner/Banner';
 
-// import About from '../../components/about/About';
-
 const Home = () => {
   return (
     <div>

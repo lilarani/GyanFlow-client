@@ -1,5 +1,6 @@
+import { Outlet } from 'react-router';
 import DashboardNavbar from '../../../components/Dashboard/DashboardNavbar/DashboardNavbar';
-import Sidebar from '../../../components/Sidebar/Sidebar';
+import Sidebar from '../../../components/Dashboard/Sidebar/Sidebar';
 
 const DashboardPage = () => {
   return (
@@ -7,6 +8,7 @@ const DashboardPage = () => {
       <div className="flex">
         <Sidebar></Sidebar>
         <DashboardNavbar></DashboardNavbar>
+        <Outlet></Outlet>
       </div>
     </div>
   );

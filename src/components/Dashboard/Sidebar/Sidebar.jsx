@@ -4,7 +4,6 @@ import { FaDollarSign, FaRegStar, FaRegUser } from 'react-icons/fa';
 import { Link } from 'react-router';
 
 const Sidebar = () => {
-  // let userRole = 'user';
   // let adminRole = 'admin';
   // let student = 'student';
   // let instructor = ' instructor';

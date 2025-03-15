@@ -27,7 +27,10 @@ export default function Main() {
 
   return (
     <div className="w-full">
+
+
       <ToastContainer />
+
       <Navbar></Navbar>
       <div>
         <Outlet></Outlet>

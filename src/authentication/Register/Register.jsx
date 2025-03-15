@@ -1,7 +1,9 @@
 import { useNavigate, useParams } from "react-router";
-import { useState } from "react"; 
+import { useState } from "react";
 import axios from 'axios';
 import { toast } from "react-toastify";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../firebase.config";
 
 export default function Register() {
   let { role } = useParams();
@@ -12,8 +14,8 @@ export default function Register() {
     phone: '',
     email: '',
     password: '',
-    role : role,
-    picture : 'https://img.freepik.com/free-photo/top-view-pink-flower-with-drops_1112-450.jpg?uid=R187535479&ga=GA1.1.1477002296.1724664851&semt=ais_hybrid'
+    role: role,
+    picture: 'https://img.freepik.com/free-photo/top-view-pink-flower-with-drops_1112-450.jpg?uid=R187535479&ga=GA1.1.1477002296.1724664851&semt=ais_hybrid'
   });
 
   const handleChange = (e) => {
@@ -22,25 +24,33 @@ export default function Register() {
   }
 
   const handleRegister = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     try {
-  
-      const response = await axios.post('http://localhost:4000/gyanflow/user/regiser', formData , {
-        withCredentials : true
-      });
-      if(response.data.success){
-        navigate('/');
-        toast('done');
-        console.log(response.data)
-      }else{
-        toast('something wrong')
-      }
-      
-      
+      createUserWithEmailAndPassword(auth, formData.email, formData.password)
+        .then(async res => {
+          const response = await axios.post('http://localhost:4000/gyanflow/user/regiser', formData, {
+            withCredentials: true
+          });
+          toast('okey')
+          if (response.data.success) {
+            navigate('/');
+            toast('done');
+            console.log(response.data)
+          } else {
+            toast('something wrong')
+          }
+        })
+        .catch((e) => {
+          toast(e.message)
+        })
+
+
+
+
     } catch (error) {
-      toast('something wrong' , error.message)
-     
+      toast('something wrong', error.message)
+
     }
   }
 

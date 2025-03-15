@@ -18,10 +18,13 @@ import { MdOutlineNotificationsNone } from 'react-icons/md';
 import { useState } from 'react';
 import { FaRegUser } from 'react-icons/fa';
 import { Link } from 'react-router';
+import { useSelector } from 'react-redux';
 const DashboardNavbar = () => {
   const [openFlagModal, setOpenFlagModal] = useState(false);
   const [selectedFlag, setSelectedFlag] = useState(flags[0]);
   const [openUserModal, setOpenUserModal] = useState(false);
+  const { user } = useSelector(state => state.authUser);
+  console.log(user);
 
   // handle flag modal function
   const handleModal = () => {
@@ -82,10 +85,10 @@ const DashboardNavbar = () => {
           {openUserModal && (
             <div className="absolute top-18 bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white w-60 h-56  right-4  p-6">
               <div className="flex gap-2 items-center border-b-[1px] border-gray-700 p-2">
-                <img src={''} alt="User image" />
+                <img src={user?.photoURL} alt="User image" />
                 <div>
-                  <p>name</p>
-                  <p>email</p>
+                  <p className="text-white">{user?.displayName}</p>
+                  <p>{user?.email}</p>
                 </div>
               </div>
 

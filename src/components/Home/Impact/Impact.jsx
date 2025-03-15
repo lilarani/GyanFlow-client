@@ -14,7 +14,7 @@ const Impact = () => {
         />
         <p className="text-2xl text-[#e2e8f0] mt-2">Students</p>
       </div>
-      <div class="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
+      <div className="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
       <div className=" border-gray-200 p-10 ">
         <CountUp
           className="text-[#06b6d4] text-5xl font-bold"
@@ -26,7 +26,7 @@ const Impact = () => {
         />
         <p className="text-2xl text-[#e2e8f0] mt-2">Job Placement</p>
       </div>
-      <div class="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
+      <div className="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
       <div className=" border-gray-200 p-10 ">
         <CountUp
           className="text-[#22c55e] text-5xl font-bold"
@@ -38,7 +38,7 @@ const Impact = () => {
         />
         <p className="text-2xl text-[#94a3b8] mt-2">Job Placement</p>
       </div>
-      <div class="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
+      <div className="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
 
       <div className=" border-gray-200 p-10">
         <CountUp
@@ -51,7 +51,7 @@ const Impact = () => {
 
         <p className="text-2xl text-[#f1f5f9] mt-2">Instructors</p>
       </div>
-      <div class="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
+      <div className="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
       <div className="p-10">
         <CountUp
           className="text-[#f59e0b] text-5xl font-bold"

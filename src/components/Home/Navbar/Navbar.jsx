@@ -2,12 +2,18 @@ import React, { useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import { useEffect } from 'react';
 import './Navbar.css';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../../../firebase.config';
+import { toast } from 'react-toastify';
+
+import axios from 'axios';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  let navigate = useNavigate();
   useEffect(() => {
     const handleClickOutside = event => {
       if (isOpen && !event.target.closest('.sidebar')) {
@@ -22,7 +28,17 @@ const Navbar = () => {
   }, [isOpen]);
 
   let { user } = useSelector(state => state.authUser);
-  console.log(user);
+
+  let signOutUser = () => {
+    signOut(auth).then(async () => {
+      const response = await axios.get(
+        'http://localhost:4000/gyanflow/user/logout',
+        { withCredentials: true }
+      );
+      navigate('/login');
+      toast('logout user');
+    });
+  };
 
   return (
     <div className="sticky top-0 left-0 w-full h-max z-50">
@@ -59,9 +75,9 @@ const Navbar = () => {
         {/* Before Sign-in/Sign-up */}
 
         <div className="xl:flex flex-row hidden">
-          <button className="text-md flex flex-row gap-2 items-center font-bold py-4 px-8 hover:bg-[#ffffff44]">
+          <Link className="text-md flex flex-row gap-2 items-center font-bold py-4 px-8 hover:bg-[#ffffff44]">
             <CiSearch /> Search
-          </button>
+          </Link>
           <Link
             to={'/login'}
             className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"

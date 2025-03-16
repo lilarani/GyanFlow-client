@@ -3,7 +3,7 @@ import './banner.css';
 const Banner = () => {
   return (
     <div
-      className="w-full banner overflow-hidden   h-screen flex md:justify-between items-center flex-col md:flex-row bg-opacity-25  bg-gradient-to-bl to-[#1a044d] from-[#100d1b]"
+      className="w-full banner overflow-x-hidden   h-screen flex md:justify-between items-center flex-col md:flex-row bg-opacity-25  bg-gradient-to-bl to-[#1a044d] from-[#100d1b]"
       style={{
         padding: '30px',
       }}

@@ -13,6 +13,9 @@ import axios from 'axios';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [dropdown, setDropdown] = useState(false);
+
   let navigate = useNavigate();
   useEffect(() => {
     const handleClickOutside = event => {
@@ -38,6 +41,11 @@ const Navbar = () => {
       navigate('/login');
       toast('logout user');
     });
+  };
+
+  // dropdown handler function
+  let handleDropdown = () => {
+    setDropdown(!dropdown);
   };
 
   return (
@@ -114,12 +122,37 @@ const Navbar = () => {
               </div>
             </div>
           ) : (
-            <button
-              onClick={signOutUser}
-              className="text-md cursor-pointer font-bold py-4 px-8 hover:bg-[#ffffff44]"
-            >
-              Logout
-            </button>
+            <>
+              <img
+                onClick={handleDropdown}
+                src={user?.photoURL}
+                alt="user Image"
+                className="w-12 h-12 rounded-full relative"
+              />
+              {dropdown && (
+                <div className="bg-black w-80 h-80 absolute top-20 right-12 p-6 ">
+                  <h2 className="text-xl font-bold ">{user?.displayName}</h2>
+                  <p className="text-lg font-semibold border-gray-500 border-b-[1px] py-2">
+                    {user?.email}
+                  </p>
+                  <div className="w-full flex flex-col gap-4 mt-12">
+                    <Link
+                      to={'/dashboard'}
+                      className="text-md w-full text-center cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] bg-blue-500 "
+                    >
+                      Dashboard
+                    </Link>
+                    {/* logout btn */}
+                    <button
+                      onClick={signOutUser}
+                      className="text-md w-full border-blue-500 text-blue-500 border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-blue-500 hover:text-white"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </div>
       </nav>
@@ -165,24 +198,42 @@ const Navbar = () => {
               Support
             </NavLink>
           </li>
-          <Link
-            to={'/register/Student'}
-            className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
-          >
-            Student Sign-up
-          </Link>
-          <Link
-            to={'/register/Teacher'}
-            className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
-          >
-            Teacher Sign-up
-          </Link>
-          <Link
-            to={'/register/Employer'}
-            className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
-          >
-            Employer Sign-up
-          </Link>
+          <div>
+            {user ? (
+              <div className="flex flex-col gap-3 w-full">
+                <Link
+                  to={'/dashboard'}
+                  className="text-md w-full text-center cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] bg-blue-500 "
+                >
+                  Dashboard
+                </Link>
+                <button className="w-full border-blue-500 text-blue-500 border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-blue-500">
+                  Log-out
+                </button>
+              </div>
+            ) : (
+              <>
+                <Link
+                  to={'/register/Student'}
+                  className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
+                >
+                  Student Sign-up
+                </Link>
+                <Link
+                  to={'/register/Teacher'}
+                  className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
+                >
+                  Teacher Sign-up
+                </Link>
+                <Link
+                  to={'/register/Employer'}
+                  className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
+                >
+                  Employer Sign-up
+                </Link>
+              </>
+            )}
+          </div>
         </ul>
       </div>
     </div>

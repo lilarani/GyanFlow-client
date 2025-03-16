@@ -5,7 +5,6 @@ import Sidebar from '../../../components/Dashboard/Sidebar/Sidebar';
 const DashboardPage = () => {
   return (
     <div className="relative">
-      {/* <div className="absolute w-full"></div> */}
       <div className="flex">
         <div className="grid grid-cols-12">
           <div className="col-span-3">

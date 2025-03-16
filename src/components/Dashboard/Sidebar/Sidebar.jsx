@@ -10,10 +10,10 @@ const Sidebar = () => {
 
   const role = 'admin';
   return (
-    <div className="w-full min-h-screen bg-gradient-to-bl  to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
-      <h2 className="font-bold text-base md:text-2xl ">
+    <div className="w-full min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
+      <Link to={'/'} className="font-bold text-base md:text-2xl ">
         <span className="text-yellow-300">G</span>yanFlow
-      </h2>
+      </Link>
       <div className="relative flex items-center space-y-3 mt-10">
         <IoSearch className="absolute left-2 top-2 " />
         <input
@@ -27,40 +27,49 @@ const Sidebar = () => {
       {role === 'admin' && (
         <div className="space-y-5 mt-10">
           <Link
-            to={'#'}
-            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer"
+            to={'/dashboard/adminDashBoard'}
+            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <BiSolidUpArrow />
             Dashboard
           </Link>
           <Link
-            to={'#'}
-            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer"
+            to={'/dashboard/features'}
+            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <FaRegStar />
             Features
           </Link>
           <Link
             to={'#'}
-            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer"
+            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <FaRegUser />
-            Users
+            Users Managment
           </Link>
           <Link
             to={'#'}
-            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer"
+            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <FaDollarSign />
             Pricing
           </Link>
+
+          <div className="w-full mt-4  border-gray-600 border-t-[1px]">
+            <Link
+              to={'/'}
+              className="cursor-pointer block w-full text-base md:text-xl font-bold md:mt-8 hover:bg-[#ffffff44] px-4 py-2"
+            >
+              Home
+            </Link>
+          </div>
         </div>
       )}
       {/* student role */}
       {role === 'student' && (
         <div className="space-y-5 mt-10">
           <Link
-            to={'#'}
+            to={'/dashboard/studentDashboard'}
             className="text-lg font-bold flex gap-2 items-center cursor-pointer"
           >
             <BiSolidUpArrow />
@@ -68,23 +77,12 @@ const Sidebar = () => {
           </Link>
         </div>
       )}
-      {/* user role */}
-      {role === 'user' && (
-        <div className="space-y-5 mt-10">
-          <Link
-            to={'#'}
-            className="text-lg font-bold flex gap-2 items-center cursor-pointer"
-          >
-            <BiSolidUpArrow />
-            User Dashboard
-          </Link>
-        </div>
-      )}
+
       {/* Instructor role */}
       {role === 'instructor' && (
         <div className="space-y-5 mt-10">
           <Link
-            to={'#'}
+            to={'/dashboard/instructorDasboard'}
             className="text-lg font-bold flex gap-2 items-center cursor-pointer"
           >
             <BiSolidUpArrow />

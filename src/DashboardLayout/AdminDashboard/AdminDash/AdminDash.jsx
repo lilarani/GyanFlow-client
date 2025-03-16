@@ -5,10 +5,6 @@ const AdminDash = () => {
     <div>
       {/* statistics */}
       <Statistics></Statistics>
-      <h3>I am dashboard</h3>
-      <h3>I am dashboard</h3>
-      <h3>I am dashboard</h3>
-      <h3>I am dashboard</h3>
     </div>
   );
 };

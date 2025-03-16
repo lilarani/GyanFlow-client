@@ -6,7 +6,7 @@ import './Dashboard.css';
 const DashboardPage = () => {
   return (
     <div className="relative">
-      <div className="flex border-2">
+      <div className="flex ">
         <div className="grid grid-cols-12 w-full">
           <div className="col-span-3">
             <Sidebar></Sidebar>

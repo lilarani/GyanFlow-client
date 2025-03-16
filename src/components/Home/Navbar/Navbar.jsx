@@ -34,10 +34,7 @@ const Navbar = () => {
 
   let signOutUser = () => {
     signOut(auth).then(async () => {
-      const response = await axios.get(
-        'http://localhost:4000/gyanflow/user/logout',
-        { withCredentials: true }
-      );
+    
       navigate('/login');
       toast('logout user');
     });

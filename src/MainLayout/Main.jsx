@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from 'react';
 import { auth } from '../../firebase.config';
@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 
 export default function Main() {
   const dispatch = useDispatch();
+  let {user} = useSelector(state => state.authUser)
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
@@ -18,6 +19,7 @@ export default function Main() {
       if (user) {
         dispatch(setUser(user));
       } else {
+        dispatch(setUser(null));
         console.log('user cannot fund');
       }
     });

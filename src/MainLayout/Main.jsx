@@ -8,17 +8,22 @@ import { setUser } from '../redux/authSlice';
 import Navbar from '../components/Home/Navbar/Navbar';
 import Footer from '../components/Home/Footer/Footer';
 import { ToastContainer } from 'react-toastify';
+import axios from 'axios';
 
 export default function Main() {
   const dispatch = useDispatch();
-  let {user} = useSelector(state => state.authUser)
+  let { user } = useSelector(state => state.authUser)
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, user => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       console.log(user);
       if (user) {
         dispatch(setUser(user));
       } else {
+        const response = await axios.get(
+          'http://localhost:4000/gyanflow/user/logout',
+          { withCredentials: true }
+        );
         dispatch(setUser(null));
         console.log('user cannot fund');
       }

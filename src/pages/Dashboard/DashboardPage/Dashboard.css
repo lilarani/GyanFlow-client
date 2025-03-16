@@ -1,0 +1,10 @@
+/* Hide scrollbar but allow scrolling */
+.element {
+  overflow: scroll;
+  -ms-overflow-style: none; /* Internet Explorer */
+  scrollbar-width: none; /* Firefox */
+}
+
+.element::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

@@ -43,7 +43,10 @@ export const router = createBrowserRouter([
     element: <DashboardPage></DashboardPage>,
     children: [
       // admin related routes
-
+      {
+        index: true, // Default route inside 'dashboard'
+        element: <AdminDash></AdminDash>,
+      },
       {
         path: 'adminDashBoard',
         element: <AdminDash></AdminDash>,

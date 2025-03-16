@@ -97,7 +97,7 @@ const StatisticsTable = () => {
   // Card view for mobile
   const renderMobileCards = () => {
     return (
-      <div className="space-y-4">
+      <div className="space-y-4 my-20 p-5">
         {ordersData.map((order) => (
           <div key={order.id} className="bg-navy-900 rounded-lg p-4 space-y-3">
             <div className="flex justify-between items-center">
@@ -107,7 +107,7 @@ const StatisticsTable = () => {
               </Badge>
             </div>
             
-            <div className="space-y-2">
+            <div className="space-y-2 ">
               <div>
                 <div className="flex items-center gap-2 text-gray-400 text-sm">
                   <User size={14} />
@@ -158,7 +158,7 @@ const StatisticsTable = () => {
   // Regular table for desktop
   const renderDesktopTable = () => {
     return (
-      <div className="bg-navy-900 rounded-lg overflow-hidden">
+      <div className="bg-navy-900 rounded-lg overflow-hidden my-20 p-5">
         <div className="overflow-x-auto">
           <Table>
             <TableHeader className="bg-navy-900">
@@ -238,9 +238,9 @@ const StatisticsTable = () => {
   };
 
   return (
-    <div className="w-full p-4 md:p-6 bg-[#0B1739] text-white min-h-screen">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-        <h1 className="text-xl md:text-2xl font-bold">Orders Status</h1>
+    <div className="w-full p-4 md:p-6 bg-[#0B1739]  ">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pt-10 ">
+        <h1 className="text-xl md:text-2xl font-bold text-white">Orders Status</h1>
         <div className="flex flex-col sm:flex-row w-full md:w-auto gap-3">
           <div className="relative w-full sm:w-64">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />

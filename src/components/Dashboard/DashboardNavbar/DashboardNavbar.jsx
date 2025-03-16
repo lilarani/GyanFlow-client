@@ -44,7 +44,7 @@ const DashboardNavbar = () => {
 
   return (
     <div className=" w-full h-24 p-4  items-center bg-gradient-to-bl to-[#080127] from-[#1a044d] text-white flex justify-between">
-      <h2 className="text-xl font-semibold">Analytics</h2>
+      <h2 className="text-base md:text-xl font-semibold">Analytics</h2>
       <div className="flex gap-8 items-center">
         {/* modal */}
         <div className="relative ">
@@ -52,7 +52,7 @@ const DashboardNavbar = () => {
             onClick={handleModal}
             src={selectedFlag.img}
             alt="USA Flag"
-            className=""
+            className=" md:w-7"
           />
           {openFlagModal && (
             <div className="bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white w-60 h-56 absolute top-12 right-1 space-y-6 p-6">
@@ -74,7 +74,7 @@ const DashboardNavbar = () => {
           )}
         </div>
 
-        <MdOutlineNotificationsNone className="text-xl cursor-pointer" />
+        <MdOutlineNotificationsNone className="text-2xl cursor-pointer" />
         <div className="relative">
           <img
             onClick={handleUserModal}
@@ -108,7 +108,7 @@ const DashboardNavbar = () => {
                   to={'#'}
                   className="text-base font-bold flex gap-2 items-center cursor-pointer"
                 >
-                  <IoMdNotificationsOutline />
+                  <IoMdNotificationsOutline className="" />
                   Notification
                 </Link>
                 <Link

@@ -6,7 +6,9 @@ import Register from '../authentication/Register/Register';
 import Support from '../pages/Support/Support';
 import About from '../pages/About/About';
 import DashboardPage from '../pages/Dashboard/DashboardPage/DashboardPage';
-import Statistics from '../components/Dashboard/Statistics/Statistics';
+import AdminDash from '../DashboardLayout/AdminDashboard/AdminDash/AdminDash';
+import Features from '../DashboardLayout/AdminDashboard/Features/Features';
+import StudentDash from '../DashboardLayout/StudentDashboard/StudentDash/StudentDash';
 
 export const router = createBrowserRouter([
   {
@@ -39,9 +41,21 @@ export const router = createBrowserRouter([
     path: 'dashboard',
     element: <DashboardPage></DashboardPage>,
     children: [
+      // admin routes
+
       {
-        path: '/dashboard',
-        element: <Statistics></Statistics>,
+        path: 'adminDashBoard',
+        element: <AdminDash></AdminDash>,
+      },
+      {
+        path: 'features',
+        element: <Features></Features>,
+      },
+
+      // student routes
+      {
+        path: 'studentDashboard',
+        element: <StudentDash></StudentDash>,
       },
     ],
   },

@@ -1,7 +1,11 @@
-import React from 'react';
+import DashboardPage from '../../pages/Dashboard/DashboardPage/DashboardPage';
 
 const AdminDashboard = () => {
-  return <div></div>;
+  return (
+    <div>
+      <DashboardPage></DashboardPage>
+    </div>
+  );
 };
 
 export default AdminDashboard;

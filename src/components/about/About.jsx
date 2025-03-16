@@ -10,6 +10,7 @@ const AboutUs = () => {
                 backgroundImage:
                     "url('https://cdn.prod.website-files.com/656716da09ca22f2f5e147d1/658567648a22c2f261087cc0_1-1.jpeg')",
                 backgroundSize: "cover",
+                backgroundAttachment:"fixed"
             }}
         >
             {/* Overlay ============================*/}

@@ -8,7 +8,7 @@ const Sidebar = () => {
   // let student = 'student';
   // let instructor = ' instructor';
 
-  const role = 'admin';
+  const role = 'instructor';
   return (
     <div className="w-full min-h-screen bg-gradient-to-bl  to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
       <Link to={'/'} className="font-bold text-base md:text-2xl ">
@@ -54,8 +54,14 @@ const Sidebar = () => {
             <FaDollarSign />
             Pricing
           </Link>
-          <div>
-            <Link to={'/'}>Home</Link>
+
+          <div className="w-full mt-4  border-gray-600 border-t-[1px]">
+            <Link
+              to={'/'}
+              className="cursor-pointer block w-full mt-8 hover:bg-[#ffffff44] px-4 py-2"
+            >
+              Home
+            </Link>
           </div>
         </div>
       )}
@@ -71,23 +77,12 @@ const Sidebar = () => {
           </Link>
         </div>
       )}
-      {/* user role */}
-      {role === 'user' && (
-        <div className="space-y-5 mt-10">
-          <Link
-            to={'#'}
-            className="text-lg font-bold flex gap-2 items-center cursor-pointer"
-          >
-            <BiSolidUpArrow />
-            User Dashboard
-          </Link>
-        </div>
-      )}
+
       {/* Instructor role */}
       {role === 'instructor' && (
         <div className="space-y-5 mt-10">
           <Link
-            to={'#'}
+            to={'/dashboard/instructorDasboard'}
             className="text-lg font-bold flex gap-2 items-center cursor-pointer"
           >
             <BiSolidUpArrow />

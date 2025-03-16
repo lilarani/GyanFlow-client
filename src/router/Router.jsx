@@ -9,6 +9,7 @@ import DashboardPage from '../pages/Dashboard/DashboardPage/DashboardPage';
 import AdminDash from '../DashboardLayout/AdminDashboard/AdminDash/AdminDash';
 import Features from '../DashboardLayout/AdminDashboard/Features/Features';
 import StudentDash from '../DashboardLayout/StudentDashboard/StudentDash/StudentDash';
+import InstructorDash from '../DashboardLayout/InstructorDashboard/InstructorDash/InstructorDash';
 
 export const router = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
     path: 'dashboard',
     element: <DashboardPage></DashboardPage>,
     children: [
-      // admin routes
+      // admin related routes
 
       {
         path: 'adminDashBoard',
@@ -52,10 +53,14 @@ export const router = createBrowserRouter([
         element: <Features></Features>,
       },
 
-      // student routes
+      // student related  routes
       {
         path: 'studentDashboard',
         element: <StudentDash></StudentDash>,
+      },
+      {
+        path: 'instructorDasboard',
+        element: <InstructorDash></InstructorDash>,
       },
     ],
   },

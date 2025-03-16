@@ -6,15 +6,13 @@ const authSlice = createSlice({
     user: null,
   },
   reducers: {
-    setUser : (state, action) => {
-      // console.log('hello')
-      // console.log(action.payload)
-      state.user = action.payload
-    }
+    setUser: (state, action) => {
+      console.log(state);
+      console.log(action);
+    },
   },
 });
 
 export const setUser = authSlice.actions.setUser;
 
 export default authSlice.reducer;
-

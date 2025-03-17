@@ -33,10 +33,6 @@ const Navbar = () => {
 
   let signOutUser = () => {
     signOut(auth).then(async () => {
-      const response = await axios.get(
-        'http://localhost:4000/gyanflow/user/logout',
-        { withCredentials: true }
-      );
       navigate('/login');
       toast('logout user');
     });
@@ -112,10 +108,10 @@ const Navbar = () => {
                     Teacher Sign-up
                   </Link>
                   <Link
-                    to={'/register/Employer'}
+                    to={'/register/instructor'}
                     className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                   >
-                    Employer Sign-up
+                    Instructor Sign-up
                   </Link>
                 </div>
               </div>
@@ -225,10 +221,10 @@ const Navbar = () => {
                   Teacher Sign-up
                 </Link>
                 <Link
-                  to={'/register/Employer'}
+                  to={'/register/instructor'}
                   className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                 >
-                  Employer Sign-up
+                  Instructor Sign-up
                 </Link>
               </>
             )}

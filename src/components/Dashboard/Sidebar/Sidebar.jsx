@@ -8,7 +8,7 @@ const Sidebar = () => {
   // let student = 'student';
   // let instructor = ' instructor';
 
-  const role = 'admin';
+  const role = 'student';
   return (
     <div className="w-full min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
       <Link to={'/'} className="font-bold text-base md:text-2xl ">

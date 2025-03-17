@@ -1,13 +1,14 @@
-import { useNavigate, useParams } from "react-router";
-import { useState } from "react";
-import axios from 'axios';
-import { toast } from "react-toastify";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase.config";
+import { useNavigate, useParams } from 'react-router';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../firebase.config';
+import { useCreateUserMutation } from '../../redux/ApiCalling/apiClice';
 
 export default function Register() {
   let { role } = useParams();
-  let navigate = useNavigate()
+  let navigate = useNavigate();
+  const [createUser, { isLoading, isError }] = useCreateUserMutation();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -15,44 +16,36 @@ export default function Register() {
     email: '',
     password: '',
     role: role,
-    picture: 'https://img.freepik.com/free-photo/top-view-pink-flower-with-drops_1112-450.jpg?uid=R187535479&ga=GA1.1.1477002296.1724664851&semt=ais_hybrid'
+    picture:
+      'https://img.freepik.com/free-photo/top-view-pink-flower-with-drops_1112-450.jpg?uid=R187535479&ga=GA1.1.1477002296.1724664851&semt=ais_hybrid',
   });
-
-  const handleChange = (e) => {
+  console.log(role);
+  const handleChange = e => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-  }
+  };
 
-  const handleRegister = async (e) => {
+  const handleRegister = async e => {
     e.preventDefault();
 
     try {
-      createUserWithEmailAndPassword(auth, formData.email, formData.password)
-        .then(async res => {
-          const response = await axios.post('http://localhost:4000/gyanflow/user/regiser', formData, {
-            withCredentials: true
-          });
-          toast('okey')
-          if (response.data.success) {
-            navigate('/');
-            toast('done');
-            console.log(response.data)
-          } else {
-            toast('something wrong')
-          }
-        })
-        .catch((e) => {
-          toast(e.message)
-        })
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
 
+      const user = userCredential.user;
+      const result = await createUser(formData).unwrap();
+      console.log('hello my backend response:', result);
 
-
-
+      toast('Registration successful!');
+      navigate('/');
     } catch (error) {
-      toast('something wrong', error.message)
-
+      console.error('Registration Error:', error);
+      toast(error.message);
     }
-  }
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-bl from-blue-950 to-[#3d023f] p-6">
@@ -98,8 +91,9 @@ export default function Register() {
           <button
             type="submit"
             className="mb-2 my-button w-full cursor-pointer rounded-none p-2 text-white "
+            disabled={isLoading}
           >
-            Register
+            {isLoading ? 'pagli please wait...' : 'Register'}
           </button>
         </form>
       </div>

@@ -8,8 +8,9 @@ import About from '../pages/About/About';
 import DashboardPage from '../pages/Dashboard/DashboardPage/DashboardPage';
 import AdminDash from '@/layouts/DashboardLayout/AdminDashboard/AdminDash/AdminDash';
 import Features from '@/layouts/DashboardLayout/AdminDashboard/Features/Features';
-import StudentDash from '@/layouts/DashboardLayout/StudentDashboard/StudentDash/StudentDash';
+// import StudentDash from '@/layouts/DashboardLayout/StudentDashboard/StudentDash/StudentDash';
 import InstructorDash from '@/layouts/DashboardLayout/InstructorDashboard/InstructorDash/InstructorDash';
+import StudentDashboard from '@/DashboardLayout/StudentDashboard/StudentDashboard';
 
 export const router = createBrowserRouter([
   {
@@ -59,7 +60,7 @@ export const router = createBrowserRouter([
       // student related  routes
       {
         path: 'studentDashboard',
-        element: <StudentDash></StudentDash>,
+        element: <StudentDashboard></StudentDashboard>,
       },
       {
         path: 'instructorDasboard',

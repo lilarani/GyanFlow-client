@@ -1,4 +1,5 @@
 import Button from "../customs/Button";
+import MouseEffect from "../customs/MouseEffect";
 import Title from "../customs/Title";
 import "./about.css";
 
@@ -13,6 +14,7 @@ const AboutUs = () => {
                 backgroundAttachment:"fixed"
             }}
         >
+            <MouseEffect/>
             {/* Overlay ============================*/}
             <div className="absolute bg-default w-full h-full top-0 left-0 opacity-80 transition-all hover:opacity-90 duration-500"></div>
 
@@ -25,7 +27,7 @@ const AboutUs = () => {
                     Join us today and start your journey towards mastering new
                     skills!
                 </p>
-                <Button text="Explore Courses" link="/courses" />
+                <Button text="Explore Courses" url="/dashboard/studentDashboard" />
 
                 {/*  Circles =================== */}
                 <div className="absolute top-[-80px] left-[200px]">

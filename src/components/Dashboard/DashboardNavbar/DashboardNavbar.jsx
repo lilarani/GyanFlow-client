@@ -55,7 +55,7 @@ const DashboardNavbar = () => {
             className=" md:w-7"
           />
           {openFlagModal && (
-            <div className="bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white w-60 h-56 absolute top-12 right-1 space-y-6 p-6">
+            <div className="bg-gradient-to-bl z-50 to-[#0b0221] from-[#080127] text-white w-60 h-56 absolute top-12 right-1 space-y-6 p-6">
               {/* usa flag */}
               {flags.map((flag, index) => (
                 <div
@@ -83,7 +83,7 @@ const DashboardNavbar = () => {
             className="w-12 h-12 rounded-full"
           />
           {openUserModal && (
-            <div className="absolute top-18 bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white w-60 h-56  right-4  p-6">
+            <div className="absolute z-50 top-18 bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white w-60 h-56  right-4  p-6">
               <div className="flex gap-2 items-center border-b-[1px] border-gray-700 p-2">
                 <img
                   src={user?.photoURL}

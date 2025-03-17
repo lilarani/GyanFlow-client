@@ -21,14 +21,14 @@ const Banner = () => {
           Area
         </p>
         <Link
-          to="/tutor"
+          to="/dashboard/studentDashboard"
           className="bg-[#0b1221] text-3xl    border-3  rounded-full  text-white "
           style={{
             padding: '10px 30px',
             margin: '20px 0px',
           }}
         >
-          <i className="fas fa-search"></i> Find a tutor{' '}
+           Our Courses{' '}
         </Link>
       </div>
       <div className="w-full md:w-1/2  relative">

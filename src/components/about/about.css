@@ -1,0 +1,105 @@
+.row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.box {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    animation: bounce 4s infinite ease-in-out;
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+
+.box:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.box:nth-child(2) {
+    animation-delay: 0.2s;
+    color: yellow;
+}
+
+.box:nth-child(3) {
+    animation-delay: 0.4s;
+    color: yellow;
+}
+
+.box:nth-child(4) {
+    animation-delay: 0.6s;
+    color: yellow;
+}
+
+.box:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+.box:nth-child(6) {
+    animation-delay: 0.9s;
+}
+
+.box:nth-child(7) {
+    animation-delay: 1s;
+
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        color: rgb(218, 237, 161);
+    }
+
+    50% {
+        transform: translateY(-40px);
+        color: yellow;
+    }
+}
+
+
+@keyframes scaleAnimation {
+
+    0%,
+    100% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.animate-scale {
+    animation: scaleAnimation 2s infinite ease-in-out;
+}
+
+
+
+/* child_animation================== */
+
+@keyframes child_animation {
+
+    0%,
+    30% {
+        transform: scale(1.2);
+    }
+
+    50% {
+        transform: scale(0);
+    }
+}
+
+.child_animation {
+    animation: child_animation 2s infinite ease-in-out;
+}

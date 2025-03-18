@@ -2,13 +2,13 @@ import OurAchievementSection from '../../components/About/OurAchievementSection/
 import Team from './../../components/About/Team/Team';
 
 import OurMission from '../../components/About/OurMission/OurMission';
+import AboutUs from '@/components/About/About';
 
 export default function About() {
   return (
     <div>
-      <div className="w-[100%] overflow-x-hidden bg-[red]  h-max">
-        {/* <AboutUs /> */}
-      </div>
+      {/* about section */}
+      <AboutUs />
 
       {/* our achiement section */}
       <OurAchievementSection></OurAchievementSection>

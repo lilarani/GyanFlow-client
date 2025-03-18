@@ -13,10 +13,9 @@ import axios from 'axios';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const [dropdown, setDropdown] = useState(false);
-
   let navigate = useNavigate();
+
   useEffect(() => {
     const handleClickOutside = event => {
       if (isOpen && !event.target.closest('.sidebar')) {
@@ -34,10 +33,6 @@ const Navbar = () => {
 
   let signOutUser = () => {
     signOut(auth).then(async () => {
-      const response = await axios.get(
-        'http://localhost:4000/gyanflow/user/logout',
-        { withCredentials: true }
-      );
       navigate('/login');
       toast('logout user');
     });
@@ -52,8 +47,8 @@ const Navbar = () => {
     <div className="sticky top-0 left-0 w-full h-max z-50">
       <nav className="flex  text-gray-200 font-bold flex-row justify-between bg-gradient-to-bl to-[#1a044d] from-[#080127] items-center ">
         <div className="flex flex-row justify-between w-full xl:w-fit items-center ">
-          <Link className="py-4 px-8 text-2xl">
-            <span className="text-yellow-300">Gyan</span>Flow
+          <Link to={'/'} className="py-4 px-8 text-2xl ">
+            <span className="text-yellow-300 cursor-pointer">Gyan</span>Flow
           </Link>
           <div
             className="py-4 w-fit h-fit xl:hidden cursor-pointer px-8 hover:bg-[#ffffff44]"
@@ -113,10 +108,10 @@ const Navbar = () => {
                     Teacher Sign-up
                   </Link>
                   <Link
-                    to={'/register/Employer'}
+                    to={'/register/instructor'}
                     className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                   >
-                    Employer Sign-up
+                    Instructor Sign-up
                   </Link>
                 </div>
               </div>
@@ -226,10 +221,10 @@ const Navbar = () => {
                   Teacher Sign-up
                 </Link>
                 <Link
-                  to={'/register/Employer'}
+                  to={'/register/instructor'}
                   className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                 >
-                  Employer Sign-up
+                  Instructor Sign-up
                 </Link>
               </>
             )}

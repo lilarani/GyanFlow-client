@@ -11,6 +11,7 @@ import Features from '@/layouts/DashboardLayout/AdminDashboard/Features/Features
 // import StudentDash from '@/layouts/DashboardLayout/StudentDashboard/StudentDash/StudentDash';
 import InstructorDash from '@/layouts/DashboardLayout/InstructorDashboard/InstructorDash/InstructorDash';
 import StudentDashboard from '@/DashboardLayout/StudentDashboard/StudentDashboard';
+import Error from '@/pages/Error/Error';
 
 export const router = createBrowserRouter([
   {
@@ -68,4 +69,8 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path:'*',
+    element:<Error></Error>
+  }
 ]);

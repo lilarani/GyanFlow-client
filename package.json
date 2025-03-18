@@ -21,6 +21,7 @@
     "firebase": "^11.4.0",
     "framer-motion": "^12.5.0",
     "js-cookie": "^3.0.5",
+    "lottie-react": "^2.4.1",
     "lucide-react": "^0.482.0",
     "react": "^19.0.0",
     "react-chartjs-2": "^5.3.0",

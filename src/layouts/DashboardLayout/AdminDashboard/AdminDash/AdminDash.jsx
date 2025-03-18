@@ -1,6 +1,7 @@
-import Admin4Cards from '@/components/Dashboard/AdminComponents/Admin4cards/Admin4Cards';
-import Statistics from '@/components/Dashboard/AdminComponents/Statistics/Statistics';
-import StatisticsTable from '@/components/Dashboard/AdminComponents/StatisticsTable/StatisticsTable';
+import Admin4Cards from "@/components/Dashboard/AdminComponents/Admin4cards/Admin4Cards";
+import Statistics from "@/components/Dashboard/AdminComponents/Statistics/Statistics";
+import StatisticsTable from "@/components/Dashboard/AdminComponents/StatisticsTable/StatisticsTable";
+import Courses from "@/pages/Dashboard/AdminDashboard/Courses/Courses";
 
 const AdminDash = () => {
   return (

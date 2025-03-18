@@ -2,18 +2,25 @@ import { IoSearch } from 'react-icons/io5';
 import { BiSolidUpArrow } from 'react-icons/bi';
 import { FaDollarSign, FaRegStar, FaRegUser } from 'react-icons/fa';
 import { Link } from 'react-router';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { useState } from 'react';
 
 const Sidebar = () => {
   // let adminRole = 'admin';
   // let student = 'student';
   // let instructor = ' instructor';
+  const [isOpen, setIsOpen] = useState(false);
 
   const role = 'admin';
   return (
     <div className="w-full min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
-      <Link to={'/'} className="font-bold text-base md:text-2xl ">
-        <span className="text-yellow-300">G</span>yanFlow
+      <Link
+        to={'/'}
+        className="font-bold text-base md:text-2xl hidden md:block block"
+      >
+        <span className="text-yellow-300 ">G</span>yanFlow
       </Link>
+      <GiHamburgerMenu className="text-white block md:hidden" />
       <div className="relative flex items-center space-y-3 mt-10">
         <IoSearch className="absolute left-2 top-2 " />
         <input

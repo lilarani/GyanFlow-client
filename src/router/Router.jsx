@@ -12,6 +12,12 @@ import Features from '@/layouts/DashboardLayout/AdminDashboard/Features/Features
 import InstructorDash from '@/layouts/DashboardLayout/InstructorDashboard/InstructorDash/InstructorDash';
 import StudentDashboard from '@/DashboardLayout/StudentDashboard/StudentDashboard';
 import Error from '@/pages/Error/Error';
+import Dashboard from '@/layouts/DashboardLayout/Dashboard/Dashboard';
+import AdminDashboard from '@/pages/Dashboard/AdminDashboard/AdminDashboard';
+import Features from '@/pages/Dashboard/AdminDashboard/Features/Features';
+import StudentDashboard from '@/pages/Dashboard/StudentDashboard/StudentDashboard';
+import InstructorDash from '@/pages/Dashboard/InstructorDashboard/InstructorDash/InstructorDash';
+import UserProfile from '@/components/Dashboard/UserProfile/UserProfile';
 
 export const router = createBrowserRouter([
   {
@@ -40,18 +46,19 @@ export const router = createBrowserRouter([
     path: '/register/:role',
     element: <Register></Register>,
   },
+  
   {
     path: '/dashboard',
-    element: <DashboardPage></DashboardPage>,
+    element: <Dashboard></Dashboard>,
     children: [
       // admin related routes
       {
         index: true, // Default route inside 'dashboard'
-        element: <AdminDash></AdminDash>,
+        element: <AdminDashboard></AdminDashboard>,
       },
       {
         path: 'adminDashBoard',
-        element: <AdminDash></AdminDash>,
+        element: <AdminDashboard></AdminDashboard>,
       },
       {
         path: 'features',
@@ -73,4 +80,8 @@ export const router = createBrowserRouter([
     path:'*',
     element:<Error></Error>
   }
+  ,{
+    path: 'profile',
+    element: <UserProfile></UserProfile>,
+  },
 ]);

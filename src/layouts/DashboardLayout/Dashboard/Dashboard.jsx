@@ -3,7 +3,7 @@ import DashboardNavbar from '../../../components/Dashboard/DashboardNavbar/Dashb
 import Sidebar from '../../../components/Dashboard/Sidebar/Sidebar';
 import './Dashboard.css';
 
-const DashboardPage = () => {
+const Dashboard = () => {
   return (
     <div className="relative">
       <div className="flex ">
@@ -13,7 +13,7 @@ const DashboardPage = () => {
           </div>
 
           <div className="col-span-9 overflow-y-scroll h-screen element">
-            <DashboardNavbar></DashboardNavbar>
+            <DashboardNavbar navTitle={'Analytics'}></DashboardNavbar>
             <Outlet></Outlet>
           </div>
         </div>
@@ -22,4 +22,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default Dashboard;

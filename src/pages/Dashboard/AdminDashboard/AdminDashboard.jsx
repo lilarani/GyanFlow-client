@@ -1,11 +1,11 @@
-import Admin4Cards from '@/components/Dashboard/AdminComponents/Admin4cards/Admin4Cards';
+import AdminCards from '@/components/Dashboard/AdminComponents/Admincards/AdminCards';
 import Statistics from '@/components/Dashboard/AdminComponents/Statistics/Statistics';
 import StatisticsTable from '@/components/Dashboard/AdminComponents/StatisticsTable/StatisticsTable';
 
 const AdminDashboard = () => {
   return (
     <div className="bg-[#070f25]">
-      <Admin4Cards></Admin4Cards>
+      <AdminCards></AdminCards>
       {/* statistics */}
       <div className="py-20">
         <Statistics></Statistics>

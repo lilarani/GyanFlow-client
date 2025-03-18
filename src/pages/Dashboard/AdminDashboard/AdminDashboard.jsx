@@ -2,7 +2,7 @@ import Admin4Cards from '@/components/Dashboard/AdminComponents/Admin4cards/Admi
 import Statistics from '@/components/Dashboard/AdminComponents/Statistics/Statistics';
 import StatisticsTable from '@/components/Dashboard/AdminComponents/StatisticsTable/StatisticsTable';
 
-const AdminDash = () => {
+const AdminDashboard = () => {
   return (
     <div className="bg-[#070f25]">
       <Admin4Cards></Admin4Cards>
@@ -17,4 +17,4 @@ const AdminDash = () => {
   );
 };
 
-export default AdminDash;
+export default AdminDashboard;

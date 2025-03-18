@@ -19,7 +19,7 @@ import { useState } from 'react';
 import { FaRegUser } from 'react-icons/fa';
 import { Link } from 'react-router';
 import { useSelector } from 'react-redux';
-const DashboardNavbar = () => {
+const DashboardNavbar = ({ navTitle }) => {
   const [openFlagModal, setOpenFlagModal] = useState(false);
   const [selectedFlag, setSelectedFlag] = useState(flags[0]);
   const [openUserModal, setOpenUserModal] = useState(false);
@@ -44,7 +44,7 @@ const DashboardNavbar = () => {
 
   return (
     <div className=" w-full h-24 p-4  items-center bg-gradient-to-bl to-[#080127] from-[#1a044d] text-white flex justify-between">
-      <h2 className="text-base md:text-xl font-semibold">Analytics</h2>
+      <h2 className="text-base md:text-xl font-semibold">{navTitle}</h2>
       <div className="flex gap-8 items-center">
         {/* modal */}
         <div className="relative ">
@@ -98,7 +98,7 @@ const DashboardNavbar = () => {
 
               <div className="text-white space-y-5 mt-4">
                 <Link
-                  to={'#'}
+                  to={'/profile'}
                   className="text-base font-bold flex gap-2 items-center cursor-pointer"
                 >
                   <FaRegUser />

@@ -21,7 +21,7 @@ export default function Main() {
         dispatch(setUser(user));
       } else {
         const response = await axios.get(
-          'http://localhost:4000/gyanflow/user/logout',
+          'https://gyanflow-server.onrender.com/gyanflow/user/logout',
           { withCredentials: true }
         );
         dispatch(setUser(null));

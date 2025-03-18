@@ -75,9 +75,9 @@ const Statistics = () => {
     },
   };
   return (
-    <div className="w-full mx-auto bg-[#070f25] p-2">
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-10">
-        <div className="w-full md:w-[500px] h-[400px] bg-[#0b1739] p-2 rounded-lg shadow-lg">
+    <div className="w-full mx-auto bg-[#070f25] p-5">
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-8">
+        <div className="w-full md:w-[480px] h-[400px] bg-[#0b1739] p-2 rounded-lg shadow-lg">
           <Doughnut
             data={{
               labels: doughnutData.map(data => data.courseName),
@@ -123,7 +123,7 @@ const Statistics = () => {
         </div>
       </div>
       <div className="mt-10">
-        <div className="w-full h-[500px] bg-[#0b1739] rounded-lg shadow-lg">
+        <div className="w-full h-[480px] bg-[#0b1739] rounded-lg shadow-lg">
           <Line
             data={{
               labels: lineData.map(data => data.label),

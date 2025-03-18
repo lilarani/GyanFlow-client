@@ -18,6 +18,7 @@ import Features from '@/pages/Dashboard/AdminDashboard/Features/Features';
 import StudentDashboard from '@/pages/Dashboard/StudentDashboard/StudentDashboard';
 import InstructorDash from '@/pages/Dashboard/InstructorDashboard/InstructorDash/InstructorDash';
 import UserProfile from '@/components/Dashboard/UserProfile/UserProfile';
+import Courses from '@/pages/Dashboard/AdminDashboard/Courses/Courses';
 
 export const router = createBrowserRouter([
   {
@@ -64,7 +65,10 @@ export const router = createBrowserRouter([
         path: 'features',
         element: <Features></Features>,
       },
-
+      {
+        path: 'courses',
+        element: <Courses />,
+      },
       // student related  routes
       {
         path: 'studentDashboard',

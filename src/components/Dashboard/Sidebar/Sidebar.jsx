@@ -41,12 +41,20 @@ const Sidebar = () => {
             Dashboard
           </Link>
           <Link
+            to={'/dashboard/courses'}
+            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+          >
+            <FaRegStar />
+            Courses
+          </Link>
+          <Link
             to={'/dashboard/features'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <FaRegStar />
             Features
           </Link>
+
           <Link
             to={'#'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"

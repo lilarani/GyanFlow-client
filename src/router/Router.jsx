@@ -5,20 +5,15 @@ import Login from '../authentication/Login/Login';
 import Register from '../authentication/Register/Register';
 import Support from '../pages/Support/Support';
 import About from '../pages/About/About';
-import DashboardPage from '../pages/Dashboard/DashboardPage/DashboardPage';
-import AdminDash from '@/layouts/DashboardLayout/AdminDashboard/AdminDash/AdminDash';
-import Features from '@/layouts/DashboardLayout/AdminDashboard/Features/Features';
-// import StudentDash from '@/layouts/DashboardLayout/StudentDashboard/StudentDash/StudentDash';
-import InstructorDash from '@/layouts/DashboardLayout/InstructorDashboard/InstructorDash/InstructorDash';
-import StudentDashboard from '@/DashboardLayout/StudentDashboard/StudentDashboard';
+
 import Error from '@/pages/Error/Error';
 import Dashboard from '@/layouts/DashboardLayout/Dashboard/Dashboard';
 import AdminDashboard from '@/pages/Dashboard/AdminDashboard/AdminDashboard';
-import Features from '@/pages/Dashboard/AdminDashboard/Features/Features';
-import StudentDashboard from '@/pages/Dashboard/StudentDashboard/StudentDashboard';
-import InstructorDash from '@/pages/Dashboard/InstructorDashboard/InstructorDash/InstructorDash';
-import UserProfile from '@/components/Dashboard/UserProfile/UserProfile';
 import Courses from '@/pages/Dashboard/AdminDashboard/Courses/Courses';
+import StudentDashboard from '@/pages/Dashboard/StudentDashboard/StudentDashboard';
+import UserProfile from '@/components/Dashboard/UserProfile/UserProfile';
+import Features from '@/pages/Dashboard/AdminDashboard/Features/Features';
+import InstructorDashboard from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboard';
 
 export const router = createBrowserRouter([
   {
@@ -47,7 +42,7 @@ export const router = createBrowserRouter([
     path: '/register/:role',
     element: <Register></Register>,
   },
-  
+
   {
     path: '/dashboard',
     element: <Dashboard></Dashboard>,
@@ -76,15 +71,15 @@ export const router = createBrowserRouter([
       },
       {
         path: 'instructorDasboard',
-        element: <InstructorDash></InstructorDash>,
+        element: <InstructorDashboard></InstructorDashboard>,
       },
     ],
   },
   {
-    path:'*',
-    element:<Error></Error>
-  }
-  ,{
+    path: '*',
+    element: <Error></Error>,
+  },
+  {
     path: 'profile',
     element: <UserProfile></UserProfile>,
   },

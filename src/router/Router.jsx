@@ -1,3 +1,8 @@
+
+import { createBrowserRouter } from "react-router";
+import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
+import StudentDashboard from "@/pages/Dashboard/StudentDashboard/StudentDashboard";
+import AddCourses from "@/pages/Dashboard/AdminDashboard/AddCourses/AddCourses";
 import { createBrowserRouter } from 'react-router';
 import Main from '../layouts/MainLayout/Main';
 import Home from '../pages/Home/Home';
@@ -15,36 +20,37 @@ import Features from '@/pages/Dashboard/AdminDashboard/Features/Features';
 import InstructorDashboard from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboard';
 import UserManagement from '@/pages/Dashboard/AdminDashboard/UserManagement/UserManagement';
 
+
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Main></Main>,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home></Home>,
       },
       {
-        path: '/about',
+        path: "/about",
         element: <About></About>,
       },
       {
-        path: '/support',
+        path: "/support",
         element: <Support></Support>,
       },
     ],
   },
   {
-    path: '/login',
+    path: "/login",
     element: <Login></Login>,
   },
   {
-    path: '/register/:role',
+    path: "/register/:role",
     element: <Register></Register>,
   },
 
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: <Dashboard></Dashboard>,
     children: [
       // admin related routes
@@ -53,38 +59,43 @@ export const router = createBrowserRouter([
         element: <AdminDashboard></AdminDashboard>,
       },
       {
-        path: 'adminDashBoard',
+        path: "adminDashBoard",
         element: <AdminDashboard></AdminDashboard>,
       },
       {
-        path: 'features',
+        path: "features",
         element: <Features></Features>,
       },
       {
-        path: 'courses',
+        path: "courses",
         element: <Courses />,
       },
       {
+
+        path: "addCourse",
+        element: <AddCourses />,
+
         path: 'userManagement',
         element: <UserManagement></UserManagement>,
+
       },
       // student related  routes
       {
-        path: 'studentDashboard',
+        path: "studentDashboard",
         element: <StudentDashboard></StudentDashboard>,
       },
       {
-        path: 'instructorDasboard',
+        path: "instructorDasboard",
         element: <InstructorDashboard></InstructorDashboard>,
       },
     ],
   },
   {
-    path: '*',
+    path: "*",
     element: <Error></Error>,
   },
   {
-    path: 'profile',
+    path: "profile",
     element: <UserProfile></UserProfile>,
   },
 ]);

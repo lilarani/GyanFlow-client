@@ -56,7 +56,7 @@ const Sidebar = () => {
           </Link>
 
           <Link
-            to={'#'}
+            to={'/dashboard/userManagement'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <FaRegUser />

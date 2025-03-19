@@ -5,7 +5,6 @@ import Login from '../authentication/Login/Login';
 import Register from '../authentication/Register/Register';
 import Support from '../pages/Support/Support';
 import About from '../pages/About/About';
-
 import Error from '@/pages/Error/Error';
 import Dashboard from '@/layouts/DashboardLayout/Dashboard/Dashboard';
 import AdminDashboard from '@/pages/Dashboard/AdminDashboard/AdminDashboard';
@@ -14,6 +13,7 @@ import StudentDashboard from '@/pages/Dashboard/StudentDashboard/StudentDashboar
 import UserProfile from '@/components/Dashboard/UserProfile/UserProfile';
 import Features from '@/pages/Dashboard/AdminDashboard/Features/Features';
 import InstructorDashboard from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboard';
+import UserManagement from '@/pages/Dashboard/AdminDashboard/UserManagement/UserManagement';
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +63,10 @@ export const router = createBrowserRouter([
       {
         path: 'courses',
         element: <Courses />,
+      },
+      {
+        path: 'userManagement',
+        element: <UserManagement></UserManagement>,
       },
       // student related  routes
       {

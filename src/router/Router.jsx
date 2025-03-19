@@ -15,6 +15,7 @@ import UserManagement from '@/pages/Dashboard/AdminDashboard/UserManagement/User
 import InstructorDashboard from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboard';
 import UserProfile from '@/components/Dashboard/UserProfile/UserProfile';
 import AdminDashboard from '@/pages/Dashboard/AdminDashboard/AdminDashboard';
+import Career from '@/pages/Career/Career';
 
 export const router = createBrowserRouter([
   {
@@ -32,7 +33,10 @@ export const router = createBrowserRouter([
       {
         path: '/support',
         element: <Support></Support>,
-      },
+      },{
+        path:'/career',
+        element:<Career></Career>
+      }
     ],
   },
   {

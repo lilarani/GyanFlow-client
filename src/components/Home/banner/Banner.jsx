@@ -14,11 +14,8 @@ const Banner = () => {
         </p>
         <Link
           to="/dashboard/studentDashboard"
-          className="bg-[#0b1221] text-2xl md:text-3xl  border-2  rounded-2xl  text-white hover:bg-[#20134a] duration-500"
-          style={{
-            padding: "9px 20px",
-            margin: "20px 0px",
-          }}
+          className="bg-[#0b1221] text-xl md:text-2xl  border-1  rounded  text-white hover:bg-[#20134a] duration-300 px-3 py-2 mt-2"
+
         >
           Discover More{" "}
         </Link>

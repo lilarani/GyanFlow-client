@@ -6,9 +6,36 @@ export const apiSlice = createApi({
     baseQuery: interceptorQuery,
     endpoints: (builder) => ({
         // all GET API
-        // getUsers: builder.query({
-        //     query: () => "/users"
-        // })
+        getUsers: builder.query({
+            query: () => "/gyanflow/user/users"
+        }),
+        
+
+
+
+        logOutUser: builder.mutation({
+            query: () => ({
+                url: "/gyanflow/user/logout",
+                method: 'GET'
+            })
+        }),
+
+        googleLogin: builder.mutation({
+            query: (data) => ({
+                url: "/gyanflow/user/googleLogin",
+                method : "POST",
+                body : data
+            })
+        }),
+
+        // login user 
+        logInUser : builder.mutation({
+            query : (data)=>({
+                url : '/gyanflow/user/login',
+                method : "POST" ,
+                body : data
+            })
+        }),
 
         // POST API - createUser
         createUser: builder.mutation({
@@ -21,5 +48,5 @@ export const apiSlice = createApi({
     }),
 });
 
-export const { useCreateUserMutation } = apiSlice;
+export const { useCreateUserMutation,useGetUsersQuery, useLogOutUserMutation , useGoogleLoginMutation , useLogInUserMutation } = apiSlice;
 export default apiSlice;

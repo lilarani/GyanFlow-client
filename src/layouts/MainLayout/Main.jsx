@@ -8,7 +8,7 @@ import { setUser } from '../../redux/authSlice';
 import Navbar from '../../components/Home/Navbar/Navbar';
 import Footer from '../../components/Home/Footer/Footer';
 import { ToastContainer } from 'react-toastify';
-import { useLogOutUserMutation } from '../redux/ApiCalling/apiClice';
+import { useLogOutUserMutation } from '@/redux/ApiCalling/apiClice';
 
 export default function Main() {
   const dispatch = useDispatch();

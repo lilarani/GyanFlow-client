@@ -2,13 +2,17 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 import { interceptorQuery } from './../customInterceptor/interceptor';
 
 export const apiSlice = createApi({
-<<<<<<< HEAD
     reducerPath: "api",
     baseQuery: interceptorQuery,
     endpoints: (builder) => ({
         // all GET API
         getUsers: builder.query({
             query: () => "/gyanflow/user/users"
+        }),
+
+        getMyUser : builder.query({
+            query : (email)=>`/gyanflow/user/role/${email}`,
+            method : "GET"
         }),
         
 
@@ -37,20 +41,11 @@ export const apiSlice = createApi({
                 body : data
             })
         }),
-=======
-  reducerPath: 'api',
-  baseQuery: interceptorQuery,
-  endpoints: builder => ({
-    // all GET API
-    // getUsers: builder.query({
-    //     query: () => "/users"
-    // })
->>>>>>> 1e61f05c14935776de95d55fd8354aaa2f733e02
 
     // POST API - createUser
     createUser: builder.mutation({
       query: newUser => ({
-        //   https://gyanflow-server.onrender.com
+        //   http://localhost:4000
         url: '/gyanflow/user/regiser',
         method: 'POST',
         body: newUser,
@@ -59,5 +54,5 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { useCreateUserMutation,useGetUsersQuery, useLogOutUserMutation , useGoogleLoginMutation , useLogInUserMutation } = apiSlice;
+export const { useCreateUserMutation,useGetUsersQuery, useGetMyUserQuery ,useLogOutUserMutation , useGoogleLoginMutation , useLogInUserMutation } = apiSlice;
 export default apiSlice;

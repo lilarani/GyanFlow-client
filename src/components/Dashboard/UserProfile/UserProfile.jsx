@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import DashboardNavbar from '../DashboardNavbar/DashboardNavbar';
 import { FiEdit } from 'react-icons/fi';
+import { Link } from 'react-router';
 
 const UserProfile = () => {
   const { user } = useSelector(state => state.authUser);
@@ -27,9 +28,9 @@ const UserProfile = () => {
       <div className="">
         <DashboardNavbar
           navTitle={
-            <p>
+            <Link to={'/'}>
               <span className="text-yellow-300">G</span>yanFlow
-            </p>
+            </Link>
           }
         />
         <div className="min-h-screen flex flex-col md:flex-row gap-5 container mx-auto">

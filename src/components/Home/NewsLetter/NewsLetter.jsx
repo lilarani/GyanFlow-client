@@ -8,7 +8,7 @@ const NewsLetter = () => {
         className="hero p-10 flex justify-center"
         style={{
           backgroundImage: `url(${newsLetterBg})`,
-          backgroundColor: 'bg-gradient-to-bl to-[#1a044d] from-[#080127]  ',
+          backgroundColor: '#FFFFFF',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

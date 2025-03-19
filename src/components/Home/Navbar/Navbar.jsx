@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { CiSearch } from 'react-icons/ci';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
-import { Link, NavLink, useNavigate } from 'react-router';
-import { useEffect } from 'react';
-import './Navbar.css';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../../../firebase.config';
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import { CiSearch } from "react-icons/ci";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { Link, NavLink, useNavigate } from "react-router";
+import { useEffect } from "react";
+import "./Navbar.css";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../../firebase.config";
+import { toast } from "react-toastify";
 
-import axios from 'axios';
+import axios from "axios";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,24 +17,24 @@ const Navbar = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    const handleClickOutside = event => {
-      if (isOpen && !event.target.closest('.sidebar')) {
+    const handleClickOutside = (event) => {
+      if (isOpen && !event.target.closest(".sidebar")) {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
 
-  let { user } = useSelector(state => state.authUser);
+  let { user } = useSelector((state) => state.authUser);
 
   let signOutUser = () => {
     signOut(auth).then(async () => {
-      navigate('/login');
-      toast('logout user');
+      navigate("/login");
+      toast("logout user");
     });
   };
 
@@ -45,9 +45,9 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 left-0 w-full h-max z-50">
-      <nav className="flex  text-gray-200 font-bold flex-row justify-between bg-gradient-to-bl to-[#1a044d] from-[#080127] items-center ">
+      <nav className="flex  text-gray-200 font-bold flex-row justify-between bg-gradient-to-bl to-[#1a044d] from-[#080127] items-center md:px-12">
         <div className="flex flex-row justify-between w-full xl:w-fit items-center ">
-          <Link to={'/'} className="py-4 px-8 text-2xl ">
+          <Link to={"/"} className="py-4 px-4 text-2xl ">
             <span className="text-yellow-300 cursor-pointer">Gyan</span>Flow
           </Link>
           <div
@@ -83,9 +83,9 @@ const Navbar = () => {
           </Link>
           {!user ? (
             <div className="flex flex-row">
-              {' '}
+              {" "}
               <Link
-                to={'/login'}
+                to={"/login"}
                 className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
               >
                 Sign-in
@@ -96,19 +96,19 @@ const Navbar = () => {
                 </p>
                 <div className="hidden z-50 my-container bg-[#040150]">
                   <Link
-                    to={'/register/Student'}
+                    to={"/register/Student"}
                     className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                   >
                     Student Sign-up
                   </Link>
                   <Link
-                    to={'/register/Teacher'}
+                    to={"/register/Teacher"}
                     className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                   >
                     Teacher Sign-up
                   </Link>
                   <Link
-                    to={'/register/instructor'}
+                    to={"/register/instructor"}
                     className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                   >
                     Instructor Sign-up
@@ -132,7 +132,7 @@ const Navbar = () => {
                   </p>
                   <div className="w-full flex flex-col gap-4 mt-12">
                     <Link
-                      to={'/dashboard'}
+                      to={"/dashboard"}
                       className="text-md w-full text-center cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] bg-blue-500 "
                     >
                       Dashboard
@@ -156,7 +156,7 @@ const Navbar = () => {
 
       <div
         className={`fixed z-50 top-0 right-0 h-full w-64 bg-[#2f2753] shadow-lg transform ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
+          isOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out xl:hidden`}
       >
         <div className="flex justify-end p-4">
@@ -197,7 +197,7 @@ const Navbar = () => {
             {user ? (
               <div className="flex flex-col gap-3 w-full">
                 <Link
-                  to={'/dashboard'}
+                  to={"/dashboard"}
                   className="text-md w-full text-center cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] bg-blue-500 "
                 >
                   Dashboard
@@ -209,19 +209,19 @@ const Navbar = () => {
             ) : (
               <>
                 <Link
-                  to={'/register/Student'}
+                  to={"/register/Student"}
                   className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                 >
                   Student Sign-up
                 </Link>
                 <Link
-                  to={'/register/Teacher'}
+                  to={"/register/Teacher"}
                   className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                 >
                   Teacher Sign-up
                 </Link>
                 <Link
-                  to={'/register/instructor'}
+                  to={"/register/instructor"}
                   className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                 >
                   Instructor Sign-up

@@ -44,7 +44,7 @@ const Footer = () => {
                 type="email"
                 placeholder="Enter your email"
               />
-              <button className=" bg-gradient-to-l from-pink-500 to-purple-500 text-black font-bold px-2 py-1 text-sm rounded-r-lg">
+              <button className=" bg-gradient-to-l from-blue-500 to-blue-500 text-white hover:bg-blue-600 font-bold px-2 py-1 text-sm rounded-r-lg">
                 Subscribe
               </button>
             </div>

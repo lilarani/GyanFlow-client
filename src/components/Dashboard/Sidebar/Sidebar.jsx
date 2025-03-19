@@ -1,22 +1,22 @@
-import { IoSearch } from "react-icons/io5";
-import { BiSolidUpArrow } from "react-icons/bi";
-import { FaDollarSign, FaRegStar, FaRegUser, FaUsers } from "react-icons/fa";
-import { Link } from "react-router";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { useState } from "react";
-import { IoIosAddCircle } from "react-icons/io";
-import { VscVmRunning } from "react-icons/vsc";
+import { IoSearch } from 'react-icons/io5';
+import { BiSolidUpArrow } from 'react-icons/bi';
+import { FaDollarSign, FaRegStar, FaRegUser, FaUsers } from 'react-icons/fa';
+import { Link } from 'react-router';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { useState } from 'react';
+import { IoIosAddCircle } from 'react-icons/io';
+import { VscVmRunning } from 'react-icons/vsc';
 const Sidebar = () => {
   // let adminRole = 'admin';
   // let student = 'student';
   // let instructor = ' instructor';
   const [isOpen, setIsOpen] = useState(false);
 
-  const role = "admin";
+  const role = 'admin';
   return (
     <div className="w-full min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
       <Link
-        to={"/"}
+        to={'/'}
         className="font-bold text-base md:text-2xl hidden md:block block"
       >
         <span className="text-yellow-300 ">G</span>yanFlow
@@ -32,31 +32,31 @@ const Sidebar = () => {
       </div>
 
       {/* admin role */}
-      {role === "admin" && (
+      {role === 'admin' && (
         <div className="space-y-5 mt-10">
           <Link
-            to={"/dashboard/adminDashBoard"}
+            to={'/dashboard/adminDashBoard'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <BiSolidUpArrow />
             Dashboard
           </Link>
           <Link
-            to={"/dashboard/addCourse"}
+            to={'/dashboard/addCourse'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <IoIosAddCircle />
             Add Course
           </Link>
           <Link
-            to={"/dashboard/courses"}
+            to={'/dashboard/courses'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <VscVmRunning />
             All Courses
           </Link>
           <Link
-            to={"/dashboard/features"}
+            to={'/dashboard/features'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <FaRegStar />
@@ -64,14 +64,14 @@ const Sidebar = () => {
           </Link>
 
           <Link
-            to={"#"}
+            to={'/dashboard/userManagement'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <FaUsers />
             Users Managment
           </Link>
           <Link
-            to={"#"}
+            to={'#'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <FaDollarSign />
@@ -80,7 +80,7 @@ const Sidebar = () => {
 
           <div className="w-full mt-4  border-gray-600 border-t-[1px]">
             <Link
-              to={"/"}
+              to={'/'}
               className="cursor-pointer block w-full text-base md:text-xl font-bold md:mt-8 hover:bg-[#ffffff44] px-4 py-2"
             >
               Home
@@ -89,10 +89,10 @@ const Sidebar = () => {
         </div>
       )}
       {/* student role */}
-      {role === "student" && (
+      {role === 'student' && (
         <div className="space-y-5 mt-10">
           <Link
-            to={"/dashboard/studentDashboard"}
+            to={'/dashboard/studentDashboard'}
             className="text-lg font-bold flex gap-2 items-center cursor-pointer"
           >
             <BiSolidUpArrow />
@@ -102,10 +102,10 @@ const Sidebar = () => {
       )}
 
       {/* Instructor role */}
-      {role === "instructor" && (
+      {role === 'instructor' && (
         <div className="space-y-5 mt-10">
           <Link
-            to={"/dashboard/instructorDasboard"}
+            to={'/dashboard/instructorDasboard'}
             className="text-lg font-bold flex gap-2 items-center cursor-pointer"
           >
             <BiSolidUpArrow />

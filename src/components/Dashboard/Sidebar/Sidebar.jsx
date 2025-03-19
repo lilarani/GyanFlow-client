@@ -18,6 +18,7 @@ const Sidebar = () => {
   let { data } = useGetMyUserQuery(user?.email);
   console.log(data?.user.role)
   const role = data?.user.role;
+  // 
   return (
     <div className="w-full min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
       <Link

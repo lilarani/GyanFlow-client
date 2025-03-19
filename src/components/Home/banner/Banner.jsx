@@ -1,11 +1,11 @@
-import { Link } from "react-router";
-import "./banner.css";
+import { Link } from 'react-router';
+import './banner.css';
 const Banner = () => {
   return (
     <div className="w-full p-10 md:p-[65px] banner overflow-hidden   h-screen flex md:justify-between items-center flex-col md:flex-row bg-opacity-25  bg-gradient-to-bl to-[#1a044d] from-[#100d1b]">
       <div className="w-full md:w-[45%]  flex  justify-start items-start flex-col gap-6 md:gap-3  ">
         <h1 className="text-2xl md:text-5xl text-textcolor text-left font-bold">
-          Best <span className="text-blue-500">Online Learning Platform</span>{" "}
+          Best <span className="text-blue-500">Online Learning Platform</span>{' '}
           for <br /> Skill & Career Growth
         </h1>
         <p className=" text-white text-lg">
@@ -14,20 +14,20 @@ const Banner = () => {
         </p>
         <Link
           to="/dashboard/studentDashboard"
-          className="bg-[#0b1221] text-2xl md:text-3xl  border-2  rounded-2xl  text-white hover:bg-[#20134a] duration-500"
+          className="bg-[#0b1221] text-2xl md:text-3xl  border-[1px] border-gray-500 rounded-2xl  text-gray-300 hover:bg-[#20134a] duration-500"
           style={{
-            padding: "9px 20px",
-            margin: "20px 0px",
+            padding: '9px 20px',
+            margin: '20px 0px',
           }}
         >
-          Discover More{" "}
+          Discover More{' '}
         </Link>
       </div>
       <div className="w-full md:w-1/2  relative">
         <div
           className="absolute  top-[-300px]  md:top-[-200px] z-[-1] right-[-300px]   md:right-[-200px]  w-[500px]  h-[500px]   "
           style={{
-            transform: "rotate(45deg)",
+            transform: 'rotate(45deg)',
           }}
         >
           <div className="relative ">

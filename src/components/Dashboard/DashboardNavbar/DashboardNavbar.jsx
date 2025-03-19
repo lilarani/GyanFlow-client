@@ -78,7 +78,7 @@ const DashboardNavbar = ({ navTitle }) => {
         <div className="relative">
           <img
             onClick={handleUserModal}
-            src={'user Images'}
+            src={user?.photoURL}
             alt="user Images"
             className="w-12 h-12 rounded-full"
           />

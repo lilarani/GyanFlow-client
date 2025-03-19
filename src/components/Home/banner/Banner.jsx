@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import './banner.css';
 const Banner = () => {
   return (
-    <div className="w-full p-10 md:p-[65px] banner overflow-hidden   h-screen flex md:justify-between items-center flex-col md:flex-row bg-opacity-25  bg-gradient-to-bl to-[#1a044d] from-[#100d1b]">
+    <div className="w-full p-10 md:p-[122px] banner overflow-hidden min-h-screen flex md:justify-between items-center flex-col md:flex-row bg-opacity-25  bg-gradient-to-bl to-[#1a044d] from-[#100d1b]">
       <div className="w-full md:w-[45%]  flex  justify-start items-start flex-col gap-6 md:gap-3  ">
         <h1 className="text-2xl md:text-5xl text-textcolor text-left font-bold">
           Best <span className="text-blue-500">Online Learning Platform</span>{' '}

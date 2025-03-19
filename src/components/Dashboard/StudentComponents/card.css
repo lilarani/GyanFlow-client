@@ -1,0 +1,63 @@
+
+
+
+.course_card{
+    overflow: hidden;
+    transition: all 0.7s ease;
+    z-index: 3;
+    cursor: pointer;
+
+    
+}
+
+.course_card::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.5);
+    transition: opacity 0.5s ease;
+    top: 0;
+    left: 0%;
+    transition: all 3s ease;
+    transform: translateX(-110%)
+    
+
+}
+
+.course_card::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    transition: opacity 0.5s ease;
+    top: 0;
+
+    left: 0;
+    transform: translateX(110%);
+    transition: all ease 2s;
+
+}
+
+.course_card:hover::after{
+    transform: translateX(110%);
+}
+
+.course_card:hover::before{
+    opacity: 1;
+    left: 0;
+    transform: translateX(-100%);
+}
+
+/* desc animation code ============================= */
+.desc{
+    left: 0;
+    transform: translateY(-100%);
+    transition: all ease 1s;
+    z-index: 2;
+
+}
+.course_card:hover .desc{
+    transform: translateY(0%);
+}

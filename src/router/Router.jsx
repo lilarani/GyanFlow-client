@@ -1,12 +1,21 @@
 import { createBrowserRouter } from 'react-router';
-import Main from '../MainLayout/Main';
+import StudentDashboard from '@/pages/Dashboard/StudentDashboard/StudentDashboard';
+import AddCourses from '@/pages/Dashboard/AdminDashboard/AddCourses/AddCourses';
+import Main from '../layouts/MainLayout/Main';
 import Home from '../pages/Home/Home';
 import Login from '../authentication/Login/Login';
 import Register from '../authentication/Register/Register';
 import Support from '../pages/Support/Support';
 import About from '../pages/About/About';
-import DashboardPage from '../pages/Dashboard/DashboardPage/DashboardPage';
-import Statistics from '../components/Dashboard/Statistics/Statistics';
+import Error from '@/pages/Error/Error';
+import Dashboard from '@/layouts/DashboardLayout/Dashboard/Dashboard';
+import Courses from '@/pages/Dashboard/AdminDashboard/Courses/Courses';
+import Features from '@/pages/Dashboard/AdminDashboard/Features/Features';
+import UserManagement from '@/pages/Dashboard/AdminDashboard/UserManagement/UserManagement';
+import InstructorDashboard from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboard';
+import UserProfile from '@/components/Dashboard/UserProfile/UserProfile';
+import AdminDashboard from '@/pages/Dashboard/AdminDashboard/AdminDashboard';
+import Career from '@/pages/Career/Career';
 
 export const router = createBrowserRouter([
   {
@@ -24,7 +33,10 @@ export const router = createBrowserRouter([
       {
         path: '/support',
         element: <Support></Support>,
-      },
+      },{
+        path:'/career',
+        element:<Career></Career>
+      }
     ],
   },
   {
@@ -35,14 +47,52 @@ export const router = createBrowserRouter([
     path: '/register/:role',
     element: <Register></Register>,
   },
+
   {
     path: '/dashboard',
-    element: <DashboardPage></DashboardPage>,
+    element: <Dashboard></Dashboard>,
     children: [
+      // admin related routes
       {
-        path: '/dashboard',
-        element: <Statistics></Statistics>,
+        index: true, // Default route inside 'dashboard'
+        element: <AdminDashboard></AdminDashboard>,
+      },
+      {
+        path: 'adminDashBoard',
+        element: <AdminDashboard></AdminDashboard>,
+      },
+      {
+        path: 'features',
+        element: <Features></Features>,
+      },
+      {
+        path: 'courses',
+        element: <Courses />,
+      },
+      {
+        path: 'addCourse',
+        element: <AddCourses />,
+
+        path: 'userManagement',
+        element: <UserManagement></UserManagement>,
+      },
+      // student related  routes
+      {
+        path: 'studentDashboard',
+        element: <StudentDashboard></StudentDashboard>,
+      },
+      {
+        path: 'instructorDasboard',
+        element: <InstructorDashboard></InstructorDashboard>,
       },
     ],
+  },
+  {
+    path: '*',
+    element: <Error></Error>,
+  },
+  {
+    path: 'profile',
+    element: <UserProfile></UserProfile>,
   },
 ]);

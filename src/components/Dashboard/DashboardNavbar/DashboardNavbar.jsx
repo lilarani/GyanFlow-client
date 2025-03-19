@@ -19,7 +19,7 @@ import { useState } from 'react';
 import { FaRegUser } from 'react-icons/fa';
 import { Link } from 'react-router';
 import { useSelector } from 'react-redux';
-const DashboardNavbar = () => {
+const DashboardNavbar = ({ navTitle }) => {
   const [openFlagModal, setOpenFlagModal] = useState(false);
   const [selectedFlag, setSelectedFlag] = useState(flags[0]);
   const [openUserModal, setOpenUserModal] = useState(false);
@@ -43,8 +43,8 @@ const DashboardNavbar = () => {
   };
 
   return (
-    <div className=" w-full h-24 p-4  items-center bg-gradient-to-bl to-[#080127] from-[#1a044d] text-white flex justify-between">
-      <h2 className="text-xl font-semibold">Analytics</h2>
+    <div className=" w-full h-20 p-4  items-center bg-gradient-to-bl to-[#080127] from-[#1a044d] text-white flex justify-between">
+      <h2 className="text-base md:text-xl font-semibold">{navTitle}</h2>
       <div className="flex gap-8 items-center">
         {/* modal */}
         <div className="relative ">
@@ -52,10 +52,10 @@ const DashboardNavbar = () => {
             onClick={handleModal}
             src={selectedFlag.img}
             alt="USA Flag"
-            className=""
+            className=" md:w-7"
           />
           {openFlagModal && (
-            <div className="bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white w-60 h-56 absolute top-12 right-1 space-y-6 p-6">
+            <div className="bg-gradient-to-bl z-50 to-[#0b0221] from-[#080127] text-white w-60 h-56 absolute top-12 right-1 space-y-6 p-6">
               {/* usa flag */}
               {flags.map((flag, index) => (
                 <div
@@ -74,16 +74,16 @@ const DashboardNavbar = () => {
           )}
         </div>
 
-        <MdOutlineNotificationsNone className="text-xl cursor-pointer" />
+        <MdOutlineNotificationsNone className="text-2xl cursor-pointer" />
         <div className="relative">
           <img
             onClick={handleUserModal}
-            src={'user Images'}
+            src={user?.photoURL}
             alt="user Images"
             className="w-12 h-12 rounded-full"
           />
           {openUserModal && (
-            <div className="absolute top-18 bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white w-60 h-56  right-4  p-6">
+            <div className="absolute z-50 top-18 bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white w-60 h-56  right-4  p-6">
               <div className="flex gap-2 items-center border-b-[1px] border-gray-700 p-2">
                 <img referrerPolicy='no-referrer'
                   src={user?.photoURL}
@@ -98,7 +98,7 @@ const DashboardNavbar = () => {
 
               <div className="text-white space-y-5 mt-4">
                 <Link
-                  to={'#'}
+                  to={'/profile'}
                   className="text-base font-bold flex gap-2 items-center cursor-pointer"
                 >
                   <FaRegUser />
@@ -108,7 +108,7 @@ const DashboardNavbar = () => {
                   to={'#'}
                   className="text-base font-bold flex gap-2 items-center cursor-pointer"
                 >
-                  <IoMdNotificationsOutline />
+                  <IoMdNotificationsOutline className="" />
                   Notification
                 </Link>
                 <Link

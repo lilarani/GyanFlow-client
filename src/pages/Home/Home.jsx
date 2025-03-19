@@ -3,7 +3,12 @@ import TrustedPartner from '../../components/Home/TrustedPartner/TrustedPartner'
 import Impact from '../../components/Home/Impact/Impact';
 import FeaturesSectionHomePage from '../../components/Home/FeaturesSection/FeaturesSectionHomePage';
 import Banner from '../../components/Home/banner/Banner';
+<<<<<<< HEAD
 import { useGetUsersQuery } from '../../redux/ApiCalling/apiClice';
+=======
+import { Helmet } from 'react-helmet-async';
+// import About from '../../components/about/About';
+>>>>>>> 1e61f05c14935776de95d55fd8354aaa2f733e02
 
 const Home = () => {
   let {data , isLoading , isError} = useGetUsersQuery();
@@ -18,6 +23,9 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Gyanflow</title>
+      </Helmet>
       {/* banner section */}
       <Banner />
 
@@ -26,6 +34,7 @@ const Home = () => {
         <FeaturesSectionHomePage></FeaturesSectionHomePage>
         {/* Trasted Features */}
         <TrustedPartner />
+        {/* <About/> */}
         {/* Impact at a glance  */}
         <Impact />
       </section>

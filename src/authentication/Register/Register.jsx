@@ -1,9 +1,9 @@
-import { useNavigate, useParams } from "react-router";
-import { useState } from "react";
-import { toast } from "react-toastify";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase.config";
-import { useCreateUserMutation } from "../../redux/ApiCalling/apiClice";
+import { useNavigate, useParams } from 'react-router';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../firebase.config';
+import { useCreateUserMutation } from '../../redux/ApiCalling/apiClice';
 
 export default function Register() {
   let { role } = useParams();
@@ -11,21 +11,21 @@ export default function Register() {
   const [createUser, { isLoading, isError }] = useCreateUserMutation();
 
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    password: "",
+    name: '',
+    phone: '',
+    email: '',
+    password: '',
     role: role,
     picture:
-      "https://img.freepik.com/free-photo/top-view-pink-flower-with-drops_1112-450.jpg?uid=R187535479&ga=GA1.1.1477002296.1724664851&semt=ais_hybrid",
+      'https://img.freepik.com/free-photo/top-view-pink-flower-with-drops_1112-450.jpg?uid=R187535479&ga=GA1.1.1477002296.1724664851&semt=ais_hybrid',
   });
-
-  const handleChange = (e) => {
+  console.log(role);
+  const handleChange = e => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleRegister = async (e) => {
+  const handleRegister = async e => {
     e.preventDefault();
 
     try {
@@ -37,13 +37,12 @@ export default function Register() {
 
       const user = userCredential.user;
       const result = await createUser(formData).unwrap();
-      console.log("hello my backend response:", result);
+      console.log('hello my backend response:', result);
 
-      toast("Registration successful!");
-      navigate("/");
-
+      toast('Registration successful!');
+      navigate('/');
     } catch (error) {
-      console.error("Registration Error:", error);
+      console.error('Registration Error:', error);
       toast(error.message);
     }
   };
@@ -94,7 +93,7 @@ export default function Register() {
             className="mb-2 my-button w-full cursor-pointer rounded-none p-2 text-white "
             disabled={isLoading}
           >
-            {isLoading ? "pagli please wait..." : "Register"}
+            {isLoading ? 'pagli please wait...' : 'Register'}
           </button>
         </form>
       </div>

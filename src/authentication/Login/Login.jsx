@@ -1,4 +1,8 @@
-import { GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
 
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
@@ -27,8 +31,8 @@ export default function Login() {
       };
 
       const response = await googleLogin(userData).unwrap();
-      console.log(response);
 
+      console.log(response.data);
       console.log('Google login successful');
       navigate('/');
     } catch (e) {
@@ -37,7 +41,7 @@ export default function Login() {
     }
   };
 
-  const handleEmailPasswordLogin = async (e) => {
+  const handleEmailPasswordLogin = async e => {
     e.preventDefault();
     setError('');
     try {
@@ -49,6 +53,13 @@ export default function Login() {
       let res = await logInUser({email , password}).unwrap()
       console.log(res)
 
+      // const response = await axios.post(
+      //   'https://gyanflow-server.onrender.com/gyanflow/user/login',
+      //   { email, password },
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       console.log('Email/Password login successful');
       navigate('/');
     } catch (e) {
@@ -67,7 +78,7 @@ export default function Login() {
             type="email"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             className="mb-2 w-full rounded-none outline-none border p-2"
             required
           />
@@ -75,11 +86,14 @@ export default function Login() {
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             className="mb-4 w-full rounded-none outline-none border p-2"
             required
           />
-          <button type="submit" className="mb-2 my-button w-full cursor-pointer rounded-none p-2 text-white">
+          <button
+            type="submit"
+            className="mb-2 my-button w-full cursor-pointer rounded-none p-2 text-white"
+          >
             Sign In
           </button>
         </form>

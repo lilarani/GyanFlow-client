@@ -5,78 +5,169 @@ import { FiEdit } from 'react-icons/fi';
 
 const UserProfile = () => {
   const { user } = useSelector(state => state.authUser);
-  console.log(user);
+  const [editMode, setEditMode] = useState(false);
+  const [name, setName] = useState(user?.displayName);
+  const [email, setEmail] = useState(user?.email);
+  const [phone, setPhone] = useState(user?.phone);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const title = (
-    <p>
-      <span className="text-yellow-300">G</span>yanFlow
-    </p>
-  );
+  const handleEditClick = () => {
+    setEditMode(!editMode);
+  };
+
+  const handleSaveChanges = () => {
+    console.log('Updated Data:', { name, email, phone, password });
+    setEditMode(false);
+  };
 
   return (
     <div className="bg-gradient-to-bl to-[#1a044d] from-[#080127]">
-      <div className="conteiner mx-auto ">
-        <DashboardNavbar navTitle={title}></DashboardNavbar>
-        <div className=" min-h-screen flex flex-col md:flex-row conteiner mx-auto ">
+      <div className="">
+        <DashboardNavbar
+          navTitle={
+            <p>
+              <span className="text-yellow-300">G</span>yanFlow
+            </p>
+          }
+        />
+        <div className="min-h-screen flex flex-col md:flex-row gap-12 container mx-auto">
           {/* Sidebar */}
-          <div className="w-80 bg-gradient-to-bl to-[#110234] from-[#070127] shadow-lg p-8 hidden md:block mt-4 text-white">
+          <div className="w-80 bg-gradient-to-bl to-[#110234] from-[#070127] shadow-lg p-8  mt-4 text-gray-300">
             <img
               src={user?.photoURL}
               alt="user image"
               className="w-32 h-32 rounded-full"
             />
             <ul className="mt-6 space-y-4 text-white">
-              <li className=" font-semibold cursor-pointer">Class Offering</li>
-              <li className=" font-semibold  cursor-pointer">My Courses</li>
-              <li className=" font-semibold  cursor-pointer">Career</li>
-              <li className=" font-semibold  cursor-pointer">Biography</li>
+              <li className="font-semibold">{user?.displayName}</li>
+              <li className="font-semibold">{user?.email}</li>
+              <li className="font-semibold">{user?.phone}</li>
             </ul>
           </div>
 
           {/* Profile Section */}
-          <div className="flex-1 p-5">
-            <div className="bg-gradient-to-bl to-[#110234] from-[#070127] shadow-md rounded-lg p-6 text-white">
-              <div className="flex items-center justify-between border-dashed border-b-[1px] border-gray-500 p-3">
+          <div className="flex-1 gap-8 mt-6">
+            <div className="bg-gradient-to-bl to-[#110234] from-[#070127] shadow-md rounded-lg text-gray-300">
+              <div className="flex items-center p-6 justify-between border-dashed border-b-[1px] border-gray-500">
                 <h2 className="text-xl font-semibold">My Profile</h2>
-                <FiEdit className="text-4xl" />
+                <FiEdit
+                  className="text-base md:text-4xl cursor-pointer"
+                  onClick={handleEditClick}
+                />
               </div>
 
               {/* user info */}
-              <div>
-                <h2></h2>
+              <div className="p-6 space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="text-lg font-bold text-gray-400">
+                      Full Name
+                    </label>
+                    {editMode ? (
+                      <input
+                        type="text"
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                        className="w-full p-2 rounded bg-gray-800 text-white"
+                      />
+                    ) : (
+                      <h2 className="text-lg font-semibold">{name}</h2>
+                    )}
+                  </div>
+                  <div>
+                    <label className="text-lg font-bold text-gray-400">
+                      Email
+                    </label>
+                    {editMode ? (
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        className="w-full p-2 rounded bg-gray-800 text-white"
+                      />
+                    ) : (
+                      <h2 className="text-lg font-semibold">{email}</h2>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+                  <div>
+                    <label className="text-lg font-bold text-gray-400">
+                      Student Id
+                    </label>
+                    {editMode ? (
+                      <input
+                        type="email"
+                        className="w-full p-2 rounded bg-gray-800 text-white"
+                      />
+                    ) : (
+                      <h2 className="text-lg font-semibold">web.3210</h2>
+                    )}
+                  </div>
+                  <div>
+                    <label className="text-lg font-bold text-gray-400">
+                      Mobile Number
+                    </label>
+                    {editMode ? (
+                      <input
+                        type="text"
+                        value={phone}
+                        onChange={e => setPhone(e.target.value)}
+                        className="w-full p-2 rounded bg-gray-800 text-white"
+                      />
+                    ) : (
+                      <h2 className="text-lg font-semibold">{phone}</h2>
+                    )}
+                  </div>
+                </div>
+
+                {/* Password Change Fields */}
+                {editMode && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+                    <div>
+                      <label className="text-lg font-bold text-gray-400">
+                        New Password
+                      </label>
+                      <input
+                        type="password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        className="w-full p-2 rounded bg-gray-800 text-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-lg font-bold text-gray-400">
+                        Confirm Password
+                      </label>
+                      <input
+                        type="password"
+                        value={confirmPassword}
+                        onChange={e => setConfirmPassword(e.target.value)}
+                        className="w-full p-2 rounded bg-gray-800 text-white"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Save Button */}
+                {editMode && (
+                  <button
+                    onClick={handleSaveChanges}
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded mt-4"
+                  >
+                    Save Changes
+                  </button>
+                )}
               </div>
 
-              {/* Password Change Section */}
-              {/* <div className="mt-6 border-t pt-4">
-                <h3 className="font-semibold text-lg">Change Password</h3>
-                <div className="mt-3">
-                  <label className="block text-gray-700">New Password</label>
-                  <input
-                    type="password"
-                    className="w-full mt-1 p-2 border rounded"
-                    placeholder="Enter new password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                  />
-                </div>
-                <div className="mt-3">
-                  <label className="block text-gray-700">
-                    Confirm Password
-                  </label>
-                  <input
-                    type="password"
-                    className="w-full mt-1 p-2 border rounded"
-                    placeholder="Confirm new password"
-                    value={confirmPassword}
-                    onChange={e => setConfirmPassword(e.target.value)}
-                  />
-                </div>
-                <button className="w-full mt-4 bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600">
-                  Set Password
-                </button>
-              </div> */}
+              {/* Device Activity */}
+              <div>
+                <h2 className="text-base md:text-xl font-bold p-6 mt-10 border-gray-700 border-b-[1px]">
+                  Device Activity
+                </h2>
+              </div>
             </div>
           </div>
         </div>

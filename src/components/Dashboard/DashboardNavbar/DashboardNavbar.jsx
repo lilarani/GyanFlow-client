@@ -43,7 +43,7 @@ const DashboardNavbar = ({ navTitle }) => {
   };
 
   return (
-    <div className=" w-full h-24 p-4  items-center bg-gradient-to-bl to-[#080127] from-[#1a044d] text-white flex justify-between">
+    <div className=" w-full h-20 p-4  items-center bg-gradient-to-bl to-[#080127] from-[#1a044d] text-white flex justify-between">
       <h2 className="text-base md:text-xl font-semibold">{navTitle}</h2>
       <div className="flex gap-8 items-center">
         {/* modal */}

@@ -5,6 +5,7 @@ import { FiEdit } from 'react-icons/fi';
 
 const UserProfile = () => {
   const { user } = useSelector(state => state.authUser);
+
   const [editMode, setEditMode] = useState(false);
   const [name, setName] = useState(user?.displayName);
   const [email, setEmail] = useState(user?.email);
@@ -31,18 +32,18 @@ const UserProfile = () => {
             </p>
           }
         />
-        <div className="min-h-screen flex flex-col md:flex-row gap-12 container mx-auto">
+        <div className="min-h-screen flex flex-col md:flex-row gap-5 container mx-auto">
           {/* Sidebar */}
-          <div className="w-80 bg-gradient-to-bl to-[#110234] from-[#070127] shadow-lg p-8  mt-4 text-gray-300">
+          <div className="w-80 bg-gradient-to-bl to-[#110234] from-[#070127] shadow-lg p-8  mt-4 text-gray-300 flex flex-col items-center">
             <img
               src={user?.photoURL}
               alt="user image"
-              className="w-32 h-32 rounded-full"
+              className="w-32 h-32 rounded-full "
             />
-            <ul className="mt-6 space-y-4 text-white">
-              <li className="font-semibold">{user?.displayName}</li>
-              <li className="font-semibold">{user?.email}</li>
-              <li className="font-semibold">{user?.phone}</li>
+            <ul className="mt-6 space-y-4 text-white text-center">
+              <li className="font-semibold text-lg">{user?.displayName}</li>
+              <li className="font-semibold text-base">{user?.email}</li>
+              <li className="font-semibold">{user?.phoneNumber}</li>
             </ul>
           </div>
 
@@ -52,13 +53,13 @@ const UserProfile = () => {
               <div className="flex items-center p-6 justify-between border-dashed border-b-[1px] border-gray-500">
                 <h2 className="text-xl font-semibold">My Profile</h2>
                 <FiEdit
-                  className="text-base md:text-4xl cursor-pointer"
+                  className="text-base md:text-2xl cursor-pointer"
                   onClick={handleEditClick}
                 />
               </div>
 
               {/* user info */}
-              <div className="p-6 space-y-6">
+              <div className="p-6 space-y-6  w-3/4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="text-lg font-bold text-gray-400">
@@ -164,9 +165,34 @@ const UserProfile = () => {
 
               {/* Device Activity */}
               <div>
-                <h2 className="text-base md:text-xl font-bold p-6 mt-10 border-gray-700 border-b-[1px]">
+                <h2 className="text-base md:text-xl font-bold p-6 mt-10 border-gray-700 border-b-[1px] border-dashed">
                   Device Activity
                 </h2>
+
+                <div className="mt-6">
+                  <table className="min-w-full">
+                    <thead className="text-lg">
+                      <tr className="bg-gray-800 text-gray-300">
+                        <th className="px-4 py-2 text-left">Serial</th>
+                        <th className="px-4 py-2 text-left">Platform</th>
+                        <th className="px-4 py-2 text-left">Date</th>
+                        <th className="px-4 py-2 text-left">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="text-base">
+                        <td className="px-4 py-2 text-left">1</td>
+                        <td className="px-4 py-2 text-left">Windows</td>
+                        <td className="px-4 py-2 text-left">2025-03-19</td>
+                        <td className="px-4 py-2 text-left">
+                          <button className="text-yellow-400 px-3 py-1 rounded cursor-pointer">
+                            Remove
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>

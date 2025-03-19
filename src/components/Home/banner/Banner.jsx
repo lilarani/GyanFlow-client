@@ -2,24 +2,15 @@ import { Link } from 'react-router';
 import './banner.css';
 const Banner = () => {
   return (
-    <div
-      className="w-full p-10 md:p-[80px] banner overflow-hidden   h-screen flex md:justify-between items-center flex-col md:flex-row bg-opacity-25  bg-gradient-to-bl to-[#1a044d] from-[#100d1b]"
-      
-    >
+    <div className="w-full p-10 md:p-[80px] banner overflow-hidden   h-screen flex md:justify-between items-center flex-col md:flex-row bg-opacity-25  bg-gradient-to-bl to-[#1a044d] from-[#100d1b]">
       <div className="w-full md:w-[40%]  flex  justify-start items-start flex-col gap-6 md:gap-3  ">
         <h1
-          className=" text-2xl text-textcolor md:text-4xl text-left "
+          className=" text-base md:text-4xl text-textcolor  text-left "
           style={{
             fontWeight: 'bold',
           }}
-        >
-          Best <span className="text-blue-500">Tutoring Platform</span> for{' '}
-          <br /> Home & Online Tuitions
-        </h1>
-        <p className=" text-white text-lg">
-          <i className="fas fa-map-marker-alt"></i> Find the Right Tutor in Your
-          Area
-        </p>
+        ></h1>
+
         <Link
           to="/dashboard/studentDashboard"
           className="bg-[#0b1221] text-3xl    border-3  rounded-full  text-white "
@@ -28,7 +19,7 @@ const Banner = () => {
             margin: '20px 0px',
           }}
         >
-           Our Courses{' '}
+          Our Courses{' '}
         </Link>
       </div>
       <div className="w-full md:w-1/2  relative">

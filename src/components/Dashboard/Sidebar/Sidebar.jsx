@@ -10,15 +10,16 @@ import { useGetMyUserQuery } from '@/redux/ApiCalling/apiClice';
 import { useSelector } from 'react-redux';
 const Sidebar = () => {
   let { user } = useSelector(state => state.authUser);
-  console.log(user)
+  console.log(user);
   // let adminRole = 'admin';
   // let student = 'student';
   // let instructor = ' instructor';
   // const [isOpen, setIsOpen] = useState(false);
-  let { data } = useGetMyUserQuery(user?.email);
-  console.log(data?.user.role)
-  const role = data?.user.role;
-  // 
+  // let { data } = useGetMyUserQuery(user?.email);
+  // console.log(data?.user.role)
+  // const role = data?.user.role;
+
+  let role = 'Admin';
   return (
     <div className="w-full min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
       <Link
@@ -119,19 +120,17 @@ const Sidebar = () => {
           </Link>
         </div>
       )}
-      {
-        role === "Teacher" && (
-          <div className="space-y-5 mt-10">
-            <Link
-              to={'/dashboard/TeacherDasboard'}
-              className="text-lg font-bold flex gap-2 items-center cursor-pointer"
-            >
-              <BiSolidUpArrow />
-              Teacher Dashboard
-            </Link>
-          </div>
-        )
-      }
+      {role === 'Teacher' && (
+        <div className="space-y-5 mt-10">
+          <Link
+            to={'/dashboard/TeacherDasboard'}
+            className="text-lg font-bold flex gap-2 items-center cursor-pointer"
+          >
+            <BiSolidUpArrow />
+            Teacher Dashboard
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

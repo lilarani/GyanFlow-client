@@ -33,10 +33,11 @@ export const router = createBrowserRouter([
       {
         path: '/support',
         element: <Support></Support>,
-      },{
-        path:'/career',
-        element:<Career></Career>
-      }
+      },
+      {
+        path: '/career',
+        element: <Career></Career>,
+      },
     ],
   },
   {

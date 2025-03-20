@@ -2,7 +2,6 @@ import { IoSearch } from 'react-icons/io5';
 import { BiSolidUpArrow } from 'react-icons/bi';
 import { FaDollarSign, FaRegStar, FaRegUser, FaUsers } from 'react-icons/fa';
 
-import { GiHamburgerMenu } from 'react-icons/gi';
 import { useState } from 'react';
 import { IoIosAddCircle } from 'react-icons/io';
 import { VscVmRunning } from 'react-icons/vsc';
@@ -18,7 +17,7 @@ const Sidebar = () => {
   // const [isOpen, setIsOpen] = useState(false);
 
   let { data } = useGetMyUserQuery(user?.email);
-  console.log(data?.user.role);
+  // console.log(data?.user.role);
   const role = data?.user.role;
 
   return (
@@ -30,7 +29,6 @@ const Sidebar = () => {
         <span className="text-yellow-300 ">G</span>yanFlow
       </Link>
 
-      <GiHamburgerMenu className="text-white block md:hidden" />
       <div className="relative flex items-center space-y-3 mt-10">
         <IoSearch className="absolute left-2 top-2 " />
         <input

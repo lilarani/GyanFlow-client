@@ -4,7 +4,7 @@ import Impact from '../../components/Home/Impact/Impact';
 import FeaturesSectionHomePage from '../../components/Home/FeaturesSection/FeaturesSectionHomePage';
 import Banner from '../../components/Home/banner/Banner';
 import { useGetUsersQuery } from '../../redux/ApiCalling/apiClice';
-import { Helmet } from 'react-helmet-async';
+// import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   // let {data , isLoading , isError} = useGetUsersQuery();
@@ -19,9 +19,9 @@ const Home = () => {
 
   return (
     <div>
-      <Helmet>
+      {/* <Helmet>
         <title>Gyanflow</title>
-      </Helmet>
+      </Helmet> */}
       {/* banner section */}
       <Banner />
 

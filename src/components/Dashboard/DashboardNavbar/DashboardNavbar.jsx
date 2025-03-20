@@ -5,6 +5,7 @@ import turkeyFlagImg from '../../../assets/images/dashboardNavImg/turkey.png';
 import bdFlagImg from '../../../assets/images/dashboardNavImg/bangladesh.png';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import { TbHelpSquare } from 'react-icons/tb';
+import { RxCross1 } from 'react-icons/rx';
 
 const flags = [
   { img: usaFlagImg, name: 'English(US)', code: 'en-Us' },
@@ -19,10 +20,12 @@ import { useState } from 'react';
 import { FaRegUser } from 'react-icons/fa';
 import { Link } from 'react-router';
 import { useSelector } from 'react-redux';
+import { GiHamburgerMenu } from 'react-icons/gi';
 const DashboardNavbar = ({ navTitle }) => {
   const [openFlagModal, setOpenFlagModal] = useState(false);
   const [selectedFlag, setSelectedFlag] = useState(flags[0]);
   const [openUserModal, setOpenUserModal] = useState(false);
+  const [openSiderbar, setOpenSidebar] = useState(false);
   const { user } = useSelector(state => state.authUser);
   console.log(user);
 
@@ -42,11 +45,21 @@ const DashboardNavbar = ({ navTitle }) => {
     setOpenUserModal(!openUserModal);
   };
 
+  //
+  const handleSidebar = () => {
+    setOpenSidebar(!openSiderbar);
+  };
+
   return (
     <div className=" w-full h-20 p-4  items-center bg-gradient-to-bl to-[#080127] from-[#1a044d] text-white flex justify-between">
+      <div className="text-white block lg:hidden text-2xl w-fit">
+        <GiHamburgerMenu />
+        <RxCross1 className="text-white" />
+      </div>
       <h2 className="text-base md:text-xl font-semibold">{navTitle}</h2>
       <div className="flex gap-8 items-center">
         {/* modal */}
+
         <div className="relative ">
           <img
             onClick={handleModal}
@@ -85,7 +98,8 @@ const DashboardNavbar = ({ navTitle }) => {
           {openUserModal && (
             <div className="absolute z-50 top-18 bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white w-60 h-56  right-4  p-6">
               <div className="flex gap-2 items-center border-b-[1px] border-gray-700 p-2">
-                <img referrerPolicy='no-referrer'
+                <img
+                  referrerPolicy="no-referrer"
                   src={user?.photoURL}
                   alt="User image"
                   className="w-12 h-12 rounded-full"

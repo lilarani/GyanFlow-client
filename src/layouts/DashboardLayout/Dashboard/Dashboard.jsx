@@ -16,7 +16,7 @@ const Dashboard = () => {
             <div className="hidden md:block">
               <DashboardNavbar navTitle={'Analytics'}></DashboardNavbar>
             </div>
-            <div className="md:hidden">
+            <div className="md:hidden sticky top-0 lg:relative z-50">
               <DashboardNavbar></DashboardNavbar>
             </div>
 

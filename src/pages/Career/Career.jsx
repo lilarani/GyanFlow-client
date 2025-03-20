@@ -1,4 +1,4 @@
-// import CustomHelmet from '@/components/ui/CustomHelmet'
+// import CustomHelmet from '@/components/ui/CustomHelmet';
 import React from 'react';
 
 export default function Career() {

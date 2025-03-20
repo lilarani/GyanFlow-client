@@ -28,11 +28,11 @@ const NewsLetter = () => {
               </p>
               <div className="flex  flex-col md:flex-row gap-3">
                 <input
-                  className="px-3 py-1 border-[1px] border-gray-500 rounded-lg text-black outline-none"
+                  className="px-3 py-1 border-[1px] border-gray-500  text-black outline-none"
                   type="email"
                   placeholder="Enter your email"
                 />
-                <button className=" bg-blue-500 text-white  font-bold px-4 py-2 rounded-lg">
+                <button className=" bg-blue-500 text-white  font-bold px-4 py-2 ">
                   Subscribe
                 </button>
               </div>

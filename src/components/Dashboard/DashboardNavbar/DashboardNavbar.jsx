@@ -21,6 +21,7 @@ import { FaRegUser } from 'react-icons/fa';
 import { Link } from 'react-router';
 import { useSelector } from 'react-redux';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import Sidebar from '../Sidebar/Sidebar';
 const DashboardNavbar = ({ navTitle }) => {
   const [openFlagModal, setOpenFlagModal] = useState(false);
   const [selectedFlag, setSelectedFlag] = useState(flags[0]);
@@ -51,11 +52,22 @@ const DashboardNavbar = ({ navTitle }) => {
   };
 
   return (
-    <div className=" w-full h-20 p-4  items-center bg-gradient-to-bl to-[#080127] from-[#1a044d] text-white flex justify-between">
-      <div className="text-white block lg:hidden text-2xl w-fit">
-        <GiHamburgerMenu />
-        <RxCross1 className="text-white" />
+    <div className=" w-full h-20 p-4  items-center bg-gradient-to-bl to-[#080127] from-[#1a044d] text-white flex justify-between relative">
+      <div
+        onClick={handleSidebar}
+        className="text-white block lg:hidden text-2xl w-fit"
+      >
+        {openSiderbar ? (
+          <RxCross1 className="text-white" />
+        ) : (
+          <GiHamburgerMenu />
+        )}
       </div>
+      {openSiderbar && (
+        <div className="absolute top-20 z-50">
+          <Sidebar></Sidebar>
+        </div>
+      )}
       <h2 className="text-base md:text-xl font-semibold">{navTitle}</h2>
       <div className="flex gap-8 items-center">
         {/* modal */}

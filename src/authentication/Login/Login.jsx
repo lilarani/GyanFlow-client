@@ -7,18 +7,30 @@ import {
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import { auth } from '../../../firebase.config';
-import axios from 'axios';
+import { useGoogleLoginMutation, useLogInUserMutation } from '../../redux/ApiCalling/apiClice';
 
 export default function Login() {
   let navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  let [googleLogin] = useGoogleLoginMutation()
+  let [logInUser] = useLogInUserMutation()
 
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(auth, provider);
+      const res = await signInWithPopup(auth, provider);
+      let user = res.user
+      console.log(res.user);
+      const userData = {
+        email: user.email,
+        name: user.displayName,
+        // phone: user.phoneNumber ,
+        picture: user.photoURL 
+      };
+
+      const response = await googleLogin(userData).unwrap();
 
       console.log(response.data);
       console.log('Google login successful');
@@ -34,13 +46,20 @@ export default function Login() {
     setError('');
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      const response = await axios.post(
-        'https://gyanflow-server.onrender.com/gyanflow/user/login',
-        { email, password },
-        {
-          withCredentials: true,
-        }
-      );
+      // const response = await axios.post('https://gyanflow-server.onrender.com/gyanflow/user/login', { email, password }, {
+      //   withCredentials: true
+      // });
+
+      let res = await logInUser({email , password}).unwrap()
+      console.log(res)
+
+      // const response = await axios.post(
+      //   'https://gyanflow-server.onrender.com/gyanflow/user/login',
+      //   { email, password },
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       console.log('Email/Password login successful');
       navigate('/');
     } catch (e) {

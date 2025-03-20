@@ -46,7 +46,9 @@ export default function Error() {
                 >
                   <div className="flex hover:text-red-400 items-center justify-center w-full gap-3 text-center">
                     <FaCircleArrowLeft className="text-red-200" />{' '}
-                    <button>Go Back To Home Page</button>
+                    <Link to={'/'} className="cursor-pointer">
+                      Go Back To Home Page
+                    </Link>
                   </div>
                 </Link>
               </div>

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from 'react';
 import { auth } from '../../../firebase.config';
-import { setUser } from '../../redux/authSlice';
+import { setUser ,setLoader } from '../../redux/authSlice';
 import Navbar from '../../components/Home/Navbar/Navbar';
 import Footer from '../../components/Home/Footer/Footer';
 import { ToastContainer } from 'react-toastify';
@@ -17,12 +17,14 @@ export default function Main() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async user => {
+      dispatch(setLoader(true))
       console.log(user);
       if (user) {
         dispatch(setUser(user));
+        dispatch(setLoader(false))
       } else {
         // const response = await axios.get(
-        //   'https://gyanflow-server.onrender.com/gyanflow/user/logout',
+        //   'http://localhost:4000/gyanflow/user/logout',
         //   { withCredentials: true }
         // );
         logOutUser()

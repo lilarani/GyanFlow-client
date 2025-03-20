@@ -78,14 +78,14 @@ const DashboardNavbar = ({ navTitle }) => {
         <div className="relative">
           <img
             onClick={handleUserModal}
-            src={'user Images'}
+            src={user?.photoURL}
             alt="user Images"
             className="w-12 h-12 rounded-full"
           />
           {openUserModal && (
             <div className="absolute z-50 top-18 bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white w-60 h-56  right-4  p-6">
               <div className="flex gap-2 items-center border-b-[1px] border-gray-700 p-2">
-                <img
+                <img referrerPolicy='no-referrer'
                   src={user?.photoURL}
                   alt="User image"
                   className="w-12 h-12 rounded-full"

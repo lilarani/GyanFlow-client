@@ -6,18 +6,24 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { useState } from 'react';
 import { IoIosAddCircle } from 'react-icons/io';
 import { VscVmRunning } from 'react-icons/vsc';
+import { useGetMyUserQuery } from '@/redux/ApiCalling/apiClice';
+import { useSelector } from 'react-redux';
 const Sidebar = () => {
+  let { user } = useSelector(state => state.authUser);
+  console.log(user)
   // let adminRole = 'admin';
   // let student = 'student';
   // let instructor = ' instructor';
-  const [isOpen, setIsOpen] = useState(false);
-
-  const role = 'admin';
+  // const [isOpen, setIsOpen] = useState(false);
+  let { data } = useGetMyUserQuery(user?.email);
+  console.log(data?.user.role)
+  const role = data?.user.role;
+  // 
   return (
     <div className="w-full min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
       <Link
         to={'/'}
-        className="font-bold text-base md:text-2xl hidden md:block block"
+        className="font-bold text-base md:text-2xl  md:block block"
       >
         <span className="text-yellow-300 ">G</span>yanFlow
       </Link>
@@ -32,7 +38,7 @@ const Sidebar = () => {
       </div>
 
       {/* admin role */}
-      {role === 'admin' && (
+      {role === 'Admin' && (
         <div className="space-y-5 mt-10">
           <Link
             to={'/dashboard/adminDashBoard'}
@@ -89,7 +95,7 @@ const Sidebar = () => {
         </div>
       )}
       {/* student role */}
-      {role === 'student' && (
+      {role === 'Student' && (
         <div className="space-y-5 mt-10">
           <Link
             to={'/dashboard/studentDashboard'}
@@ -113,6 +119,19 @@ const Sidebar = () => {
           </Link>
         </div>
       )}
+      {
+        role === "Teacher" && (
+          <div className="space-y-5 mt-10">
+            <Link
+              to={'/dashboard/TeacherDasboard'}
+              className="text-lg font-bold flex gap-2 items-center cursor-pointer"
+            >
+              <BiSolidUpArrow />
+              Teacher Dashboard
+            </Link>
+          </div>
+        )
+      }
     </div>
   );
 };

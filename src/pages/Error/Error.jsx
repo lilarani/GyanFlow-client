@@ -6,10 +6,12 @@ import error from '../../../public/errorPage.json';
 import { Link } from 'react-router';
 import { FaCircleArrowLeft } from 'react-icons/fa6';
 import Lottie from 'lottie-react';
+import CustomHelmet from '@/components/ui/CustomHelmet';
 
 export default function Error() {
   return (
     <div>
+      <CustomHelmet p={'Error'}></CustomHelmet>
       <div className="h-screen  bg-black   text-white">
         <Lottie
           className=" fixed w-full mx-auto"
@@ -39,12 +41,14 @@ export default function Error() {
 
               <div className="flex justify-center font-semibold my-4  text-2xl">
                 <Link
-                  to="login"
+                  to="/"
                   className="border bg-blue-600   hover:bg-blue-300 px-2 py-1 border-blue-700"
                 >
                   <div className="flex hover:text-red-400 items-center justify-center w-full gap-3 text-center">
                     <FaCircleArrowLeft className="text-red-200" />{' '}
-                    <button>Go Back To Home Page</button>
+                    <Link to={'/'} className="cursor-pointer">
+                      Go Back To Home Page
+                    </Link>
                   </div>
                 </Link>
               </div>

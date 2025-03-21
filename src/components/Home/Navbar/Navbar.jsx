@@ -20,7 +20,7 @@ const Navbar = () => {
   // let { data } = useGetMyUserQuery(user?.email);
   // console.log(data?.user.role);
   const role = user?.user?.role;
-  console.log(user.success , " Loader " , loader)
+  // console.log(user.success , " Loader " , loader)
 
 
 

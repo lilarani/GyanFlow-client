@@ -4,9 +4,11 @@ import Impact from '../../components/Home/Impact/Impact';
 import FeaturesSectionHomePage from '../../components/Home/FeaturesSection/FeaturesSectionHomePage';
 import Banner from '../../components/Home/banner/Banner';
 import { useGetUsersQuery } from '../../redux/ApiCalling/apiClice';
-import { Helmet } from 'react-helmet-async';
+import { load } from 'redux-localstorage-simple';
+// import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
+  console.log("my info -- " , load().authUser)
   // let {data , isLoading , isError} = useGetUsersQuery();
   // // isLoading ? console.log(isLoading) :  console.log(data)
   // if(isLoading){
@@ -19,9 +21,9 @@ const Home = () => {
 
   return (
     <div>
-      <Helmet>
+      {/* <Helmet>
         <title>Gyanflow</title>
-      </Helmet>
+      </Helmet> */}
       {/* banner section */}
       <Banner />
 

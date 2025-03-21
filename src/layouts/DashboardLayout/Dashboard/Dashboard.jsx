@@ -7,13 +7,19 @@ const Dashboard = () => {
   return (
     <div className="relative">
       <div className="flex ">
-        <div className="grid grid-cols-12 w-full">
-          <div className="col-span-3">
+        <div className="lg:grid grid-cols-12 w-full">
+          <div className="col-span-3 hidden lg:block">
             <Sidebar></Sidebar>
           </div>
 
           <div className="col-span-9 overflow-y-scroll h-screen element">
-            <DashboardNavbar navTitle={'Analytics'}></DashboardNavbar>
+            <div className="hidden md:block">
+              <DashboardNavbar navTitle={'Analytics'}></DashboardNavbar>
+            </div>
+            <div className="md:hidden sticky top-0 lg:relative z-50">
+              <DashboardNavbar></DashboardNavbar>
+            </div>
+
             <Outlet></Outlet>
           </div>
         </div>

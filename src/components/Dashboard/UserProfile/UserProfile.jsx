@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux';
 import DashboardNavbar from '../DashboardNavbar/DashboardNavbar';
 import { FiEdit } from 'react-icons/fi';
 import { Link } from 'react-router';
+import { useGetMyUserQuery } from '@/redux/ApiCalling/apiClice';
+
+import { BsUpload } from 'react-icons/bs';
 
 const UserProfile = () => {
   const { user } = useSelector(state => state.authUser);
@@ -13,6 +16,19 @@ const UserProfile = () => {
   const [phone, setPhone] = useState(user?.phone);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  let { data } = useGetMyUserQuery(user?.email);
+  console.log(data);
+
+  // profile image hangle
+  const [preview, setPreview] = useState(null);
+
+  const handleFileChange = e => {
+    const file = e.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setPreview(imageUrl);
+    }
+  };
 
   const handleEditClick = () => {
     setEditMode(!editMode);
@@ -37,14 +53,16 @@ const UserProfile = () => {
           {/* Sidebar */}
           <div className="w-80 bg-gradient-to-bl to-[#110234] from-[#070127] shadow-lg p-8  mt-4 text-gray-300 flex flex-col items-center">
             <img
-              src={user?.photoURL}
+              src={data?.user?.picture}
               alt="user image"
               className="w-32 h-32 rounded-full "
             />
             <ul className="mt-6 space-y-4 text-white text-center">
-              <li className="font-semibold text-lg">{user?.displayName}</li>
-              <li className="font-semibold text-base">{user?.email}</li>
-              <li className="font-semibold">{user?.phoneNumber}</li>
+              <li className="font-semibold text-lg">{data?.user?.name}</li>
+              <li className="font-semibold text-base">{data?.user?.email}</li>
+              <li className="font-semibold">
+                {data?.user?.phoneNumber || 'N/A'}
+              </li>
             </ul>
           </div>
 
@@ -105,7 +123,9 @@ const UserProfile = () => {
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
-                      <h2 className="text-lg font-semibold">web.3210</h2>
+                      <h2 className="text-lg font-semibold">
+                        {data?.user?._id}
+                      </h2>
                     )}
                   </div>
                   <div>
@@ -120,17 +140,54 @@ const UserProfile = () => {
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
-                      <h2 className="text-lg font-semibold">{phone}</h2>
+                      <h2 className="text-lg font-semibold">
+                        {data?.user?.phone || 'N/A'}
+                      </h2>
                     )}
                   </div>
                 </div>
+                {/* image change fields */}
+                {editMode && (
+                  <div className="space-y-3">
+                    <div>
+                      <h2 className="text-2xl font-bold">Profile image</h2>
+
+                      <h2 className="flex gap-2 items-center mt-4 font-bold text-base">
+                        <BsUpload />
+                        Change Profile Image
+                      </h2>
+                    </div>
+
+                    {/* Upload Button is the Image */}
+
+                    <label htmlFor="fileUpload" className="cursor-pointer">
+                      <img
+                        src={preview || `${data?.user?.picture}`}
+                        alt="Upload"
+                        className="w-32 h-32 object-cover border rounded-full shadow-md hover:scale-105 transition"
+                      />
+                    </label>
+
+                    {/* Hidden File Input */}
+                    <input
+                      type="file"
+                      id="fileUpload"
+                      className="hidden"
+                      accept="image/*"
+                      onChange={handleFileChange}
+                    />
+                  </div>
+                )}
 
                 {/* Password Change Fields */}
                 {editMode && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
-                    <div>
+                  <div>
+                    <h2 className="text-2xl font-bold border-b-[1px] border-dashed p-2 mt-14 border-gray-700">
+                      Password
+                    </h2>
+                    <div className="mt-8">
                       <label className="text-lg font-bold text-gray-400">
-                        New Password
+                        Current Password
                       </label>
                       <input
                         type="password"
@@ -139,16 +196,29 @@ const UserProfile = () => {
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     </div>
-                    <div>
-                      <label className="text-lg font-bold text-gray-400">
-                        Confirm Password
-                      </label>
-                      <input
-                        type="password"
-                        value={confirmPassword}
-                        onChange={e => setConfirmPassword(e.target.value)}
-                        className="w-full p-2 rounded bg-gray-800 text-white"
-                      />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                      <div>
+                        <label className="text-lg font-bold text-gray-400">
+                          New Password
+                        </label>
+                        <input
+                          type="password"
+                          value={password}
+                          onChange={e => setPassword(e.target.value)}
+                          className="w-full p-2 rounded bg-gray-800 text-white"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-lg font-bold text-gray-400">
+                          Confirm Password
+                        </label>
+                        <input
+                          type="password"
+                          value={confirmPassword}
+                          onChange={e => setConfirmPassword(e.target.value)}
+                          className="w-full p-2 rounded bg-gray-800 text-white"
+                        />
+                      </div>
                     </div>
                   </div>
                 )}

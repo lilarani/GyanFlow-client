@@ -33,10 +33,11 @@ export const router = createBrowserRouter([
       {
         path: '/support',
         element: <Support></Support>,
-      },{
-        path:'/career',
-        element:<Career></Career>
-      }
+      },
+      {
+        path: '/career',
+        element: <Career></Career>,
+      },
     ],
   },
   {
@@ -54,10 +55,7 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       // admin related routes
-      {
-        index: true, // Default route inside 'dashboard'
-        element: <AdminDashboard></AdminDashboard>,
-      },
+
       {
         path: 'adminDashBoard',
         element: <AdminDashboard></AdminDashboard>,

@@ -3,14 +3,13 @@ import authReducer from './authSlice';
 import loadingSlice from './loadingSlice';
 import apiSlice from './ApiCalling/apiClice';
 import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // LocalStorage ব্যবহার করব
+import storage from 'redux-persist/lib/storage'; 
 import { combineReducers } from 'redux';
 
-// persistReducer কনফিগারেশন
 const persistConfig = {
-  key: 'root', // এই কী দিয়ে পersisted স্টেট চিহ্নিত হবে
-  storage, // আমরা LocalStorage ব্যবহার করছি
-  whitelist: ['authUser'], // শুধুমাত্র 'authUser' স্টেট পpersist করা হবে
+  key: 'root', 
+  storage, 
+  whitelist: ['authUser'], 
 };
 
 const rootReducer = combineReducers({
@@ -19,7 +18,6 @@ const rootReducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,
 });
 
-// persistReducer দিয়ে rootReducer কে wrap করলাম
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({

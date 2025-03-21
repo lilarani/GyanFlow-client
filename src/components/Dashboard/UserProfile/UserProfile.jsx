@@ -60,7 +60,8 @@ const UserProfile = () => {
             <ul className="mt-6 space-y-4 text-white text-center">
               <li className="font-semibold text-lg">{data?.user?.name}</li>
               <li className="font-semibold text-base">{data?.user?.email}</li>
-              <li className="font-semibold">
+              <li className="font-semibold ">
+                Phone:
                 {data?.user?.phoneNumber || 'N/A'}
               </li>
             </ul>
@@ -243,7 +244,7 @@ const UserProfile = () => {
                 <div className="mt-6">
                   <table className="min-w-full">
                     <thead className="text-lg">
-                      <tr className="bg-gray-800 text-gray-300">
+                      <tr className="bg-gray-800 text-gray-300 text-sm md:text-lg">
                         <th className="px-4 py-2 text-left">Serial</th>
                         <th className="px-4 py-2 text-left">Platform</th>
                         <th className="px-4 py-2 text-left">Date</th>

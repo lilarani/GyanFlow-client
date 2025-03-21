@@ -72,6 +72,11 @@ const Navbar = () => {
                 Support
               </NavLink>
             </li>
+            <li>
+              <NavLink className="py-4 px-8 hover:bg-[#ffffff44]" to="/career">
+                Career
+              </NavLink>
+            </li>
           </ul>
         </div>
 
@@ -191,6 +196,15 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Support
+            </NavLink>
+          </li>
+          <li className="py-4 w-full">
+            <NavLink
+              to="/career"
+              className="block w-full"
+              onClick={() => setIsOpen(false)}
+            >
+              Career
             </NavLink>
           </li>
           <div>

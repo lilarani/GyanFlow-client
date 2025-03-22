@@ -10,6 +10,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Edit, Trash2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useGetUsersQuery } from '@/redux/ApiCalling/apiClice';
+
 
 const userData = [
   {
@@ -56,7 +58,8 @@ const userData = [
 
 const UserManagement = () => {
   const [mobileView, setMobileView] = useState(window.innerWidth < 768);
-
+  let { data, isLoading, isSuccess, isError } = useGetUsersQuery()
+  let info = data?.data || [] ;
   useEffect(() => {
     const handleResize = () => setMobileView(window.innerWidth < 768);
     window.addEventListener('resize', handleResize);
@@ -72,7 +75,7 @@ const UserManagement = () => {
   const renderMobileCards = () => {
     return (
       <div className="space-y-4">
-        {userData.map(user => (
+        {info.map(user => (
           <div key={user.id} className="bg-navy-900 rounded-lg p-4 space-y-3">
             <div className="flex justify-between items-center">
               <span className="font-medium">{user.name}</span>
@@ -116,8 +119,8 @@ const UserManagement = () => {
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
-            {userData.map(user => (
+          <TableBody >
+            {info.map(user => (
               <TableRow key={user.id} className="border-b border-navy-800">
                 <TableCell>{user.id}</TableCell>
                 <TableCell className="font-medium">{user.name}</TableCell>

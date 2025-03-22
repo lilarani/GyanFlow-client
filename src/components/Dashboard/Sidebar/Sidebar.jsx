@@ -2,23 +2,28 @@ import { IoSearch } from 'react-icons/io5';
 import { BiSolidUpArrow } from 'react-icons/bi';
 import { FaDollarSign, FaRegStar, FaRegUser, FaUsers } from 'react-icons/fa';
 
-import { useState } from 'react';
 import { IoIosAddCircle } from 'react-icons/io';
 import { VscVmRunning } from 'react-icons/vsc';
 import { useGetMyUserQuery } from '@/redux/ApiCalling/apiClice';
 import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router';
+import { useEffect, useState } from 'react';
 const Sidebar = () => {
-  let { user } = useSelector(state => state.authUser);
-  console.log(user);
+  let { user, loader } = useSelector(state => state.authUser);
+  let [role , setRole] = useState({})
+  // console.log(user);
   // let adminRole = 'admin';
   // let student = 'student';
   // let instructor = ' instructor';
   // const [isOpen, setIsOpen] = useState(false);
 
-  let { data } = useGetMyUserQuery(user?.email);
+  // let { data } = useGetMyUserQuery(user?.email);
   // console.log(data?.user.role);
-  const role = data?.user.role;
+  useEffect(()=>{
+    setRole(user?.user?.role)
+  }, [user , loader])
+  // const role = user?.user?.role;
+  // console.log(user)
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
@@ -40,7 +45,7 @@ const Sidebar = () => {
 
       {/* admin role */}
       {role === 'admin' && (
-        <div className="space-y-5 mt-10">
+        loader ? 'Loading' : <div className="space-y-5 mt-10">
           <NavLink
             to={'/dashboard/adminDashBoard'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
@@ -90,7 +95,7 @@ const Sidebar = () => {
       )}
       {/* student role */}
       {role === 'student' && (
-        <div className="space-y-5 mt-10">
+        loader ? "Loding" : <div className="space-y-5 mt-10">
           <NavLink
             to={'/dashboard/studentDashboard'}
             className="text-lg font-bold flex gap-2 items-center cursor-pointer"
@@ -103,7 +108,7 @@ const Sidebar = () => {
 
       {/* Instructor role */}
       {role === 'instructor' && (
-        <div className="space-y-5 mt-10">
+        loader ? "Loading" : <div className="space-y-5 mt-10">
           <NavLink
             to={'/dashboard/instructorDasboard'}
             className="text-lg font-bold flex gap-2 items-center cursor-pointer"
@@ -114,7 +119,7 @@ const Sidebar = () => {
         </div>
       )}
       {role === 'teacher' && (
-        <div className="space-y-5 mt-10">
+        loader ? "Loading" : <div className="space-y-5 mt-10">
           <NavLink
             to={'/dashboard/TeacherDasboard'}
             className="text-lg font-bold flex gap-2 items-center cursor-pointer"

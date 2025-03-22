@@ -27,8 +27,9 @@ const DashboardNavbar = ({ navTitle }) => {
   const [selectedFlag, setSelectedFlag] = useState(flags[0]);
   const [openUserModal, setOpenUserModal] = useState(false);
   const [openSiderbar, setOpenSidebar] = useState(false);
-  const { user } = useSelector(state => state.authUser);
+  const { user , loader} = useSelector(state => state.authUser);
   console.log(user);
+  console.log(user , " Loader " , loader)
 
   // handle flag modal function
   const handleModal = () => {
@@ -103,7 +104,7 @@ const DashboardNavbar = ({ navTitle }) => {
         <div className="relative">
           <img
             onClick={handleUserModal}
-            src={user?.photoURL}
+            src={user?.user?.picture}
             alt="user Images"
             className="w-12 h-12 rounded-full"
           />
@@ -112,13 +113,13 @@ const DashboardNavbar = ({ navTitle }) => {
               <div className="flex gap-2 items-center border-b-[1px] border-gray-700 p-2">
                 <img
                   referrerPolicy="no-referrer"
-                  src={user?.photoURL}
+                  src={user?.user?.picture}
                   alt="User image"
                   className="w-12 h-12 rounded-full"
                 />
                 <div>
-                  <p className="text-white">{user?.displayName}</p>
-                  <p>{user?.email}</p>
+                  <p className="text-white">{user?.user?.name}</p>
+                  <p>{user?.user?.email}</p>
                 </div>
               </div>
 

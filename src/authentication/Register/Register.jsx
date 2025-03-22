@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -55,7 +55,7 @@ export default function Register() {
           <img
             src={regImg}
             alt="register image"
-            className="  bg-blue-400 opacity-30 h-full w-full"
+            className="  bg-blue-500 opacity-40 h-full w-full"
           />
           <div className="text-white absolute text-center top-1/6 md:top-1/3 ">
             <h2 className="text-base md:text-xl font-bold">
@@ -119,6 +119,12 @@ export default function Register() {
             >
               {isLoading ? 'pagli please wait...' : 'Register'}
             </button>
+            <p className="text-left">
+              Already Have an account? Please{' '}
+              <span className="text-blue-500 cursor-pointer underline">
+                <Link to={'/login'}>Login</Link>
+              </span>
+            </p>
           </form>
         </div>
       </div>

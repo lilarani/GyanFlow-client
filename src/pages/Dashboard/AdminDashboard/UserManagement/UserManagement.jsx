@@ -10,56 +10,20 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Edit, Trash2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { useGetUsersQuery } from '@/redux/ApiCalling/apiClice';
-
-
-const userData = [
-  {
-    id: '#U101',
-    name: 'John Doe',
-    email: 'john@example.com',
-    phone: '123-456-7890',
-    status: 'Active',
-    role: 'Admin',
-  },
-  {
-    id: '#U102',
-    name: 'Emma Watson',
-    email: 'emma@example.com',
-    phone: '987-654-3210',
-    status: 'Inactive',
-    role: 'User',
-  },
-  {
-    id: '#U103',
-    name: 'Sophia Moore',
-    email: 'sophia@example.com',
-    phone: '456-123-7890',
-    status: 'Active',
-    role: 'Editor',
-  },
-  {
-    id: '#U104',
-    name: 'Daniel Brown',
-    email: 'daniel@example.com',
-    phone: '789-456-1230',
-    status: 'Inactive',
-    role: 'User',
-  },
-  {
-    id: '#U105',
-    name: 'Michael Scott',
-    email: 'michael@example.com',
-    phone: '159-753-4862',
-    status: 'Active',
-    role: 'Admin',
-  },
-];
+import {
+  useDeleteUserMutation,
+  useGetUsersQuery,
+} from '@/redux/ApiCalling/apiClice';
+import { toast } from 'react-toastify';
 
 const UserManagement = () => {
   const [mobileView, setMobileView] = useState(window.innerWidth < 768);
-  let { data, isLoading, isSuccess, isError } = useGetUsersQuery()
-  let info = data?.data || [] ;
+  let { data, isLoading, isSuccess, isError } = useGetUsersQuery();
+  let info = data?.data || [];
+  console.log(info);
+
+  const [deleteUser] = useDeleteUserMutation();
+
   useEffect(() => {
     const handleResize = () => setMobileView(window.innerWidth < 768);
     window.addEventListener('resize', handleResize);
@@ -72,11 +36,22 @@ const UserManagement = () => {
       : 'bg-red-100 text-red-800';
   };
 
+  // delete
+  const hayatErMonThekePagliDelete = async (email) => {
+    try {
+      console.log(email)
+      let deleteUserInfo = await deleteUser(email).unwrap();
+      console.log("hello - i am clicked ", deleteUserInfo);
+    } catch (e) {
+      console.log(e.message)
+    }
+  };
+
   const renderMobileCards = () => {
     return (
-      <div className="space-y-4">
+      <div className="space-y-4 ">
         {info.map(user => (
-          <div key={user.id} className="bg-navy-900 rounded-lg p-4 space-y-3">
+          <div key={user._id} className="bg-navy-900 rounded-lg p-4 space-y-3">
             <div className="flex justify-between items-center">
               <span className="font-medium">{user.name}</span>
               <Badge className={getStatusColor(user.status)}>
@@ -106,7 +81,7 @@ const UserManagement = () => {
 
   const renderDesktopTable = () => {
     return (
-      <div className="bg-navy-900 rounded-lg overflow-hidden">
+      <div className="bg-navy-900 rounded-lg overflow-hidden my-20">
         <Table>
           <TableHeader className="bg-navy-900">
             <TableRow className="border-b border-navy-800">
@@ -119,7 +94,7 @@ const UserManagement = () => {
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody >
+          <TableBody>
             {info.map(user => (
               <TableRow key={user.id} className="border-b border-navy-800">
                 <TableCell>{user.id}</TableCell>
@@ -133,13 +108,15 @@ const UserManagement = () => {
                 </TableCell>
                 <TableCell>{user.role}</TableCell>
                 <TableCell className="text-right">
-                  <div className="flex gap-2 justify-end">
+                  <div onClick={() => hayatErMonThekePagliDelete(user.email)} className="flex gap-2 justify-end">
                     <Button
                       variant="ghost"
                       size="icon"
                       className="text-gray-400"
                     >
-                      <Trash2 size={16} />
+                      <Trash2
+                        size={16}
+                      />
                     </Button>
                   </div>
                 </TableCell>
@@ -153,7 +130,7 @@ const UserManagement = () => {
 
   return (
     <div className="w-full p-4 md:p-6 bg-[#0B1739] text-white min-h-screen">
-      <h1 className="text-xl md:text-2xl font-bold">Manage your users</h1>
+      <h1 className="text-xl md:text-2xl font-bold ">Manage your users</h1>
       {mobileView ? renderMobileCards() : renderDesktopTable()}
     </div>
   );

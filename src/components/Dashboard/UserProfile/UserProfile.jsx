@@ -53,16 +53,16 @@ const UserProfile = () => {
           {/* Sidebar */}
           <div className="w-80 bg-gradient-to-bl to-[#110234] from-[#070127] shadow-lg p-8  mt-4 text-gray-300 flex flex-col items-center">
             <img
-              src={user?.user?.picture}
+              src={user?.data?.picture}
               alt="user image"
               className="w-32 h-32 rounded-full "
             />
             <ul className="mt-6 space-y-4 text-white text-center">
-              <li className="font-semibold text-lg">{user?.user?.name}</li>
-              <li className="font-semibold text-base">{user?.user?.email}</li>
+              <li className="font-semibold text-lg">{user?.data?.name}</li>
+              <li className="font-semibold text-base">{user?.data?.email}</li>
               <li className="font-semibold ">
                 Phone:
-                {user?.user?.phone || 'N/A'}
+                {user?.data?.phone || 'N/A'}
               </li>
             </ul>
           </div>
@@ -88,12 +88,12 @@ const UserProfile = () => {
                     {editMode ? (
                       <input
                         type="text"
-                        value={user?.user?.name}
+                        value={user?.data?.name}
                         onChange={e => setName(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
-                      <h2 className="text-lg font-semibold"> {user?.user?.name}</h2>
+                      <h2 className="text-lg font-semibold"> {user?.data?.name}</h2>
                     )}
                   </div>
                   <div>
@@ -103,12 +103,12 @@ const UserProfile = () => {
                     {editMode ? (
                       <input
                         type="email"
-                        value= {user?.user?.email}
+                        value= {user?.data?.email}
                         onChange={e => setEmail(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
-                      <h2 className="text-lg font-semibold"> {user?.user?.email}</h2>
+                      <h2 className="text-lg font-semibold"> {user?.data?.email}</h2>
                     )}
                   </div>
                 </div>
@@ -125,7 +125,7 @@ const UserProfile = () => {
                       />
                     ) : (
                       <h2 className="text-lg font-semibold">
-                        {user?.user?._id}
+                        {user?.data?._id}
                       </h2>
                     )}
                   </div>
@@ -136,13 +136,13 @@ const UserProfile = () => {
                     {editMode ? (
                       <input
                         type="text"
-                        value={user?.user?.phone}
+                        value={user?.data?.phone}
                         onChange={e => setPhone(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
                       <h2 className="text-lg font-semibold">
-                        {user?.user?.phone || 'N/A'}
+                        {user?.data?.phone || 'N/A'}
                       </h2>
                     )}
                   </div>
@@ -163,7 +163,7 @@ const UserProfile = () => {
 
                     <label htmlFor="fileUpload" className="cursor-pointer">
                       <img
-                        src={preview || `${user?.user?.picture}`}
+                        src={preview || `${user?.data?.picture}`}
                         alt="Upload"
                         className="w-32 h-32 object-cover border rounded-full shadow-md hover:scale-105 transition"
                       />

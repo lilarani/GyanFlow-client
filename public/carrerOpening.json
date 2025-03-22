@@ -1,0 +1,59 @@
+[
+    {
+      "id": 1,
+      "job_title": "Software Engineer",
+      "experience": 2,
+      "salary": "Negotiable (Based on Experience)",
+      "date": "31 March, 2025"
+    },
+    {
+      "id": 2,
+      "job_title": "Frontend Developer",
+      "experience": 1,
+      "salary": "30,000 - 50,000 (Monthly)",
+      "date": "15 April, 2025"
+    },
+    {
+      "id": 3,
+      "job_title": "Backend Developer",
+      "experience": 3,
+      "salary": "50,000 - 80,000 (Monthly)",
+      "date": "20 April, 2025"
+    },
+    {
+      "id": 4,
+      "job_title": "UI/UX Designer",
+      "experience": 2,
+      "salary": "40,000 - 60,000 (Monthly)",
+      "date": "10 May, 2025"
+    },
+    {
+      "id": 5,
+      "job_title": "Digital Marketing Specialist",
+      "experience": 1,
+      "salary": "35,000 - 55,000 (Monthly)",
+      "date": "25 May, 2025"
+    },
+    {
+      "id": 6,
+      "job_title": "Project Manager",
+      "experience": 5,
+      "salary": "Negotiable (Based on Experience)",
+      "date": "5 June, 2025"
+    },
+    {
+      "id": 7,
+      "job_title": "DevOps Engineer",
+      "experience": 4,
+      "salary": "60,000 - 90,000 (Monthly)",
+      "date": "18 June, 2025"
+    },
+    {
+      "id": 8,
+      "job_title": "Content Writer",
+      "experience": 1,
+      "salary": "25,000 - 40,000 (Monthly)",
+      "date": "30 June, 2025"
+    }
+  ]
+  

@@ -49,7 +49,7 @@ const UserManagement = () => {
 
   const renderMobileCards = () => {
     return (
-      <div className="space-y-4 ">
+      <div className="space-y-4 w-10/12 mx-auto ">
         {info.map(user => (
           <div key={user._id} className="bg-navy-900 rounded-lg p-4 space-y-3">
             <div className="flex justify-between items-center">

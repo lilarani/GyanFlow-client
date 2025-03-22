@@ -4,30 +4,33 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useState } from 'react';
 import { auth } from '../../../firebase.config';
-import { useGoogleLoginMutation, useLogInUserMutation } from '../../redux/ApiCalling/apiClice';
+import {
+  useGoogleLoginMutation,
+  useLogInUserMutation,
+} from '../../redux/ApiCalling/apiClice';
 
 export default function Login() {
   let navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  let [googleLogin] = useGoogleLoginMutation()
-  let [logInUser] = useLogInUserMutation()
+  let [googleLogin] = useGoogleLoginMutation();
+  let [logInUser] = useLogInUserMutation();
 
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
       const res = await signInWithPopup(auth, provider);
-      let user = res.user
+      let user = res.user;
       console.log(res.user);
       const userData = {
         email: user.email,
         name: user.displayName,
         // phone: user.phoneNumber ,
-        picture: user.photoURL 
+        picture: user.photoURL,
       };
 
       const response = await googleLogin(userData).unwrap();
@@ -50,8 +53,8 @@ export default function Login() {
       //   withCredentials: true
       // });
 
-      let res = await logInUser({email , password}).unwrap()
-      console.log(res)
+      let res = await logInUser({ email, password }).unwrap();
+      console.log(res);
 
       // const response = await axios.post(
       //   'http://localhost:4000/gyanflow/user/login',
@@ -103,6 +106,14 @@ export default function Login() {
         >
           Sign in with Google
         </button>
+        <p className="text-left">
+          New here? Start your journey by{' '}
+          <span className="text-blue-500 cursor-pointer underline">
+            <Link to={'/register/:role'}>registering</Link>
+          </span>{' '}
+          {''}
+          today!
+        </p>
       </div>
     </div>
   );

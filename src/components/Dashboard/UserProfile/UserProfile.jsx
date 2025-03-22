@@ -13,7 +13,8 @@ const UserProfile = () => {
   const [editMode, setEditMode] = useState(false);
   const [name, setName] = useState(user?.displayName);
   const [email, setEmail] = useState(user?.email);
-  const [phone, setPhone] = useState(user?.phone);
+  const [phone, setPhone] = useState(user?.user?.phone);
+  const [studentId, setStudentId] = useState(user?.user?._id);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   // let { user } = useGetMyUserQuery(user?.email);
@@ -40,7 +41,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="bg-gradient-to-bl to-[#1a044d] from-[#080127]">
+    <div className="bg-gradient-to-bl to-[#0e0227] from-[#0b022e]">
       <div className="">
         <DashboardNavbar
           navTitle={
@@ -51,7 +52,7 @@ const UserProfile = () => {
         />
         <div className="min-h-screen flex flex-col md:flex-row gap-5 container mx-auto">
           {/* Sidebar */}
-          <div className="w-80 bg-gradient-to-bl to-[#110234] from-[#070127] shadow-lg p-8  mt-4 text-gray-300 flex flex-col items-center">
+          <div className="w-80 bg-gradient-to-bl to-[#1a044d] from-[#080127] shadow-lg p-8  mt-4 text-gray-300 flex flex-col items-center">
             <img
               src={user?.data?.picture}
               alt="user image"
@@ -69,7 +70,7 @@ const UserProfile = () => {
 
           {/* Profile Section */}
           <div className="flex-1 gap-8 mt-6">
-            <div className="bg-gradient-to-bl to-[#110234] from-[#070127] shadow-md rounded-lg text-gray-300">
+            <div className="bg-[#0B1739] shadow-md rounded-lg text-gray-300">
               <div className="flex items-center p-6 justify-between border-dashed border-b-[1px] border-gray-500">
                 <h2 className="text-xl font-semibold">My Profile</h2>
                 <FiEdit
@@ -83,7 +84,7 @@ const UserProfile = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="text-lg font-bold text-gray-400">
-                      Full Name 
+                      Full Name
                     </label>
                     {editMode ? (
                       <input
@@ -106,6 +107,7 @@ const UserProfile = () => {
                         value= {user?.data?.email}
                         onChange={e => setEmail(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
+                        readOnly
                       />
                     ) : (
                       <h2 className="text-lg font-semibold"> {user?.data?.email}</h2>
@@ -120,8 +122,11 @@ const UserProfile = () => {
                     </label>
                     {editMode ? (
                       <input
-                        type="email"
+                        type="text"
+                        value={studentId}
+                        onChange={e => setStudentId(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
+                        readOnly
                       />
                     ) : (
                       <h2 className="text-lg font-semibold">

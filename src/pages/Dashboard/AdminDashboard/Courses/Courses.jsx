@@ -5,11 +5,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+} from '@/components/ui/table';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import {
   Search,
   User,
@@ -21,68 +21,15 @@ import {
   Edit,
   Trash2,
   Menu,
-} from "lucide-react";
-import { useEffect, useState } from "react";
-
-const coursesData = [
-  {
-    id: "#C101",
-    title: "React for Beginners",
-    instructors: ["John Carter", "Emma Watson"],
-    duration: 50,
-    status: "Active",
-    category: "Web Development",
-    price: "$49.99",
-  },
-  {
-    id: "#C102",
-    title: "Advanced JavaScript",
-    instructors: ["Sophie Moore", "Daniel Brown"],
-    duration: 56,
-    status: "Completed",
-    category: "Programming",
-    price: "$79.99",
-  },
-  {
-    id: "#C103",
-    title: "UI/UX Design Essentials",
-    instructors: ["Matt Cannon", "Sarah Lee"],
-    duration: 66,
-    status: "Active",
-    category: "Design",
-    price: "$59.99",
-  },
-  {
-    id: "#C104",
-    title: "Data Structures & Algorithms",
-    instructors: ["Graham Hills", "Michael Scott"],
-    duration: 23,
-    status: "Upcoming",
-    category: "Computer Science",
-    price: "$99.99",
-  },
-  {
-    id: "#C105",
-    title: "Full-Stack Web Development",
-    instructors: ["Sandy Houston", "Alice Green"],
-    duration: 44,
-    status: "Active",
-    category: "Web Development",
-    price: "$149.99",
-  },
-  {
-    id: "#C106",
-    title: "Python for Data Science",
-    instructors: ["Andy Smith", "Olivia Taylor"],
-    duration: 14,
-    status: "Upcoming",
-    category: "Data Science",
-    price: "$89.99",
-  },
-];
+} from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useGetCourseQuery } from '@/redux/ApiCalling/apiClice';
 
 const Courses = () => {
   const [mobileView, setMobileView] = useState(window.innerWidth < 768);
+  const { data, isLoading, isError } = useGetCourseQuery();
+  console.log(data);
+  const coursesData = data?.data;
 
   // Add resize listener
   useEffect(() => {
@@ -90,31 +37,31 @@ const Courses = () => {
       setMobileView(window.innerWidth < 768);
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const getCategoryColor = (category) => {
+  const getCategoryColor = category => {
     switch (category) {
-      case "Development":
-        return "bg-blue-100 text-blue-800 hover:bg-blue-200";
-      case "Design":
-        return "bg-green-100 text-green-800 hover:bg-green-200";
-      case "Marketing":
-        return "bg-yellow-100 text-yellow-800 hover:bg-yellow-200";
+      case 'Development':
+        return 'bg-blue-100 text-blue-800 hover:bg-blue-200';
+      case 'Design':
+        return 'bg-green-100 text-green-800 hover:bg-green-200';
+      case 'Marketing':
+        return 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200';
       default:
-        return "bg-gray-100 text-gray-800 hover:bg-gray-200";
+        return 'bg-gray-100 text-gray-800 hover:bg-gray-200';
     }
   };
 
   const renderMobileCards = () => {
     return (
       <div className="space-y-4">
-        {coursesData.map((course) => (
+        {coursesData.map(course => (
           <div key={course.id} className="bg-navy-900 rounded-lg p-4 space-y-3">
             <div className="flex justify-between items-center">
               <span className="font-medium">
-                {course.instructors.join(", ")}
+                {course.instructors.join(', ')}
               </span>
               <Badge className={getCategoryColor(course.category)}>
                 • {course.category}
@@ -165,10 +112,10 @@ const Courses = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {coursesData.map((course) => (
+            {coursesData.map(course => (
               <TableRow key={course.id} className="border-b border-navy-800">
                 <TableCell className="font-medium">{course.title}</TableCell>
-                <TableCell>{course.instructors.join(", ")}</TableCell>
+                <TableCell>{course.instructors.join(', ')}</TableCell>
                 <TableCell>
                   <Badge className={getCategoryColor(course.category)}>
                     • {course.category}

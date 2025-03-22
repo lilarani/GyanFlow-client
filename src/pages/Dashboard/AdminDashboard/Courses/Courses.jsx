@@ -57,8 +57,11 @@ const Courses = () => {
   const renderMobileCards = () => {
     return (
       <div className="space-y-4">
-        {coursesData.map(course => (
-          <div key={course.id} className="bg-navy-900 rounded-lg p-4 space-y-3">
+        {coursesData?.map(course => (
+          <div
+            key={course._id}
+            className="bg-navy-900 rounded-lg p-4 space-y-3"
+          >
             <div className="flex justify-between items-center">
               <span className="font-medium">
                 {course.instructors.join(', ')}
@@ -112,7 +115,7 @@ const Courses = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {coursesData.map(course => (
+            {coursesData?.map(course => (
               <TableRow key={course.id} className="border-b border-navy-800">
                 <TableCell className="font-medium">{course.title}</TableCell>
                 <TableCell>{course.instructors.join(', ')}</TableCell>

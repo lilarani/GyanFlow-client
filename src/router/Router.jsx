@@ -10,7 +10,6 @@ import About from '../pages/About/About';
 import Error from '@/pages/Error/Error';
 import Dashboard from '@/layouts/DashboardLayout/Dashboard/Dashboard';
 import Courses from '@/pages/Dashboard/AdminDashboard/Courses/Courses';
-import Features from '@/pages/Dashboard/AdminDashboard/Features/Features';
 import UserManagement from '@/pages/Dashboard/AdminDashboard/UserManagement/UserManagement';
 import InstructorDashboard from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboard';
 import UserProfile from '@/components/Dashboard/UserProfile/UserProfile';
@@ -43,7 +42,6 @@ export const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login></Login>,
-    
   },
   {
     path: '/register/:role',
@@ -60,10 +58,7 @@ export const router = createBrowserRouter([
         path: 'adminDashBoard',
         element: <AdminDashboard></AdminDashboard>,
       },
-      {
-        path: 'features',
-        element: <Features></Features>,
-      },
+
       {
         path: 'courses',
         element: <Courses />,

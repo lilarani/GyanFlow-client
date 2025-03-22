@@ -1,24 +1,25 @@
 import { IoSearch } from 'react-icons/io5';
 import { BiSolidUpArrow } from 'react-icons/bi';
 import { FaDollarSign, FaRegStar, FaRegUser, FaUsers } from 'react-icons/fa';
-import { Link } from 'react-router';
-import { GiHamburgerMenu } from 'react-icons/gi';
+
 import { useState } from 'react';
 import { IoIosAddCircle } from 'react-icons/io';
 import { VscVmRunning } from 'react-icons/vsc';
 import { useGetMyUserQuery } from '@/redux/ApiCalling/apiClice';
 import { useSelector } from 'react-redux';
+import { Link, NavLink } from 'react-router';
 const Sidebar = () => {
   let { user } = useSelector(state => state.authUser);
-  console.log(user)
+  console.log(user);
   // let adminRole = 'admin';
   // let student = 'student';
   // let instructor = ' instructor';
   // const [isOpen, setIsOpen] = useState(false);
+
   let { data } = useGetMyUserQuery(user?.email);
-  console.log(data?.user.role)
+  // console.log(data?.user.role);
   const role = data?.user.role;
-  // 
+
   return (
     <div className="w-full min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
       <Link
@@ -27,7 +28,7 @@ const Sidebar = () => {
       >
         <span className="text-yellow-300 ">G</span>yanFlow
       </Link>
-      <GiHamburgerMenu className="text-white block md:hidden" />
+
       <div className="relative flex items-center space-y-3 mt-10">
         <IoSearch className="absolute left-2 top-2 " />
         <input
@@ -38,100 +39,91 @@ const Sidebar = () => {
       </div>
 
       {/* admin role */}
-      {role === 'Admin' && (
+      {role === 'admin' && (
         <div className="space-y-5 mt-10">
-          <Link
+          <NavLink
             to={'/dashboard/adminDashBoard'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <BiSolidUpArrow />
             Dashboard
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to={'/dashboard/addCourse'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <IoIosAddCircle />
             Add Course
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to={'/dashboard/courses'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <VscVmRunning />
             All Courses
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to={'/dashboard/features'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <FaRegStar />
             Features
-          </Link>
+          </NavLink>
 
-          <Link
+          <NavLink
             to={'/dashboard/userManagement'}
             className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
           >
             <FaUsers />
             Users Managment
-          </Link>
-          <Link
-            to={'#'}
-            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
-          >
-            <FaDollarSign />
-            Pricing
-          </Link>
+          </NavLink>
 
           <div className="w-full mt-4  border-gray-600 border-t-[1px]">
-            <Link
+            <NavLink
               to={'/'}
               className="cursor-pointer block w-full text-base md:text-xl font-bold md:mt-8 hover:bg-[#ffffff44] px-4 py-2"
             >
               Home
-            </Link>
+            </NavLink>
           </div>
         </div>
       )}
       {/* student role */}
-      {role === 'Student' && (
+      {role === 'student' && (
         <div className="space-y-5 mt-10">
-          <Link
+          <NavLink
             to={'/dashboard/studentDashboard'}
             className="text-lg font-bold flex gap-2 items-center cursor-pointer"
           >
             <BiSolidUpArrow />
             Student Dashboard
-          </Link>
+          </NavLink>
         </div>
       )}
 
       {/* Instructor role */}
       {role === 'instructor' && (
         <div className="space-y-5 mt-10">
-          <Link
+          <NavLink
             to={'/dashboard/instructorDasboard'}
             className="text-lg font-bold flex gap-2 items-center cursor-pointer"
           >
             <BiSolidUpArrow />
             instructor Dashboard
-          </Link>
+          </NavLink>
         </div>
       )}
-      {
-        role === "Teacher" && (
-          <div className="space-y-5 mt-10">
-            <Link
-              to={'/dashboard/TeacherDasboard'}
-              className="text-lg font-bold flex gap-2 items-center cursor-pointer"
-            >
-              <BiSolidUpArrow />
-              Teacher Dashboard
-            </Link>
-          </div>
-        )
-      }
+      {role === 'teacher' && (
+        <div className="space-y-5 mt-10">
+          <NavLink
+            to={'/dashboard/TeacherDasboard'}
+            className="text-lg font-bold flex gap-2 items-center cursor-pointer"
+          >
+            <BiSolidUpArrow />
+            Teacher Dashboard
+          </NavLink>
+        </div>
+      )}
     </div>
   );
 };

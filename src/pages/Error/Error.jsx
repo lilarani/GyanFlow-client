@@ -6,12 +6,12 @@ import error from '../../../public/errorPage.json';
 import { Link } from 'react-router';
 import { FaCircleArrowLeft } from 'react-icons/fa6';
 import Lottie from 'lottie-react';
-import CustomHelmet from '@/components/ui/CustomHelmet';
+// import CustomHelmet from '@/components/ui/CustomHelmet';
 
 export default function Error() {
   return (
     <div>
-      <CustomHelmet p={'Error'}></CustomHelmet>
+      {/* <CustomHelmet p={'Error'}></CustomHelmet> */}
       <div className="h-screen  bg-black   text-white">
         <Lottie
           className=" fixed w-full mx-auto"

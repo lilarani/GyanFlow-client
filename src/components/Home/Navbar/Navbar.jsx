@@ -9,18 +9,20 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../../../firebase.config';
 import { toast } from 'react-toastify';
 
-import axios from 'axios';
-import { useGetMyUserQuery } from '@/redux/ApiCalling/apiClice';
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   let navigate = useNavigate();
-  const { user } = useSelector(state => state.authUser);
+  const { user , loader  } = useSelector(state => state.authUser);
 
-  let { data } = useGetMyUserQuery(user?.email);
-  console.log(data?.user.role);
-  const role = data?.user.role;
+  // let { data } = useGetMyUserQuery(user?.email);
+  // console.log(data?.user.role);
+  const role = user?.user?.role;
+  // console.log(user.success , " Loader " , loader)
+
+
 
   useEffect(() => {
     const handleClickOutside = event => {
@@ -127,17 +129,19 @@ const Navbar = () => {
             </div>
           ) : (
             <>
+            <p>{user.success}</p>
               <img
                 onClick={handleDropdown}
-                src={user?.photoURL}
+                src={user?.user?.picture}
                 alt="user Image"
                 className="w-12 h-12 rounded-full relative"
               />
               {dropdown && (
                 <div className="bg-black w-80 h-80 absolute top-20 right-12 p-6 ">
-                  <h2 className="text-xl font-bold ">{user?.displayName}</h2>
+                  {/* <image className="text-xl font-bold ">{user?.user?.picture}</h2> */}
+                  <img className='h-15 border-6 p-1 w-15 rounded-full' src={`${user?.user?.picture}`} alt="" />
                   <p className="text-lg font-semibold border-gray-500 border-b-[1px] py-2">
-                    {user?.email}
+                    {user?.user?.email}
                   </p>
                   <div className="w-full flex flex-col gap-4 mt-12">
                     <Link

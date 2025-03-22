@@ -4,36 +4,44 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from 'react';
 import { auth } from '../../../firebase.config';
-import { setUser } from '../../redux/authSlice';
+import { setUser, setLoader } from '../../redux/authSlice';
 import Navbar from '../../components/Home/Navbar/Navbar';
 import Footer from '../../components/Home/Footer/Footer';
 import { ToastContainer } from 'react-toastify';
-import { useLogOutUserMutation } from '@/redux/ApiCalling/apiClice';
+import { useLogOutUserMutation, useGetMyUserQuery } from '@/redux/ApiCalling/apiClice';
+import axios from 'axios';
 
 export default function Main() {
   const dispatch = useDispatch();
-  let { user } = useSelector(state => state.authUser)
   let [logOutUser] = useLogOutUserMutation()
-
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async user => {
-      console.log(user);
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      dispatch(setLoader(true));
       if (user) {
-        dispatch(setUser(user));
+        try {
+          const res = await axios.get(`https://gyanflow-server.onrender.com/gyanflow/user/role/${user?.email}`);
+          dispatch(setUser(res.data));
+          console.log(res.data);
+        } catch (error) {
+          console.error("Error fetching user role:", error);
+        } finally {
+          dispatch(setLoader(false));
+        }
       } else {
-        // const response = await axios.get(
-        //   'https://gyanflow-server.onrender.com/gyanflow/user/logout',
-        //   { withCredentials: true }
-        // );
-        logOutUser()
-        .then(res => console.log(res.data))
-        dispatch(setUser(null));
-        console.log('user cannot fund');
+        try {
+          await logOutUser();
+          dispatch(setUser(null));
+          console.log('User not found, logged out.');
+        } catch (error) {
+          console.error("Logout Error:", error);
+        } finally {
+          dispatch(setLoader(false));
+        }
       }
     });
 
     return () => unsubscribe();
-  }, [dispatch]);
+  }, [dispatch, logOutUser]);
 
   return (
     <div className="w-full">

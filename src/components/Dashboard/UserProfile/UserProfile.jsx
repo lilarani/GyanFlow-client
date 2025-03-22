@@ -16,8 +16,8 @@ const UserProfile = () => {
   const [phone, setPhone] = useState(user?.phone);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  let { data } = useGetMyUserQuery(user?.email);
-  console.log(data);
+  // let { user } = useGetMyUserQuery(user?.email);
+  // console.log(data);
 
   // profile image hangle
   const [preview, setPreview] = useState(null);
@@ -53,16 +53,16 @@ const UserProfile = () => {
           {/* Sidebar */}
           <div className="w-80 bg-gradient-to-bl to-[#110234] from-[#070127] shadow-lg p-8  mt-4 text-gray-300 flex flex-col items-center">
             <img
-              src={data?.user?.picture}
+              src={user?.user?.picture}
               alt="user image"
               className="w-32 h-32 rounded-full "
             />
             <ul className="mt-6 space-y-4 text-white text-center">
-              <li className="font-semibold text-lg">{data?.user?.name}</li>
-              <li className="font-semibold text-base">{data?.user?.email}</li>
+              <li className="font-semibold text-lg">{user?.user?.name}</li>
+              <li className="font-semibold text-base">{user?.user?.email}</li>
               <li className="font-semibold ">
                 Phone:
-                {data?.user?.phoneNumber || 'N/A'}
+                {user?.user?.phone || 'N/A'}
               </li>
             </ul>
           </div>
@@ -83,17 +83,17 @@ const UserProfile = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="text-lg font-bold text-gray-400">
-                      Full Name
+                      Full Name 
                     </label>
                     {editMode ? (
                       <input
                         type="text"
-                        value={name}
+                        value={user?.user?.name}
                         onChange={e => setName(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
-                      <h2 className="text-lg font-semibold">{name}</h2>
+                      <h2 className="text-lg font-semibold"> {user?.user?.name}</h2>
                     )}
                   </div>
                   <div>
@@ -103,12 +103,12 @@ const UserProfile = () => {
                     {editMode ? (
                       <input
                         type="email"
-                        value={email}
+                        value= {user?.user?.email}
                         onChange={e => setEmail(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
-                      <h2 className="text-lg font-semibold">{email}</h2>
+                      <h2 className="text-lg font-semibold"> {user?.user?.email}</h2>
                     )}
                   </div>
                 </div>
@@ -125,7 +125,7 @@ const UserProfile = () => {
                       />
                     ) : (
                       <h2 className="text-lg font-semibold">
-                        {data?.user?._id}
+                        {user?.user?._id}
                       </h2>
                     )}
                   </div>
@@ -136,13 +136,13 @@ const UserProfile = () => {
                     {editMode ? (
                       <input
                         type="text"
-                        value={phone}
+                        value={user?.user?.phone}
                         onChange={e => setPhone(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
                       <h2 className="text-lg font-semibold">
-                        {data?.user?.phone || 'N/A'}
+                        {user?.user?.phone || 'N/A'}
                       </h2>
                     )}
                   </div>
@@ -163,7 +163,7 @@ const UserProfile = () => {
 
                     <label htmlFor="fileUpload" className="cursor-pointer">
                       <img
-                        src={preview || `${data?.user?.picture}`}
+                        src={preview || `${user?.user?.picture}`}
                         alt="Upload"
                         className="w-32 h-32 object-cover border rounded-full shadow-md hover:scale-105 transition"
                       />

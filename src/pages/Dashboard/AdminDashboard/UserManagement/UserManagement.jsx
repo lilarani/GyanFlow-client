@@ -15,6 +15,7 @@ import {
   useGetUsersQuery,
 } from '@/redux/ApiCalling/apiClice';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const UserManagement = () => {
   const [mobileView, setMobileView] = useState(window.innerWidth < 768);
@@ -39,8 +40,24 @@ const UserManagement = () => {
   // delete
   const hayatErMonThekePagliDelete = async email => {
     try {
-      console.log(email);
-      let deleteUserInfo = await deleteUser(email).unwrap();
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+      }).then(async result => {
+        if (result.isConfirmed) {
+          let deleteUserInfo = await deleteUser(email).unwrap();
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'User has been deleted.',
+            icon: 'success',
+          });
+        }
+      });
       console.log('hello - i am clicked ', deleteUserInfo);
     } catch (e) {
       console.log(e.message);

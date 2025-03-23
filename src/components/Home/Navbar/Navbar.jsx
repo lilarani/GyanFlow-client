@@ -225,7 +225,10 @@ const Navbar = () => {
                 >
                   Dashboard
                 </Link>
-                <button className="w-full border-[#ffffff44] text-[#ffffffd0] border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44]">
+                <button
+                  onClick={signOutUser}
+                  className="w-full border-[#ffffff44] text-[#ffffffd0] border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44]"
+                >
                   Log-out
                 </button>
               </div>

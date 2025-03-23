@@ -116,7 +116,7 @@ export default function Register() {
               className="mb-2 my-button w-full cursor-pointer rounded-none p-2 text-white "
               disabled={isLoading}
             >
-              {isLoading ? 'pagli please wait...' : 'Register'}
+              {isLoading ? 'Loading...' : 'Register'}
             </button>
             <p className="text-left">
               Already Have an account? Please{' '}

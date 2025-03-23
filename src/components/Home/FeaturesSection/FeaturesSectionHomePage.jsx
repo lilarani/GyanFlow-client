@@ -19,7 +19,7 @@ export default function FeaturesSectionHomePage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className=" hover:scale-105 rounded-lg shadow-md transition-all duration-700">
+        <div className=" flex flex-col h-full hover:scale-105 rounded-lg shadow-md transition-all duration-700">
           <figure>
             <img
               className="rounded-t-lg w-full h-56 object-cover"
@@ -27,7 +27,7 @@ export default function FeaturesSectionHomePage() {
               alt="Virtual Classroom"
             />
           </figure>
-          <div className="px-4 py-3 space-y-2">
+          <div className="px-4 py-3 space-y-2 flex-grow">
             <div className="flex items-center gap-2">
               <h2 className="font-semibold text-2xl">
                 Python for Data Science
@@ -62,7 +62,7 @@ export default function FeaturesSectionHomePage() {
             <CustomButtons primaryText={"See Details"}></CustomButtons>
           </div>
         </div>
-        <div className=" hover:scale-105 rounded-lg shadow-md transition-all duration-700">
+        <div className=" flex flex-col h-full hover:scale-105 rounded-lg shadow-md transition-all duration-700">
           <figure>
             <img
               className="rounded-t-lg w-full h-56 object-cover"
@@ -70,7 +70,7 @@ export default function FeaturesSectionHomePage() {
               alt="Virtual Classroom"
             />
           </figure>
-          <div className="px-4 py-3 space-y-2">
+          <div className="px-4 py-3 space-y-2 flex-grow">
             <div className="flex items-center gap-2">
               <h2 className="font-semibold text-2xl">
                 Full-Stack Web Development
@@ -105,7 +105,7 @@ export default function FeaturesSectionHomePage() {
             <CustomButtons primaryText={"See Details"}></CustomButtons>
           </div>
         </div>
-        <div className=" hover:scale-105 rounded-lg shadow-md transition-all duration-700">
+        <div className=" flex flex-col h-full hover:scale-105 rounded-lg shadow-md transition-all duration-700">
           <figure>
             <img
               className="rounded-t-lg w-full h-56 object-cover"
@@ -113,7 +113,7 @@ export default function FeaturesSectionHomePage() {
               alt="Virtual Classroom"
             />
           </figure>
-          <div className="px-4 py-3 space-y-2">
+          <div className="px-4 py-3 space-y-2 flex-grow">
             <div className="flex items-center gap-2">
               <h2 className="font-semibold text-2xl">
                 UI/UX Design Essentials
@@ -148,7 +148,7 @@ export default function FeaturesSectionHomePage() {
             <CustomButtons primaryText={"See Details"}></CustomButtons>
           </div>
         </div>
-        <div className=" hover:scale-105 rounded-lg shadow-md transition-all duration-700">
+        <div className=" flex flex-col h-full hover:scale-105 rounded-lg shadow-md transition-all duration-700">
           <figure>
             <img
               className="rounded-t-lg w-full h-56 object-cover"
@@ -156,7 +156,7 @@ export default function FeaturesSectionHomePage() {
               alt="Virtual Classroom"
             />
           </figure>
-          <div className="px-4 py-3 space-y-2">
+          <div className="px-4 py-3 space-y-2 flex-grow">
             <div className="flex items-center gap-2">
               <h2 className="font-semibold text-2xl">
                 Python for Data Science
@@ -191,7 +191,7 @@ export default function FeaturesSectionHomePage() {
             <CustomButtons primaryText={"See Details"}></CustomButtons>
           </div>
         </div>
-        <div className=" hover:scale-105 rounded-lg shadow-md transition-all duration-700">
+        <div className=" flex flex-col h-full hover:scale-105 rounded-lg shadow-md transition-all duration-700">
           <figure>
             <img
               className="rounded-t-lg w-full h-56 object-cover"
@@ -199,7 +199,7 @@ export default function FeaturesSectionHomePage() {
               alt="Virtual Classroom"
             />
           </figure>
-          <div className="px-4 py-3 space-y-2">
+          <div className="px-4 py-3 space-y-2 flex-grow">
             <div className="flex items-center gap-2">
               <h2 className="font-semibold text-2xl">
                 Python for Data Science
@@ -234,7 +234,7 @@ export default function FeaturesSectionHomePage() {
             <CustomButtons primaryText={"See Details"}></CustomButtons>
           </div>
         </div>
-        <div className=" hover:scale-105 rounded-lg shadow-md transition-all duration-700">
+        <div className=" flex flex-col h-full hover:scale-105 rounded-lg shadow-md transition-all duration-700">
           <figure>
             <img
               className="rounded-t-lg w-full h-56 object-cover"
@@ -242,7 +242,7 @@ export default function FeaturesSectionHomePage() {
               alt="Virtual Classroom"
             />
           </figure>
-          <div className="px-4 py-3 space-y-2">
+          <div className="px-4 py-3 space-y-2 flex-grow">
             <div className="flex items-center gap-2">
               <h2 className="font-semibold text-2xl">
                 Python for Data Science

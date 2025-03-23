@@ -61,11 +61,9 @@ export default function Register() {
             <h2 className="text-base md:text-xl font-bold">
               GyanFlow - Where Learning Meets Innovation
             </h2>
-            <p className="text-sm md:text-base  text-gray-300 p-3">
-              Empower your learning journey with GyanFlow! Our interactive
-              virtual classroom connects students and teachers, making education
-              seamless and accessible. Engage in live sessions, collaborate with
-              peers, and unlock limitless knowledge—all in one place.
+            <p className="text-sm md:text-base  text-gray-300 p-3 font-medium">
+              Join GyanFlow’s interactive classroom to learn, connect, and
+              grow—all in one place.
             </p>
           </div>
         </div>

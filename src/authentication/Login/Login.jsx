@@ -11,6 +11,7 @@ import {
   useGoogleLoginMutation,
   useLogInUserMutation,
 } from '../../redux/ApiCalling/apiClice';
+import logImg from '../../assets/images/login.jpg';
 
 export default function Login() {
   let navigate = useNavigate();
@@ -72,48 +73,69 @@ export default function Login() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-bl from-blue-950 to-[#3d023f] p-6">
-      <div className="w-full text-white my-shadow max-w-md rounded-none p-6 shadow-md">
-        <h2 className="mb-4 text-center text-2xl font-bold">Login</h2>
-        {error && <p className="text-red-400 text-center">{error}</p>}
-        <form onSubmit={handleEmailPasswordLogin}>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            className="mb-2 w-full rounded-none outline-none border p-2"
-            required
+    <div className="bg-gradient-to-bl to-[#1a044d] from-[#080127] ">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen items-center justify-center p-6 w-10/12 mx-auto">
+        <div className="relative h-full">
+          <img
+            src={logImg}
+            alt="login image"
+            className="bg-blue-500 opacity-50 h-full w-full"
           />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            className="mb-4 w-full rounded-none outline-none border p-2"
-            required
-          />
+          <div className="text-white absolute text-center top-1/6 md:top-1/3 ">
+            <h2 className="text-base md:text-xl font-bold">
+              Welcome Back to GyanFlow
+            </h2>
+            <p className="text-sm md:text-base  text-gray-300 p-3 font-medium">
+              Log in to continue your learning journey. Access interactive
+              classes, connect with educators, and explore a world of
+              knowledge—all in one place.
+            </p>
+          </div>
+        </div>
+
+        {/* login form */}
+        <div className="w-full text-white my-shadow max-w-md rounded-none p-6 shadow-md h-full flex flex-col justify-center items-center">
+          <h2 className="mb-4 text-center text-2xl font-bold">Login</h2>
+          {error && <p className="text-red-400 text-center">{error}</p>}
+          <form onSubmit={handleEmailPasswordLogin}>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              className="mb-2 w-full rounded-none outline-none border p-2"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              className="mb-4 w-full rounded-none outline-none border p-2"
+              required
+            />
+            <button
+              type="submit"
+              className="mb-2 my-button w-full cursor-pointer rounded-none p-2 text-white"
+            >
+              Sign In
+            </button>
+          </form>
           <button
-            type="submit"
+            onClick={handleGoogleLogin}
             className="mb-2 my-button w-full cursor-pointer rounded-none p-2 text-white"
           >
-            Sign In
+            Sign in with Google
           </button>
-        </form>
-        <button
-          onClick={handleGoogleLogin}
-          className="mb-2 my-button w-full cursor-pointer rounded-none p-2 text-white"
-        >
-          Sign in with Google
-        </button>
-        <p className="text-left">
-          New here? Start your journey by{' '}
-          <span className="text-blue-500 cursor-pointer underline">
-            <Link to={'/register/:role'}>registering</Link>
-          </span>{' '}
-          {''}
-          today!
-        </p>
+          <p className="text-left">
+            New here? Start your journey by{' '}
+            <span className="text-blue-500 cursor-pointer underline">
+              <Link to={'/register/:role'}>registering</Link>
+            </span>{' '}
+            {''}
+            today!
+          </p>
+        </div>
       </div>
     </div>
   );

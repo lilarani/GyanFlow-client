@@ -37,20 +37,20 @@ const UserManagement = () => {
   };
 
   // delete
-  const hayatErMonThekePagliDelete = async (email) => {
+  const hayatErMonThekePagliDelete = async email => {
     try {
-      console.log(email)
+      console.log(email);
       let deleteUserInfo = await deleteUser(email).unwrap();
-      console.log("hello - i am clicked ", deleteUserInfo);
+      console.log('hello - i am clicked ', deleteUserInfo);
     } catch (e) {
-      console.log(e.message)
+      console.log(e.message);
     }
   };
 
   const renderMobileCards = () => {
     return (
       <div className="space-y-4 w-10/12 mx-auto ">
-        {info.map(user => (
+        {info?.map(user => (
           <div key={user._id} className="bg-navy-900 rounded-lg p-4 space-y-3">
             <div className="flex justify-between items-center">
               <span className="font-medium">{user.name}</span>
@@ -95,7 +95,7 @@ const UserManagement = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {info.map(user => (
+            {info?.map(user => (
               <TableRow key={user.id} className="border-b border-navy-800">
                 <TableCell>{user.id}</TableCell>
                 <TableCell className="font-medium">{user.name}</TableCell>
@@ -108,15 +108,16 @@ const UserManagement = () => {
                 </TableCell>
                 <TableCell>{user.role}</TableCell>
                 <TableCell className="text-right">
-                  <div onClick={() => hayatErMonThekePagliDelete(user.email)} className="flex gap-2 justify-end">
+                  <div
+                    onClick={() => hayatErMonThekePagliDelete(user.email)}
+                    className="flex gap-2 justify-end"
+                  >
                     <Button
                       variant="ghost"
                       size="icon"
                       className="text-gray-400"
                     >
-                      <Trash2
-                        size={16}
-                      />
+                      <Trash2 size={16} />
                     </Button>
                   </div>
                 </TableCell>

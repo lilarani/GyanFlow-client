@@ -8,7 +8,7 @@ import { BsFillBagFill } from 'react-icons/bs';
 export default function AdminCards() {
   return (
     <div>
-      <div className="grid  grid-cols-1 lg:grid-cols-4  md:grid-cols-2 w-10/12 mx-auto p-2 gap-3">
+      <div className="grid  grid-cols-1 lg:grid-cols-4  md:grid-cols-2 p-5 gap-3">
         <div className="bg-black bg-opacity-80 text-white rounded-lg  p-6 shadow-lg ">
           <div className="flex  justify-between my-2 ">
             <div className="flex gap-2 items-center">
@@ -20,7 +20,7 @@ export default function AdminCards() {
               <PiDotsThree />
             </div>
           </div>
-          <div className="flex  items-center  gap-2 my-2">
+          <div className="flex  items-center lg:flex-wrap xl:flex-nowrap  gap-2 my-2">
             <div className="text-3xl font-bold">75.0K</div>
             <div className="  border-2  border-green-800      rounded px-1   bg-green-300 text-green-800 ">
               <div className=" flex items-center  text-">
@@ -44,7 +44,7 @@ export default function AdminCards() {
               <PiDotsThree />
             </div>
           </div>
-          <div className="flex  items-center gap-2 my-2">
+          <div className="flex  items-center  lg:flex-wrap xl:flex-nowrap  gap-2 my-2">
             <div className="text-3xl font-bold">10.0K</div>
             <div className="  border-2  border-red-800      rounded px-1   bg-red-300 text-red-800 ">
               <div className=" flex items-center  text-">
@@ -68,7 +68,7 @@ export default function AdminCards() {
               <PiDotsThree />
             </div>
           </div>
-          <div className="flex  items-center gap-2 my-2">
+          <div className="flex  items-center  lg:flex-wrap xl:flex-nowrap  gap-2 my-2">
             <div className="text-3xl font-bold">3.5K</div>
             <div className="  border-2  border-green-800      rounded px-1   bg-green-300 text-green-800 ">
               <div className=" flex items-center  text-">
@@ -92,7 +92,7 @@ export default function AdminCards() {
               <PiDotsThree />
             </div>
           </div>
-          <div className="flex  items-center gap-2 my-2">
+          <div className="flex  items-center  lg:flex-wrap xl:flex-nowrap  gap-2 my-2">
             <div className="text-3xl font-bold">60.0K</div>
             <div className="  border-2  border-green-800      rounded px-1   bg-green-300 text-green-800 ">
               <div className=" flex items-center  text-">

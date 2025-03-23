@@ -230,7 +230,7 @@ const Navbar = () => {
                 </button>
               </div>
             ) : (
-              <>
+              <div className="flex flex-col gap-y-4">
                 <Link
                   to={'/register/Student'}
                   className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
@@ -249,7 +249,7 @@ const Navbar = () => {
                 >
                   Instructor Sign-up
                 </Link>
-              </>
+              </div>
             )}
           </div>
         </ul>

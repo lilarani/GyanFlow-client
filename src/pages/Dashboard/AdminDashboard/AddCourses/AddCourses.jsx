@@ -77,7 +77,7 @@ const AddCourses = () => {
   };
 
   return (
-    <div className="bg-[#0B1739] text-white min-h-screen pt-10">
+    <div className="bg-[#0B1739] text-white  pt-10">
       <Card className="w-10/12 mx-auto bg-gradient-to-b from-gray-900 to-blue-950 text-white">
         <CardHeader>
           <CardTitle className="text-3xl font-bold">Add Course</CardTitle>

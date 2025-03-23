@@ -50,15 +50,16 @@ export default function Register() {
   // bg-gradient-to-bl from-blue-950 to-[#3d023f]
   return (
     <div className="bg-gradient-to-bl to-[#1a044d] from-[#080127]">
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen items-center justify-center container mx-auto p-8">
-        <div className="relative h-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen items-center justify-center mx-auto p-6 w-10/12 ">
+        <div className=" h-full relative w-full ">
           <img
             src={regImg}
             alt="register image"
-            className="  bg-blue-500 opacity-40 h-full w-full"
+            className="   bg-blue-500 opacity-40 h-full w-full bg-blend-overlay"
           />
-          <div className="text-white absolute text-center top-1/6 md:top-1/3 ">
-            <h2 className="text-base md:text-xl font-bold">
+
+          <div className="text-white absolute inset-0 flex flex-col items-center justify-center text-center p-6 ">
+            <h2 className="text-base md:text-3xl font-bold">
               GyanFlow - Where Learning Meets Innovation
             </h2>
             <p className="text-sm md:text-base  text-gray-300 p-3 font-medium">
@@ -69,7 +70,7 @@ export default function Register() {
         </div>
 
         {/* register form */}
-        <div className="w-full text-white my-shadow h-full   rounded-none p-6 shadow-md flex flex-col items-center justify-center">
+        <div className="w-full text-white my-shadow h-full rounded-none p-6 shadow-md flex flex-col items-center justify-center">
           <h2 className="mb-4 text-center text-2xl font-bold">
             Register {role}
           </h2>
@@ -119,7 +120,7 @@ export default function Register() {
             </button>
             <p className="text-left">
               Already Have an account? Please{' '}
-              <span className="text-blue-500 cursor-pointer underline">
+              <span className="text-blue-500 font-bold cursor-pointer underline">
                 <Link to={'/login'}>Login</Link>
               </span>
             </p>

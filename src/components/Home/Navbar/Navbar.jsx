@@ -18,8 +18,8 @@ const Navbar = () => {
   const { user , loader  } = useSelector(state => state.authUser);
 
   // let { data } = useGetMyUserQuery(user?.email);
-  // console.log(data?.user.role);
-  const role = user?.user?.role;
+  console.log(user?.data?.role);
+  const role = user?.data?.role;
   // console.log(user.success , " Loader " , loader)
 
 
@@ -91,6 +91,9 @@ const Navbar = () => {
         <div className="xl:flex flex-row hidden">
           <Link className="text-md flex flex-row gap-2 items-center font-bold py-4 px-8 hover:bg-[#ffffff44]">
             <CiSearch /> Search
+            {
+              user?.user?.name
+            }
           </Link>
           {!user ? (
             <div className="flex flex-row">
@@ -132,16 +135,16 @@ const Navbar = () => {
             <p>{user.success}</p>
               <img
                 onClick={handleDropdown}
-                src={user?.user?.picture}
+                src={user?.data?.picture}
                 alt="user Image"
                 className="w-12 h-12 rounded-full relative"
               />
               {dropdown && (
                 <div className="bg-black w-80 h-80 absolute top-20 right-12 p-6 ">
                   {/* <image className="text-xl font-bold ">{user?.user?.picture}</h2> */}
-                  <img className='h-15 border-6 p-1 w-15 rounded-full' src={`${user?.user?.picture}`} alt="" />
+                  <img className='h-15 border-6 p-1 w-15 rounded-full' src={`${user?.data?.picture}`} alt="" />
                   <p className="text-lg font-semibold border-gray-500 border-b-[1px] py-2">
-                    {user?.user?.email}
+                    {user?.data?.email}
                   </p>
                   <div className="w-full flex flex-col gap-4 mt-12">
                     <Link

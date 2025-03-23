@@ -1,6 +1,6 @@
-import { TbCoinTaka } from "react-icons/tb";
-import CustomButtons from "../../../shared/CustomButtons/CustomButtons";
-import { SiGoogleclassroom } from "react-icons/si";
+import { TbCoinTaka } from 'react-icons/tb';
+import CustomButtons from '../../../shared/CustomButtons/CustomButtons';
+import { SiGoogleclassroom } from 'react-icons/si';
 
 export default function FeaturesSectionHomePage() {
   return (
@@ -59,7 +59,7 @@ export default function FeaturesSectionHomePage() {
           </div>
 
           <div className="flex justify-center mb-4">
-            <CustomButtons primaryText={"See Details"}></CustomButtons>
+            <CustomButtons primaryText={'See Details'}></CustomButtons>
           </div>
         </div>
         <div className=" hover:scale-105 rounded-lg shadow-md transition-all duration-700">
@@ -102,7 +102,7 @@ export default function FeaturesSectionHomePage() {
           </div>
 
           <div className="flex justify-center mb-4">
-            <CustomButtons primaryText={"See Details"}></CustomButtons>
+            <CustomButtons primaryText={'See Details'}></CustomButtons>
           </div>
         </div>
         <div className=" hover:scale-105 rounded-lg shadow-md transition-all duration-700">
@@ -145,7 +145,7 @@ export default function FeaturesSectionHomePage() {
           </div>
 
           <div className="flex justify-center mb-4">
-            <CustomButtons primaryText={"See Details"}></CustomButtons>
+            <CustomButtons primaryText={'See Details'}></CustomButtons>
           </div>
         </div>
         <div className=" hover:scale-105 rounded-lg shadow-md transition-all duration-700">
@@ -188,7 +188,7 @@ export default function FeaturesSectionHomePage() {
           </div>
 
           <div className="flex justify-center mb-4">
-            <CustomButtons primaryText={"See Details"}></CustomButtons>
+            <CustomButtons primaryText={'See Details'}></CustomButtons>
           </div>
         </div>
         <div className=" hover:scale-105 rounded-lg shadow-md transition-all duration-700">
@@ -231,7 +231,7 @@ export default function FeaturesSectionHomePage() {
           </div>
 
           <div className="flex justify-center mb-4">
-            <CustomButtons primaryText={"See Details"}></CustomButtons>
+            <CustomButtons primaryText={'See Details'}></CustomButtons>
           </div>
         </div>
         <div className=" hover:scale-105 rounded-lg shadow-md transition-all duration-700">
@@ -274,7 +274,7 @@ export default function FeaturesSectionHomePage() {
           </div>
 
           <div className="flex justify-center mb-4">
-            <CustomButtons primaryText={"See Details"}></CustomButtons>
+            <CustomButtons primaryText={'See Details'}></CustomButtons>
           </div>
         </div>
       </div>

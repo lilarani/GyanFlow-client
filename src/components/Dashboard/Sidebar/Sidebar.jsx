@@ -10,7 +10,7 @@ import { Link, NavLink } from 'react-router';
 import { useEffect, useState } from 'react';
 const Sidebar = () => {
   let { user, loader } = useSelector(state => state.authUser);
-  let [role , setRole] = useState({})
+  let [role, setRole] = useState({});
   // console.log(user);
   // let adminRole = 'admin';
   // let student = 'student';
@@ -20,7 +20,7 @@ const Sidebar = () => {
   // let { data } = useGetMyUserQuery(user?.email);
   // console.log(data?.user.role);
   useEffect(()=>{
-    setRole(user?.user?.role)
+    setRole(user?.data?.role)
   }, [user , loader])
   // const role = user?.user?.role;
   // console.log(user)
@@ -44,91 +44,96 @@ const Sidebar = () => {
       </div>
 
       {/* admin role */}
-      {role === 'admin' && (
-        loader ? 'Loading' : <div className="space-y-5 mt-10">
-          <NavLink
-            to={'/dashboard/adminDashBoard'}
-            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
-          >
-            <BiSolidUpArrow />
-            Dashboard
-          </NavLink>
-          <NavLink
-            to={'/dashboard/addCourse'}
-            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
-          >
-            <IoIosAddCircle />
-            Add Course
-          </NavLink>
-          <NavLink
-            to={'/dashboard/courses'}
-            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
-          >
-            <VscVmRunning />
-            All Courses
-          </NavLink>
-          <NavLink
-            to={'/dashboard/features'}
-            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
-          >
-            <FaRegStar />
-            Features
-          </NavLink>
-
-          <NavLink
-            to={'/dashboard/userManagement'}
-            className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
-          >
-            <FaUsers />
-            Users Managment
-          </NavLink>
-
-          <div className="w-full mt-4  border-gray-600 border-t-[1px]">
+      {role === 'admin' &&
+        (loader ? (
+          'Loading'
+        ) : (
+          <div className="space-y-5 mt-10">
             <NavLink
-              to={'/'}
-              className="cursor-pointer block w-full text-base md:text-xl font-bold md:mt-8 hover:bg-[#ffffff44] px-4 py-2"
+              to={'/dashboard/adminDashBoard'}
+              className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
-              Home
+              <BiSolidUpArrow />
+              Dashboard
+            </NavLink>
+            <NavLink
+              to={'/dashboard/addCourse'}
+              className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <IoIosAddCircle />
+              Add Course
+            </NavLink>
+            <NavLink
+              to={'/dashboard/courses'}
+              className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <VscVmRunning />
+              All Courses
+            </NavLink>
+
+            <NavLink
+              to={'/dashboard/userManagement'}
+              className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <FaUsers />
+              Users Managment
+            </NavLink>
+
+            <div className="w-full mt-4  border-gray-600 border-t-[1px]">
+              <NavLink
+                to={'/'}
+                className="cursor-pointer block w-full text-base md:text-xl font-bold md:mt-8 hover:bg-[#ffffff44] px-4 py-2"
+              >
+                Home
+              </NavLink>
+            </div>
+          </div>
+        ))}
+      {/* student role */}
+      {role === 'student' &&
+        (loader ? (
+          'Loding'
+        ) : (
+          <div className="space-y-5 mt-10">
+            <NavLink
+              to={'/dashboard/studentDashboard'}
+              className="text-lg font-bold flex gap-2 items-center cursor-pointer"
+            >
+              <BiSolidUpArrow />
+              Student Dashboard
             </NavLink>
           </div>
-        </div>
-      )}
-      {/* student role */}
-      {role === 'student' && (
-        loader ? "Loding" : <div className="space-y-5 mt-10">
-          <NavLink
-            to={'/dashboard/studentDashboard'}
-            className="text-lg font-bold flex gap-2 items-center cursor-pointer"
-          >
-            <BiSolidUpArrow />
-            Student Dashboard
-          </NavLink>
-        </div>
-      )}
+        ))}
 
       {/* Instructor role */}
-      {role === 'instructor' && (
-        loader ? "Loading" : <div className="space-y-5 mt-10">
-          <NavLink
-            to={'/dashboard/instructorDasboard'}
-            className="text-lg font-bold flex gap-2 items-center cursor-pointer"
-          >
-            <BiSolidUpArrow />
-            instructor Dashboard
-          </NavLink>
-        </div>
-      )}
-      {role === 'teacher' && (
-        loader ? "Loading" : <div className="space-y-5 mt-10">
-          <NavLink
-            to={'/dashboard/TeacherDasboard'}
-            className="text-lg font-bold flex gap-2 items-center cursor-pointer"
-          >
-            <BiSolidUpArrow />
-            Teacher Dashboard
-          </NavLink>
-        </div>
-      )}
+      {role === 'instructor' &&
+        (loader ? (
+          'Loading'
+        ) : (
+          <div className="space-y-5 mt-10">
+            <NavLink
+              to={'/dashboard/instructorDasboard'}
+              className="text-lg font-bold flex gap-2 items-center cursor-pointer"
+            >
+              <BiSolidUpArrow />
+              instructor Dashboard
+            </NavLink>
+          </div>
+        ))}
+      {role === 'teacher' &&
+        (loader ? (
+          'Loading'
+        ) : (
+          <div className="space-y-5 mt-10">
+            <NavLink
+              to={'/dashboard/TeacherDasboard'}
+              className="text-lg font-bold flex gap-2 items-center cursor-pointer"
+            >
+              <BiSolidUpArrow />
+              Teacher Dashboard
+            </NavLink>
+          </div>
+        ))}
     </div>
   );
 };

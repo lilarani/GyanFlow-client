@@ -225,12 +225,15 @@ const Navbar = () => {
                 >
                   Dashboard
                 </Link>
-                <button className="w-full border-[#ffffff44] text-[#ffffffd0] border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44]">
+                <button
+                  onClick={signOutUser}
+                  className="w-full border-[#ffffff44] text-[#ffffffd0] border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44]"
+                >
                   Log-out
                 </button>
               </div>
             ) : (
-              <>
+              <div className="flex flex-col gap-y-4">
                 <Link
                   to={'/register/Student'}
                   className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
@@ -249,7 +252,7 @@ const Navbar = () => {
                 >
                   Instructor Sign-up
                 </Link>
-              </>
+              </div>
             )}
           </div>
         </ul>

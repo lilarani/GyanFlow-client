@@ -13,11 +13,12 @@ const UserProfile = () => {
   const [editMode, setEditMode] = useState(false);
   const [name, setName] = useState(user?.displayName);
   const [email, setEmail] = useState(user?.email);
-  const [phone, setPhone] = useState(user?.phone);
+  const [phone, setPhone] = useState(user?.user?.phone);
+  const [studentId, setStudentId] = useState(user?.user?._id);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  let { data } = useGetMyUserQuery(user?.email);
-  console.log(data);
+  // let { user } = useGetMyUserQuery(user?.email);
+  // console.log(data);
 
   // profile image hangle
   const [preview, setPreview] = useState(null);
@@ -40,7 +41,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="bg-gradient-to-bl to-[#1a044d] from-[#080127]">
+    <div className="bg-gradient-to-bl to-[#0e0227] from-[#0b022e]">
       <div className="">
         <DashboardNavbar
           navTitle={
@@ -51,25 +52,25 @@ const UserProfile = () => {
         />
         <div className="min-h-screen flex flex-col md:flex-row gap-5 container mx-auto">
           {/* Sidebar */}
-          <div className="w-80 bg-gradient-to-bl to-[#110234] from-[#070127] shadow-lg p-8  mt-4 text-gray-300 flex flex-col items-center">
+          <div className="w-80 bg-gradient-to-bl to-[#1a044d] from-[#080127] shadow-lg p-8  mt-4 text-gray-300 flex flex-col items-center">
             <img
-              src={data?.user?.picture}
+              src={user?.data?.picture}
               alt="user image"
               className="w-32 h-32 rounded-full "
             />
             <ul className="mt-6 space-y-4 text-white text-center">
-              <li className="font-semibold text-lg">{data?.user?.name}</li>
-              <li className="font-semibold text-base">{data?.user?.email}</li>
+              <li className="font-semibold text-lg">{user?.data?.name}</li>
+              <li className="font-semibold text-base">{user?.data?.email}</li>
               <li className="font-semibold ">
                 Phone:
-                {data?.user?.phoneNumber || 'N/A'}
+                {user?.data?.phone || 'N/A'}
               </li>
             </ul>
           </div>
 
           {/* Profile Section */}
           <div className="flex-1 gap-8 mt-6">
-            <div className="bg-gradient-to-bl to-[#110234] from-[#070127] shadow-md rounded-lg text-gray-300">
+            <div className="bg-[#0B1739] shadow-md rounded-lg text-gray-300">
               <div className="flex items-center p-6 justify-between border-dashed border-b-[1px] border-gray-500">
                 <h2 className="text-xl font-semibold">My Profile</h2>
                 <FiEdit
@@ -88,12 +89,15 @@ const UserProfile = () => {
                     {editMode ? (
                       <input
                         type="text"
-                        value={name}
+                        value={user?.data?.name}
                         onChange={e => setName(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
-                      <h2 className="text-lg font-semibold">{name}</h2>
+                      <h2 className="text-lg font-semibold">
+                        {' '}
+                        {user?.data?.name}
+                      </h2>
                     )}
                   </div>
                   <div>
@@ -103,12 +107,16 @@ const UserProfile = () => {
                     {editMode ? (
                       <input
                         type="email"
-                        value={email}
+                        value={user?.data?.email}
                         onChange={e => setEmail(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
+                        readOnly
                       />
                     ) : (
-                      <h2 className="text-lg font-semibold">{email}</h2>
+                      <h2 className="text-lg font-semibold">
+                        {' '}
+                        {user?.data?.email}
+                      </h2>
                     )}
                   </div>
                 </div>
@@ -120,12 +128,15 @@ const UserProfile = () => {
                     </label>
                     {editMode ? (
                       <input
-                        type="email"
+                        type="text"
+                        value={studentId}
+                        onChange={e => setStudentId(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
+                        readOnly
                       />
                     ) : (
                       <h2 className="text-lg font-semibold">
-                        {data?.user?._id}
+                        {user?.data?._id}
                       </h2>
                     )}
                   </div>
@@ -136,17 +147,18 @@ const UserProfile = () => {
                     {editMode ? (
                       <input
                         type="text"
-                        value={phone}
+                        value={user?.data?.phone}
                         onChange={e => setPhone(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
                       <h2 className="text-lg font-semibold">
-                        {data?.user?.phone || 'N/A'}
+                        {user?.data?.phone || 'N/A'}
                       </h2>
                     )}
                   </div>
                 </div>
+
                 {/* image change fields */}
                 {editMode && (
                   <div className="space-y-3">
@@ -163,7 +175,7 @@ const UserProfile = () => {
 
                     <label htmlFor="fileUpload" className="cursor-pointer">
                       <img
-                        src={preview || `${data?.user?.picture}`}
+                        src={preview || `${user?.data?.picture}`}
                         alt="Upload"
                         className="w-32 h-32 object-cover border rounded-full shadow-md hover:scale-105 transition"
                       />

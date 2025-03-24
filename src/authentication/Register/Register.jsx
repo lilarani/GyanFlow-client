@@ -1,9 +1,10 @@
-import { useNavigate, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase.config';
 import { useCreateUserMutation } from '../../redux/ApiCalling/apiClice';
+import regImg from '../../assets/images/signup.jpg';
 
 export default function Register() {
   let { role } = useParams();
@@ -46,56 +47,84 @@ export default function Register() {
       toast(error.message);
     }
   };
-
+  // bg-gradient-to-bl from-blue-950 to-[#3d023f]
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-bl from-blue-950 to-[#3d023f] p-6">
-      <div className="w-full text-white my-shadow max-w-md rounded-none p-6 shadow-md">
-        <h2 className="mb-4 text-center text-2xl font-bold">Register {role}</h2>
-        <form onSubmit={handleRegister}>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Name"
-            className="mb-2 w-full rounded-none outline-none border p-2 "
-            required
+    <div className="bg-gradient-to-bl to-[#1a044d] from-[#080127]">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen items-center justify-center container mx-auto p-8">
+        <div className="relative h-full">
+          <img
+            src={regImg}
+            alt="register image"
+            className="  bg-blue-500 opacity-40 h-full w-full"
           />
-          <input
-            type="text"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="Phone"
-            className="mb-2 w-full rounded-none outline-none border p-2 "
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email"
-            className="mb-2 w-full rounded-none outline-none border p-2 "
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Password"
-            className="mb-4 w-full rounded-none outline-none border p-2 "
-            required
-          />
-          <button
-            type="submit"
-            className="mb-2 my-button w-full cursor-pointer rounded-none p-2 text-white "
-            disabled={isLoading}
-          >
-            {isLoading ? 'pagli please wait...' : 'Register'}
-          </button>
-        </form>
+          <div className="text-white absolute text-center top-1/6 md:top-1/3 ">
+            <h2 className="text-base md:text-xl font-bold">
+              GyanFlow - Where Learning Meets Innovation
+            </h2>
+            <p className="text-sm md:text-base  text-gray-300 p-3 font-medium">
+              Join GyanFlow’s interactive classroom to learn, connect, and
+              grow—all in one place.
+            </p>
+          </div>
+        </div>
+
+        {/* register form */}
+        <div className="w-full text-white my-shadow h-full   rounded-none p-6 shadow-md flex flex-col items-center justify-center">
+          <h2 className="mb-4 text-center text-2xl font-bold">
+            Register {role}
+          </h2>
+          <form onSubmit={handleRegister}>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Name"
+              className="mb-2 w-full rounded-none outline-none border p-2 "
+              required
+            />
+            <input
+              type="text"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Phone"
+              className="mb-2 w-full rounded-none outline-none border p-2 "
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email"
+              className="mb-2 w-full rounded-none outline-none border p-2 "
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Password"
+              className="mb-4 w-full rounded-none outline-none border p-2 "
+              required
+            />
+            <button
+              type="submit"
+              className="mb-2 my-button w-full cursor-pointer rounded-none p-2 text-white "
+              disabled={isLoading}
+            >
+              {isLoading ? 'pagli please wait...' : 'Register'}
+            </button>
+            <p className="text-left">
+              Already Have an account? Please{' '}
+              <span className="text-blue-500 cursor-pointer underline">
+                <Link to={'/login'}>Login</Link>
+              </span>
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   );

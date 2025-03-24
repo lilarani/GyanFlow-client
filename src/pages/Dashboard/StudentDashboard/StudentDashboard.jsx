@@ -68,10 +68,9 @@ const StudentDashboard = () => {
     <div className="w-full  bg-default text-white ">
       <MouseEffect />
       <h1 className="text-3xl p-4 text-center w-full">Our courses</h1>
-
       <div className="flex flex-wrap gap-6 justify-center p-6">
-        {courseList.map(course => (
-          <Card course={course} />
+        {courseList.map((course, index) => (
+          <Card key={index} course={course} />
         ))}
       </div>
     </div>

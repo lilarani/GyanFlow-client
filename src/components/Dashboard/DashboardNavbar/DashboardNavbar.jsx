@@ -18,17 +18,21 @@ const flags = [
 import { MdOutlineNotificationsNone } from 'react-icons/md';
 import { useState } from 'react';
 import { FaRegUser } from 'react-icons/fa';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import Sidebar from '../Sidebar/Sidebar';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../../../firebase.config';
+import { toast } from 'react-toastify';
+
 const DashboardNavbar = ({ navTitle }) => {
   const [openFlagModal, setOpenFlagModal] = useState(false);
   const [selectedFlag, setSelectedFlag] = useState(flags[0]);
   const [openUserModal, setOpenUserModal] = useState(false);
   const [openSiderbar, setOpenSidebar] = useState(false);
-  const { user } = useSelector(state => state.authUser);
-  console.log(user);
+  const { user, loader } = useSelector(state => state.authUser);
+  const navigate = useNavigate();
 
   // handle flag modal function
   const handleModal = () => {
@@ -46,9 +50,17 @@ const DashboardNavbar = ({ navTitle }) => {
     setOpenUserModal(!openUserModal);
   };
 
-  //
+  // handel sidebar
   const handleSidebar = () => {
     setOpenSidebar(!openSiderbar);
+  };
+
+  // log-out funtion
+  let signOutUser = () => {
+    signOut(auth).then(async () => {
+      navigate('/login');
+      toast('logout user');
+    });
   };
 
   return (
@@ -103,22 +115,22 @@ const DashboardNavbar = ({ navTitle }) => {
         <div className="relative">
           <img
             onClick={handleUserModal}
-            src={user?.photoURL}
+            src={user?.data?.picture}
             alt="user Images"
             className="w-12 h-12 rounded-full"
           />
           {openUserModal && (
-            <div className="absolute z-50 top-18 bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white w-60 h-56  right-4  p-6">
+            <div className="absolute z-50 top-18 bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white min-w-md  right-4  p-6">
               <div className="flex gap-2 items-center border-b-[1px] border-gray-700 p-2">
                 <img
                   referrerPolicy="no-referrer"
-                  src={user?.photoURL}
+                  src={user?.data?.picture}
                   alt="User image"
                   className="w-12 h-12 rounded-full"
                 />
                 <div>
-                  <p className="text-white">{user?.displayName}</p>
-                  <p>{user?.email}</p>
+                  <p className="text-white">{user?.data?.name}</p>
+                  <p>{user?.data?.email}</p>
                 </div>
               </div>
 
@@ -144,6 +156,13 @@ const DashboardNavbar = ({ navTitle }) => {
                   <TbHelpSquare />
                   Help Center
                 </Link>
+
+                <button
+                  onClick={signOutUser}
+                  className="text-md  border-blue-300 text-blue-300 border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] hover:text-white hover:border-none"
+                >
+                  Logout
+                </button>
               </div>
             </div>
           )}

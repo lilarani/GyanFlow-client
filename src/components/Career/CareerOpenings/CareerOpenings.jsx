@@ -1,21 +1,21 @@
-import React from "react";
-import { GrUserExpert } from "react-icons/gr";
-import { GiMoneyStack } from "react-icons/gi";
-import { AiOutlineSchedule } from "react-icons/ai";
-import carrerData from "../../../../public/carrerOpening.json";
+import React from 'react';
+import { GrUserExpert } from 'react-icons/gr';
+import { GiMoneyStack } from 'react-icons/gi';
+import { AiOutlineSchedule } from 'react-icons/ai';
+import carrerData from '../../../../public/carrerOpening.json';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 
-import { FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 const CareerOpenings = () => {
   return (
-    <div id="career-openings" className="my-28 w-10/12 mx-auto">
+    <div id="career-openings" className="my-28 w-10/12 mx-auto ">
       <h1 className="font-bold  my-4 text-3xl md:text-4xl lg:text-5xl text-center">
         Unlock Your Career Potential
       </h1>
@@ -24,7 +24,7 @@ const CareerOpenings = () => {
         innovative and growth-driven environment!
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {carrerData.map((data) => (
+        {carrerData.map(data => (
           <Card key={data.id}>
             <CardHeader>
               <CardTitle className="text-2xl">{data.job_title}</CardTitle>

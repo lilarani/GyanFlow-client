@@ -97,7 +97,7 @@ const StatisticsTable = () => {
   // Card view for mobile
   const renderMobileCards = () => {
     return (
-      <div className="space-y-4">
+      <div className="space-y-4 ">
         {ordersData.map((order) => (
           <div key={order.id} className="bg-navy-900 rounded-lg p-4 space-y-3">
             <div className="flex justify-between items-center">

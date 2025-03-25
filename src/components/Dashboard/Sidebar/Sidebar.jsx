@@ -19,9 +19,9 @@ const Sidebar = () => {
 
   // let { data } = useGetMyUserQuery(user?.email);
   // console.log(data?.user.role);
-  useEffect(()=>{
-    setRole(user?.data?.role)
-  }, [user , loader])
+  useEffect(() => {
+    setRole(user?.data?.role);
+  }, [user, loader]);
   // const role = user?.user?.role;
   // console.log(user)
 
@@ -50,7 +50,7 @@ const Sidebar = () => {
         ) : (
           <div className="space-y-5 mt-10">
             <NavLink
-              to={'/dashboard/adminDashBoard'}
+              to={'/dashboard/adminDasboard'}
               className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />
@@ -96,7 +96,7 @@ const Sidebar = () => {
         ) : (
           <div className="space-y-5 mt-10">
             <NavLink
-              to={'/dashboard/studentDashboard'}
+              to={'/dashboard/studentDasboard'}
               className="text-lg font-bold flex gap-2 items-center cursor-pointer"
             >
               <BiSolidUpArrow />

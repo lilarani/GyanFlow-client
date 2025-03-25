@@ -104,19 +104,19 @@ const Navbar = () => {
                 </p>
                 <div className="hidden z-50 my-container bg-[#040150]">
                   <Link
-                    to={'/register/Student'}
+                    to={`/register/student`}
                     className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                   >
                     Student Sign-up
                   </Link>
                   <Link
-                    to={'/register/Teacher'}
+                    to={'/register/teacher'}
                     className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                   >
                     Teacher Sign-up
                   </Link>
                   <Link
-                    to={'/register/instructor'}
+                    to={`/register/instructor`}
                     className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                   >
                     Instructor Sign-up
@@ -146,7 +146,7 @@ const Navbar = () => {
                   </p>
                   <div className="w-full flex flex-col gap-4 mt-8">
                     <Link
-                      to={`/dashboard/${role}DashBoard`}
+                      to={`/dashboard/${role}Dasboard`}
                       className="text-md w-full text-center cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff56] bg-[#ffffff44] "
                     >
                       Dashboard

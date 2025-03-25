@@ -50,7 +50,7 @@ export default function Login() {
     setError('');
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // const response = await axios.post('http://localhost:4000/gyanflow/user/login', { email, password }, {
+      // const response = await axios.post('https://gyanflow-server.onrender.com/gyanflow/user/login', { email, password }, {
       //   withCredentials: true
       // });
 
@@ -58,7 +58,7 @@ export default function Login() {
       console.log(res);
 
       // const response = await axios.post(
-      //   'http://localhost:4000/gyanflow/user/login',
+      //   'https://gyanflow-server.onrender.com/gyanflow/user/login',
       //   { email, password },
       //   {
       //     withCredentials: true,
@@ -95,7 +95,7 @@ export default function Login() {
 
         {/* login form */}
         <div className="w-full text-white my-shadow h-full rounded-none p-6 shadow-md flex flex-col items-center justify-center">
-          <h2 className="mb-4 text-center text-2xl font-bold">Login</h2>
+          <h2 className="mb-4 text-center text-2xl font-bold">Sign-In</h2>
           {error && <p className="text-red-400 text-center">{error}</p>}
           <form onSubmit={handleEmailPasswordLogin}>
             <input

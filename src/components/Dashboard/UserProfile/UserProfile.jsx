@@ -94,7 +94,10 @@ const UserProfile = () => {
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
-                      <h2 className="text-lg font-semibold"> {user?.data?.name}</h2>
+                      <h2 className="text-lg font-semibold">
+                        {' '}
+                        {user?.data?.name}
+                      </h2>
                     )}
                   </div>
                   <div>
@@ -104,13 +107,16 @@ const UserProfile = () => {
                     {editMode ? (
                       <input
                         type="email"
-                        value= {user?.data?.email}
+                        value={user?.data?.email}
                         onChange={e => setEmail(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
                         readOnly
                       />
                     ) : (
-                      <h2 className="text-lg font-semibold"> {user?.data?.email}</h2>
+                      <h2 className="text-lg font-semibold">
+                        {' '}
+                        {user?.data?.email}
+                      </h2>
                     )}
                   </div>
                 </div>
@@ -152,6 +158,7 @@ const UserProfile = () => {
                     )}
                   </div>
                 </div>
+
                 {/* image change fields */}
                 {editMode && (
                   <div className="space-y-3">

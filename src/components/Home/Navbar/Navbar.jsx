@@ -9,20 +9,16 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../../../firebase.config';
 import { toast } from 'react-toastify';
 
-
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   let navigate = useNavigate();
-  const { user , loader  } = useSelector(state => state.authUser);
+  const { user, loader } = useSelector(state => state.authUser);
 
   // let { data } = useGetMyUserQuery(user?.email);
   console.log(user?.data?.role);
   const role = user?.data?.role;
   // console.log(user.success , " Loader " , loader)
-
-
 
   useEffect(() => {
     const handleClickOutside = event => {
@@ -91,9 +87,7 @@ const Navbar = () => {
         <div className="xl:flex flex-row hidden">
           <Link className="text-md flex flex-row gap-2 items-center font-bold py-4 px-8 hover:bg-[#ffffff44]">
             <CiSearch /> Search
-            {
-              user?.user?.name
-            }
+            {user?.user?.name}
           </Link>
           {!user ? (
             <div className="flex flex-row">
@@ -132,7 +126,7 @@ const Navbar = () => {
             </div>
           ) : (
             <>
-            <p>{user.success}</p>
+              <p>{user.success}</p>
               <img
                 onClick={handleDropdown}
                 src={user?.data?.picture}
@@ -142,21 +136,25 @@ const Navbar = () => {
               {dropdown && (
                 <div className="bg-black w-80 h-80 absolute top-20 right-12 p-6 ">
                   {/* <image className="text-xl font-bold ">{user?.user?.picture}</h2> */}
-                  <img className='h-15 border-6 p-1 w-15 rounded-full' src={`${user?.data?.picture}`} alt="" />
+                  <img
+                    className="h-15 border-6 p-1 w-15 rounded-full"
+                    src={`${user?.data?.picture}`}
+                    alt=""
+                  />
                   <p className="text-lg font-semibold border-gray-500 border-b-[1px] py-2">
                     {user?.data?.email}
                   </p>
-                  <div className="w-full flex flex-col gap-4 mt-12">
+                  <div className="w-full flex flex-col gap-4 mt-8">
                     <Link
                       to={`/dashboard/${role}DashBoard`}
-                      className="text-md w-full text-center cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] bg-blue-500 "
+                      className="text-md w-full text-center cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff56] bg-[#ffffff44] "
                     >
                       Dashboard
                     </Link>
                     {/* logout btn */}
                     <button
                       onClick={signOutUser}
-                      className="text-md w-full border-blue-500 text-blue-500 border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-blue-500 hover:text-white"
+                      className="text-md w-full border-[#ffffff8a] text-[#ffffffba] border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] hover:text-white"
                     >
                       Logout
                     </button>
@@ -223,16 +221,19 @@ const Navbar = () => {
               <div className="flex flex-col gap-3 w-full">
                 <Link
                   to={'/dashboard'}
-                  className="text-md w-full text-center cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] bg-blue-500 "
+                  className="text-md w-full text-center cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] bg-[#ffffff44] "
                 >
                   Dashboard
                 </Link>
-                <button className="w-full border-blue-500 text-blue-500 border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-blue-500">
+                <button
+                  onClick={signOutUser}
+                  className="w-full border-[#ffffff44] text-[#ffffffd0] border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44]"
+                >
                   Log-out
                 </button>
               </div>
             ) : (
-              <>
+              <div className="flex flex-col gap-y-4">
                 <Link
                   to={'/register/Student'}
                   className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
@@ -251,7 +252,7 @@ const Navbar = () => {
                 >
                   Instructor Sign-up
                 </Link>
-              </>
+              </div>
             )}
           </div>
         </ul>

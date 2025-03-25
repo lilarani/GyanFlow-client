@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -20,17 +20,17 @@ import {
 import { useState } from 'react';
 import { useCreateCourseMutation } from '@/redux/ApiCalling/apiClice';
 
-let ImageHostKey = "47b25851b9d300db92da4ca62f89a4bb";
+let ImageHostKey = '47b25851b9d300db92da4ca62f89a4bb';
 let ImageHosting = `https://api.imgbb.com/1/upload?key=${ImageHostKey}`;
 
 const AddCourses = () => {
   const [status, setStatus] = useState('');
   const [thumbnail, setThumbnail] = useState(null);
-  let [createCourse] = useCreateCourseMutation()
-  const handleFileChange = (e) => {
+  let [createCourse] = useCreateCourseMutation();
+  const handleFileChange = e => {
     setThumbnail(e.target.files[0]);
   };
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const form = e.target;
 
@@ -64,7 +64,6 @@ const AddCourses = () => {
         if (imgData.success) {
           thumbnailUrl = imgData.data.url;
         }
-
       } catch (error) {
         console.log(error);
         return;
@@ -74,16 +73,17 @@ const AddCourses = () => {
     courseData.thumbnail = thumbnailUrl;
 
     let result = await createCourse(courseData).unwrap();
-    console.log(result.data)
-
+    console.log(result.data);
   };
 
   return (
-    <div className="bg-[#0B1739] text-white min-h-screen pt-10">
+    <div className="bg-[#0B1739] text-white  pt-10">
       <Card className="w-10/12 mx-auto bg-gradient-to-b from-gray-900 to-blue-950 text-white">
         <CardHeader>
           <CardTitle className="text-3xl font-bold">Add Course</CardTitle>
-          <CardDescription>Fill out the course information below</CardDescription>
+          <CardDescription>
+            Fill out the course information below
+          </CardDescription>
         </CardHeader>
 
         <CardContent>
@@ -96,12 +96,18 @@ const AddCourses = () => {
 
               <div className="flex flex-col space-y-1.5 w-full">
                 <Label>Short Description</Label>
-                <Textarea name="shortDescription" placeholder="Enter short description" />
+                <Textarea
+                  name="shortDescription"
+                  placeholder="Enter short description"
+                />
               </div>
 
               <div className="flex flex-col space-y-1.5 w-full">
                 <Label>Description</Label>
-                <Textarea name="description" placeholder="Enter full course description" />
+                <Textarea
+                  name="description"
+                  placeholder="Enter full course description"
+                />
               </div>
 
               <div className="flex flex-col space-y-1.5 w-full">
@@ -121,12 +127,20 @@ const AddCourses = () => {
 
               <div className="flex flex-col space-y-1.5 w-full">
                 <Label>Enroll Count</Label>
-                <Input name="enrollCount" type="number" placeholder="Number of enrollments" />
+                <Input
+                  name="enrollCount"
+                  type="number"
+                  placeholder="Number of enrollments"
+                />
               </div>
 
               <div className="flex flex-col space-y-1.5 w-full">
                 <Label>Seats Left</Label>
-                <Input name="seatLeft" type="number" placeholder="Available seats" />
+                <Input
+                  name="seatLeft"
+                  type="number"
+                  placeholder="Available seats"
+                />
               </div>
 
               <div className="flex flex-col space-y-1.5 w-full">
@@ -146,17 +160,24 @@ const AddCourses = () => {
 
               <div className="flex flex-col space-y-1.5 w-full">
                 <Label>Study Plan</Label>
-                <Textarea name="studyPlan" placeholder="Enter study plan details" />
+                <Textarea
+                  name="studyPlan"
+                  placeholder="Enter study plan details"
+                />
               </div>
 
               <div className="flex flex-col space-y-1.5 w-full">
                 <Label>Total Lectures</Label>
-                <Input name="totalLectures" type="number" placeholder="Number of lectures" />
+                <Input
+                  name="totalLectures"
+                  type="number"
+                  placeholder="Number of lectures"
+                />
               </div>
 
               <div className="flex flex-col space-y-1.5 w-full">
                 <Label>Status</Label>
-                <Select onValueChange={(value) => setStatus(value)}>
+                <Select onValueChange={value => setStatus(value)}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select Status" />
                   </SelectTrigger>
@@ -168,7 +189,10 @@ const AddCourses = () => {
                 </Select>
               </div>
 
-              <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg mt-6">
+              <Button
+                type="submit"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg mt-6"
+              >
                 Add Course
               </Button>
             </div>

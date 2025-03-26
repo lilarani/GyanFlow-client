@@ -53,29 +53,41 @@ const Navbar = () => {
             <span className="text-yellow-300 cursor-pointer">Gyan</span>Flow
           </Link>
           <div
-            className="py-4 w-fit h-fit xl:hidden cursor-pointer px-8 hover:bg-[#ffffff44]"
+            className="py-4 w-fit h-fit xl:hidden cursor-pointer px-8"
             onClick={() => setIsOpen(!isOpen)}
           >
             <FaBars />
           </div>
-          <ul className="xl:flex flex-row hidden">
+          <ul className="xl:flex flex-row hidden gap-2">
             <li>
-              <NavLink className="py-4 px-8 hover:bg-[#ffffff44]" to="/">
+              <NavLink
+                className="py-3 px-6 rounded hover:bg-[#ffffff44]"
+                to="/"
+              >
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink className="py-4 px-8 hover:bg-[#ffffff44]" to="/about">
+              <NavLink
+                className="py-3 px-6 rounded hover:bg-[#ffffff44]"
+                to="/about"
+              >
                 About
               </NavLink>
             </li>
             <li>
-              <NavLink className="py-4 px-8 hover:bg-[#ffffff44]" to="/support">
+              <NavLink
+                className="py-3 px-6 rounded hover:bg-[#ffffff44]"
+                to="/support"
+              >
                 Support
               </NavLink>
             </li>
             <li>
-              <NavLink className="py-4 px-8 hover:bg-[#ffffff44]" to="/career">
+              <NavLink
+                className="py-3 px-6 rounded hover:bg-[#ffffff44]"
+                to="/career"
+              >
                 Career
               </NavLink>
             </li>
@@ -116,7 +128,7 @@ const Navbar = () => {
                     Teacher Sign-up
                   </Link>
                   <Link
-                    to={`/register/instructor`}
+                    to={'/register/instructor'}
                     className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                   >
                     Instructor Sign-up

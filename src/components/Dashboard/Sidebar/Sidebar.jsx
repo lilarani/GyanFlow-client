@@ -50,7 +50,7 @@ const Sidebar = () => {
         ) : (
           <div className="space-y-5 mt-10">
             <NavLink
-              to={'/dashboard/adminDasboard'}
+              to={'/dashboard/adminDashboard'}
               className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />
@@ -96,7 +96,7 @@ const Sidebar = () => {
         ) : (
           <div className="space-y-5 mt-10">
             <NavLink
-              to={'/dashboard/studentDasboard'}
+              to={'/dashboard/studentDashboard'}
               className="text-lg font-bold flex gap-2 items-center cursor-pointer"
             >
               <BiSolidUpArrow />
@@ -112,7 +112,7 @@ const Sidebar = () => {
         ) : (
           <div className="space-y-5 mt-10">
             <NavLink
-              to={'/dashboard/instructorDasboard'}
+              to={'/dashboard/instructorDashboard'}
               className="text-lg font-bold flex gap-2 items-center cursor-pointer"
             >
               <BiSolidUpArrow />
@@ -126,7 +126,7 @@ const Sidebar = () => {
         ) : (
           <div className="space-y-5 mt-10">
             <NavLink
-              to={'/dashboard/TeacherDasboard'}
+              to={'/dashboard/teacherDashboard'}
               className="text-lg font-bold flex gap-2 items-center cursor-pointer"
             >
               <BiSolidUpArrow />

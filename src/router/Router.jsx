@@ -15,6 +15,7 @@ import InstructorDashboard from '@/pages/Dashboard/InstructorDashboard/Instructo
 import UserProfile from '@/components/Dashboard/UserProfile/UserProfile';
 import AdminDashboard from '@/pages/Dashboard/AdminDashboard/AdminDashboard';
 import Career from '@/pages/Career/Career';
+import TecherDashboard from '@/pages/Dashboard/TecherDashboard/TecherDashboard';
 
 export const router = createBrowserRouter([
   {
@@ -55,7 +56,7 @@ export const router = createBrowserRouter([
       // admin related routes
 
       {
-        path: 'adminDasboard',
+        path: 'adminDashboard',
         element: <AdminDashboard></AdminDashboard>,
       },
 
@@ -75,11 +76,15 @@ export const router = createBrowserRouter([
       },
       // student related  routes
       {
-        path: 'studentDasboard',
+        path: 'studentDashboard',
         element: <StudentDashboard></StudentDashboard>,
       },
       {
-        path: 'instructorDasboard',
+        path: 'teacherDashboard',
+        element: <TecherDashboard></TecherDashboard>,
+      },
+      {
+        path: 'instructorDashboard',
         element: <InstructorDashboard></InstructorDashboard>,
       },
     ],

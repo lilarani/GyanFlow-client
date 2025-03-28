@@ -39,7 +39,7 @@ export default function Register() {
       const user = userCredential.user;
       const result = await createUser(formData).unwrap();
       console.log('hello my backend response:', result);
-
+      localStorage.setItem('token' , result?.data?.token)
       toast('Registration successful!');
       navigate('/');
     } catch (error) {

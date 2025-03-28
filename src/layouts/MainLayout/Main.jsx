@@ -19,9 +19,11 @@ export default function Main() {
       dispatch(setLoader(true));
       if (user) {
         try {
-          const res = await axios.get(`http://localhost:4000/gyanflow/user/role/${user?.email}`);
+          const res = await axios.get(`https://hello-2-o93u.onrender.com/gyanflow/user/role/${user?.email}`);
           dispatch(setUser(res.data));
+          dispatch(setLoader(false));
           console.log(res.data);
+          localStorage.setItem('token', res?.data?.token)
         } catch (error) {
           console.error("Error fetching user role:", error);
         } finally {
@@ -29,8 +31,10 @@ export default function Main() {
         }
       } else {
         try {
-          await logOutUser();
+          localStorage.removeItem('token')
           dispatch(setUser(null));
+          dispatch(setLoader(false));
+
           console.log('User not found, logged out.');
         } catch (error) {
           console.error("Logout Error:", error);

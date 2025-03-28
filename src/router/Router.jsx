@@ -16,6 +16,8 @@ import UserProfile from '@/components/Dashboard/UserProfile/UserProfile';
 import AdminDashboard from '@/pages/Dashboard/AdminDashboard/AdminDashboard';
 import Career from '@/pages/Career/Career';
 import TecherDashboard from '@/pages/Dashboard/TecherDashboard/TecherDashboard';
+import StudentRoutes from './../protectedRoutes/StudentRoutes';
+import AdminRoute from './../protectedRoutes/AdminRoute';
 
 export const router = createBrowserRouter([
   {
@@ -57,9 +59,9 @@ export const router = createBrowserRouter([
 
       {
         path: 'adminDashboard',
-        element: <AdminDashboard></AdminDashboard>,
+        element: <AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>,
       },
-
+      
       {
         path: 'courses',
         element: <Courses />,
@@ -77,7 +79,7 @@ export const router = createBrowserRouter([
       // student related  routes
       {
         path: 'studentDashboard',
-        element: <StudentDashboard></StudentDashboard>,
+        element: <StudentRoutes><StudentDashboard></StudentDashboard></StudentRoutes>,
       },
       {
         path: 'teacherDashboard',

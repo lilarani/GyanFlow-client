@@ -49,7 +49,6 @@ export default function Login() {
     e.preventDefault();
     setError('');
     try {
-
       let res = await logInUser({ email, password }).unwrap();
       console.log(res);
       localStorage.setItem('token', res?.data?.token)
@@ -58,7 +57,6 @@ export default function Login() {
         // const response = await axios.post('https://hello-2-o93u.onrender.com/gyanflow/user/login', { email, password }, {
         //   withCredentials: true
         // });
-
 
         // const response = await axios.post(
         //   'https://hello-2-o93u.onrender.com/gyanflow/user/login',
@@ -100,7 +98,10 @@ export default function Login() {
         {/* login form */}
         <div className="w-full text-white my-shadow h-full rounded-none p-6 shadow-md flex flex-col items-center justify-center">
           <h2 className="mb-4 text-center text-2xl font-bold">Login</h2>
-          <form className='flex flex-col gap-5 w-full' onSubmit={handleEmailPasswordLogin}>
+          <form
+            className="flex flex-col gap-5 w-full"
+            onSubmit={handleEmailPasswordLogin}
+          >
             <input
               type="email"
               placeholder="Email"

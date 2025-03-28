@@ -71,7 +71,7 @@ export const router = createBrowserRouter([
         path: 'addCourse',
         element: <AddCourses />,
       },
-      // 
+      //
       {
         path: 'userManagement',
         element: <UserManagement></UserManagement>,
@@ -83,7 +83,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'teacherDashboard',
-        element: <TecherDashboard></TecherDashboard>
+        element: <TecherDashboard></TecherDashboard>,
       },
       {
         path: 'instructorDashboard',

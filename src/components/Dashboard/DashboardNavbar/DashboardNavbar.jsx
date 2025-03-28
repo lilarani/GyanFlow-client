@@ -19,12 +19,13 @@ import { MdOutlineNotificationsNone } from 'react-icons/md';
 import { useState } from 'react';
 import { FaRegUser } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import Sidebar from '../Sidebar/Sidebar';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../../../firebase.config';
 import { toast } from 'react-toastify';
+import { setUser } from '@/redux/authSlice';
 
 const DashboardNavbar = ({ navTitle }) => {
   const [openFlagModal, setOpenFlagModal] = useState(false);
@@ -33,6 +34,7 @@ const DashboardNavbar = ({ navTitle }) => {
   const [openSiderbar, setOpenSidebar] = useState(false);
   const { user, loader } = useSelector(state => state.authUser);
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   // handle flag modal function
   const handleModal = () => {
@@ -58,6 +60,7 @@ const DashboardNavbar = ({ navTitle }) => {
   // log-out funtion
   let signOutUser = () => {
     signOut(auth).then(async () => {
+      dispatch(setUser(null))
       navigate('/login');
       toast('logout user');
     });

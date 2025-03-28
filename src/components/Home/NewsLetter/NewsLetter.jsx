@@ -3,12 +3,12 @@ import newsImg from '../../../assets/images/newsLetter.jpg';
 
 const NewsLetter = () => {
   return (
-    <div className="bg-sky-100 bg-opacity-20 z-30 relative top-32 p-5 container  mx-auto border-[1px] border-gray-300">
+    <div className=" bg-gradient-to-bl to-sky-100 from-[#a497e0]  bg-opacity-20 z-30 relative top-32 p-5 container  mx-auto border-[1px] border-gray-300">
       <div
         className="hero p-10 flex justify-center"
         style={{
           backgroundImage: `url(${newsLetterBg})`,
-          backgroundColor: '#FFFFFF',
+          backgroundColor: 'bg-yellow-100',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

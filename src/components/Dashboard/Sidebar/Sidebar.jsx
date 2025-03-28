@@ -19,9 +19,9 @@ const Sidebar = () => {
 
   // let { data } = useGetMyUserQuery(user?.email);
   // console.log(data?.user.role);
-  useEffect(()=>{
-    setRole(user?.data?.role)
-  }, [user , loader])
+  useEffect(() => {
+    setRole(user?.data?.role);
+  }, [user, loader]);
   // const role = user?.user?.role;
   // console.log(user)
 

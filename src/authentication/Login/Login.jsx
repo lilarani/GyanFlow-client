@@ -49,18 +49,17 @@ export default function Login() {
     e.preventDefault();
     setError('');
     try {
-
       let res = await logInUser({ email, password }).unwrap();
-      console.log(res.success);
-      if (res?.success) {
+      console.log(res);
+      localStorage.setItem('token', res?.data?.token)
+      // if (res?.success) {
         await signInWithEmailAndPassword(auth, email, password);
-        // const response = await axios.post('http://localhost:4000/gyanflow/user/login', { email, password }, {
+        // const response = await axios.post('https://hello-2-o93u.onrender.com/gyanflow/user/login', { email, password }, {
         //   withCredentials: true
         // });
 
-
         // const response = await axios.post(
-        //   'http://localhost:4000/gyanflow/user/login',
+        //   'https://hello-2-o93u.onrender.com/gyanflow/user/login',
         //   { email, password },
         //   {
         //     withCredentials: true,
@@ -68,10 +67,10 @@ export default function Login() {
         // );
         console.log('Email/Password login successful');
         navigate('/');
-      }
+      // }
     } catch (e) {
-      setError(e.data.message);
-      console.error(e.data.message);
+      setError(e?.data?.message);
+      console.error(e.message);
     }
   };
 
@@ -99,7 +98,10 @@ export default function Login() {
         {/* login form */}
         <div className="w-full text-white my-shadow h-full rounded-none p-6 shadow-md flex flex-col items-center justify-center">
           <h2 className="mb-4 text-center text-2xl font-bold">Login</h2>
-          <form className='flex flex-col gap-5 w-full' onSubmit={handleEmailPasswordLogin}>
+          <form
+            className="flex flex-col gap-5 w-full"
+            onSubmit={handleEmailPasswordLogin}
+          >
             <input
               type="email"
               placeholder="Email"
@@ -116,7 +118,7 @@ export default function Login() {
               className=" w-full rounded-none outline-none border p-2"
               required
             />
-            {error && <p className="text-red-400 text-start ">{error}</p> }
+            {error && <p className="text-red-400 text-start ">{error}</p>}
 
             <button
               type="submit"

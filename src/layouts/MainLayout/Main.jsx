@@ -8,32 +8,41 @@ import { setUser, setLoader } from '../../redux/authSlice';
 import Navbar from '../../components/Home/Navbar/Navbar';
 import Footer from '../../components/Home/Footer/Footer';
 import { ToastContainer } from 'react-toastify';
-import { useLogOutUserMutation, useGetMyUserQuery } from '@/redux/ApiCalling/apiClice';
+import {
+  useLogOutUserMutation,
+  useGetMyUserQuery,
+} from '@/redux/ApiCalling/apiClice';
 import axios from 'axios';
 
 export default function Main() {
   const dispatch = useDispatch();
-  let [logOutUser] = useLogOutUserMutation()
+  let [logOutUser] = useLogOutUserMutation();
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async user => {
       dispatch(setLoader(true));
+      console.log(user)
       if (user) {
         try {
-          const res = await axios.get(`http://localhost:4000/gyanflow/user/role/${user?.email}`);
-          dispatch(setUser(res.data));
-          console.log(res.data);
+          console.log(user)
+          const res = await axios.get(`https://hello-2-o93u.onrender.com/gyanflow/user/role/${user?.email}`);
+          dispatch(setUser(res?.data));
+          dispatch(setLoader(false));
+          console.log(res?.data);
+          localStorage.setItem('token', res?.data?.token)
         } catch (error) {
-          console.error("Error fetching user role:", error);
+          console.error('Error fetching user role:', error);
         } finally {
           dispatch(setLoader(false));
         }
       } else {
         try {
-          await logOutUser();
+          localStorage.removeItem('token')
           dispatch(setUser(null));
+          dispatch(setLoader(false));
+
           console.log('User not found, logged out.');
         } catch (error) {
-          console.error("Logout Error:", error);
+          console.error('Logout Error:', error);
         } finally {
           dispatch(setLoader(false));
         }

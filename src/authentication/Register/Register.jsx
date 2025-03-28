@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from 'react-router';
+import { Link, useLocation, useNavigate, useParams } from 'react-router';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -8,6 +8,8 @@ import regImg from '../../assets/images/signup.jpg';
 
 export default function Register() {
   let { role } = useParams();
+  let userRole = useLocation().pathname.split('/')[2];
+  console.log(userRole);
   let navigate = useNavigate();
   const [createUser, { isLoading, isError }] = useCreateUserMutation();
 
@@ -32,14 +34,14 @@ export default function Register() {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
-        formData.email,
-        formData.password
+        formData?.email,
+        formData?.password
       );
 
       const user = userCredential.user;
       const result = await createUser(formData).unwrap();
       console.log('hello my backend response:', result);
-
+      localStorage.setItem('token' , result?.data?.token)
       toast('Registration successful!');
       navigate('/');
     } catch (error) {

@@ -15,7 +15,7 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 
 const CareerOpenings = () => {
   return (
-    <div id="career-openings" className="my-28">
+    <div id="career-openings" className="my-28 px-6">
       <h1 className="font-bold  my-4 text-3xl md:text-4xl lg:text-5xl text-center">
         Unlock Your Career Potential
       </h1>

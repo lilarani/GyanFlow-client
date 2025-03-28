@@ -34,8 +34,8 @@ export default function Register() {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
-        formData.email,
-        formData.password
+        formData?.email,
+        formData?.password
       );
 
       const user = userCredential.user;

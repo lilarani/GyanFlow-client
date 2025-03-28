@@ -1,5 +1,5 @@
 import newsLetterBg from '../../../assets/images/bg-shadow.png';
-import newsImg from '../../../assets/images/newsLetter.jpg';
+import newsImg from '../../../assets/images/newsletter.png';
 
 const NewsLetter = () => {
   return (
@@ -17,7 +17,7 @@ const NewsLetter = () => {
         <div className="hero-content text-center ">
           <div className="flex gap-8">
             <div>
-              <img src={newsImg} alt="" className="w-62 h-52 rounded-lg" />
+              <img src={newsImg} alt="" className="w-72 h-52 rounded-lg" />
             </div>
             <div className="max-w-md flex flex-col  space-y-5 text-left">
               <h1 className="text-base md:text-3xl font-bold">

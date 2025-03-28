@@ -121,7 +121,7 @@ console.log(data)
                     • {course.category}
                   </Badge>
                 </TableCell>
-                <TableCell>{course.totalDuration} hrs</TableCell>
+                <TableCell>{course.totalDuration} mounth</TableCell>
                 <TableCell className="text-right">${course.price}</TableCell>
                 <TableCell>
                   <div className="flex gap-2 justify-end">

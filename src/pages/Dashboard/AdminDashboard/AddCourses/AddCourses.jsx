@@ -1,34 +1,33 @@
 'use client';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { useCreateCourseMutation, useGetInstructorsQuery } from '@/redux/ApiCalling/apiClice';
 import { useState } from 'react';
-import { useCreateCourseMutation } from '@/redux/ApiCalling/apiClice';
+import { toast } from 'react-toastify';
+import { ImCross } from "react-icons/im";
 
 let ImageHostKey = '47b25851b9d300db92da4ca62f89a4bb';
 let ImageHosting = `https://api.imgbb.com/1/upload?key=${ImageHostKey}`;
 
+const instructorsList = ["John Doe", "Jane Smith", "Alice Brown", "Bob Johnson"];
+
 const AddCourses = () => {
   const [status, setStatus] = useState('');
   const [thumbnail, setThumbnail] = useState(null);
-  let [createCourse] = useCreateCourseMutation();
+  const [selectedInstructors, setSelectedInstructors] = useState([]);
+  const [open, setModal] = useState(false)
+  const [category, setCategory] = useState()
+  const { data } = useGetInstructorsQuery();
+  const [createCourse, { data: addInfo, isLoading }] = useCreateCourseMutation()
+
+
   const handleFileChange = e => {
     setThumbnail(e.target.files[0]);
+  };
+
+  const handleInstructorChange = (e) => {
+    const { value, checked } = e.target;
+    setSelectedInstructors(prev =>
+      checked ? [...prev, value] : prev.filter(name => name !== value)
+    );
   };
   const handleSubmit = async e => {
     e.preventDefault();
@@ -38,18 +37,16 @@ const AddCourses = () => {
       title: form.title.value,
       shortDescription: form.shortDescription.value,
       description: form.description.value,
-      // instructors: form.instructors.value.split(',').map((name) => name.trim()),
-      // categoryId: form.categoryId.value,
-      totalDuration: form.totalDuration.value,
-      enrollCount: form.enrollCount.value,
-      seatLeft: form.seatLeft.value,
       batch: form.batch.value,
       price: form.price.value,
       studyPlan: form.studyPlan.value,
-      totalLectures: form.totalLectures.value,
+      totalDuration: form.totalDuration.value,
+      category: category,
       status: status,
+      instructors: selectedInstructors,
     };
 
+   
     let thumbnailUrl = '';
     if (thumbnail) {
       const imageData = new FormData();
@@ -71,134 +68,97 @@ const AddCourses = () => {
     }
 
     courseData.thumbnail = thumbnailUrl;
+    // console.log("Final Data:", courseData);
 
-    let result = await createCourse(courseData).unwrap();
-    console.log(result.data);
+    try {
+      const result = await createCourse(courseData).unwrap();
+      console.log("API Response:", result);
+
+      form.reset();
+      setThumbnail(null);
+      setSelectedInstructors([]);
+      setStatus('');
+
+      toast('Course added successfully!');
+    } catch (error) {
+      console.error("Error adding course:", error);
+      toast.error("Failed to add course.");
+    }
   };
 
+
   return (
-    <div className="bg-[#0B1739] text-white  pt-10">
-      <Card className="w-10/12 mx-auto bg-gradient-to-b from-gray-900 to-blue-950 text-white">
-        <CardHeader>
-          <CardTitle className="text-3xl font-bold">Add Course</CardTitle>
-          <CardDescription>
-            Fill out the course information below
-          </CardDescription>
-        </CardHeader>
-
-        <CardContent>
-          <form onSubmit={handleSubmit}>
-            <div className="grid w-full items-center gap-4">
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Title</Label>
-                <Input name="title" placeholder="Enter course title" />
+    <div className=" bg-gray-900 relative text-white p-6">
+      <div className=" p-6  shadow-lg">
+        <div className='flex items-center flex-row justify-between '>
+          <h2 className="text-xl font-bold mb-4">Add Course</h2>
+          <label onClick={() => setModal(!open)} className="font-semibold relative px-3 py-1 cursor-pointer border-white bg-[#ffffff3a] rounded-full hover:bg-[#ffffffa3]">Select Instructors </label>
+          {
+            open && <div className="flex absolute top-20 w-[300px] border border-white rounded-md right-16 bg-[#0e0a30] p-5 flex-col gap-1">
+              <div onClick={() => setModal(!open)} className='p-2 cursor-pointer text-xs w-fit absolute top-2 right-2 rounded-full bg-[#ffffff36]'>
+                <ImCross />
               </div>
+              {data?.map((instructor, index) => (
+                <label
+                  key={index}
+                  className="flex items-center flex-row px-3 w-full text-sm py-2 cursor-pointer gap-2 transition-all "
+                >
+                  <input
+                    type="checkbox"
+                    value={instructor._id}
+                    onChange={handleInstructorChange}
+                    className="peer hidden"
+                  />
 
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Short Description</Label>
-                <Textarea
-                  name="shortDescription"
-                  placeholder="Enter short description"
-                />
-              </div>
+                  <div className='  rounded-md border border-gray-700 hover:bg-blue-100 flex felx-row gap-2 w-full p-2  peer-checked:bg-[#9593f457]'>
+                    <img className='h-10 w-10 rounded-full border' src={instructor.picture} alt={instructor.name} />
+                    <div className="">
+                      <h1 className="font-semibold">{instructor.name}</h1>
+                      <p className="text-xs">{instructor.email}</p>
+                    </div>
+                  </div>
+                </label>
+              ))}
 
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Description</Label>
-                <Textarea
-                  name="description"
-                  placeholder="Enter full course description"
-                />
-              </div>
 
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Instructor(s)</Label>
-                <Input name="instructors" placeholder="Instructor name(s)" />
-              </div>
-
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Category ID</Label>
-                <Input name="categoryId" placeholder="Enter category ID" />
-              </div>
-
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Total Duration (Hours)</Label>
-                <Input name="totalDuration" placeholder="e.g., 30" />
-              </div>
-
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Enroll Count</Label>
-                <Input
-                  name="enrollCount"
-                  type="number"
-                  placeholder="Number of enrollments"
-                />
-              </div>
-
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Seats Left</Label>
-                <Input
-                  name="seatLeft"
-                  type="number"
-                  placeholder="Available seats"
-                />
-              </div>
-
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Batch</Label>
-                <Input name="batch" placeholder="Batch Name or Number" />
-              </div>
-
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Price (BDT)</Label>
-                <Input name="price" type="number" placeholder="Enter price" />
-              </div>
-
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Thumbnail</Label>
-                <Input type="file" onChange={handleFileChange} />
-              </div>
-
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Study Plan</Label>
-                <Textarea
-                  name="studyPlan"
-                  placeholder="Enter study plan details"
-                />
-              </div>
-
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Total Lectures</Label>
-                <Input
-                  name="totalLectures"
-                  type="number"
-                  placeholder="Number of lectures"
-                />
-              </div>
-
-              <div className="flex flex-col space-y-1.5 w-full">
-                <Label>Status</Label>
-                <Select onValueChange={value => setStatus(value)}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select Status" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Active">Active</SelectItem>
-                    <SelectItem value="Inactive">Inactive</SelectItem>
-                    <SelectItem value="Upcoming">Upcoming</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <Button
-                type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg mt-6"
-              >
-                Add Course
-              </Button>
             </div>
-          </form>
-        </CardContent>
-      </Card>
+          }
+        </div>
+        <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+          <div className='flex flex-col gap-2'>
+            <input name="title" placeholder='Title...' className="w-full p-2 rounded bg-[#f5f5f518] outline-none border border-gray-600" />
+            <input type='number' name="totalDuration" placeholder='Total Duration (month)' className="w-full p-2 rounded  bg-[#f5f5f518] outline-none border border-gray-600" />
+
+            <input type="file" onChange={handleFileChange} className="w-full p-2 rounded  bg-[#f5f5f518] outline-none border border-gray-600" />
+            <select onChange={e => setStatus(e.target.value)} className="w-full p-2 rounded  bg-[#f5f5f518] outline-none border border-gray-600">
+              <option value="">Select Status</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+              <option value="Upcoming">Upcoming</option>
+            </select>
+            <textarea name="description" rows={3} placeholder='Description' className="w-full p-2 rounded  bg-[#f5f5f518] outline-none border border-gray-600"></textarea>
+          </div>
+
+          <div className='flex flex-col gap-2'>
+            <input name="batch" type='number' placeholder='Batch...' className="w-full p-2 rounded  bg-[#f5f5f518] outline-none border border-gray-600" />
+            <input name="price" type="number" placeholder='Price (BDT)' className="w-full p-2 rounded  bg-[#f5f5f518] outline-none border border-gray-600" />
+            <select onChange={e => setCategory(e.target.value)} className="w-full p-2 rounded  bg-[#f5f5f518] outline-none border border-gray-600">
+              <option value="">Select Category</option>
+              <option value="Web development">Web development</option>
+              <option value="App Development">App Development</option>
+              <option value="Ai Learning">Ai Learning</option>
+            </select>
+            <textarea name="studyPlan" rows={2} placeholder='Study Plan' className="w-full p-2 rounded  bg-[#f5f5f518] outline-none border border-gray-600"></textarea>
+            <textarea name="shortDescription" rows={2} placeholder='Short Description' className="w-full p-2 rounded  bg-[#f5f5f518] outline-none border border-gray-600"></textarea>
+          </div>
+
+          <button type="submit" className="col-span-2 w-full bg-[#f5f5f518] outline-none cursor-pointer hover:bg-[#f5f5f54c]  text-white py-2 rounded mt-4">
+            {
+              isLoading ? 'adding informations...' : 'Add Course'
+            }
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -5,9 +5,9 @@ export const baseQuery = fetchBaseQuery({
   prepareHeaders: (headers) => {
     const token = localStorage.getItem('token');
     if (token) {
-      headers.set('Authorization', `Bearer ${token}`); // Setting the Authorization header
+      headers.set('Authorization', `Bearer ${token}`); 
     }
-    return headers; // Returning the modified headers object
+    return headers ;
   }
 
   // baseUrl: 'http://localhost:4000',

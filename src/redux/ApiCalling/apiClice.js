@@ -22,18 +22,23 @@ export const apiSlice = createApi({
       query: () => '/gyanflow/user/all-instructors'
     }),
 
+    
+    // course for instructor 
+    courseForInstructor : builder.query({
+      query : (id)=> `/gyanflow/cours/course-for-instructor/${id}`
+    }),
     // courses get api
     getCourse: builder.query({
       query: () => '/gyanflow/cours/all-course',
     }),
-
+    
     logOutUser: builder.mutation({
       query: () => ({
         url: '/gyanflow/user/logout',
         method: 'GET',
       }),
     }),
-
+    
     googleLogin: builder.mutation({
       query: data => ({
         url: '/gyanflow/user/googleLogin',
@@ -91,6 +96,7 @@ export const {
   useGetCourseQuery,
   useDeleteUserMutation,
   useCreateCourseMutation,
-  useGetInstructorsQuery
+  useGetInstructorsQuery,
+  useCourseForInstructorQuery
 } = apiSlice;
 export default apiSlice;

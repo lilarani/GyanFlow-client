@@ -18,7 +18,7 @@ const AddCourses = () => {
   const { data } = useGetInstructorsQuery();
   const [createCourse, { data: addInfo, isLoading }] = useCreateCourseMutation()
 
-
+  console.log(data)
   const handleFileChange = e => {
     setThumbnail(e.target.files[0]);
   };
@@ -46,7 +46,7 @@ const AddCourses = () => {
       instructors: selectedInstructors,
     };
 
-   
+
     let thumbnailUrl = '';
     if (thumbnail) {
       const imageData = new FormData();

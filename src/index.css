@@ -7,6 +7,16 @@
 /* font Cormorant Garamond */
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  scrollbar-width: none;
+}
+
+
 .my-shadow {
   box-shadow: 0px 0px 20px rgba(76, 221, 240, 0.482);
 }

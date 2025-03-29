@@ -63,14 +63,13 @@ export const router = createBrowserRouter([
       },
       {
         path: 'courses',
-        element: <Courses />,
+        element: <AdminRoute><Courses /></AdminRoute>,
       },
       {
         // dashboard/addCourse'
         path: 'addCourse',
-        element: <AddCourses />,
+        element: <AdminRoute><AddCourses /></AdminRoute>,
       },
-      //
       {
         path: 'userManagement',
         element: <UserManagement></UserManagement>,

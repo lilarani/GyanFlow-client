@@ -20,15 +20,17 @@ export default function Main() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async user => {
       dispatch(setLoader(true));
-      console.log(user)
+      console.log(user);
       if (user) {
         try {
-          console.log(user)
-          const res = await axios.get(`https://hello-2-o93u.onrender.com/gyanflow/user/role/${user?.email}`);
+          console.log(user);
+          const res = await axios.get(
+            `https://gyanflow-server.onrender.com/gyanflow/user/role/${user?.email}`
+          );
           dispatch(setUser(res?.data));
           dispatch(setLoader(false));
           console.log(res?.data);
-          localStorage.setItem('token', res?.data?.token)
+          localStorage.setItem('token', res?.data?.token);
         } catch (error) {
           console.error('Error fetching user role:', error);
         } finally {
@@ -36,7 +38,7 @@ export default function Main() {
         }
       } else {
         try {
-          localStorage.removeItem('token')
+          localStorage.removeItem('token');
           dispatch(setUser(null));
           dispatch(setLoader(false));
 

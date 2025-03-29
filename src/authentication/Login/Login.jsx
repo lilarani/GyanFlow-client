@@ -51,22 +51,22 @@ export default function Login() {
     try {
       let res = await logInUser({ email, password }).unwrap();
       console.log(res);
-      localStorage.setItem('token', res?.data?.token)
+      localStorage.setItem('token', res?.data?.token);
       // if (res?.success) {
-        await signInWithEmailAndPassword(auth, email, password);
-        // const response = await axios.post('https://hello-2-o93u.onrender.com/gyanflow/user/login', { email, password }, {
-        //   withCredentials: true
-        // });
+      await signInWithEmailAndPassword(auth, email, password);
+      // const response = await axios.post('https://gyanflow-server.onrender.com/gyanflow/user/login', { email, password }, {
+      //   withCredentials: true
+      // });
 
-        // const response = await axios.post(
-        //   'https://hello-2-o93u.onrender.com/gyanflow/user/login',
-        //   { email, password },
-        //   {
-        //     withCredentials: true,
-        //   }
-        // );
-        console.log('Email/Password login successful');
-        navigate('/');
+      // const response = await axios.post(
+      //   'https://gyanflow-server.onrender.com/gyanflow/user/login',
+      //   { email, password },
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
+      console.log('Email/Password login successful');
+      navigate('/');
       // }
     } catch (e) {
       setError(e?.data?.message);

@@ -1,6 +1,7 @@
 import { useGetUsersQuery, useGetInstructorsQuery, useCourseForInstructorQuery } from '@/redux/ApiCalling/apiClice';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router';
 
 const InstructorDashboard = () => {
   const { user, loader } = useSelector(state => state.authUser);
@@ -15,11 +16,14 @@ const InstructorDashboard = () => {
 
     <div className='flex flex-col  gap-16 p-6'>
       {
-        data?.map(course => <div className="border my-shadow sticky md:relative top-3 flex flex-col ">
+        data?.map(course => <div key={course._id} className="border my-shadow sticky md:relative top-3 flex flex-col ">
 
           <div className='md:flex bg-[#050520e9] flex-row gap-4'>
             <img src={course.thumbnail} alt={course.title} className="w-full flex-1 h-[200px]  object-cover" />
             <div className="p-4 flex-1 flex flex-col justify-between text-blue-200 ">
+              <div>
+                <Link to={`action/${course._id}`}>Go to action</Link>
+              </div>
               <h2 className="text-xl font-bold">{course.title}</h2>
               <p className=" text-xs mt-1">{course.description}</p>
               <div className="flex justify-between items-center mt-4">

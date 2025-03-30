@@ -88,7 +88,7 @@ const AddCourses = () => {
 
 
   return (
-    <div className=" bg-gray-900 relative text-white p-6">
+    <div className=" bg-gray-900 relative h-full text-white p-6">
       <div className=" p-6  shadow-lg">
         <div className='flex items-center flex-row justify-between '>
           <h2 className="text-xl font-bold mb-4">Add Course</h2>
@@ -98,27 +98,29 @@ const AddCourses = () => {
               <div onClick={() => setModal(!open)} className='p-2 cursor-pointer text-xs w-fit absolute top-2 right-2 rounded-full bg-[#ffffff36]'>
                 <ImCross />
               </div>
-              {data?.map((instructor, index) => (
-                <label
-                  key={index}
-                  className="flex items-center flex-row px-3 w-full text-sm py-2 cursor-pointer gap-2 transition-all "
-                >
-                  <input
-                    type="checkbox"
-                    value={instructor._id}
-                    onChange={handleInstructorChange}
-                    className="peer hidden"
-                  />
+              <div className='h-60 overflow-scroll scrollbar-hidden'>
+                {data?.map((instructor, index) => (
+                  <label
+                    key={index}
+                    className="flex items-center flex-row px-3 w-full text-sm py-2 cursor-pointer gap-2 transition-all "
+                  >
+                    <input
+                      type="checkbox"
+                      value={instructor._id}
+                      onChange={handleInstructorChange}
+                      className="peer hidden"
+                    />
 
-                  <div className='  rounded-md border border-gray-700 hover:bg-blue-100 flex felx-row gap-2 w-full p-2  peer-checked:bg-[#9593f457]'>
-                    <img className='h-10 w-10 rounded-full border' src={instructor.picture} alt={instructor.name} />
-                    <div className="">
-                      <h1 className="font-semibold">{instructor.name}</h1>
-                      <p className="text-xs">{instructor.email}</p>
+                    <div className='  rounded-md border border-gray-700 hover:bg-blue-100 flex felx-row gap-2 w-full p-2  peer-checked:bg-[#9593f457]'>
+                      <img className='h-10 w-10 rounded-full border' src={instructor.picture} alt={instructor.name} />
+                      <div className="">
+                        <h1 className="font-semibold">{instructor.name}</h1>
+                        <p className="text-xs">{instructor.email}</p>
+                      </div>
                     </div>
-                  </div>
-                </label>
-              ))}
+                  </label>
+                ))}
+              </div>
 
 
             </div>

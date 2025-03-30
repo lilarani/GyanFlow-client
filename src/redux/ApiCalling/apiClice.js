@@ -4,7 +4,7 @@ import { interceptorQuery } from './../customInterceptor/interceptor';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: interceptorQuery,
-  tagTypes: ['user'],
+  tagTypes: ['user', 'module' , 'video'],
   endpoints: builder => ({
     // all GET API
     getUsers: builder.query({
@@ -22,23 +22,27 @@ export const apiSlice = createApi({
       query: () => '/gyanflow/user/all-instructors'
     }),
 
-    
+
     // course for instructor 
-    courseForInstructor : builder.query({
-      query : (id)=> `/gyanflow/cours/course-for-instructor/${id}`
+    courseForInstructor: builder.query({
+      query: (id) => `/gyanflow/cours/course-for-instructor/${id}`
+    }),
+    allModules: builder.query({
+      query: (id) => `/gyanflow/instructor/all-modules/${id}`,
+      providesTags : ['video','module']
     }),
     // courses get api
     getCourse: builder.query({
       query: () => '/gyanflow/cours/all-course',
     }),
-    
+
     logOutUser: builder.mutation({
       query: () => ({
         url: '/gyanflow/user/logout',
         method: 'GET',
       }),
     }),
-    
+
     googleLogin: builder.mutation({
       query: data => ({
         url: '/gyanflow/user/googleLogin',
@@ -69,11 +73,29 @@ export const apiSlice = createApi({
     // POST API - createUser
     createUser: builder.mutation({
       query: newUser => ({
-        //   https://gyanflow-server.onrender.com
+        //   http://localhost:4000
         url: '/gyanflow/user/regiser',
         method: 'POST',
         body: newUser,
       }),
+    }),
+
+    createModule: builder.mutation({
+      query: newModule => ({
+        url: '/gyanflow/instructor/add-module',
+        method: 'POST',
+        body: newModule
+      }),
+      invalidatesTags : ['module']
+    }),
+
+    createVideo : builder.mutation({
+      query : newVedioInfo => ({
+        url : '/gyanflow/instructor/add-video',
+        method : 'POST',
+        body : newVedioInfo 
+      }),
+      invalidatesTags : ['video']
     }),
 
     createCourse: builder.mutation({
@@ -97,6 +119,9 @@ export const {
   useDeleteUserMutation,
   useCreateCourseMutation,
   useGetInstructorsQuery,
-  useCourseForInstructorQuery
+  useCourseForInstructorQuery,
+  useAllModulesQuery,
+  useCreateModuleMutation ,
+  useCreateVideoMutation,
 } = apiSlice;
 export default apiSlice;

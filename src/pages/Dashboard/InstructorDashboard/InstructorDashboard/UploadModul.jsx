@@ -1,24 +1,28 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { useParams } from "react-router";
-import { useAllModulesQuery, useCreateModuleMutation, useCreateVideoMutation } from "@/redux/ApiCalling/apiClice";
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useParams } from 'react-router';
+import {
+  useAllModulesQuery,
+  useCreateModuleMutation,
+  useCreateVideoMutation,
+} from '@/redux/ApiCalling/apiClice';
 
 export default function CreateUploadModule() {
   const [showModal, setShowModal] = useState(false);
   const [createModule] = useCreateModuleMutation();
-  const [createVideo] = useCreateVideoMutation()
+  const [createVideo] = useCreateVideoMutation();
   const [formType, setFormType] = useState(null);
   const [formData, setFormData] = useState({});
   let { id: courseId } = useParams();
   let { data: modules = [] } = useAllModulesQuery(courseId);
-  console.log(modules)
+  console.log(modules);
   const handleCreateModuleClick = () => {
-    setFormType("module");
+    setFormType('module');
     setShowModal(true);
   };
 
   const handleUploadVideoClick = () => {
-    setFormType("video");
+    setFormType('video');
     setShowModal(true);
   };
 
@@ -28,25 +32,24 @@ export default function CreateUploadModule() {
     setFormData({});
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    const finalData = formType === "module" ? { ...formData, courseId } : formData;
-    if (formType === "module") {
+    const finalData =
+      formType === 'module' ? { ...formData, courseId } : formData;
+    if (formType === 'module') {
       let res = await createModule(finalData).unwrap();
-      console.log(res)
+      console.log(res);
       setShowModal(false);
-
     } else {
       let res = await createVideo(finalData).unwrap();
-      console.log(res)
+      console.log(res);
       setShowModal(false);
-
     }
-    console.log("Form Data:", finalData);
+    console.log('Form Data:', finalData);
   };
 
   return (
@@ -62,27 +65,48 @@ export default function CreateUploadModule() {
             Create Module
           </motion.h1>
           <div className="flex  mb-6">
-            <motion.button whileHover={{ scale: 1.05 }} className="text-xs mr-4 uppercase cursor-pointer hover:bg-white hover:text-black text-blue-200  rounded-full border px-6 py-1" onClick={handleCreateModuleClick}>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              className="text-xs mr-4 uppercase cursor-pointer hover:bg-white hover:text-black text-blue-200  rounded-full border px-6 py-1"
+              onClick={handleCreateModuleClick}
+            >
               Create Module
             </motion.button>
-            <motion.button whileHover={{ scale: 1.05 }} className="text-xs uppercase cursor-pointer hover:bg-white hover:text-black text-blue-200  rounded-full border px-6 py-1" onClick={handleUploadVideoClick}>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              className="text-xs uppercase cursor-pointer hover:bg-white hover:text-black text-blue-200  rounded-full border px-6 py-1"
+              onClick={handleUploadVideoClick}
+            >
               Upload Video
             </motion.button>
           </div>
-
         </div>
         <div className="grid grid-cols-3 gap-3">
-          <div className="col-span-2">
-
+          <div className="col-span-2"></div>
+          {/* module history */}
+          <div className="px-2 py-1 col-span-1 bg-white/10 backdrop-blur-md shadow-xl p-8 border border-white/20">
+            {modules?.data?.map((module, index) => (
+              <details
+                key={index}
+                className="mb-2 border border-white/20 rounded-lg"
+              >
+                <summary className="p-2 cursor-pointer bg-white/20">
+                  {module?.title}
+                </summary>
+                <div className="p-2">
+                  {module?.videos?.length > 0 ? (
+                    module.videos.map((video, idx) => (
+                      <p key={idx} className="py-1">
+                        {video.videoTitle}
+                      </p>
+                    ))
+                  ) : (
+                    <p className="text-gray-400">No videos available</p>
+                  )}
+                </div>
+              </details>
+            ))}
           </div>
-          <div className="px-2 py-1 col-span-1 bg-white/10  backdrop-blur-md shadow-xl p-8 border border-white/20">
-            {
-              modules?.data?.map(module => <div>
-                <p>{module?.title}</p>
-              </div>)
-            }
-          </div>
-
         </div>
       </motion.div>
 
@@ -96,37 +120,88 @@ export default function CreateUploadModule() {
           >
             <div className="flex justify-between items-center">
               <motion.h1 className="text-xl font-semibold text-white">
-                {formType === "module" ? "Create Module" : "Upload Video"}
+                {formType === 'module' ? 'Create Module' : 'Upload Video'}
               </motion.h1>
-              <motion.button whileHover={{ scale: 1.1 }} className="text-white cursor-pointer text-2xl" onClick={closeModal}>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                className="text-white cursor-pointer text-2xl"
+                onClick={closeModal}
+              >
                 ❌
               </motion.button>
             </div>
 
             <form onSubmit={handleSubmit} className="grid gap-6 mt-6">
-              {formType === "module" ? (
+              {formType === 'module' ? (
                 <>
-                  <input name="title" className="input-field" placeholder="Module Title" onChange={handleChange} />
-                  <input name="modulNo" className="input-field" placeholder="Module No." onChange={handleChange} />
-                  <textarea name="description" className="input-field" placeholder="Description" rows="3" onChange={handleChange}></textarea>
-                  <motion.button whileHover={{ scale: 1.05 }} className="btn-primary" type="submit">
+                  <input
+                    name="title"
+                    className="input-field"
+                    placeholder="Module Title"
+                    onChange={handleChange}
+                  />
+                  <input
+                    name="modulNo"
+                    className="input-field"
+                    placeholder="Module No."
+                    onChange={handleChange}
+                  />
+                  <textarea
+                    name="description"
+                    className="input-field"
+                    placeholder="Description"
+                    rows="3"
+                    onChange={handleChange}
+                  ></textarea>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    className="btn-primary"
+                    type="submit"
+                  >
                     Create Module
                   </motion.button>
                 </>
               ) : (
                 <>
-                  <input name="videoTitle" className="input-field" placeholder="Video Title" onChange={handleChange} />
-                  <select name="modelId" className="input-field bg-black text-white" onChange={handleChange}>
+                  <input
+                    name="videoTitle"
+                    className="input-field"
+                    placeholder="Video Title"
+                    onChange={handleChange}
+                  />
+                  <select
+                    name="modelId"
+                    className="input-field bg-black text-white"
+                    onChange={handleChange}
+                  >
                     <option value="">Select Module</option>
-                    {modules?.data?.map((module) => (
-                      <option className="bg-black" key={module?._id} value={module?._id}>
+                    {modules?.data?.map(module => (
+                      <option
+                        className="bg-black"
+                        key={module?._id}
+                        value={module?._id}
+                      >
                         {module?.modulNo}. {module?.title}
                       </option>
                     ))}
                   </select>
-                  <input name="url" className="input-field" placeholder="Video URL" onChange={handleChange} />
-                  <input name="duration" className="input-field" placeholder="Duration (in minutes)" onChange={handleChange} />
-                  <motion.button whileHover={{ scale: 1.05 }} className="btn-success" type="submit">
+                  <input
+                    name="url"
+                    className="input-field"
+                    placeholder="Video URL"
+                    onChange={handleChange}
+                  />
+                  <input
+                    name="duration"
+                    className="input-field"
+                    placeholder="Duration (in minutes)"
+                    onChange={handleChange}
+                  />
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    className="btn-success"
+                    type="submit"
+                  >
                     Upload Video 🎬
                   </motion.button>
                 </>

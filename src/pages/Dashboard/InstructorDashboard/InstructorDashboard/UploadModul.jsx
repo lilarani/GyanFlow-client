@@ -93,10 +93,10 @@ export default function CreateUploadModule() {
                 <summary className="p-2 cursor-pointer bg-white/20">
                   {module?.title}
                 </summary>
-                <div className="p-2">
+                <div className="p-2 ">
                   {module?.videos?.length > 0 ? (
                     module.videos.map((video, idx) => (
-                      <p key={idx} className="py-1">
+                      <p key={idx} className="py-1  cursor-pointer">
                         {video.videoTitle}
                       </p>
                     ))

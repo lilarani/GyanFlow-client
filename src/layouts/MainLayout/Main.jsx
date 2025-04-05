@@ -2,7 +2,7 @@ import { Outlet } from 'react-router';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { auth } from '../../../firebase.config';
 import { setUser, setLoader } from '../../redux/authSlice';
 import Navbar from '../../components/Home/Navbar/Navbar';
@@ -13,8 +13,10 @@ import {
   useGetMyUserQuery,
 } from '@/redux/ApiCalling/apiClice';
 import axios from 'axios';
+import WelcomeModal from '@/components/welcomModal/WelcomeModal';
 
 export default function Main() {
+  const [open, setOpen] = useState(true);
   const dispatch = useDispatch();
   let [logOutUser] = useLogOutUserMutation();
   useEffect(() => {
@@ -56,6 +58,7 @@ export default function Main() {
 
   return (
     <div className="w-full">
+    {open && <WelcomeModal open={open} setOpen={setOpen} />}
       <ToastContainer />
 
       <Navbar></Navbar>

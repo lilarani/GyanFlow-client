@@ -4,7 +4,7 @@ import { interceptorQuery } from './../customInterceptor/interceptor';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: interceptorQuery,
-  tagTypes: ['user', 'module', 'video'],
+  tagTypes: ['user', 'module', 'video', 'update'],
   endpoints: builder => ({
     // all GET API
     getUsers: builder.query({
@@ -14,6 +14,7 @@ export const apiSlice = createApi({
 
     getMyUser: builder.query({
       query: email => `/gyanflow/user/role/${email}`,
+      providesTags: ['update'],
       method: 'GET',
     }),
 
@@ -51,6 +52,14 @@ export const apiSlice = createApi({
     }),
 
     // update user
+    updateUser: builder.mutation({
+      query: ({ id, info }) => ({
+        url: `gyanflow/user/updateUserInfo/${id}`,
+        method: 'PUT',
+        body: info,
+      }),
+      invalidatesTags: ['update'],
+    }),
 
     // login user
     logInUser: builder.mutation({
@@ -124,5 +133,6 @@ export const {
   useAllModulesQuery,
   useCreateModuleMutation,
   useCreateVideoMutation,
+  useUpdateUserMutation,
 } = apiSlice;
 export default apiSlice;

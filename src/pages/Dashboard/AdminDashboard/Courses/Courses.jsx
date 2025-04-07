@@ -28,7 +28,7 @@ import { useGetCourseQuery } from '@/redux/ApiCalling/apiClice';
 const Courses = () => {
   const [mobileView, setMobileView] = useState(window.innerWidth < 768);
   const { data, isLoading, isError } = useGetCourseQuery();
-  console.log(data);
+  // console.log(data);
   const coursesData = data?.data || [];
 
   // Add resize listener

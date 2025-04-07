@@ -19,6 +19,8 @@ import TecherDashboard from '@/pages/Dashboard/TecherDashboard/TecherDashboard';
 import StudentRoutes from './../protectedRoutes/StudentRoutes';
 import AdminRoute from './../protectedRoutes/AdminRoute';
 import UploadModul from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/UploadModul';
+import path from 'path';
+import SeeVideo from './../shared/CustomButtons/SeeVideo';
 
 export const router = createBrowserRouter([
   {
@@ -90,7 +92,13 @@ export const router = createBrowserRouter([
       },
       {
         path: 'instructorDashboard/action/:id',
-        element: <UploadModul></UploadModul>
+        element: <UploadModul></UploadModul>,
+        children: [
+          {
+            path: 'see-video/:id',
+            element : <SeeVideo></SeeVideo>
+          }
+        ]
       }
     ],
   },

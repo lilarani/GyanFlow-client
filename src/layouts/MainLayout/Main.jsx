@@ -10,13 +10,14 @@ import Footer from '../../components/Home/Footer/Footer';
 import { ToastContainer } from 'react-toastify';
 import {
   useLogOutUserMutation,
-  useGetMyUserQuery,
+  useGetMyUserMutation,
 } from '@/redux/ApiCalling/apiClice';
 import axios from 'axios';
 
 export default function Main() {
   const dispatch = useDispatch();
   let [logOutUser] = useLogOutUserMutation();
+  let [getMyuser] = useGetMyUserMutation()
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async user => {
       dispatch(setLoader(true));
@@ -24,9 +25,11 @@ export default function Main() {
       if (user) {
         try {
           console.log(user);
-          const res = await axios.get(
-            `https://gyanflow-server.onrender.com/gyanflow/user/role/${user?.email}`
-          );
+          // const res = await axios.get(
+          //   `https://gyanflow-server.onrender.com/gyanflow/user/role/${user?.email}`
+          // );
+          const res = await getMyuser(user?.email).unwrap();
+          console.log("our api response for user informations ",res)
           dispatch(setUser(res?.data));
           dispatch(setLoader(false));
           console.log(res?.data);

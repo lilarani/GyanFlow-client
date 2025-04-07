@@ -4,17 +4,12 @@ import { interceptorQuery } from './../customInterceptor/interceptor';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: interceptorQuery,
-  tagTypes: ['user', 'module' , 'video'],
+  tagTypes: ['user', 'module', 'video'],
   endpoints: builder => ({
     // all GET API
     getUsers: builder.query({
       query: () => '/gyanflow/user/users',
       providesTags: ['user'],
-    }),
-
-    getMyUser: builder.query({
-      query: email => `/gyanflow/user/role/${email}`,
-      method: 'GET',
     }),
 
     // all instructors 
@@ -29,7 +24,7 @@ export const apiSlice = createApi({
     }),
     allModules: builder.query({
       query: (id) => `/gyanflow/instructor/all-modules/${id}`,
-      providesTags : ['video','module']
+      providesTags: ['video', 'module']
     }),
     // courses get api
     getCourse: builder.query({
@@ -42,6 +37,16 @@ export const apiSlice = createApi({
         method: 'GET',
       }),
     }),
+
+
+    getMyUser: builder.mutation({
+      query: (email) => ({ 
+        url: `/gyanflow/user/role/${email}`, 
+        method: 'GET' 
+      }),
+
+    }),
+
 
     googleLogin: builder.mutation({
       query: data => ({
@@ -86,16 +91,16 @@ export const apiSlice = createApi({
         method: 'POST',
         body: newModule
       }),
-      invalidatesTags : ['module']
+      invalidatesTags: ['module']
     }),
 
-    createVideo : builder.mutation({
-      query : newVedioInfo => ({
-        url : '/gyanflow/instructor/add-video',
-        method : 'POST',
-        body : newVedioInfo 
+    createVideo: builder.mutation({
+      query: newVedioInfo => ({
+        url: '/gyanflow/instructor/add-video',
+        method: 'POST',
+        body: newVedioInfo
       }),
-      invalidatesTags : ['video']
+      invalidatesTags: ['video']
     }),
 
     createCourse: builder.mutation({
@@ -111,7 +116,7 @@ export const apiSlice = createApi({
 export const {
   useCreateUserMutation,
   useGetUsersQuery,
-  useGetMyUserQuery,
+  useGetMyUserMutation,
   useLogOutUserMutation,
   useGoogleLoginMutation,
   useLogInUserMutation,
@@ -121,7 +126,7 @@ export const {
   useGetInstructorsQuery,
   useCourseForInstructorQuery,
   useAllModulesQuery,
-  useCreateModuleMutation ,
+  useCreateModuleMutation,
   useCreateVideoMutation,
 } = apiSlice;
 export default apiSlice;

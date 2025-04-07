@@ -13,11 +13,8 @@ const Banner = () => {
           <i className="fas fa-map-marker-alt"></i>Expert-led courses for
           flexible, online learning.
         </p>
-        <div
-         
-          className=" text-xl md:text-[20px]    rounded  text-white  duration-300 mt-2"
-        >
-          <Button text="Discover More" url="/dashboard/studentDashboard"/>
+        <div className=" text-xl md:text-[20px] rounded  text-white  duration-300 mt-2">
+          <Button text="Discover More" url="/dashboard/studentDashboard" />
         </div>
       </div>
       <div className="w-full md:w-1/2  relative">

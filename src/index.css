@@ -7,6 +7,62 @@
 /* font Cormorant Garamond */
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  scrollbar-width: none;
+}
+
+/* custom design for create modul and video */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-field:focus {
+  border-color: #A78BFA;
+  box-shadow: 0px 0px 8px rgba(167, 139, 250, 0.8);
+}
+
+.btn-primary {
+  width: 100%;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #6D28D9, #9333EA);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #9333EA, #6D28D9);
+}
+
+.btn-success {
+  width: 100%;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #059669, #10B981);
+}
+
 .my-shadow {
   box-shadow: 0px 0px 20px rgba(76, 221, 240, 0.482);
 }
@@ -171,6 +227,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

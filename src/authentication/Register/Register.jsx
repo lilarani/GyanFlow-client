@@ -37,7 +37,7 @@ export default function Register() {
         formData?.email,
         formData?.password
       );
-
+     
       const user = userCredential.user;
       const result = await createUser(formData).unwrap();
       console.log('hello my backend response:', result);

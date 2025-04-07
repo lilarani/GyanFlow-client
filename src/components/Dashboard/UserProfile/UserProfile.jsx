@@ -254,8 +254,8 @@ const UserProfile = () => {
                 </h2>
 
                 <div className="mt-6">
-                  <table className="min-w-full">
-                    <thead className="text-lg">
+                  <table className="w-full">
+                    <thead className="">
                       <tr className="bg-gray-800 text-gray-300 text-sm md:text-lg">
                         <th className="px-4 py-2 text-left">Serial</th>
                         <th className="px-4 py-2 text-left">Platform</th>

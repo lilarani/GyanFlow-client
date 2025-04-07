@@ -14,7 +14,7 @@ import {
 import { Swiper, SwiperSlide } from 'swiper/react';
 export default function OurAchievementSection() {
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="w-10/12 mx-auto">
       <div>
         <div className="flex justify-center items-center text-center my-10">
           <div className="md:w-2/3">
@@ -97,7 +97,7 @@ export default function OurAchievementSection() {
         </SwiperSlide>
         <SwiperSlide>
           <div className="lg:flex w-full bg-cover lg:h-[400px]">
-            <div className="h-full   p-8 flex-1">
+            <div className="h-full p-8 flex-1">
               <img
                 className="h-full rounded-lg  w-full"
                 src="https://as1.ftcdn.net/jpg/09/91/63/06/1000_F_991630699_7WdCHjcsx3AvboDycutfSZiTp8zwRxxu.jpg"

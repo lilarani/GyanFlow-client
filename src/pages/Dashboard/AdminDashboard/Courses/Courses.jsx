@@ -30,7 +30,6 @@ const Courses = () => {
   const { data, isLoading, isError } = useGetCourseQuery();
   // console.log(data);
   const coursesData = data?.data || [];
-
   // Add resize listener
   useEffect(() => {
     const handleResize = () => {
@@ -70,7 +69,7 @@ const Courses = () => {
             <div className="space-y-2">
               <div>
                 <p className="font-medium">{course.instructor}</p>
-                <p className="text-gray-400 text-xs">{course.totalDuration} hrs</p>
+                <p className="text-gray-400 text-xs">{course.totalDuration} Month</p>
               </div>
             </div>
             <div className="flex justify-between items-center pt-2 border-t border-navy-800">
@@ -121,7 +120,7 @@ const Courses = () => {
                     • {course.category}
                   </Badge>
                 </TableCell>
-                <TableCell>{course.totalDuration} hrs</TableCell>
+                <TableCell>{course.totalDuration} mounth</TableCell>
                 <TableCell className="text-right">${course.price}</TableCell>
                 <TableCell>
                   <div className="flex gap-2 justify-end">

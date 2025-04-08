@@ -23,13 +23,20 @@ import {
   Menu,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { useGetCourseQuery } from '@/redux/ApiCalling/apiClice';
+import {
+  useDeleteCoursesMutation,
+  useGetCourseQuery,
+} from '@/redux/ApiCalling/apiClice';
+import Swal from 'sweetalert2';
 
 const Courses = () => {
   const [mobileView, setMobileView] = useState(window.innerWidth < 768);
   const { data, isLoading, isError } = useGetCourseQuery();
   // console.log(data);
   const coursesData = data?.data || [];
+
+  const [deleteCourses] = useDeleteCoursesMutation();
+
   // Add resize listener
   useEffect(() => {
     const handleResize = () => {
@@ -39,6 +46,32 @@ const Courses = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // delete course
+  const deleteSignleCourse = async id => {
+    try {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+      }).then(async result => {
+        if (result.isConfirmed) {
+          let deleteCourse = await deleteCourses(id).unwrap();
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'Course has been deleted.',
+            icon: 'success',
+          });
+        }
+      });
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
 
   const getCategoryColor = category => {
     switch (category) {
@@ -63,13 +96,15 @@ const Courses = () => {
                 {course.instructors.join(', ')}
               </span>
               <Badge className={getCategoryColor(course.category)}>
-                 {course.category}
+                {course.category}
               </Badge>
             </div>
             <div className="space-y-2">
               <div>
                 <p className="font-medium">{course.instructor}</p>
-                <p className="text-gray-400 text-xs">{course.totalDuration} Month</p>
+                <p className="text-gray-400 text-xs">
+                  {course.totalDuration} Month
+                </p>
               </div>
             </div>
             <div className="flex justify-between items-center pt-2 border-t border-navy-800">
@@ -85,7 +120,7 @@ const Courses = () => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-400 hover:text-white "
                 >
                   <Trash2 size={16} />
                 </Button>
@@ -131,13 +166,15 @@ const Courses = () => {
                     >
                       <Edit size={16} />
                     </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="text-gray-400 hover:text-white"
-                    >
-                      <Trash2 size={16} />
-                    </Button>
+                    <div onClick={() => deleteSignleCourse(course._id)}>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="text-gray-400 hover:text-white"
+                      >
+                        <Trash2 size={16} />
+                      </Button>
+                    </div>
                   </div>
                 </TableCell>
               </TableRow>

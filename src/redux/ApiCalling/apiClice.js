@@ -51,10 +51,18 @@ export const apiSlice = createApi({
       }),
     }),
 
+    // course delete
+    deleteCourses: builder.mutation({
+      query: id => ({
+        url: `/gyanflow/cours/course/${id}`,
+        method: 'DELETE',
+      }),
+    }),
+
     // update user
     updateUser: builder.mutation({
       query: ({ id, info }) => ({
-        url: `gyanflow/user/updateUserInfo/${id}`,
+        url: `/gyanflow/user/updateUserInfo/${id}`,
         method: 'PUT',
         body: info,
       }),
@@ -83,7 +91,7 @@ export const apiSlice = createApi({
     // POST API - createUser
     createUser: builder.mutation({
       query: newUser => ({
-        //   https://gyanflow-server.onrender.com
+        //   http://localhost:4000
         url: '/gyanflow/user/regiser',
         method: 'POST',
         body: newUser,
@@ -126,6 +134,7 @@ export const {
   useGoogleLoginMutation,
   useLogInUserMutation,
   useGetCourseQuery,
+  useDeleteCoursesMutation,
   useDeleteUserMutation,
   useCreateCourseMutation,
   useGetInstructorsQuery,

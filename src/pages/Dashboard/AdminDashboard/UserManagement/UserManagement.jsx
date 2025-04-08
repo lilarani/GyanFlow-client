@@ -21,7 +21,7 @@ const UserManagement = () => {
   const [mobileView, setMobileView] = useState(window.innerWidth < 768);
   let { data, isLoading, isSuccess, isError } = useGetUsersQuery();
   let info = data?.data || [];
-  console.log(info);
+  // console.log(info);
 
   const [deleteUser] = useDeleteUserMutation();
 
@@ -37,7 +37,7 @@ const UserManagement = () => {
       : 'bg-red-100 text-red-800';
   };
 
-  // delete
+  // delete user
   const hayatErMonThekePagliDelete = async email => {
     try {
       Swal.fire({
@@ -58,7 +58,6 @@ const UserManagement = () => {
           });
         }
       });
-      console.log('hello - i am clicked ', deleteUserInfo);
     } catch (e) {
       console.log(e.message);
     }

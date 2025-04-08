@@ -51,21 +51,21 @@ const Sidebar = () => {
           <div className="space-y-5 mt-10">
             <NavLink
               to={'/dashboard/adminDashboard'}
-              className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />
               Dashboard
             </NavLink>
             <NavLink
               to={'/dashboard/addCourse'}
-              className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <IoIosAddCircle />
               Add Course
             </NavLink>
             <NavLink
               to={'/dashboard/courses'}
-              className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <VscVmRunning />
               All Courses
@@ -73,7 +73,7 @@ const Sidebar = () => {
 
             <NavLink
               to={'/dashboard/userManagement'}
-              className="text-sm md:text-lg font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <FaUsers />
               Users Managment
@@ -82,7 +82,7 @@ const Sidebar = () => {
             <div className="w-full mt-4  border-gray-600 border-t-[1px]">
               <NavLink
                 to={'/'}
-                className="cursor-pointer block w-full text-base md:text-xl font-bold md:mt-8 hover:bg-[#ffffff44] px-4 py-2"
+                className="cursor-pointer block w-full text-sm md:text-base font-bold md:mt-8 hover:bg-[#ffffff44] px-4 py-2"
               >
                 Home
               </NavLink>
@@ -97,7 +97,7 @@ const Sidebar = () => {
           <div className="space-y-5 mt-10">
             <NavLink
               to={'/dashboard/studentDashboard'}
-              className="text-lg font-bold flex gap-2 items-center cursor-pointer"
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />
               Student Dashboard
@@ -113,7 +113,7 @@ const Sidebar = () => {
           <div className="space-y-5 mt-10">
             <NavLink
               to={'/dashboard/instructorDashboard'}
-              className="text-lg font-bold flex gap-2 items-center cursor-pointer"
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />
               instructor Dashboard
@@ -127,7 +127,7 @@ const Sidebar = () => {
           <div className="space-y-5 mt-10">
             <NavLink
               to={'/dashboard/teacherDashboard'}
-              className="text-lg font-bold flex gap-2 items-center cursor-pointer"
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />
               Teacher Dashboard

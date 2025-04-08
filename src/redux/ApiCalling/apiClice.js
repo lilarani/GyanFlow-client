@@ -4,7 +4,7 @@ import { interceptorQuery } from './../customInterceptor/interceptor';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: interceptorQuery,
-  tagTypes: ['user', 'module' , 'video'],
+  tagTypes: ['user', 'module', 'video'],
   endpoints: builder => ({
     // all GET API
     getUsers: builder.query({
@@ -17,19 +17,18 @@ export const apiSlice = createApi({
       method: 'GET',
     }),
 
-    // all instructors 
+    // all instructors
     getInstructors: builder.query({
-      query: () => '/gyanflow/user/all-instructors'
+      query: () => '/gyanflow/user/all-instructors',
     }),
 
-
-    // course for instructor 
+    // course for instructor
     courseForInstructor: builder.query({
-      query: (id) => `/gyanflow/cours/course-for-instructor/${id}`
+      query: id => `/gyanflow/cours/course-for-instructor/${id}`,
     }),
     allModules: builder.query({
-      query: (id) => `/gyanflow/instructor/all-modules/${id}`,
-      providesTags : ['video','module']
+      query: id => `/gyanflow/instructor/all-modules/${id}`,
+      providesTags: ['video', 'module'],
     }),
     // courses get api
     getCourse: builder.query({
@@ -50,6 +49,8 @@ export const apiSlice = createApi({
         body: data,
       }),
     }),
+
+    // update user
 
     // login user
     logInUser: builder.mutation({
@@ -84,18 +85,18 @@ export const apiSlice = createApi({
       query: newModule => ({
         url: '/gyanflow/instructor/add-module',
         method: 'POST',
-        body: newModule
+        body: newModule,
       }),
-      invalidatesTags : ['module']
+      invalidatesTags: ['module'],
     }),
 
-    createVideo : builder.mutation({
-      query : newVedioInfo => ({
-        url : '/gyanflow/instructor/add-video',
-        method : 'POST',
-        body : newVedioInfo 
+    createVideo: builder.mutation({
+      query: newVedioInfo => ({
+        url: '/gyanflow/instructor/add-video',
+        method: 'POST',
+        body: newVedioInfo,
       }),
-      invalidatesTags : ['video']
+      invalidatesTags: ['video'],
     }),
 
     createCourse: builder.mutation({
@@ -121,7 +122,7 @@ export const {
   useGetInstructorsQuery,
   useCourseForInstructorQuery,
   useAllModulesQuery,
-  useCreateModuleMutation ,
+  useCreateModuleMutation,
   useCreateVideoMutation,
 } = apiSlice;
 export default apiSlice;

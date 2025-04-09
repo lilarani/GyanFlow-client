@@ -149,7 +149,13 @@ const Courses = () => {
             {coursesData?.map(course => (
               <TableRow key={course.id} className="border-b border-navy-800">
                 <TableCell className="font-medium">{course.title}</TableCell>
-                <TableCell>{course.instructors.join(', ')}</TableCell>
+                <TableCell>
+                  {JSON.stringify(
+                    course?.instructors?.map(instructor => {
+                      instructor.name;
+                    })
+                  )}
+                </TableCell>
                 <TableCell>
                   <Badge className={getCategoryColor(course.category)}>
                     • {course.category}
@@ -172,7 +178,7 @@ const Courses = () => {
                         size="icon"
                         className="text-gray-400 hover:text-white"
                       >
-                        <Trash2 size={16} />
+                        <Trash2 size={16} className="text-red-400" />
                       </Button>
                     </div>
                   </div>

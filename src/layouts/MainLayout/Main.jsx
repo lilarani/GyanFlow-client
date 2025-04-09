@@ -27,7 +27,7 @@ export default function Main() {
         try {
           // console.log(user);
           const res = await axios.get(
-            `https://gyanflow-server.onrender.com/gyanflow/user/role/${user?.email}`
+            `http://localhost:4000/gyanflow/user/role/${user?.email}`
           );
           dispatch(setUser(res?.data));
           dispatch(setLoader(false));

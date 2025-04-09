@@ -37,11 +37,11 @@ export default function Register() {
         formData?.email,
         formData?.password
       );
-     
+
       const user = userCredential.user;
       const result = await createUser(formData).unwrap();
       console.log('hello my backend response:', result);
-      localStorage.setItem('token' , result?.data?.token)
+      localStorage.setItem('token', result?.data?.token);
       toast('Registration successful!');
       navigate('/');
     } catch (error) {
@@ -57,7 +57,7 @@ export default function Register() {
           <img
             src={regImg}
             alt="register image"
-            className="   bg-blue-500 opacity-40 h-full w-full bg-blend-overlay"
+            className=" object-cover  bg-blue-500 opacity-40 h-full w-full bg-blend-overlay"
           />
 
           <div className="text-white absolute inset-0 flex flex-col items-center justify-center text-center p-6 ">

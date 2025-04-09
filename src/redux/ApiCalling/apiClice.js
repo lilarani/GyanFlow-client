@@ -4,7 +4,7 @@ import { interceptorQuery } from './../customInterceptor/interceptor';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: interceptorQuery,
-  tagTypes: ['user', 'module', 'video', 'update'],
+  tagTypes: ['user', 'module', 'video', 'update', 'course'],
   endpoints: builder => ({
     // all GET API
     getUsers: builder.query({
@@ -34,12 +34,27 @@ export const apiSlice = createApi({
     // courses get api
     getCourse: builder.query({
       query: () => '/gyanflow/cours/all-course',
+      providesTags: ['course'],
+    }),
+
+    // features course api
+    getFeaturesCourse: builder.query({
+      query: () => '/gyanflow/cours/features-course',
+      providesTags: ['course'],
     }),
 
     logOutUser: builder.mutation({
       query: () => ({
         url: '/gyanflow/user/logout',
         method: 'GET',
+      }),
+    }),
+
+    // features course details
+    getFeaturesCourseDetails: builder.query({
+      query: id => ({
+        url: `/gyanflow/cours/features-course/${id}`,
+        providesTags: ['course'],
       }),
     }),
 
@@ -57,6 +72,7 @@ export const apiSlice = createApi({
         url: `/gyanflow/cours/course/${id}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['course'],
     }),
 
     // update user
@@ -91,7 +107,7 @@ export const apiSlice = createApi({
     // POST API - createUser
     createUser: builder.mutation({
       query: newUser => ({
-        //   https://gyanflow-server.onrender.com
+        //   http://localhost:4000
         url: '/gyanflow/user/regiser',
         method: 'POST',
         body: newUser,
@@ -134,6 +150,8 @@ export const {
   useGoogleLoginMutation,
   useLogInUserMutation,
   useGetCourseQuery,
+  useGetFeaturesCourseQuery,
+  useGetFeaturesCourseDetailsQuery,
   useDeleteCoursesMutation,
   useDeleteUserMutation,
   useCreateCourseMutation,

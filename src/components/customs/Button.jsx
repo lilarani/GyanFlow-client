@@ -6,7 +6,7 @@ const Button = ({ text, url }) => {
     <>
       <Link
         to={url}
-        className="button m-1 inline-block bg-yellow-500  text-textcolor px-6 py-2  font-semibold hover:bg-yellow-600 transition rounded"
+        className="button m-1 inline-block bg-yellow-500 text-center text-textcolor px-6 py-2  font-semibold hover:bg-yellow-600 transition rounded"
       >
         {text}
       </Link>

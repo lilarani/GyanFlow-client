@@ -4,7 +4,7 @@ import { interceptorQuery } from './../customInterceptor/interceptor';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: interceptorQuery,
-  tagTypes: ['user', 'module', 'video', 'update', 'course'],
+  tagTypes: ['user', 'module', 'video', 'update','quiz'],
   endpoints: builder => ({
     // all GET API
     getUsers: builder.query({
@@ -107,7 +107,7 @@ export const apiSlice = createApi({
     // POST API - createUser
     createUser: builder.mutation({
       query: newUser => ({
-        //   http://localhost:4000
+        //   https://gyanflow-server.onrender.com
         url: '/gyanflow/user/regiser',
         method: 'POST',
         body: newUser,
@@ -131,13 +131,35 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ['video'],
     }),
+    // /gyanflow/quiz/addquiz/${instructorId}/${modulNo}
+    createQuiz: builder.mutation({
+      query: ({instructorId, modulNo,quiz}) => ({
+        url: `/gyanflow/quiz/addquiz/${instructorId}/${modulNo}/`,
+        method: 'POST',
+        body: quiz,
+      }),
+    }),
 
+    // gyanflow/quiz/getquizforModule/${modulNo}
+    getQuizForSpeceficModule: builder.query({
+      query: (modulNo) => `gyanflow/quiz/getquizforModule/${modulNo}`,
+      providesTags: ['quiz'],
+    }),
+    // /gyanflow/quiz/quizzes/${id}
+    deleteQuiz: builder.mutation({
+      query: id => ({
+        url: `/gyanflow/quiz/quizzes/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['quiz'],
+    }),
     createCourse: builder.mutation({
       query: newCourse => ({
         url: '/gyanflow/cours/add-course',
         method: 'POST',
         body: newCourse,
       }),
+      invalidatesTags: ['quiz'],
     }),
   }),
 });
@@ -161,5 +183,8 @@ export const {
   useCreateModuleMutation,
   useCreateVideoMutation,
   useUpdateUserMutation,
+  useCreateQuizMutation,
+  useDeleteQuizMutation,
+  useGetQuizForSpeceficModuleQuery
 } = apiSlice;
 export default apiSlice;

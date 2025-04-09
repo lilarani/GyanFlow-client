@@ -1,14 +1,19 @@
+import { useDeleteQuizMutation, useGetQuizForSpeceficModuleQuery } from "@/redux/ApiCalling/apiClice";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 
 
 export default function QuizList({ info }) {
+    const [deleteQuiz] = useDeleteQuizMutation();
+    
     const { instructorId, quizInfo } = info
     const { title, description, courseId, _id, modulNo } = quizInfo;
     const [answers, setAnswers] = useState({});
-    const [data, setData] = useState([]);
-    const [error, setError] = useState(null)
+    // const [data, setData] = useState([]);
+    const [error, setError] = useState(null);
+    const { data  } = useGetQuizForSpeceficModuleQuery(modulNo);
+    console.log(data)
 
     const handleChange = (questionId, optionId) => {
         setAnswers((prev) => ({
@@ -18,30 +23,31 @@ export default function QuizList({ info }) {
     };
 
 
-    useEffect(() => {
-        const getQuizes = async () => {
-            // module_12345
-            try {
-                const res = await axios.get(`http://localhost:4000/gyanflow/quiz/getquizforModule/${modulNo}`);
-                setData(res.data)
-            } catch (err) {
-                console.log(err);
-                setError(err)
-            }
-        }
-        getQuizes();
+    // useEffect(() => {
+    //     const getQuizes = async () => {
+    //         // module_12345
+    //         try {
+    //             const res = await axios.get(`http://localhost:4000/gyanflow/quiz/getquizforModule/${modulNo}`);
+    //             setData(res.data)
+    //         } catch (err) {
+    //             console.log(err);
+    //             setError(err)
+    //         }
+    //     }
+    //     getQuizes();
 
-    }, []);
+    // }, []);
 
     const handleDelete = async(id)=>{
         try{
             if(window.confirm("Are You sure want to delete this ")){
 
-                const res = await axios.delete(`http://localhost:4000/gyanflow/quiz/quizzes/${id}`);
+            // const res = await axios.delete(`http://localhost:4000/gyanflow/quiz/quizzes/${id}`);
+                  await deleteQuiz(id).unwrap();
                 alert("deleted successfully");       
-               setTimeout(() => {
-                   window.location.reload();
-               }, 700);
+            //    setTimeout(() => {
+            //        window.location.reload();
+            //    }, 700);
             }
         }catch(err){
             if(err){
@@ -58,21 +64,21 @@ export default function QuizList({ info }) {
     }
     console.log(data?.data)
     return (
-        <div className="h-full   ">
+        <div className="h-full    ">
             {data?.data?.length === 0 ? (<div className="h-[400px]  flex justify-center items-center flex-col text-2xl">Not added any quiz for this module</div>) : (<>
                 {
                     data?.data?.map((item) => (
-                        <div className=" h-full  px-1 ">
+                        <div className=" my-4  px-1  ">
                             <p>{item?.title}</p>
-                            <p>{item?.description}</p>
+                            {/* <p>{item?.description}</p>
                             <p>duration:{item?.durationInMinutes} Min</p>
                             <p>instructorId:{item?.instructorId}</p>
-                            <p>module Id:{item?.moduleId}</p>
+                            <p>module Id:{item?.moduleId}</p> */}
                             <div>questions:--</div>
                             <div className="">
                                 {
                                     item?.questions?.map((i) => (
-                                        <div className=" border my-2 p-3 rounded">
+                                        <div className=" border my-2 p-3 rounded ">
                                             <h1 className="flex justify-between items-center">
                                                 <span><strong>Question:</strong>:{i?.questionText}</span>
                                                 <button onClick={() => handleDelete(item?._id)} className="border px-3 rounded bg-red-400 cursor-pointer hover:bg-transparent transition-all duration-700 ">Delete</button>

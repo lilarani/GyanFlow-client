@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
+import { useCreateQuizMutation } from "@/redux/ApiCalling/apiClice";
 
 export default function QuizCreatorForm({ toggleQuizModule, info }) {
-
+    const [createQuiz ] = useCreateQuizMutation();
     const { instructorId,quizInfo }=info ;
     const { title, description, courseId, _id, modulNo } = quizInfo;
     console.log(instructorId, modulNo)
@@ -70,9 +71,15 @@ export default function QuizCreatorForm({ toggleQuizModule, info }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(`http://localhost:4000/gyanflow/quiz/addquiz/${instructorId}/${modulNo}`, quiz);
-            console.log("Quiz submitted:", res.data);
+            // const res = await axios.post(`http://localhost:4000/gyanflow/quiz/addquiz/${instructorId}/${modulNo}`, quiz);
+            // console.log("Quiz submitted:", res.data);
+
+            await createQuiz({instructorId,modulNo,quiz}).unwrap();
             alert("Quiz created successfully!");
+            // setToggle,toggle
+
+            info?.setToggle(!info?.toggle)
+
         } catch (err) {
             console.error(err);
             alert("Error submitting quiz.");

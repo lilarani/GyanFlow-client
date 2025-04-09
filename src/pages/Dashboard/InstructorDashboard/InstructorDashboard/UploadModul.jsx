@@ -6,8 +6,11 @@ import {
   useCreateModuleMutation,
   useCreateVideoMutation,
 } from '@/redux/ApiCalling/apiClice';
+import Quiz from '@/components/QuizeComponents/Quiz';
 
 export default function CreateUploadModule() {
+  const [showQuizModal, setShowQuizModal] = useState(false);
+  const [quizInfo, setQuizInfo] = useState({})
   const [showModal, setShowModal] = useState(false);
   const [createModule] = useCreateModuleMutation();
   const [createVideo] = useCreateVideoMutation();
@@ -52,6 +55,19 @@ export default function CreateUploadModule() {
     console.log('Form Data:', finalData);
   };
 
+// quiz related functionality==============================
+  const toggleQuizModule= ()=>{
+    setShowQuizModal(!showQuizModal)
+  }
+
+  const handleQuizInfo= (module)=>{
+    setQuizInfo(module)
+    setShowQuizModal(true)
+    
+  }
+
+  // quiz related functionalityend here==============================
+
   return (
     <div className="min-h-screen flex justify-center bg-gradient-to-br from-[#0F0C29] via-[#302B63] to-[#24243E] p-6">
       <motion.div
@@ -84,7 +100,7 @@ export default function CreateUploadModule() {
         <div className="grid grid-cols-3 gap-3">
           <div className="col-span-2"></div>
           {/* module history */}
-          <div className="px-2 py-1 col-span-1 bg-white/10 backdrop-blur-md shadow-xl p-8 border border-white/20">
+          <div className=" px-2 py-1 col-span-1 bg-white/10 backdrop-blur-md shadow-xl p-8 border border-white/20 ">
             {modules?.data?.map((module, index) => (
               <details
                 key={index}
@@ -94,8 +110,11 @@ export default function CreateUploadModule() {
                   {module?.title}
                 </summary>
                 <div className="p-2 ">
+                 
+                  
                   {module?.videos?.length > 0 ? (
                     module.videos.map((video, idx) => (
+                      
                       <p key={idx} className="py-1  cursor-pointer">
                         {video.videoTitle}
                       </p>
@@ -103,12 +122,17 @@ export default function CreateUploadModule() {
                   ) : (
                     <p className="text-gray-400">No videos available</p>
                   )}
+                  <button className=' rounded  bg-main text-white w-full capitalize py-1 cursor-pointer' onClick={() => handleQuizInfo(module)}>quiz</button>
                 </div>
               </details>
             ))}
           </div>
         </div>
       </motion.div>
+
+      {/* quiz=========== */}
+      {showQuizModal && <Quiz toggleQuizModule={toggleQuizModule} quizInfo={quizInfo}/>}
+      {/* quiz============ */}
 
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50">

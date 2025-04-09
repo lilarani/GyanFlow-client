@@ -1,12 +1,11 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @plugin 'tailwindcss-animate';
 
 @custom-variant dark (&:is(.dark *));
 
 /* font Cormorant Garamond */
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
@@ -29,14 +28,14 @@
 }
 
 .input-field:focus {
-  border-color: #A78BFA;
+  border-color: #a78bfa;
   box-shadow: 0px 0px 8px rgba(167, 139, 250, 0.8);
 }
 
 .btn-primary {
   width: 100%;
   margin-top: 10px;
-  background: linear-gradient(135deg, #6D28D9, #9333EA);
+  background: linear-gradient(135deg, #6d28d9, #9333ea);
   color: white;
   padding: 12px;
   border-radius: 8px;
@@ -45,13 +44,13 @@
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #9333EA, #6D28D9);
+  background: linear-gradient(135deg, #9333ea, #6d28d9);
 }
 
 .btn-success {
   width: 100%;
   margin-top: 10px;
-  background: linear-gradient(135deg, #10B981, #059669);
+  background: linear-gradient(135deg, #10b981, #059669);
   color: white;
   padding: 12px;
   border-radius: 8px;
@@ -60,7 +59,7 @@
 }
 
 .btn-success:hover {
-  background: linear-gradient(135deg, #059669, #10B981);
+  background: linear-gradient(135deg, #059669, #10b981);
 }
 
 .my-shadow {
@@ -96,7 +95,7 @@
   background-size: 0% 100%;
   background-position-x: right;
   transition: background-size 1000ms;
-  background-color: #ffffffdd;
+  background-color: #c5b0f6;
   box-shadow: 0px 0px 30px rgb(197, 197, 255);
   color: rgb(255, 253, 247);
   padding: 10px 20px;
@@ -113,7 +112,7 @@
 @theme {
   --color-default: #080127;
   --color-main: #1a044d;
-  --color-textcolor: lightgray;
+  --color-textcolor: white;
 }
 
 :root {

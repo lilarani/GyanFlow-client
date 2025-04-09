@@ -4,7 +4,7 @@ import { interceptorQuery } from './../customInterceptor/interceptor';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: interceptorQuery,
-  tagTypes: ['user'],
+  tagTypes: ['user', 'module', 'video', 'update'],
   endpoints: builder => ({
     // all GET API
     getUsers: builder.query({
@@ -14,37 +14,59 @@ export const apiSlice = createApi({
 
     getMyUser: builder.query({
       query: email => `/gyanflow/user/role/${email}`,
+      providesTags: ['update'],
       method: 'GET',
     }),
 
-    // all instructors 
+    // all instructors
     getInstructors: builder.query({
-      query: () => '/gyanflow/user/all-instructors'
+      query: () => '/gyanflow/user/all-instructors',
     }),
 
-    
-    // course for instructor 
-    courseForInstructor : builder.query({
-      query : (id)=> `/gyanflow/cours/course-for-instructor/${id}`
+    // course for instructor
+    courseForInstructor: builder.query({
+      query: id => `/gyanflow/cours/course-for-instructor/${id}`,
+    }),
+    allModules: builder.query({
+      query: id => `/gyanflow/instructor/all-modules/${id}`,
+      providesTags: ['video', 'module'],
     }),
     // courses get api
     getCourse: builder.query({
       query: () => '/gyanflow/cours/all-course',
     }),
-    
+
     logOutUser: builder.mutation({
       query: () => ({
         url: '/gyanflow/user/logout',
         method: 'GET',
       }),
     }),
-    
+
     googleLogin: builder.mutation({
       query: data => ({
         url: '/gyanflow/user/googleLogin',
         method: 'POST',
         body: data,
       }),
+    }),
+
+    // course delete
+    deleteCourses: builder.mutation({
+      query: id => ({
+        url: `/gyanflow/cours/course/${id}`,
+        method: 'DELETE',
+      }),
+    }),
+
+    // update user
+    updateUser: builder.mutation({
+      query: ({ id, info }) => ({
+        url: `/gyanflow/user/updateUserInfo/${id}`,
+        method: 'PUT',
+        body: info,
+      }),
+      invalidatesTags: ['update'],
     }),
 
     // login user
@@ -76,6 +98,24 @@ export const apiSlice = createApi({
       }),
     }),
 
+    createModule: builder.mutation({
+      query: newModule => ({
+        url: '/gyanflow/instructor/add-module',
+        method: 'POST',
+        body: newModule,
+      }),
+      invalidatesTags: ['module'],
+    }),
+
+    createVideo: builder.mutation({
+      query: newVedioInfo => ({
+        url: '/gyanflow/instructor/add-video',
+        method: 'POST',
+        body: newVedioInfo,
+      }),
+      invalidatesTags: ['video'],
+    }),
+
     createCourse: builder.mutation({
       query: newCourse => ({
         url: '/gyanflow/cours/add-course',
@@ -94,9 +134,14 @@ export const {
   useGoogleLoginMutation,
   useLogInUserMutation,
   useGetCourseQuery,
+  useDeleteCoursesMutation,
   useDeleteUserMutation,
   useCreateCourseMutation,
   useGetInstructorsQuery,
-  useCourseForInstructorQuery
+  useCourseForInstructorQuery,
+  useAllModulesQuery,
+  useCreateModuleMutation,
+  useCreateVideoMutation,
+  useUpdateUserMutation,
 } = apiSlice;
 export default apiSlice;

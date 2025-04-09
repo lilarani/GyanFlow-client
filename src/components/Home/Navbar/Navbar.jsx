@@ -96,8 +96,8 @@ const Navbar = () => {
 
         {/* Before Sign-in/Sign-up */}
 
-        <div className="xl:flex flex-row hidden">
-          <Link className="text-md flex flex-row gap-2 items-center font-bold py-4 px-8 hover:bg-[#ffffff44]">
+        <div className="xl:flex flex-row hidden gap-4">
+          <Link className="text-md flex flex-row gap-2 items-center font-bold py-3 px-6 hover:bg-[#ffffff44] ">
             <CiSearch /> Search
             {user?.user?.name}
           </Link>
@@ -146,7 +146,7 @@ const Navbar = () => {
                 className="w-12 h-12 rounded-full relative"
               />
               {dropdown && (
-                <div className="bg-black w-80 h-80 absolute top-20 right-12 p-6 ">
+                <div className="bg-gradient-to-bl to-[#1a044d] from-[#080127] w-80 h-80 absolute top-20 right-12 p-6 ">
                   {/* <image className="text-xl font-bold ">{user?.user?.picture}</h2> */}
                   <img
                     className="h-15 border-6 p-1 w-15 rounded-full"
@@ -159,14 +159,14 @@ const Navbar = () => {
                   <div className="w-full flex flex-col gap-4 mt-8">
                     <Link
                       to={`/dashboard/${role}Dashboard`}
-                      className="text-md w-full text-center cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff56] bg-[#ffffff44] "
+                      className="text-md w-full text-center cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff56] bg-[#ffffff44] transition duration-300 ease-in"
                     >
                       Dashboard
                     </Link>
                     {/* logout btn */}
                     <button
                       onClick={signOutUser}
-                      className="text-md w-full border-[#ffffff8a] text-[#ffffffba] border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] hover:text-white"
+                      className="text-md w-full border-[#ffffff8a] text-[#ffffffba] border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] hover:text-white transition duration-300 ease-in"
                     >
                       Logout
                     </button>
@@ -232,7 +232,7 @@ const Navbar = () => {
             {user ? (
               <div className="flex flex-col gap-3 w-full">
                 <Link
-                  to={'/dashboard'}
+                  to={`/dashboard/${role}Dashboard`}
                   className="text-md w-full text-center cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] bg-[#ffffff44] "
                 >
                   Dashboard

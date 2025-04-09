@@ -3,28 +3,38 @@ import { useSelector } from 'react-redux';
 import DashboardNavbar from '../DashboardNavbar/DashboardNavbar';
 import { FiEdit } from 'react-icons/fi';
 import { Link } from 'react-router';
-import { useGetMyUserQuery } from '@/redux/ApiCalling/apiClice';
+import {
+  useGetMyUserQuery,
+  useUpdateUserMutation,
+} from '@/redux/ApiCalling/apiClice';
 
 import { BsUpload } from 'react-icons/bs';
+import Button from '@/components/customs/Button';
+
+let ImageHostKey = '47b25851b9d300db92da4ca62f89a4bb';
+let ImageHosting = `https://api.imgbb.com/1/upload?key=${ImageHostKey}`;
 
 const UserProfile = () => {
   const { user } = useSelector(state => state.authUser);
+  console.log(user?.data?._id);
 
   const [editMode, setEditMode] = useState(false);
-  const [name, setName] = useState(user?.displayName);
-  const [email, setEmail] = useState(user?.email);
-  const [phone, setPhone] = useState(user?.user?.phone);
-  const [studentId, setStudentId] = useState(user?.user?._id);
+  const [name, setName] = useState(user?.data?.name);
+  const [phone, setPhone] = useState(user?.data?.phone);
+  const [id, setStudentId] = useState(user?.data?._id);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  // let { user } = useGetMyUserQuery(user?.email);
-  // console.log(data);
+  const [userPhoto, setUserPhoto] = useState('');
 
   // profile image hangle
   const [preview, setPreview] = useState(null);
 
+  const [updateUser] = useUpdateUserMutation();
+
   const handleFileChange = e => {
     const file = e.target.files[0];
+    console.log(e.target.files, 'my file');
+    setUserPhoto(file);
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setPreview(imageUrl);
@@ -35,8 +45,31 @@ const UserProfile = () => {
     setEditMode(!editMode);
   };
 
-  const handleSaveChanges = () => {
-    console.log('Updated Data:', { name, email, phone, password });
+  const handleSaveChanges = async () => {
+    // console.log('Updated Data:', { name, email, phone, password });
+    let changesData = user?.data?.picture;
+    if (userPhoto) {
+      const imageData = new FormData();
+
+      imageData.append('image', userPhoto);
+      console.log(imageData, 'image');
+      try {
+        const res = await fetch(ImageHosting, {
+          method: 'POST',
+          body: imageData,
+        });
+        const imgData = await res.json();
+        if (imgData.success) {
+          console.log(imgData, 'neela');
+          changesData = imgData.data.url;
+        }
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+    }
+    let info = { name, phone, picture: changesData };
+    await updateUser({ id, info }).unwrap();
     setEditMode(false);
   };
 
@@ -89,7 +122,8 @@ const UserProfile = () => {
                     {editMode ? (
                       <input
                         type="text"
-                        value={user?.data?.name}
+                        // value={user?.data?.name}
+                        defaultValue={user?.data?.name}
                         onChange={e => setName(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
@@ -110,7 +144,6 @@ const UserProfile = () => {
                         value={user?.data?.email}
                         onChange={e => setEmail(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
-                        readOnly
                       />
                     ) : (
                       <h2 className="text-lg font-semibold">
@@ -129,10 +162,9 @@ const UserProfile = () => {
                     {editMode ? (
                       <input
                         type="text"
-                        value={studentId}
+                        value={id}
                         onChange={e => setStudentId(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
-                        readOnly
                       />
                     ) : (
                       <h2 className="text-lg font-semibold">
@@ -147,7 +179,8 @@ const UserProfile = () => {
                     {editMode ? (
                       <input
                         type="text"
-                        value={user?.data?.phone}
+                        // value={user?.data?.phone}
+                        defaultValue={user?.data?.phone}
                         onChange={e => setPhone(e.target.value)}
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
@@ -238,12 +271,9 @@ const UserProfile = () => {
 
                 {/* Save Button */}
                 {editMode && (
-                  <button
-                    onClick={handleSaveChanges}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded mt-4"
-                  >
-                    Save Changes
-                  </button>
+                  <div onClick={handleSaveChanges}>
+                    <Button text={'Save changes'}></Button>
+                  </div>
                 )}
               </div>
 
@@ -254,8 +284,8 @@ const UserProfile = () => {
                 </h2>
 
                 <div className="mt-6">
-                  <table className="min-w-full">
-                    <thead className="text-lg">
+                  <table className="w-full">
+                    <thead className="">
                       <tr className="bg-gray-800 text-gray-300 text-sm md:text-lg">
                         <th className="px-4 py-2 text-left">Serial</th>
                         <th className="px-4 py-2 text-left">Platform</th>

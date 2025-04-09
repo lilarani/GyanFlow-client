@@ -13,11 +13,8 @@ const Banner = () => {
           <i className="fas fa-map-marker-alt"></i>Expert-led courses for
           flexible, online learning.
         </p>
-        <div
-         
-          className=" text-xl md:text-[20px]    rounded  text-white  duration-300 mt-2"
-        >
-          <Button text="Discover More" url="/dashboard/studentDashboard"/>
+        <div className=" text-xl md:text-[20px] rounded  text-white  duration-300 mt-2">
+          <Button text="Discover More" url="/dashboard/studentDashboard" />
         </div>
       </div>
       <div className="w-full md:w-1/2  relative">
@@ -28,11 +25,11 @@ const Banner = () => {
           }}
         >
           <div className="relative ">
-            <div className="shapeone absolute shadow  rounded-[40px] w-[400px] h-[400px] bg-[rgba(0,0,0,0.4)] opacity-40  hover:scale-[3] transition-all duration-500 "></div>
+            <div className="shapeone absolute shadow  rounded-[40px] w-[400px] h-[400px] bg-[rgba(0,0,0,0.4)] opacity-40   transition-all duration-500 "></div>
 
-            <div className="shapetwo absolute  rounded-[30px] shadow w-[300px] h-[300px] bg-[rgba(0,0,0,0.2)]  opacity-40 hover:scale-[3] transition-all duration-500"></div>
+            <div className="shapetwo absolute  rounded-[30px] shadow w-[300px] h-[300px] bg-[rgba(0,0,0,0.2)]  opacity-40  transition-all duration-500"></div>
 
-            <div className="shapethree absolute opacity-55 rounded-[20px] shadow w-[200px] h-[200px] bg-white hover:scale-[3] transition-all duration-500 "></div>
+            <div className="shapethree absolute opacity-55 rounded-[20px] shadow w-[200px] h-[200px] bg-white  transition-all duration-500 "></div>
           </div>
         </div>
         <img

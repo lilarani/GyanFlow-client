@@ -25,7 +25,7 @@ export default function Main() {
       console.log(user);
       if (user) {
         try {
-          console.log(user);
+          // console.log(user);
           const res = await axios.get(
             `https://gyanflow-server.onrender.com/gyanflow/user/role/${user?.email}`
           );
@@ -58,7 +58,7 @@ export default function Main() {
 
   return (
     <div className="w-full">
-    {open && <WelcomeModal open={open} setOpen={setOpen} />}
+      {open && <WelcomeModal open={open} setOpen={setOpen} />}
       <ToastContainer />
 
       <Navbar></Navbar>

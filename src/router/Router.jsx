@@ -18,6 +18,7 @@ import Career from '@/pages/Career/Career';
 import TecherDashboard from '@/pages/Dashboard/TecherDashboard/TecherDashboard';
 import StudentRoutes from './../protectedRoutes/StudentRoutes';
 import AdminRoute from './../protectedRoutes/AdminRoute';
+import UploadModul from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/UploadModul';
 
 export const router = createBrowserRouter([
   {
@@ -63,14 +64,13 @@ export const router = createBrowserRouter([
       },
       {
         path: 'courses',
-        element: <Courses />,
+        element: <AdminRoute><Courses /></AdminRoute>,
       },
       {
         // dashboard/addCourse'
         path: 'addCourse',
-        element: <AddCourses />,
+        element: <AdminRoute><AddCourses /></AdminRoute>,
       },
-      //
       {
         path: 'userManagement',
         element: <UserManagement></UserManagement>,
@@ -88,6 +88,10 @@ export const router = createBrowserRouter([
         path: 'instructorDashboard',
         element: <InstructorDashboard></InstructorDashboard>,
       },
+      {
+        path: 'instructorDashboard/action/:id',
+        element: <UploadModul></UploadModul>
+      }
     ],
   },
   {

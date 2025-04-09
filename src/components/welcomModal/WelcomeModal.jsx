@@ -56,7 +56,7 @@ const WelcomeModal = ({ open, setOpen }) => {
               Eid Mubarak
             </h1>
             <button
-              className="bg-red-500 absolute m-5 px-4 py-2 rounded-full cursor-pointer text-white right-[-20px] top-[-20px]  flex justify-center items-center"
+              className="bg-red-500 absolute m-5 px-4 py-2 rounded-full cursor-pointer text-white right-[8px] top-[-60px]  flex justify-center items-center"
               onClick={() => setOpen(false)}
             >
               x

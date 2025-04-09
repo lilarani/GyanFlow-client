@@ -9,14 +9,13 @@ const NewsLetter = () => {
         className="hero  flex justify-center "
         style={{
           backgroundImage: `url(${newsLetterBg})`,
-          backgroundColor: 'bg-yellow-100',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div className="hero-content text-center">
-          <div className=" gap-8  grid grid-cols-1 md:grid-cols-2">
+        <div className="hero-content text-center w-full ">
+          <div className=" gap-8 w-full  grid grid-cols-1 md:grid-cols-2">
             <div className=" w-full">
               <img src={newsImg} alt="" className="w-full h-72 rounded-lg" />
             </div>
@@ -29,7 +28,7 @@ const NewsLetter = () => {
               </p>
               <div className="flex  flex-col md:flex-row gap-3">
                 <input
-                  className=" p-2 border-[1px] border-gray-400 text-base text-black outline-none"
+                  className=" px-2 border-[1px] border-gray-400 text-base text-black outline-none"
                   type="email"
                   placeholder="Enter your email"
                 />

@@ -34,12 +34,27 @@ export const apiSlice = createApi({
     // courses get api
     getCourse: builder.query({
       query: () => '/gyanflow/cours/all-course',
+      providesTags: ['course'],
+    }),
+
+    // features course api
+    getFeaturesCourse: builder.query({
+      query: () => '/gyanflow/cours/features-course',
+      providesTags: ['course'],
     }),
 
     logOutUser: builder.mutation({
       query: () => ({
         url: '/gyanflow/user/logout',
         method: 'GET',
+      }),
+    }),
+
+    // features course details
+    getFeaturesCourseDetails: builder.query({
+      query: id => ({
+        url: `/gyanflow/cours/features-course/${id}`,
+        providesTags: ['course'],
       }),
     }),
 
@@ -57,6 +72,7 @@ export const apiSlice = createApi({
         url: `/gyanflow/cours/course/${id}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['course'],
     }),
 
     // update user
@@ -156,6 +172,8 @@ export const {
   useGoogleLoginMutation,
   useLogInUserMutation,
   useGetCourseQuery,
+  useGetFeaturesCourseQuery,
+  useGetFeaturesCourseDetailsQuery,
   useDeleteCoursesMutation,
   useDeleteUserMutation,
   useCreateCourseMutation,

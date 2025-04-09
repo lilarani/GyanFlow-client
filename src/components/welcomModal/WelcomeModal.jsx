@@ -54,8 +54,6 @@ const WelcomeModal = ({ open, setOpen }) => {
           <div className="flex justify-end items-center w-full   top-[-20px] md:top-[-5px] relative h-[40px]">
             <button
               className="border border-[crimson]  bg-transparent absolute top-[-15px] right-[-20px] m-5 px-4 py-2 rounded-full cursor-pointer text-[crimson]   flex justify-center items-center"
-              //               className="bg-red-500 absolute m-5 px-4 py-2 rounded-full cursor-pointer text-white right-[8px] top-[-60px]  flex justify-center items-center"
-
               onClick={() => setOpen(false)}
             >
               x

@@ -40,6 +40,7 @@ const Courses = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+
   const getCategoryColor = category => {
     switch (category) {
       case 'Development':

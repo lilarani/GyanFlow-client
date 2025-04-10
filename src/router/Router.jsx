@@ -21,6 +21,9 @@ import AdminRoute from './../protectedRoutes/AdminRoute';
 import UploadModul from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/UploadModul';
 import path from 'path';
 import SeeVideo from './../shared/CustomButtons/SeeVideo';
+import CreateMeeting from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateMeeting';
+import JoinClassRoom from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/JoinClassRoom';
+import MeetingRoute from '@/protectedRoutes/MeetingRoute';
 
 export const router = createBrowserRouter([
   {
@@ -100,6 +103,11 @@ export const router = createBrowserRouter([
           }
         ]
       }
+      ,
+      {
+        path : 'create-meeting',
+        element : <CreateMeeting></CreateMeeting>
+      }
     ],
   },
   {
@@ -110,4 +118,8 @@ export const router = createBrowserRouter([
     path: 'profile',
     element: <UserProfile></UserProfile>,
   },
+  {
+    path : '/join-meeting',
+    element : <MeetingRoute><JoinClassRoom></JoinClassRoom></MeetingRoute>
+  }
 ]);

@@ -122,14 +122,19 @@ export default function CreateUploadModule() {
           {/* Module History Section */}
           <div className="px-2 py-1 col-span-1 bg-white/10 backdrop-blur-md shadow-xl p-8 border border-white/20">
             {modules?.data?.map((module, index) => (
-              <details key={index} className="mb-2 border border-white/20 rounded-lg">
-                <summary className="p-2 cursor-pointer bg-white/20">{module?.title}</summary>
-                <div className="p-2">
+              <details
+                key={index}
+                className="mb-2 border border-white/20 rounded-lg"
+              >
+                <summary className="p-2 cursor-pointer bg-white/20">
+                  {module?.title}
+                </summary>
+                <div className="p-2 ">
                   {module?.videos?.length > 0 ? (
                     module.videos.map((video, idx) => (
-                      <div key={idx} onClick={() => setVideoInfo(video)}>
-                        <p className="py-1">{video.videoTitle}</p>
-                      </div>
+                      <p key={idx} className="py-1  cursor-pointer">
+                        {video.videoTitle}
+                      </p>
                     ))
                   ) : (
                     <p className="text-gray-400">No videos available</p>

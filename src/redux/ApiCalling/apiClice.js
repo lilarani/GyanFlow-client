@@ -4,7 +4,7 @@ import { interceptorQuery } from './../customInterceptor/interceptor';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: interceptorQuery,
-  tagTypes: ['user', 'module', 'video'],
+  tagTypes: ['user', 'module', 'video', 'update'],
   endpoints: builder => ({
     // all GET API
     getUsers: builder.query({
@@ -14,17 +14,16 @@ export const apiSlice = createApi({
 
     // all instructors 
     getInstructors: builder.query({
-      query: () => '/gyanflow/user/all-instructors'
+      query: () => '/gyanflow/user/all-instructors',
     }),
 
-
-    // course for instructor 
+    // course for instructor
     courseForInstructor: builder.query({
-      query: (id) => `/gyanflow/cours/course-for-instructor/${id}`
+      query: id => `/gyanflow/cours/course-for-instructor/${id}`,
     }),
     allModules: builder.query({
-      query: (id) => `/gyanflow/instructor/all-modules/${id}`,
-      providesTags: ['video', 'module']
+      query: id => `/gyanflow/instructor/all-modules/${id}`,
+      providesTags: ['video', 'module'],
     }),
     // courses get api
     getCourse: builder.query({
@@ -40,11 +39,10 @@ export const apiSlice = createApi({
 
 
     getMyUser: builder.mutation({
-      query: (email) => ({ 
-        url: `/gyanflow/user/role/${email}`, 
-        method: 'GET' 
+      query: (email) => ({
+        url: `/gyanflow/user/role/${email}`,
+        method: 'GET'
       }),
-
     }),
 
 
@@ -54,6 +52,16 @@ export const apiSlice = createApi({
         method: 'POST',
         body: data,
       }),
+    }),
+
+    // update user
+    updateUser: builder.mutation({
+      query: ({ id, info }) => ({
+        url: `gyanflow/user/updateUserInfo/${id}`,
+        method: 'PUT',
+        body: info,
+      }),
+      invalidatesTags: ['update'],
     }),
 
     // login user
@@ -78,7 +86,7 @@ export const apiSlice = createApi({
     // POST API - createUser
     createUser: builder.mutation({
       query: newUser => ({
-        //   https://gyanflow-server.onrender.com
+        //   http://localhost:4000
         url: '/gyanflow/user/regiser',
         method: 'POST',
         body: newUser,
@@ -89,18 +97,18 @@ export const apiSlice = createApi({
       query: newModule => ({
         url: '/gyanflow/instructor/add-module',
         method: 'POST',
-        body: newModule
+        body: newModule,
       }),
-      invalidatesTags: ['module']
+      invalidatesTags: ['module'],
     }),
 
     createVideo: builder.mutation({
       query: newVedioInfo => ({
         url: '/gyanflow/instructor/add-video',
         method: 'POST',
-        body: newVedioInfo
+        body: newVedioInfo,
       }),
-      invalidatesTags: ['video']
+      invalidatesTags: ['video'],
     }),
 
     createCourse: builder.mutation({
@@ -128,5 +136,6 @@ export const {
   useAllModulesQuery,
   useCreateModuleMutation,
   useCreateVideoMutation,
+  useUpdateUserMutation,
 } = apiSlice;
 export default apiSlice;

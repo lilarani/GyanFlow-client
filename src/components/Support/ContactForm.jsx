@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 import {
   FaQuestionCircle,
   FaEnvelope,
@@ -7,16 +7,16 @@ import {
   FaArrowRight,
   FaChevronDown,
   FaChevronUp,
-} from "react-icons/fa";
-import React, { useState } from "react";
+} from 'react-icons/fa';
+import React, { useState } from 'react';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+    name: '',
+    email: '',
+    message: '',
   });
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -25,14 +25,13 @@ export default function ContactForm() {
     console.log(formData);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     // Here you would handle form submission, e.g. API call
     console.log('Form submitted:', formData);
     alert('Thank you for your message! We will get back to you soon.');
     setFormData({ name: '', email: '', message: '' });
   };
-
 
   return (
     <>
@@ -123,7 +122,7 @@ export default function ContactForm() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#0B1739] hover:bg-[#352b61] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Send Message
                 <FaArrowRight className="ml-2" />

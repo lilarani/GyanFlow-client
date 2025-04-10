@@ -34,7 +34,7 @@ const DashboardNavbar = ({ navTitle }) => {
   const [openSiderbar, setOpenSidebar] = useState(false);
   const { user, loader } = useSelector(state => state.authUser);
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   // handle flag modal function
   const handleModal = () => {
@@ -60,7 +60,7 @@ const DashboardNavbar = ({ navTitle }) => {
   // log-out funtion
   let signOutUser = () => {
     signOut(auth).then(async () => {
-      dispatch(setUser(null))
+      dispatch(setUser(null));
       navigate('/login');
       toast('logout user');
     });
@@ -118,43 +118,43 @@ const DashboardNavbar = ({ navTitle }) => {
         <div className="relative">
           <img
             onClick={handleUserModal}
-            src={user?.data?.picture}
+            src={user?.picture}
             alt="user Images"
             className="w-12 h-12 rounded-full"
           />
           {openUserModal && (
-            <div className="absolute z-50 top-18 bg-gradient-to-bl to-[#0b0221] from-[#080127] text-white min-w-md  right-4  p-6">
+            <div className="absolute z-50 top-18 bg-white/10 backdrop-blur-md shadow-xl p-8 border border-white/20 text-white min-w-sm md:min-w-md right-4  p-6">
               <div className="flex gap-2 items-center border-b-[1px] border-gray-700 p-2">
                 <img
                   referrerPolicy="no-referrer"
-                  src={user?.data?.picture}
+                  src={user?.picture}
                   alt="User image"
                   className="w-12 h-12 rounded-full"
                 />
                 <div>
-                  <p className="text-white">{user?.data?.name}</p>
-                  <p>{user?.data?.email}</p>
+                  <p className="text-white">{user?.name}</p>
+                  <p>{user?.email}</p>
                 </div>
               </div>
 
               <div className="text-white space-y-5 mt-4">
                 <Link
                   to={'/profile'}
-                  className="text-base font-bold flex gap-2 items-center cursor-pointer"
+                  className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer"
                 >
                   <FaRegUser />
                   View Profile
                 </Link>
                 <Link
                   to={'#'}
-                  className="text-base font-bold flex gap-2 items-center cursor-pointer"
+                  className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer"
                 >
                   <IoMdNotificationsOutline className="" />
                   Notification
                 </Link>
                 <Link
                   to={'#'}
-                  className="text-base font-bold flex gap-2 items-center cursor-pointer"
+                  className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer"
                 >
                   <TbHelpSquare />
                   Help Center
@@ -162,7 +162,7 @@ const DashboardNavbar = ({ navTitle }) => {
 
                 <button
                   onClick={signOutUser}
-                  className="text-md  border-blue-300 text-blue-300 border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] hover:text-white hover:border-none"
+                  className="text-sm md:text-base  border-blue-300 text-blue-300 border-[1px] cursor-pointer font-bold py-1 px-4 hover:bg-[#ffffff44] hover:text-white hover:border-none"
                 >
                   Logout
                 </button>

@@ -7,8 +7,6 @@ const Card = ({ course }) => {
 
   return (
     <div className="bg-[rgba(0,0,0,0.3)] shadow-2xs  overflow-hidden rounded-2xl p-4 w-full sm:w-[45%] flex  gap-3 relative  course_card flex-col lg:flex-row">
-
-
       
       <img
         src={course.image}

@@ -2,7 +2,7 @@ import { Outlet } from 'react-router';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { auth } from '../../../firebase.config';
 import { setUser, setLoader } from '../../redux/authSlice';
 import Navbar from '../../components/Home/Navbar/Navbar';
@@ -13,8 +13,10 @@ import {
   useGetMyUserMutation,
 } from '@/redux/ApiCalling/apiClice';
 import axios from 'axios';
+import WelcomeModal from '@/components/welcomModal/WelcomeModal';
 
 export default function Main() {
+  const [open, setOpen] = useState(true);
   const dispatch = useDispatch();
   let [logOutUser] = useLogOutUserMutation();
   let [getMyuser] = useGetMyUserMutation()
@@ -26,7 +28,7 @@ export default function Main() {
         try {
           console.log(user);
           // const res = await axios.get(
-          //   `https://gyanflow-server.onrender.com/gyanflow/user/role/${user?.email}`
+          //   `http://localhost:4000/gyanflow/user/role/${user?.email}`
           // );
           const res = await getMyuser(user?.email).unwrap();
           console.log("our api response for user informations ",res)
@@ -59,6 +61,7 @@ export default function Main() {
 
   return (
     <div className="w-full">
+      {open && <WelcomeModal open={open} setOpen={setOpen} />}
       <ToastContainer />
 
       <Navbar></Navbar>

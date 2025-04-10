@@ -9,7 +9,7 @@ const InstructorDashboard = () => {
   let { data } = useCourseForInstructorQuery(id);
   console.log(data)
   useEffect(() => {
-    setId(user?.data?._id)
+    setId(user?._id)
   }, [user])
   return <div className='bg-black'>
     <p className='text-xl sticky top-0 z-20 bg-black text-center font-bold text-blue-200 py-4'>Invited Courses Lists</p>

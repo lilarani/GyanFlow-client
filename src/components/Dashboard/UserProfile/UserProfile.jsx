@@ -81,7 +81,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="bg-gradient-to-bl to-[#0e0227] from-[#0b022e]">
+    <div className="bg-gradient-to-bl to-[#0e0227] from-[#0b022e] px-8">
       <div className="">
         <DashboardNavbar
           navTitle={
@@ -109,8 +109,8 @@ const UserProfile = () => {
           </div>
 
           {/* Profile Section */}
-          <div className="flex-1 gap-8 mt-6">
-            <div className="bg-[#0B1739] shadow-md rounded-lg text-gray-300">
+          <div className="flex-1 mt-6 ">
+            <div className="bg-[#0B1739] shadow-md rounded-lg text-gray-300 ">
               <div className="flex items-center p-6 justify-between border-dashed border-b-[1px] border-gray-500">
                 <h2 className="text-xl font-semibold">My Profile</h2>
                 <FiEdit

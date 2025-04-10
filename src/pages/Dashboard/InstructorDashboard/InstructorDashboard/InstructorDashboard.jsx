@@ -11,7 +11,7 @@ const InstructorDashboard = () => {
   useEffect(() => {
     setId(user?._id)
   }, [user])
-  return <div className='bg-black'>
+  return <div className='bg-black '>
     <p className='text-xl sticky top-0 z-20 bg-black text-center font-bold text-blue-200 py-4'>Invited Courses Lists</p>
 
     <div className='flex flex-col  gap-16 p-6'>

@@ -25,11 +25,11 @@ const Banner = () => {
           }}
         >
           <div className="relative ">
-            <div className="shapeone absolute shadow  rounded-[40px] w-[400px] h-[400px] bg-[rgba(0,0,0,0.4)] opacity-40  hover:scale-[3] transition-all duration-500 "></div>
+            <div className="shapeone absolute shadow  rounded-[40px] w-[400px] h-[400px] bg-[rgba(0,0,0,0.4)] opacity-40   transition-all duration-500 "></div>
 
-            <div className="shapetwo absolute  rounded-[30px] shadow w-[300px] h-[300px] bg-[rgba(0,0,0,0.2)]  opacity-40 hover:scale-[3] transition-all duration-500"></div>
+            <div className="shapetwo absolute  rounded-[30px] shadow w-[300px] h-[300px] bg-[rgba(0,0,0,0.2)]  opacity-40  transition-all duration-500"></div>
 
-            <div className="shapethree absolute opacity-55 rounded-[20px] shadow w-[200px] h-[200px] bg-white hover:scale-[3] transition-all duration-500 "></div>
+            <div className="shapethree absolute opacity-55 rounded-[20px] shadow w-[200px] h-[200px] bg-white  transition-all duration-500 "></div>
           </div>
         </div>
         <img

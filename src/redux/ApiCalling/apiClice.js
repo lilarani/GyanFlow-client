@@ -4,7 +4,7 @@ import { interceptorQuery } from './../customInterceptor/interceptor';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: interceptorQuery,
-  tagTypes: ['user', 'module', 'video', 'update'],
+  tagTypes: ['user', 'module', 'video', 'update','quiz'],
   endpoints: builder => ({
     // all GET API
     getUsers: builder.query({
@@ -28,6 +28,13 @@ export const apiSlice = createApi({
     // courses get api
     getCourse: builder.query({
       query: () => '/gyanflow/cours/all-course',
+      providesTags: ['course'],
+    }),
+
+    // features course api
+    getFeaturesCourse: builder.query({
+      query: () => '/gyanflow/cours/features-course',
+      providesTags: ['course'],
     }),
 
     logOutUser: builder.mutation({
@@ -46,6 +53,14 @@ export const apiSlice = createApi({
     }),
 
 
+    // features course details
+    getFeaturesCourseDetails: builder.query({
+      query: id => ({
+        url: `/gyanflow/cours/features-course/${id}`,
+        providesTags: ['course'],
+      }),
+    }),
+
     googleLogin: builder.mutation({
       query: data => ({
         url: '/gyanflow/user/googleLogin',
@@ -54,10 +69,19 @@ export const apiSlice = createApi({
       }),
     }),
 
+    // course delete
+    deleteCourses: builder.mutation({
+      query: id => ({
+        url: `/gyanflow/cours/course/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['course'],
+    }),
+
     // update user
     updateUser: builder.mutation({
       query: ({ id, info }) => ({
-        url: `gyanflow/user/updateUserInfo/${id}`,
+        url: `/gyanflow/user/updateUserInfo/${id}`,
         method: 'PUT',
         body: info,
       }),
@@ -110,13 +134,35 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ['video'],
     }),
+    // /gyanflow/quiz/addquiz/${instructorId}/${modulNo}
+    createQuiz: builder.mutation({
+      query: ({instructorId, modulNo,quiz}) => ({
+        url: `/gyanflow/quiz/addquiz/${instructorId}/${modulNo}/`,
+        method: 'POST',
+        body: quiz,
+      }),
+    }),
 
+    // gyanflow/quiz/getquizforModule/${modulNo}
+    getQuizForSpeceficModule: builder.query({
+      query: (modulNo) => `gyanflow/quiz/getquizforModule/${modulNo}`,
+      providesTags: ['quiz'],
+    }),
+    // /gyanflow/quiz/quizzes/${id}
+    deleteQuiz: builder.mutation({
+      query: id => ({
+        url: `/gyanflow/quiz/quizzes/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['quiz'],
+    }),
     createCourse: builder.mutation({
       query: newCourse => ({
         url: '/gyanflow/cours/add-course',
         method: 'POST',
         body: newCourse,
       }),
+      invalidatesTags: ['quiz'],
     }),
   }),
 });
@@ -129,6 +175,9 @@ export const {
   useGoogleLoginMutation,
   useLogInUserMutation,
   useGetCourseQuery,
+  useGetFeaturesCourseQuery,
+  useGetFeaturesCourseDetailsQuery,
+  useDeleteCoursesMutation,
   useDeleteUserMutation,
   useCreateCourseMutation,
   useGetInstructorsQuery,
@@ -137,5 +186,8 @@ export const {
   useCreateModuleMutation,
   useCreateVideoMutation,
   useUpdateUserMutation,
+  useCreateQuizMutation,
+  useDeleteQuizMutation,
+  useGetQuizForSpeceficModuleQuery
 } = apiSlice;
 export default apiSlice;

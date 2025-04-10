@@ -19,11 +19,13 @@ import TecherDashboard from '@/pages/Dashboard/TecherDashboard/TecherDashboard';
 import StudentRoutes from './../protectedRoutes/StudentRoutes';
 import AdminRoute from './../protectedRoutes/AdminRoute';
 import UploadModul from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/UploadModul';
-import path from 'path';
 import SeeVideo from './../shared/CustomButtons/SeeVideo';
 import CreateMeeting from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateMeeting';
 import JoinClassRoom from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/JoinClassRoom';
 import MeetingRoute from '@/protectedRoutes/MeetingRoute';
+import FeaturesCourseDetails from '@/pages/FeaturesCourseDetails/FeaturesCourseDetails';
+import AllCourses from '@/pages/AllCourses/AllCourses';
+import CreateModule from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateModule';
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +48,14 @@ export const router = createBrowserRouter([
         path: '/career',
         element: <Career></Career>,
       },
+      {
+        path: '/featuresDetails/:id',
+        element: <FeaturesCourseDetails></FeaturesCourseDetails>,
+      },
+      {
+        path: '/AllCourses',
+        element: <AllCourses></AllCourses>,
+      },
     ],
   },
   {
@@ -65,16 +75,28 @@ export const router = createBrowserRouter([
 
       {
         path: 'adminDashboard',
-        element: <AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <AdminDashboard></AdminDashboard>
+          </AdminRoute>
+        ),
       },
       {
         path: 'courses',
-        element: <AdminRoute><Courses /></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <Courses />
+          </AdminRoute>
+        ),
       },
       {
         // dashboard/addCourse'
         path: 'addCourse',
-        element: <AdminRoute><AddCourses /></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <AddCourses />
+          </AdminRoute>
+        ),
       },
       {
         path: 'userManagement',
@@ -83,7 +105,11 @@ export const router = createBrowserRouter([
       // student related  routes
       {
         path: 'studentDashboard',
-        element: <StudentRoutes><StudentDashboard></StudentDashboard></StudentRoutes>,
+        element: (
+          <StudentRoutes>
+            <StudentDashboard></StudentDashboard>
+          </StudentRoutes>
+        ),
       },
       {
         path: 'teacherDashboard',
@@ -107,7 +133,12 @@ export const router = createBrowserRouter([
       {
         path : 'create-meeting',
         element : <CreateMeeting></CreateMeeting>
+      },
+      {
+        path : 'create-module',
+        element : <CreateModule></CreateModule>
       }
+    
     ],
   },
   {

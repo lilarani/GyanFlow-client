@@ -12,7 +12,6 @@ import {
   useLogOutUserMutation,
   useGetMyUserMutation,
 } from '@/redux/ApiCalling/apiClice';
-import axios from 'axios';
 import WelcomeModal from '@/components/welcomModal/WelcomeModal';
 
 export default function Main() {
@@ -61,7 +60,7 @@ export default function Main() {
 
   return (
     <div className="w-full">
-      {open && <WelcomeModal open={open} setOpen={setOpen} />}
+      {/* {open && <WelcomeModal open={open} setOpen={setOpen} />} */}
       <ToastContainer />
 
       <Navbar></Navbar>

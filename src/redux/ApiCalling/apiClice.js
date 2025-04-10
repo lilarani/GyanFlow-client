@@ -169,7 +169,16 @@ export const apiSlice = createApi({
         method: 'POST',
         body: paymentData,
       }),
+
       invalidatesTags: ['payment'],
+    }),
+
+    // successPayment
+    successPayment: builder.mutation({
+      query: () => ({
+        url: '/gyanflow/ssl-payment/success-payment',
+        method: 'POST',
+      }),
     }),
   }),
 });
@@ -197,5 +206,6 @@ export const {
   useDeleteQuizMutation,
   useGetQuizForSpeceficModuleQuery,
   usePaymentMutation,
+  useSuccessPaymentMutation,
 } = apiSlice;
 export default apiSlice;

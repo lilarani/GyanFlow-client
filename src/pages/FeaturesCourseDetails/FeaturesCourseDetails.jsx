@@ -19,10 +19,15 @@ const FeaturesCourseDetails = () => {
         price: data?.data?.price,
         courseID: data?.data?._id,
         studID: user?.data?._id,
+        transactionId: '',
         date: new Date(),
         status: 'pending',
       };
       const response = await payment(paymentData).unwrap();
+      console.log(response?.data, 'response ');
+      if (response?.data) {
+        window.location.replace(response?.data);
+      }
     } catch (err) {
       console.error('Error during payment initiation:', err);
     }

@@ -47,7 +47,6 @@ const Courses = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-
   // delete course
   const deleteSignleCourse = async id => {
     try {
@@ -73,7 +72,6 @@ const Courses = () => {
       console.log(e.message);
     }
   };
-
 
   const getCategoryColor = category => {
     switch (category) {

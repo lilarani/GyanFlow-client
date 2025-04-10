@@ -27,12 +27,12 @@ const WelcomeModal = ({ open, setOpen }) => {
   ];
   const [current, setCurrent] = useState(0);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setOpen(false);
-    }, 13000);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setOpen(false);
+  //   }, 13000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -50,33 +50,26 @@ const WelcomeModal = ({ open, setOpen }) => {
   return (
     <div className="transition-all duration-1000 fixed w-full h-screen bg-[rgba(0,0,0,0.7)] top-0 z-[100] text-white flex justify-center items-center ">
       <div className="w-[100%] h-[100%] mx-auto flex justify-center items-center relative">
-        <div className="w-[90%] md:w-[70%] h-[90%] md:h-[60%] mx-auto bg-[#0b1739] text-black rounded-lg shadow-lg flex flex-col justify-center items-center overflow-hidden  ">
-          <div className='flex justify-end items-center w-full   top-[-20px] md:top-[-5px] relative h-[40px]'>
+        <div className="w-[90%] md:w-[70%] h-max md:h-[60%] mx-auto bg-[#0b1739] text-black rounded-lg shadow-lg flex flex-col justify-center items-center overflow-hidden  ">
+          <div className="flex  justify-end items-center w-full    top-[-20px] md:top-[-5px] relative h-[40px]">
             <button
-
-              className= "border border-[crimson]  bg-transparent absolute top-[-15px] right-[-20px] m-5 px-4 py-2 rounded-full cursor-pointer text-[crimson]   flex justify-center items-center"
-
-//               className="bg-red-500 absolute m-5 px-4 py-2 rounded-full cursor-pointer text-white right-[8px] top-[-60px]  flex justify-center items-center"
-
+              className="border border-[crimson]  bg-transparent absolute  top-[-0px] md:top-[-25px] right-[-20px] m-5 px-4 py-2 rounded-full cursor-pointer text-[crimson]   flex justify-center items-center"
               onClick={() => setOpen(false)}
             >
               x
             </button>
           </div>
-          <div className="w-full flex justify-center items-center    sticky  p-5  ">
-
-           
+          <div className="w-full flex justify-center items-center    sticky  p-3  ">
             <h1 className="text-white text-3xl   first-letter:text-yellow-500 first-letter:font-bold">
               Eid Mubarak
             </h1>
-            
           </div>
 
           {slides[current] && (
             <motion.div
               // ${slides[current].bg}
               key={slides[current].id}
-              className={`h- w-[100%]  flex flex-col items-center justify-center  font-bold  
+              className={`h- w-[100%]  flex flex-col items-center justify-center  font-bold   
                             
                                 `}
               initial={{ opacity: 0, x: 50 }}
@@ -90,7 +83,7 @@ const WelcomeModal = ({ open, setOpen }) => {
                 <img
                   src={slides[current]?.img}
                   alt=""
-                  className="w-[500px]  h-[250px] object-cover rounded"
+                  className="w-[500px]  h-[240px] object-cover rounded"
                 />
                 <div className="flex gap-3  flex-col px-3 md:p-0">
                   <h1 className="text-white text-[20px] md:text-3xl">

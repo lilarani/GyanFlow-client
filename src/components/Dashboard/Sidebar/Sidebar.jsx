@@ -102,6 +102,13 @@ const Sidebar = () => {
               <BiSolidUpArrow />
               Student Dashboard
             </NavLink>
+            <NavLink
+              to={'/dashboard/actionaldashboard'}
+              className="capitalize text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <BiSolidUpArrow />
+              Actionable Dashboard
+            </NavLink>
           </div>
         ))}
 

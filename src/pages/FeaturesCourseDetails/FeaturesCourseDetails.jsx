@@ -1,12 +1,33 @@
 import Button from '@/components/customs/Button';
-import { useGetFeaturesCourseDetailsQuery } from '@/redux/ApiCalling/apiClice';
+import {
+  useGetFeaturesCourseDetailsQuery,
+  usePaymentMutation,
+} from '@/redux/ApiCalling/apiClice';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
 const FeaturesCourseDetails = () => {
   const { id } = useParams();
+  const [payment] = usePaymentMutation();
   const { data } = useGetFeaturesCourseDetailsQuery(id);
+  const { user } = useSelector(state => state.authUser);
 
-  console.log(data);
+  // save the payment in the database
+  const handleCreatePayment = async () => {
+    try {
+      const paymentData = {
+        price: data?.data?.price,
+        courseID: data?.data?._id,
+        studID: user?.data?._id,
+        date: new Date(),
+        status: 'pending',
+      };
+      const response = await payment(paymentData).unwrap();
+    } catch (err) {
+      console.error('Error during payment initiation:', err);
+    }
+  };
+
   return (
     <div className="w-10/12 mx-auto my-shadow my-16 p-8 gap-8 grid grid-cols-1 md:grid-cols-2">
       <div className="">
@@ -43,7 +64,9 @@ const FeaturesCourseDetails = () => {
           <span className="font-normal ">{data?.data?.description}</span>
         </p>
 
-        <Button text={'Enroll Now'}></Button>
+        <div onClick={handleCreatePayment}>
+          <Button text={'Enroll Now'}></Button>
+        </div>
       </div>
     </div>
   );

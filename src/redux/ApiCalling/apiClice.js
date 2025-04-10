@@ -4,7 +4,7 @@ import { interceptorQuery } from './../customInterceptor/interceptor';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: interceptorQuery,
-  tagTypes: ['user', 'module', 'video', 'update','quiz'],
+  tagTypes: ['user', 'module', 'video', 'update', 'quiz', 'payment'],
   endpoints: builder => ({
     // all GET API
     getUsers: builder.query({
@@ -107,7 +107,7 @@ export const apiSlice = createApi({
     // POST API - createUser
     createUser: builder.mutation({
       query: newUser => ({
-        //   https://gyanflow-server.onrender.com
+        //   http://localhost:4000
         url: '/gyanflow/user/regiser',
         method: 'POST',
         body: newUser,
@@ -133,7 +133,7 @@ export const apiSlice = createApi({
     }),
     // /gyanflow/quiz/addquiz/${instructorId}/${modulNo}
     createQuiz: builder.mutation({
-      query: ({instructorId, modulNo,quiz}) => ({
+      query: ({ instructorId, modulNo, quiz }) => ({
         url: `/gyanflow/quiz/addquiz/${instructorId}/${modulNo}/`,
         method: 'POST',
         body: quiz,
@@ -142,7 +142,7 @@ export const apiSlice = createApi({
 
     // gyanflow/quiz/getquizforModule/${modulNo}
     getQuizForSpeceficModule: builder.query({
-      query: (modulNo) => `gyanflow/quiz/getquizforModule/${modulNo}`,
+      query: modulNo => `gyanflow/quiz/getquizforModule/${modulNo}`,
       providesTags: ['quiz'],
     }),
     // /gyanflow/quiz/quizzes/${id}
@@ -160,6 +160,16 @@ export const apiSlice = createApi({
         body: newCourse,
       }),
       invalidatesTags: ['quiz'],
+    }),
+
+    // ssl payments apis
+    payment: builder.mutation({
+      query: paymentData => ({
+        url: '/gyanflow/ssl-payment/init',
+        method: 'POST',
+        body: paymentData,
+      }),
+      invalidatesTags: ['payment'],
     }),
   }),
 });
@@ -185,6 +195,7 @@ export const {
   useUpdateUserMutation,
   useCreateQuizMutation,
   useDeleteQuizMutation,
-  useGetQuizForSpeceficModuleQuery
+  useGetQuizForSpeceficModuleQuery,
+  usePaymentMutation,
 } = apiSlice;
 export default apiSlice;

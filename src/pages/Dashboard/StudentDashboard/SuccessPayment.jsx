@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const SuccessPayment = () => {
   return (
@@ -11,9 +12,12 @@ const SuccessPayment = () => {
           Your payment has been processed successfully. Thank you for your
           purchase!
         </p>
-        <button className="bg-green-500 text-white py-2 px-6 rounded-full hover:bg-green-600 transition duration-300">
+        <Link
+          to={'/'}
+          className="bg-green-500 text-white py-2 px-6 rounded-full hover:bg-green-600 transition duration-300"
+        >
           Go to Dashboard
-        </button>
+        </Link>
       </div>
     </div>
   );

@@ -22,6 +22,7 @@ import UploadModul from '@/pages/Dashboard/InstructorDashboard/InstructorDashboa
 import FeaturesCourseDetails from '@/pages/FeaturesCourseDetails/FeaturesCourseDetails';
 import AllCourses from '@/pages/AllCourses/AllCourses';
 import ActionalDashboard from '@/pages/Dashboard/StudentDashboard/ActionalDashboard';
+import SuccessPayment from '@/pages/Dashboard/StudentDashboard/SuccessPayment';
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
   {
     path: '/register/:role',
     element: <Register></Register>,
+  },
+  {
+    path: '/successedPayment',
+    element: <SuccessPayment></SuccessPayment>,
   },
 
   {

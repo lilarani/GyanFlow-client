@@ -21,6 +21,7 @@ import AdminRoute from "./../protectedRoutes/AdminRoute";
 import UploadModul from "@/pages/Dashboard/InstructorDashboard/InstructorDashboard/UploadModul";
 import FeaturesCourseDetails from "@/pages/FeaturesCourseDetails/FeaturesCourseDetails";
 import CourseAnnoucement from "@/pages/Dashboard/StudentDashboard/CourseAnnoucement";
+import AllCourses from "@/pages/AllCourses/AllCourses";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "/featuresDetails/:id",
         element: <FeaturesCourseDetails></FeaturesCourseDetails>,
+      },
+      {
+        path: "/AllCourses",
+        element: <AllCourses></AllCourses>,
       },
     ],
   },

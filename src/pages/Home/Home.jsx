@@ -5,10 +5,12 @@ import FeaturesSectionHomePage from '../../components/Home/FeaturesSection/Featu
 import Banner from '../../components/Home/banner/Banner';
 import { useGetUsersQuery } from '../../redux/ApiCalling/apiClice';
 import { load } from 'redux-localstorage-simple';
+import OurAllCourse from '@/components/Home/OurAllCourse/OurAllCourse';
+
 // import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
-  console.log("my info -- " , load().authUser)
+  console.log('my info -- ', load().authUser);
   // let {data , isLoading , isError} = useGetUsersQuery();
   // // isLoading ? console.log(isLoading) :  console.log(data)
   // if(isLoading){
@@ -30,6 +32,9 @@ const Home = () => {
       <section>
         {/* features section */}
         <FeaturesSectionHomePage></FeaturesSectionHomePage>
+
+        {/* our all courses */}
+        <OurAllCourse></OurAllCourse>
         {/* Trasted Features */}
         <TrustedPartner />
         {/* <About/> */}

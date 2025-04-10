@@ -118,7 +118,7 @@ const DashboardNavbar = ({ navTitle }) => {
         <div className="relative">
           <img
             onClick={handleUserModal}
-            src={user?.data?.picture}
+            src={user?.picture}
             alt="user Images"
             className="w-12 h-12 rounded-full"
           />
@@ -127,13 +127,13 @@ const DashboardNavbar = ({ navTitle }) => {
               <div className="flex gap-2 items-center border-b-[1px] border-gray-700 p-2">
                 <img
                   referrerPolicy="no-referrer"
-                  src={user?.data?.picture}
+                  src={user?.picture}
                   alt="User image"
                   className="w-12 h-12 rounded-full"
                 />
                 <div>
-                  <p className="text-white">{user?.data?.name}</p>
-                  <p>{user?.data?.email}</p>
+                  <p className="text-white">{user?.name}</p>
+                  <p>{user?.email}</p>
                 </div>
               </div>
 

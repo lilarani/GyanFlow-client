@@ -24,7 +24,7 @@ const Banner = () => {
             transform: 'rotate(45deg)',
           }}
         >
-          <div className="relative  hidden ">
+          <div className="relative ">
             <div className="shapeone absolute shadow  rounded-[40px] w-[400px] h-[400px] bg-[rgba(0,0,0,0.4)] opacity-40   transition-all duration-500 "></div>
 
             <div className="shapetwo absolute  rounded-[30px] shadow w-[300px] h-[300px] bg-[rgba(0,0,0,0.2)]  opacity-40  transition-all duration-500"></div>

@@ -9,7 +9,7 @@ import './index.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Provider store={store}>  {/* Provider কম্পোনেন্ট যোগ করা */}
+    <Provider store={store}>  
       <PersistGate loading={null} persistor={persistor}>
         <RouterProvider router={router} />
       </PersistGate>

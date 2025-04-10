@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useParams } from 'react-router';
+
 import {
   useAllModulesQuery,
   useCreateModuleMutation,
@@ -10,15 +12,18 @@ import Quiz from '@/components/QuizeComponents/Quiz';
 
 export default function CreateUploadModule() {
   const [showQuizModal, setShowQuizModal] = useState(false);
-  const [quizInfo, setQuizInfo] = useState({})
+  const [quizInfo, setQuizInfo] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [createModule] = useCreateModuleMutation();
   const [createVideo] = useCreateVideoMutation();
   const [formType, setFormType] = useState(null);
   const [formData, setFormData] = useState({});
+  const [video, setVideo] = useState(null);
+  const [videoLink, setVideoLink] = useState('');
+  const [selectedVideo, setSelectedVideo] = useState(null);
   let { id: courseId } = useParams();
   let { data: modules = [] } = useAllModulesQuery(courseId);
-  console.log(modules);
+  console.log(selectedVideo)
   const handleCreateModuleClick = () => {
     setFormType('module');
     setShowModal(true);
@@ -41,32 +46,41 @@ export default function CreateUploadModule() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const finalData =
-      formType === 'module' ? { ...formData, courseId } : formData;
-    if (formType === 'module') {
-      let res = await createModule(finalData).unwrap();
-      console.log(res);
-      setShowModal(false);
+
+    let finalData = {};
+
+    if (formType === 'video') {
+      try {
+        const storageRef = ref(storage, `videos/${video.name}`);
+        const snapshot = await uploadBytes(storageRef, video);
+        const downloadURL = await getDownloadURL(snapshot.ref);
+        setVideoLink(downloadURL);
+
+        finalData = { ...formData, videoLink: downloadURL };
+        const res = await createVideo(finalData).unwrap();
+        console.log(res);
+        setShowModal(false);
+      } catch (error) {
+        console.error("Upload failed", error);
+      }
     } else {
-      let res = await createVideo(finalData).unwrap();
+      finalData = { ...formData, courseId };
+      const res = await createModule(finalData).unwrap();
       console.log(res);
       setShowModal(false);
     }
+
     console.log('Form Data:', finalData);
   };
 
-// quiz related functionality==============================
-  const toggleQuizModule= ()=>{
-    setShowQuizModal(!showQuizModal)
-  }
+  const toggleQuizModule = () => {
+    setShowQuizModal(!showQuizModal);
+  };
 
-  const handleQuizInfo= (module)=>{
-    setQuizInfo(module)
-    setShowQuizModal(true)
-    
-  }
-
-  // quiz related functionalityend here==============================
+  const handleQuizInfo = (module) => {
+    setQuizInfo(module);
+    setShowQuizModal(true);
+  };
 
   return (
     <div className="min-h-screen flex justify-center bg-gradient-to-br from-[#0F0C29] via-[#302B63] to-[#24243E] p-6">
@@ -74,33 +88,56 @@ export default function CreateUploadModule() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full  bg-white/10  backdrop-blur-md shadow-xl p-8 border border-white/20"
+        className="w-full bg-white/10 backdrop-blur-md shadow-xl p-8 border border-white/20"
       >
         <div className="flex flex-row justify-between">
           <motion.h1 className="text-center text-3xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-6 animate-pulse">
-            Create Module
+            All  Modules
           </motion.h1>
-          <div className="flex  mb-6">
+          {/* <div className="flex mb-6">
             <motion.button
               whileHover={{ scale: 1.05 }}
-              className="text-xs mr-4 uppercase cursor-pointer hover:bg-white hover:text-black text-blue-200  rounded-full border px-6 py-1"
+              className="text-xs mr-4 uppercase cursor-pointer hover:bg-white hover:text-black text-blue-200 rounded-full border px-6 py-1"
               onClick={handleCreateModuleClick}
             >
               Create Module
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
-              className="text-xs uppercase cursor-pointer hover:bg-white hover:text-black text-blue-200  rounded-full border px-6 py-1"
+              className="text-xs uppercase cursor-pointer hover:bg-white hover:text-black text-blue-200 rounded-full border px-6 py-1"
               onClick={handleUploadVideoClick}
             >
               Upload Video
             </motion.button>
-          </div>
+          </div> */}
         </div>
+
         <div className="grid grid-cols-3 gap-3">
-          <div className="col-span-2"></div>
-          {/* module history */}
-          <div className=" px-2 py-1 col-span-1 bg-white/10 backdrop-blur-md shadow-xl p-8 border border-white/20 ">
+          <div className="col-span-2 bg-black/30 text-white p-4 rounded-lg h-full">
+            {selectedVideo && selectedVideo.url ? (
+              <div>
+                <h2 className="text-xl font-semibold mb-2">{selectedVideo.videoTitle}</h2>
+                <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg">
+                  <iframe
+                    className="w-full h-full"
+                    src={selectedVideo.url}
+                    title={selectedVideo.videoTitle}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <p className="mt-2 text-sm text-gray-300">
+                  Duration: {selectedVideo.duration} minutes
+                </p>
+              </div>
+            ) : (
+              <p className="text-center text-gray-400">Click a video to preview it here 🎬</p>
+            )}
+          </div>
+
+          {/* Modules & Videos */}
+          <div className="px-2 py-1 col-span-1 bg-white/10 backdrop-blur-md shadow-xl p-8 border border-white/20">
             {modules?.data?.map((module, index) => (
               <details
                 key={index}
@@ -110,19 +147,28 @@ export default function CreateUploadModule() {
                   {module?.title}
                 </summary>
                 <div className="p-2 ">
-                 
-                  
                   {module?.videos?.length > 0 ? (
                     module.videos.map((video, idx) => (
-                      
-                      <p key={idx} className="py-1  cursor-pointer">
+                      <p
+                        key={idx}
+                        className={`py-1 px-3 cursor-pointer ${selectedVideo?.url === video.url
+                          ? 'text-[#2bff00] bg-[#f6f6f875] font-bold'
+                          : ''
+                          }`}
+                        onClick={() => setSelectedVideo(video)}
+                      >
                         {video.videoTitle}
                       </p>
                     ))
                   ) : (
                     <p className="text-gray-400">No videos available</p>
                   )}
-                  <button className=' rounded  bg-main text-white w-full capitalize py-1 cursor-pointer' onClick={() => handleQuizInfo(module)}>quiz</button>
+                  <button
+                    className="rounded bg-main text-white w-full capitalize py-1 cursor-pointer"
+                    onClick={() => handleQuizInfo(module)}
+                  >
+                    quiz
+                  </button>
                 </div>
               </details>
             ))}
@@ -130,10 +176,12 @@ export default function CreateUploadModule() {
         </div>
       </motion.div>
 
-      {/* quiz=========== */}
-      {showQuizModal && <Quiz toggleQuizModule={toggleQuizModule} quizInfo={quizInfo}/>}
-      {/* quiz============ */}
+      {/* Quiz Modal */}
+      {showQuizModal && (
+        <Quiz toggleQuizModule={toggleQuizModule} quizInfo={quizInfo} />
+      )}
 
+      {/* Form Modal */}
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50">
           <motion.div
@@ -200,21 +248,12 @@ export default function CreateUploadModule() {
                   >
                     <option value="">Select Module</option>
                     {modules?.data?.map(module => (
-                      <option
-                        className="bg-black"
-                        key={module?._id}
-                        value={module?._id}
-                      >
+                      <option key={module?._id} value={module?._id}>
                         {module?.modulNo}. {module?.title}
                       </option>
                     ))}
                   </select>
-                  <input
-                    name="url"
-                    className="input-field"
-                    placeholder="Video URL"
-                    onChange={handleChange}
-                  />
+                  <input type="file" onChange={e => setVideo(e.target.files[0])} />
                   <input
                     name="duration"
                     className="input-field"

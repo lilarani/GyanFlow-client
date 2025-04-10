@@ -24,9 +24,9 @@ const OurAllCourse = () => {
         ))}
       </div>
 
-      <Link to={'/AllCourses'} className="my-14 text-3xl">
-        <Button text={'All Courses'}></Button>
-      </Link>
+      <div className="my-14 text-3xl">
+        <Button text={'All Courses'} url={'/AllCourses'}></Button>
+      </div>
     </div>
   );
 };

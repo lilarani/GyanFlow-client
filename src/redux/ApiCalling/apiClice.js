@@ -4,7 +4,7 @@ import { interceptorQuery } from './../customInterceptor/interceptor';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: interceptorQuery,
-  tagTypes: ['user', 'module', 'video', 'update','quiz'],
+  tagTypes: ['user', 'module', 'video', 'update', 'quiz', 'payment'],
   endpoints: builder => ({
     // all GET API
     getUsers: builder.query({
@@ -136,7 +136,7 @@ export const apiSlice = createApi({
     }),
     // /gyanflow/quiz/addquiz/${instructorId}/${modulNo}
     createQuiz: builder.mutation({
-      query: ({instructorId, modulNo,quiz}) => ({
+      query: ({ instructorId, modulNo, quiz }) => ({
         url: `/gyanflow/quiz/addquiz/${instructorId}/${modulNo}/`,
         method: 'POST',
         body: quiz,
@@ -145,7 +145,7 @@ export const apiSlice = createApi({
 
     // gyanflow/quiz/getquizforModule/${modulNo}
     getQuizForSpeceficModule: builder.query({
-      query: (modulNo) => `gyanflow/quiz/getquizforModule/${modulNo}`,
+      query: modulNo => `gyanflow/quiz/getquizforModule/${modulNo}`,
       providesTags: ['quiz'],
     }),
     // /gyanflow/quiz/quizzes/${id}
@@ -163,6 +163,25 @@ export const apiSlice = createApi({
         body: newCourse,
       }),
       invalidatesTags: ['quiz'],
+    }),
+
+    // ssl payments apis
+    payment: builder.mutation({
+      query: paymentData => ({
+        url: '/gyanflow/ssl-payment/init',
+        method: 'POST',
+        body: paymentData,
+      }),
+
+      invalidatesTags: ['payment'],
+    }),
+
+    // successPayment
+    successPayment: builder.mutation({
+      query: () => ({
+        url: '/gyanflow/ssl-payment/success-payment',
+        method: 'POST',
+      }),
     }),
   }),
 });
@@ -188,6 +207,8 @@ export const {
   useUpdateUserMutation,
   useCreateQuizMutation,
   useDeleteQuizMutation,
-  useGetQuizForSpeceficModuleQuery
+  useGetQuizForSpeceficModuleQuery,
+  usePaymentMutation,
+  useSuccessPaymentMutation,
 } = apiSlice;
 export default apiSlice;

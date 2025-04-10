@@ -31,7 +31,7 @@ const Sidebar = () => {
         to={'/'}
         className="font-bold text-base md:text-2xl  md:block block"
       >
-        <span className="text-yellow-300 ">G</span>yanFlow
+        <span className="text-yellow-300 ">Gyan</span>Flow
       </Link>
 
       <div className="relative flex items-center space-y-3 mt-10">
@@ -108,6 +108,13 @@ const Sidebar = () => {
             >
               <BiSolidUpArrow />
               Actionable Dashboard
+            </NavLink>
+            <NavLink
+              to={'/dashboard/courseAnnoucement'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <BiSolidUpArrow />
+              Course
             </NavLink>
           </div>
         ))}

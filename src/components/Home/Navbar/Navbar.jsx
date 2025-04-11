@@ -13,11 +13,11 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   let navigate = useNavigate();
-  const { user, loader } = useSelector(state => state.authUser);
-
+  const { user, loader } = useSelector(state => state?.authUser);
+  // console.log(user?.name);
   // let { data } = useGetMyUserQuery(user?.email);
-  console.log(user?.data?.role);
-  const role = user?.data?.role;
+  // console.log(user?.role);
+  const role = user?.role;
   // console.log(user.success , " Loader " , loader)
 
   useEffect(() => {
@@ -99,7 +99,6 @@ const Navbar = () => {
         <div className="xl:flex flex-row hidden gap-4">
           <Link className="text-md flex flex-row gap-2 items-center font-bold py-3 px-6 hover:bg-[#ffffff44] ">
             <CiSearch /> Search
-            {user?.user?.name}
           </Link>
           {!user ? (
             <div className="flex flex-row">
@@ -141,7 +140,7 @@ const Navbar = () => {
               <p>{user.success}</p>
               <img
                 onClick={handleDropdown}
-                src={user?.data?.picture}
+                src={user?.picture}
                 alt="user Image"
                 className="w-12 h-12 rounded-full relative"
               />
@@ -150,11 +149,11 @@ const Navbar = () => {
                   {/* <image className="text-xl font-bold ">{user?.user?.picture}</h2> */}
                   <img
                     className="h-15 border-6 p-1 w-15 rounded-full"
-                    src={`${user?.data?.picture}`}
+                    src={`${user?.picture}`}
                     alt=""
                   />
                   <p className="text-lg font-semibold border-gray-500 border-b-[1px] py-2">
-                    {user?.data?.email}
+                    {user?.email}
                   </p>
                   <div className="w-full flex flex-col gap-4 mt-8">
                     <Link

@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 const OurAllCourse = () => {
   const { data, isLoading, isError } = useGetCourseQuery();
-  const coursesData = data?.data || [];
+  const coursesData = data?.data.slice(0, 6) || [];
   return (
     <div className="w-10/12 mx-auto my-28">
       <div className="flex justify-center items-center text-center my-10">

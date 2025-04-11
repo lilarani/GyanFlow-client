@@ -19,9 +19,14 @@ import TecherDashboard from '@/pages/Dashboard/TecherDashboard/TecherDashboard';
 import StudentRoutes from './../protectedRoutes/StudentRoutes';
 import AdminRoute from './../protectedRoutes/AdminRoute';
 import UploadModul from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/UploadModul';
+import SeeVideo from './../shared/CustomButtons/SeeVideo';
+import CreateMeeting from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateMeeting';
+import JoinClassRoom from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/JoinClassRoom';
+import MeetingRoute from '@/protectedRoutes/MeetingRoute';
 import FeaturesCourseDetails from '@/pages/FeaturesCourseDetails/FeaturesCourseDetails';
 import CourseAnnoucement from '@/pages/Dashboard/StudentDashboard/CourseAnnoucement';
 import AllCourses from '@/pages/AllCourses/AllCourses';
+import CreateModule from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateModule';
 import SuccessPayment from '@/pages/Dashboard/StudentDashboard/SuccessPayment';
 import ActionalDashboard from '@/pages/Dashboard/StudentDashboard/ActionalDashboard';
 
@@ -140,7 +145,23 @@ export const router = createBrowserRouter([
       {
         path: 'instructorDashboard/action/:id',
         element: <UploadModul></UploadModul>,
+        children: [
+          {
+            path: 'see-video/:id',
+            element : <SeeVideo></SeeVideo>
+          }
+        ]
+      }
+      ,
+      {
+        path : 'create-meeting',
+        element : <CreateMeeting></CreateMeeting>
       },
+      {
+        path : 'create-module',
+        element : <CreateModule></CreateModule>
+      }
+    
     ],
   },
   {
@@ -151,4 +172,8 @@ export const router = createBrowserRouter([
     path: 'profile',
     element: <UserProfile></UserProfile>,
   },
+  {
+    path : '/join-meeting',
+    element : <MeetingRoute><JoinClassRoom></JoinClassRoom></MeetingRoute>
+  }
 ]);

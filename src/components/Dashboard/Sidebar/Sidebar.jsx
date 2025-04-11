@@ -4,14 +4,14 @@ import { FaDollarSign, FaRegStar, FaRegUser, FaUsers } from 'react-icons/fa';
 
 import { IoIosAddCircle } from 'react-icons/io';
 import { VscVmRunning } from 'react-icons/vsc';
-import { useGetMyUserQuery } from '@/redux/ApiCalling/apiClice';
 import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router';
 import { useEffect, useState } from 'react';
 const Sidebar = () => {
   let { user, loader } = useSelector(state => state.authUser);
   let [role, setRole] = useState({});
-  // console.log(user);
+
+  console.log(user);
   // let adminRole = 'admin';
   // let student = 'student';
   // let instructor = ' instructor';
@@ -20,7 +20,7 @@ const Sidebar = () => {
   // let { data } = useGetMyUserQuery(user?.email);
   // console.log(data?.user.role);
   useEffect(() => {
-    setRole(user?.data?.role);
+    setRole(user?.role);
   }, [user, loader]);
   // const role = user?.user?.role;
   // console.log(user)
@@ -102,6 +102,9 @@ const Sidebar = () => {
               <BiSolidUpArrow />
               Student Dashboard
             </NavLink>
+            <NavLink to={'/dashboard/create-meeting'} className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2" >
+              Join Meeting
+            </NavLink>
             <NavLink
               to={'/dashboard/actionaldashboard'}
               className="capitalize text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
@@ -130,7 +133,13 @@ const Sidebar = () => {
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />
-              instructor Dashboard
+              Instructor Dashboard
+            </NavLink>
+            <NavLink to={'/dashboard/create-meeting'} className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2" >
+              Create Meeting
+            </NavLink>
+            <NavLink to={'/dashboard/create-module'} className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2" >
+              Create Module
             </NavLink>
           </div>
         ))}

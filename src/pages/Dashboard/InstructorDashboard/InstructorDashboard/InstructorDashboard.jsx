@@ -9,7 +9,7 @@ const InstructorDashboard = () => {
   let { data } = useCourseForInstructorQuery(id);
   console.log(data)
   useEffect(() => {
-    setId(user?.data?._id)
+    setId(user?._id)
   }, [user])
   return <div className='bg-black '>
     <p className='text-xl sticky top-0 z-20 bg-black text-center font-bold text-blue-200 py-4'>Invited Courses Lists</p>
@@ -22,7 +22,7 @@ const InstructorDashboard = () => {
             <img src={course.thumbnail} alt={course.title} className="w-full flex-1 h-[200px]  object-cover" />
             <div className="p-4 flex-1 flex flex-col justify-between text-blue-200 ">
               <div>
-                <Link to={`action/${course._id}`}>Go to action</Link>
+                <Link className='px-4 text-blue-200 py-1 rounded-full border-r border-l' to={`action/${course._id}`}>Go to action</Link>
               </div>
               <h2 className="text-xl font-bold">{course.title}</h2>
               <p className=" text-xs mt-1">{course.description}</p>

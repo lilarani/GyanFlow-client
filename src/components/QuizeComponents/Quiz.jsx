@@ -8,7 +8,7 @@ const Quiz = ({ toggleQuizModule, quizInfo }) => {
 
     const [toggle , setToggle] = useState(false)
     const { user, loader } = useSelector(state => state.authUser);
-    const instructorId = user?.data?._id ;
+    const instructorId = user?._id ;
     const info={
         instructorId,
         quizInfo,

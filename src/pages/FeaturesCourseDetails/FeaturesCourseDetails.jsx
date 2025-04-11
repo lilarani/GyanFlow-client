@@ -11,14 +11,15 @@ const FeaturesCourseDetails = () => {
   const [payment] = usePaymentMutation();
   const { data } = useGetFeaturesCourseDetailsQuery(id);
   const { user } = useSelector(state => state.authUser);
-
+  console.log(user?.name)
+  console.log(user?._id)
   // save the payment in the database
   const handleCreatePayment = async () => {
     try {
       const paymentData = {
         price: data?.data?.price,
         courseID: data?.data?._id,
-        studID: user?.data?._id,
+        studID: user?._id,
         transactionId: '',
         date: new Date(),
         status: 'pending',

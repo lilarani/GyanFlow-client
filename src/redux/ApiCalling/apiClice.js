@@ -12,13 +12,7 @@ export const apiSlice = createApi({
       providesTags: ['user'],
     }),
 
-    getMyUser: builder.query({
-      query: email => `/gyanflow/user/role/${email}`,
-      providesTags: ['update'],
-      method: 'GET',
-    }),
-
-    // all instructors
+    // all instructors 
     getInstructors: builder.query({
       query: () => '/gyanflow/user/all-instructors',
     }),
@@ -49,6 +43,15 @@ export const apiSlice = createApi({
         method: 'GET',
       }),
     }),
+
+
+    getMyUser: builder.mutation({
+      query: (email) => ({
+        url: `/gyanflow/user/role/${email}`,
+        method: 'GET'
+      }),
+    }),
+
 
     // features course details
     getFeaturesCourseDetails: builder.query({
@@ -186,7 +189,7 @@ export const apiSlice = createApi({
 export const {
   useCreateUserMutation,
   useGetUsersQuery,
-  useGetMyUserQuery,
+  useGetMyUserMutation,
   useLogOutUserMutation,
   useGoogleLoginMutation,
   useLogInUserMutation,

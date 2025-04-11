@@ -1,6 +1,8 @@
 import { useGetCourseQuery } from '@/redux/ApiCalling/apiClice';
 import CustomButtons from '@/shared/CustomButtons/CustomButtons';
 import React, { useEffect, useState } from 'react';
+import { HiCursorClick } from 'react-icons/hi';
+import { IoMdClock } from 'react-icons/io';
 import { SiGoogleclassroom } from 'react-icons/si';
 import { TbCoinTaka } from 'react-icons/tb';
 import { Link } from 'react-router';
@@ -15,46 +17,86 @@ const AllCourses = () => {
       <h2 className="text-3xl font-bold text-center ">All Courses</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         {coursesData?.map(course => (
-          <div className=" flex flex-col h-full hover:scale-105 rounded-lg shadow-md transition-all duration-700">
-            <figure>
-              <img
-                className="rounded-t-lg w-full h-56 object-cover"
-                src={course?.thumbnail}
-                alt="Virtual Classroom"
-              />
-            </figure>
-            <div className="px-4 py-3 space-y-2 flex-grow">
-              <div className="flex items-center gap-2">
-                <h2 className="font-semibold text-2xl">{course?.title}</h2>
+          <div>
+            <div className="relative overflow-hidden flex flex-col h-full hover:scale-105 rounded-lg shadow-md transition-all duration-700 ">
+              <figure>
+                <img
+                  className="rounded-t-lg w-full h-52 object-cover"
+                  src={course?.thumbnail}
+                  alt="Virtual Classroom"
+                />
+              </figure>
+              {/* premium btn */}
+              <button className="absolute w-[150px] top-[30px] left-[-50px] bg-default  text-white capitalize  transform rotate-[-53deg] px-5 py-1">
+                premium
+              </button>
+              <div className="px-4 pt-2 space-y-2 flex-grow">
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1 bg-gray-300 py-1 px-2 rounded-md">
+                    <img
+                      className="w-4"
+                      src="https://img.icons8.com/?size=96&id=HAdDrhGGO64N&format=png"
+                      alt=""
+                    />
+                    <p className="text-xs font-semibold">Live Class</p>
+                  </div>
+                  <p className="text-xs font-semibold bg-gray-300 py-1 px-2 rounded-md">
+                    Batch {course?.batch}
+                  </p>
+                </div>
+                <hr className=" border-t-2 border-gray-300" />
+                <div className="flex items-center gap-2">
+                  <h2 className="font-semibold text-xl">{course?.title}</h2>
+                </div>
+                <p className="text-gray-600 mt-2">{course?.shortDescription}</p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1">
+                    <IoMdClock className="text-xl" />
+                    <p className="text-base font-semibold">
+                      {course?.totalDuration} Hours
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <SiGoogleclassroom className="text-xl" />
+                    <p className="font-semibold">39 Seat Left</p>
+                  </div>
+                </div>
+                <hr className=" border-t-2 border-gray-300" />
+                <div className="flex items-center justify-between">
+                  {/* <div className="flex items-center gap-1">
+                         <TbCoinTaka className="text-xl" />
+                         <p className="text-base font-semibold">{course?.price}</p>
+                       </div> */}
+                  {/* <div className="flex items-center gap-1">
+                         <SiGoogleclassroom className="text-xl" />
+                         <p className="text-base font-semibold">40</p>
+                       </div> */}
+                </div>
               </div>
-              <p className="text-gray-600 mt-2">{course?.shortDescription}</p>
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-semibold">Batch {course?.batch}</p>
+              <div className="flex items-center justify-between px-4 pb-4">
+                <div className="flex items-center">
+                  <p className="text-xl font-semibold">{course?.price}</p>
+                  <img
+                    className="w-[18px]"
+                    src="https://img.icons8.com/?size=160&id=j93mUCq7qi8E&format=png"
+                    alt=""
+                  />
                 </div>
                 <div>
-                  <p className="font-semibold">39 seat left</p>
-                </div>
-              </div>
-              <hr className=" border-t-2 border-gray-300" />
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1">
-                  <TbCoinTaka className="text-xl" />
-                  <p className="text-base font-semibold">{course?.price}</p>
-                </div>
-                <div className="flex items-center gap-1">
-                  <SiGoogleclassroom className="text-xl" />
-                  <p className="text-base font-semibold">40</p>
+                  <Link
+                    to={`/featuresDetails/${course?._id}`}
+                    className="flex justify-center"
+                  >
+                    <button className="flex items-center gap-1 px-3 py-2 hover:bg-[#0B1739] bg-[#352b61] text-white/80 duration-500 rounded-md">
+                      See Details{' '}
+                      <span>
+                        <HiCursorClick />
+                      </span>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
-
-            <Link
-              to={`/featuresDetails/${course?._id}`}
-              className="flex justify-center mb-4"
-            >
-              <CustomButtons primaryText={'See Details'}></CustomButtons>
-            </Link>
           </div>
         ))}
       </div>

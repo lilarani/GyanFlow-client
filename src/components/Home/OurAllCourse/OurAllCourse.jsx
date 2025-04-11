@@ -15,12 +15,6 @@ const OurAllCourse = () => {
             Explore a range of fitness courses designed to energize your body
             and elevate your wellness journey.
           </p>
-          {/* <h2 className="font-bold  my-4 text-4xl">Our Courses</h2>
-          <p>
-            Explore our wide range of courses designed to boost your skills and
-            career. From web development to digital marketing, we have something
-            for everyone.
-          </p> */}
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -29,15 +23,9 @@ const OurAllCourse = () => {
         ))}
       </div>
 
-<<<<<<< HEAD
-      <Link to={"/AllCourses"} className="my-14 text-3xl">
-        <Button text={"All Courses"}></Button>
-      </Link>
-=======
       <div className="my-14 text-lg">
         <Button text={'All Courses'} url={'/AllCourses'}></Button>
       </div>
->>>>>>> bb25c47ec52b258bfb8b39227ea833aaa9417ed9
     </div>
   );
 };

@@ -30,32 +30,6 @@ import CreateModule from '@/pages/Dashboard/InstructorDashboard/InstructorDashbo
 import SuccessPayment from '@/pages/Dashboard/StudentDashboard/SuccessPayment';
 import ActionalDashboard from '@/pages/Dashboard/StudentDashboard/ActionalDashboard';
 
-// import { createBrowserRouter } from 'react-router';
-// import StudentDashboard from '@/pages/Dashboard/StudentDashboard/StudentDashboard';
-// import AddCourses from '@/pages/Dashboard/AdminDashboard/AddCourses/AddCourses';
-// import Main from '../layouts/MainLayout/Main';
-// import Home from '../pages/Home/Home';
-// import Login from '../authentication/Login/Login';
-// import Register from '../authentication/Register/Register';
-// import Support from '../pages/Support/Support';
-// import About from '../pages/About/About';
-// import Error from '@/pages/Error/Error';
-// import Dashboard from '@/layouts/DashboardLayout/Dashboard/Dashboard';
-// import Courses from '@/pages/Dashboard/AdminDashboard/Courses/Courses';
-// import UserManagement from '@/pages/Dashboard/AdminDashboard/UserManagement/UserManagement';
-// import InstructorDashboard from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboard';
-// import UserProfile from '@/components/Dashboard/UserProfile/UserProfile';
-// import AdminDashboard from '@/pages/Dashboard/AdminDashboard/AdminDashboard';
-// import Career from '@/pages/Career/Career';
-// import TecherDashboard from '@/pages/Dashboard/TecherDashboard/TecherDashboard';
-// import StudentRoutes from './../protectedRoutes/StudentRoutes';
-// import AdminRoute from './../protectedRoutes/AdminRoute';
-// import UploadModul from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/UploadModul';
-// import FeaturesCourseDetails from '@/pages/FeaturesCourseDetails/FeaturesCourseDetails';
-// import AllCourses from '@/pages/AllCourses/AllCourses';
-// import ActionalDashboard from '@/pages/Dashboard/StudentDashboard/ActionalDashboard';
-// import SuccessPayment from '@/pages/Dashboard/StudentDashboard/SuccessPayment';
-
 export const router = createBrowserRouter([
   {
     path: '/',

@@ -1,7 +1,7 @@
-import { useGetCourseQuery } from '@/redux/ApiCalling/apiClice';
-import Card from '@/components/Dashboard/StudentComponents/card';
-import Button from '@/components/customs/Button';
-import { Link } from 'react-router';
+import { useGetCourseQuery } from "@/redux/ApiCalling/apiClice";
+import Card from "@/components/Dashboard/StudentComponents/card";
+import Button from "@/components/customs/Button";
+import { Link } from "react-router";
 
 const OurAllCourse = () => {
   const { data, isLoading, isError } = useGetCourseQuery();
@@ -10,11 +10,10 @@ const OurAllCourse = () => {
     <div className="w-10/12 mx-auto my-28">
       <div className="flex justify-center items-center text-center my-10">
         <div className="md:w-2/3">
-          <h2 className="font-bold  my-4 text-4xl">Our Courses</h2>
-          <p>
-            Explore our wide range of courses designed to boost your skills and
-            career. From web development to digital marketing, we have something
-            for everyone.
+          <h1 className="font-bold text-5xl text-center">Our Courses</h1>
+          <p className="text-center text-gray-600 my-3">
+            Explore a range of fitness courses designed to energize your body
+            and elevate your wellness journey.
           </p>
         </div>
       </div>
@@ -24,7 +23,7 @@ const OurAllCourse = () => {
         ))}
       </div>
 
-      <div className="my-14 text-3xl">
+      <div className="my-14 text-lg">
         <Button text={'All Courses'} url={'/AllCourses'}></Button>
       </div>
     </div>

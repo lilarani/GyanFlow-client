@@ -1,7 +1,7 @@
 const CustomButtons = ({ primaryText, secondaryText }) => {
   return (
     <div className="gap-3 flex text-base">
-      <button className="px-4 py-2 bg-[#0B1739] hover:bg-[#352b61] text-white duration-500">
+      <button className="px-4 py-2 hover:bg-[#0B1739] bg-[#352b61] text-white/80 duration-500">
         {primaryText}
       </button>
       {secondaryText ? (
@@ -9,7 +9,7 @@ const CustomButtons = ({ primaryText, secondaryText }) => {
           {secondaryText}
         </button>
       ) : (
-        ""
+        ''
       )}
     </div>
   );

@@ -33,8 +33,8 @@ export default function Main() {
           console.log("our api response for user informations ",res)
           dispatch(setUser(res?.data));
           dispatch(setLoader(false));
-          console.log(res?.data);
-          localStorage.setItem('token', res?.data?.token);
+          console.log(res?.token);
+          localStorage.setItem('token', res?.token);
         } catch (error) {
           console.error('Error fetching user role:', error);
         } finally {

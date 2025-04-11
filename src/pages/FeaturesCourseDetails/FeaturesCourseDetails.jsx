@@ -11,8 +11,8 @@ const FeaturesCourseDetails = () => {
   const [payment] = usePaymentMutation();
   const { data } = useGetFeaturesCourseDetailsQuery(id);
   const { user } = useSelector(state => state.authUser);
-  console.log(user?.name)
-  console.log(user?._id)
+  console.log(user?.name);
+  console.log(user?._id);
   // save the payment in the database
   const handleCreatePayment = async () => {
     try {
@@ -25,7 +25,7 @@ const FeaturesCourseDetails = () => {
         status: 'pending',
       };
       const response = await payment(paymentData).unwrap();
-      console.log(response?.data, 'response ');
+      // console.log(response?.data, 'response ');
       if (response?.data) {
         window.location.replace(response?.data);
       }

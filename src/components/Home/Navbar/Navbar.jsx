@@ -14,9 +14,9 @@ const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
   let navigate = useNavigate();
   const { user, loader } = useSelector(state => state?.authUser);
-console.log(user?.name)
+  // console.log(user?.name);
   // let { data } = useGetMyUserQuery(user?.email);
-  console.log(user?.role);
+  // console.log(user?.role);
   const role = user?.role;
   // console.log(user.success , " Loader " , loader)
 

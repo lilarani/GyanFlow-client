@@ -11,7 +11,7 @@ const Sidebar = () => {
   let { user, loader } = useSelector(state => state.authUser);
   let [role, setRole] = useState({});
 
-  console.log(user);
+  // console.log(user);
   // let adminRole = 'admin';
   // let student = 'student';
   // let instructor = ' instructor';
@@ -102,7 +102,10 @@ const Sidebar = () => {
               <BiSolidUpArrow />
               Student Dashboard
             </NavLink>
-            <NavLink to={'/dashboard/create-meeting'} className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2" >
+            <NavLink
+              to={'/dashboard/create-meeting'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
               Join Meeting
             </NavLink>
             <NavLink
@@ -135,10 +138,16 @@ const Sidebar = () => {
               <BiSolidUpArrow />
               Instructor Dashboard
             </NavLink>
-            <NavLink to={'/dashboard/create-meeting'} className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2" >
+            <NavLink
+              to={'/dashboard/create-meeting'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
               Create Meeting
             </NavLink>
-            <NavLink to={'/dashboard/create-module'} className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2" >
+            <NavLink
+              to={'/dashboard/create-module'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
               Create Module
             </NavLink>
           </div>

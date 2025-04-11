@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useParams } from 'react-router';
 
 import {
@@ -23,7 +23,7 @@ export default function CreateUploadModule() {
   const [selectedVideo, setSelectedVideo] = useState(null);
   let { id: courseId } = useParams();
   let { data: modules = [] } = useAllModulesQuery(courseId);
-  console.log(selectedVideo)
+  console.log(selectedVideo);
   const handleCreateModuleClick = () => {
     setFormType('module');
     setShowModal(true);
@@ -58,10 +58,10 @@ export default function CreateUploadModule() {
 
         finalData = { ...formData, videoLink: downloadURL };
         const res = await createVideo(finalData).unwrap();
-        console.log(res);
+        // console.log(res);
         setShowModal(false);
       } catch (error) {
-        console.error("Upload failed", error);
+        // console.error("Upload failed", error);
       }
     } else {
       finalData = { ...formData, courseId };
@@ -77,7 +77,7 @@ export default function CreateUploadModule() {
     setShowQuizModal(!showQuizModal);
   };
 
-  const handleQuizInfo = (module) => {
+  const handleQuizInfo = module => {
     setQuizInfo(module);
     setShowQuizModal(true);
   };
@@ -92,7 +92,7 @@ export default function CreateUploadModule() {
       >
         <div className="flex flex-row justify-between">
           <motion.h1 className="text-center text-3xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-6 animate-pulse">
-            All  Modules
+            All Modules
           </motion.h1>
           {/* <div className="flex mb-6">
             <motion.button
@@ -116,7 +116,9 @@ export default function CreateUploadModule() {
           <div className="col-span-2 bg-black/30 text-white p-4 rounded-lg h-full">
             {selectedVideo && selectedVideo.url ? (
               <div>
-                <h2 className="text-xl font-semibold mb-2">{selectedVideo.videoTitle}</h2>
+                <h2 className="text-xl font-semibold mb-2">
+                  {selectedVideo.videoTitle}
+                </h2>
                 <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg">
                   <iframe
                     className="w-full h-full"
@@ -132,7 +134,9 @@ export default function CreateUploadModule() {
                 </p>
               </div>
             ) : (
-              <p className="text-center text-gray-400">Click a video to preview it here 🎬</p>
+              <p className="text-center text-gray-400">
+                Click a video to preview it here 🎬
+              </p>
             )}
           </div>
 
@@ -151,10 +155,11 @@ export default function CreateUploadModule() {
                     module.videos.map((video, idx) => (
                       <p
                         key={idx}
-                        className={`py-1 px-3 cursor-pointer ${selectedVideo?.url === video.url
-                          ? 'text-[#2bff00] bg-[#f6f6f875] font-bold'
-                          : ''
-                          }`}
+                        className={`py-1 px-3 cursor-pointer ${
+                          selectedVideo?.url === video.url
+                            ? 'text-[#2bff00] bg-[#f6f6f875] font-bold'
+                            : ''
+                        }`}
                         onClick={() => setSelectedVideo(video)}
                       >
                         {video.videoTitle}
@@ -253,7 +258,10 @@ export default function CreateUploadModule() {
                       </option>
                     ))}
                   </select>
-                  <input type="file" onChange={e => setVideo(e.target.files[0])} />
+                  <input
+                    type="file"
+                    onChange={e => setVideo(e.target.files[0])}
+                  />
                   <input
                     name="duration"
                     className="input-field"

@@ -9,7 +9,7 @@ import regImg from '../../assets/images/signup.jpg';
 export default function Register() {
   let { role } = useParams();
   let userRole = useLocation().pathname.split('/')[2];
-  console.log(userRole);
+  // console.log(userRole);
   let navigate = useNavigate();
   const [createUser, { isLoading, isError }] = useCreateUserMutation();
 

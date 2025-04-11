@@ -12,7 +12,7 @@ export const apiSlice = createApi({
       providesTags: ['user'],
     }),
 
-    // all instructors 
+    // all instructors
     getInstructors: builder.query({
       query: () => '/gyanflow/user/all-instructors',
     }),
@@ -44,14 +44,12 @@ export const apiSlice = createApi({
       }),
     }),
 
-
     getMyUser: builder.mutation({
-      query: (email) => ({
+      query: email => ({
         url: `/gyanflow/user/role/${email}`,
-        method: 'GET'
+        method: 'GET',
       }),
     }),
-
 
     // features course details
     getFeaturesCourseDetails: builder.query({
@@ -183,6 +181,12 @@ export const apiSlice = createApi({
         method: 'POST',
       }),
     }),
+
+    // student purches courses
+    getStudentCourse: builder.query({
+      query: `/gyanflow/ssl-payment/student-courses`,
+      method: 'GET',
+    }),
   }),
 });
 
@@ -210,5 +214,6 @@ export const {
   useGetQuizForSpeceficModuleQuery,
   usePaymentMutation,
   useSuccessPaymentMutation,
+  useGetStudentCourseQuery,
 } = apiSlice;
 export default apiSlice;

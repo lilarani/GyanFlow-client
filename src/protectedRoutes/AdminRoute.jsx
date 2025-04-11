@@ -17,7 +17,7 @@ export default function AdminRoute({ children }) {
     );
   }
 
-  if (user && user.data.role === 'admin') {
+  if (user && user?.role === 'admin') {
     return children;
   }
 

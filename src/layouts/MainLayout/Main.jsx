@@ -33,7 +33,7 @@ export default function Main() {
           dispatch(setUser(res?.data));
           dispatch(setLoader(false));
           // console.log(res?.data);
-          localStorage.setItem('token', res?.data?.token);
+          localStorage.setItem('token', res?.token);
         } catch (error) {
           // console.error('Error fetching user role:', error);
         } finally {

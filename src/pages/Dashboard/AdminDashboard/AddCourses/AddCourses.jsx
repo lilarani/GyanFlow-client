@@ -44,7 +44,14 @@ const AddCourses = () => {
     const form = e.target;
 
     if (selectedInstructors.length === 0) {
-      toast.error('Please select instructor');
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Please select instructor',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
       return;
     }
 

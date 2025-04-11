@@ -1,13 +1,13 @@
-import { useGetCourseQuery } from "@/redux/ApiCalling/apiClice";
-import Card from "@/components/Dashboard/StudentComponents/card";
-import Button from "@/components/customs/Button";
-import { Link } from "react-router";
+import { useGetCourseQuery } from '@/redux/ApiCalling/apiClice';
+import Card from '@/components/Dashboard/StudentComponents/card';
+import Button from '@/components/customs/Button';
+import { Link } from 'react-router';
 
 const OurAllCourse = () => {
   const { data, isLoading, isError } = useGetCourseQuery();
   const coursesData = data?.data.slice(0, 6) || [];
   return (
-    <div className="w-10/12 mx-auto my-28">
+    <div className="w-10/12 mx-auto my-28 ">
       <div className="flex justify-center items-center text-center my-10">
         <div className="md:w-2/3">
           <h1 className="font-bold text-5xl text-center">Our Courses</h1>

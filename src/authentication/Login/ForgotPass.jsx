@@ -1,52 +1,55 @@
-import React, { useState } from "react";
-import { sendPasswordResetEmail } from "firebase/auth";
-import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate, useParams } from "react-router";
-import { auth } from "../../../firebase.config.js";
-import axios from "axios";
-import Swal from "sweetalert2";
+import React, { useState } from 'react';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate, useParams } from 'react-router';
+import { auth } from '../../../firebase.config.js';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const ForgotPassword = () => {
   const { email: userEmail } = useParams();
-  const [email, setEmail] = useState(userEmail || "");
-  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState(userEmail || '');
+  const [message, setMessage] = useState('');
   const [showConfirm, setShowConfirm] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
 
   const handleForgotPassword = async () => {
     try {
       await sendPasswordResetEmail(auth, email);
-      setMessage("✅ Reset link sent to your email.");
+      setMessage('✅ Reset link sent to your email.');
       setShowConfirm(true);
     } catch (error) {
-      setMessage("❌ Failed to send email. Check again.");
+      setMessage('❌ Failed to send email. Check again.');
       setShowConfirm(false);
     }
   };
 
   const handleConfirmPassword = async () => {
     if (confirmPassword.length < 6) {
-      setMessage("⚠️ Password must be at least 6 characters.");
+      setMessage('⚠️ Password must be at least 6 characters.');
       return;
     }
 
     try {
-      await axios.post("http://localhost:4000/gyanflow/user/forgot-pass", {
-        email,
-        password: confirmPassword,
-      });
+      await axios.post(
+        'https://gyanflow-server.onrender.com/gyanflow/user/forgot-pass',
+        {
+          email,
+          password: confirmPassword,
+        }
+      );
 
       Swal.fire({
-        icon: "success",
-        title: "Password Updated!",
-        text: "Now login with your new password.",
-        confirmButtonColor: "#633974",
+        icon: 'success',
+        title: 'Password Updated!',
+        text: 'Now login with your new password.',
+        confirmButtonColor: '#633974',
       }).then(() => {
-        navigate("/login");
+        navigate('/login');
       });
     } catch (error) {
-      setMessage(" Update failed. Try again.");
+      setMessage(' Update failed. Try again.');
     }
   };
 
@@ -72,7 +75,7 @@ const ForgotPassword = () => {
         <input
           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
           placeholder="Email address"
           className="w-full p-3 mb-3 border rounded-md focus:outline-none focus:border-[#633974]"
         />
@@ -88,14 +91,14 @@ const ForgotPassword = () => {
           {showConfirm && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
+              animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.4 }}
             >
               <input
                 type="password"
                 value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                onChange={e => setConfirmPassword(e.target.value)}
                 placeholder="New password"
                 className="w-full p-3 mt-5 mb-3 border rounded-md focus:outline-none focus:border-[#633974]"
               />

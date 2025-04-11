@@ -2,7 +2,7 @@ import React from "react";
 
 const AnnouncementBanner = () => {
   return (
-    <div className="text-white px-[115px] py-7 m-10 flex items-center justify-between gap-10 bg-[#633974] rounded-md">
+    <div className="text-white px-[115px] py-7 m-16 flex items-center justify-between gap-10 bg-[#633974] rounded-md">
       <div className="space-y-2">
         <p className="text-xl font-bold">Find all course announcement here.</p>
 

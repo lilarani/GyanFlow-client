@@ -1,10 +1,10 @@
-import Button from '@/components/customs/Button';
+import Button from "@/components/customs/Button";
 
-import './card.css';
-import CustomButtons from '@/shared/CustomButtons/CustomButtons';
-import { Link } from 'react-router';
-import { TbCoinTaka } from 'react-icons/tb';
-import { SiGoogleclassroom } from 'react-icons/si';
+import "./card.css";
+import CustomButtons from "@/shared/CustomButtons/CustomButtons";
+import { Link } from "react-router";
+import { TbCoinTaka } from "react-icons/tb";
+import { SiGoogleclassroom } from "react-icons/si";
 const Card = ({ course }) => {
   return (
     <div className="flex">
@@ -37,22 +37,30 @@ const Card = ({ course }) => {
             </div>
             <hr className=" border-t-2 border-gray-300" />
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1">
+              {/* <div className="flex items-center gap-1">
                 <TbCoinTaka className="text-xl" />
                 <p className="text-base font-semibold">{course?.price}</p>
-              </div>
+              </div> */}
               <div className="flex items-center gap-1">
                 <SiGoogleclassroom className="text-xl" />
                 <p className="text-base font-semibold">40</p>
               </div>
             </div>
           </div>
-          <Link
-            to={`/featuresDetails/${course?._id}`}
-            className="flex justify-center mb-4"
-          >
-            <CustomButtons primaryText={'See Details'}></CustomButtons>
-          </Link>
+          <div className="flex items-center justify-between px-4 py-3">
+            <div className="flex items-center gap-1">
+              <TbCoinTaka className="text-xl" />
+              <p className="text-xl font-semibold">{course?.price}</p>
+            </div>
+            <div>
+              <Link
+                to={`/featuresDetails/${course?._id}`}
+                className="flex justify-center"
+              >
+                <CustomButtons primaryText={"See Details"}></CustomButtons>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import howImg from '../../../assets/ourMission/how.webp';
 
 const OurMission = () => {
   return (
-    <div className="bg-gradient-to-bl to-[#1a044d] from-[#080127] mt-20 p-4 ">
+    <div className="bg-gradient-to-bl to-[#0F172A] from-[#080127] mt-20 p-4 ">
       <div className="w-10/12 mx-auto text-center p-4">
         <h1 className="text-4xl font-extrabold text-white mb-6">
           <span className="text-yellow-200">O</span>ur Mission

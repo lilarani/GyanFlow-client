@@ -30,7 +30,7 @@ const Sidebar = () => {
   // console.log(user)
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
+    <div className="w-full min-h-screen bg-gradient-to-bl to-[#0F172A] from-[#080127] text-white p-2 pt-8 md:p-8">
       <Link
         to={'/'}
         className="font-bold text-base md:text-2xl  md:block block"

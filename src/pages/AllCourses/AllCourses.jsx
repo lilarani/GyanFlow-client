@@ -9,20 +9,12 @@ const AllCourses = () => {
   const { data, isLoading, isError } = useGetCourseQuery();
 
   const coursesData = data?.data || [];
-  const courseInfo = JSON.stringify(coursesData) || [];
-  console.log(courseInfo);
-  const [allCourse, setAllCourse] = useState([]);
-
-  useEffect(() => {
-    setAllCourse(data?.data);
-    console.log(allCourse);
-  }, [data]);
 
   return (
-    <div>
-      <h2 className="text-3xl font-bold text-center">All Courses</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {courseInfo?.map(course => {
+    <div className="w-10/12 mx-auto py-16">
+      <h2 className="text-3xl font-bold text-center ">All Courses</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        {coursesData?.map(course => (
           <div className=" flex flex-col h-full hover:scale-105 rounded-lg shadow-md transition-all duration-700">
             <figure>
               <img
@@ -63,8 +55,8 @@ const AllCourses = () => {
             >
               <CustomButtons primaryText={'See Details'}></CustomButtons>
             </Link>
-          </div>;
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );

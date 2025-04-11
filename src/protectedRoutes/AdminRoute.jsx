@@ -1,5 +1,5 @@
-import React from 'react'
-import { Navigate } from 'react-router'
+import React from 'react';
+import { Navigate } from 'react-router';
 import { useSelector } from 'react-redux';
 
 export default function AdminRoute({ children }) {
@@ -26,5 +26,9 @@ export default function AdminRoute({ children }) {
         return <Navigate to="/login" replace />;
     }
 
+  if (!user) {
     return <Navigate to="/login" replace />;
+  }
+
+  return <Navigate to="/login" replace />;
 }

@@ -14,9 +14,9 @@ const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
   let navigate = useNavigate();
   const { user, loader } = useSelector(state => state?.authUser);
-console.log(user?.name)
+  // console.log(user?.name);
   // let { data } = useGetMyUserQuery(user?.email);
-  console.log(user?.role);
+  // console.log(user?.role);
   const role = user?.role;
   // console.log(user.success , " Loader " , loader)
 
@@ -47,7 +47,7 @@ console.log(user?.name)
 
   return (
     <div className="sticky top-0 left-0 w-full h-max z-50">
-      <nav className="flex  text-gray-200 font-bold flex-row justify-between bg-gradient-to-bl to-[#1a044d] from-[#080127] items-center md:px-[48px] lg:px-[110px] py-2">
+      <nav className="flex   text-gray-200 font-bold flex-row justify-between bg-gradient-to-bl to-[#1a044d] from-[#080127] items-center md:px-[48px] lg:px-[110px] py-2">
         <div className="flex flex-row justify-between w-full xl:w-fit items-center ">
           <Link to={'/'} className="py-4 px-4 text-2xl ">
             <span className="text-yellow-300 cursor-pointer">Gyan</span>Flow

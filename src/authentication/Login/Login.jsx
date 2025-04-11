@@ -26,7 +26,7 @@ export default function Login() {
     try {
       const res = await signInWithPopup(auth, provider);
       let user = res.user;
-      console.log(res.user);
+      // console.log(res.user);
       const userData = {
         email: user.email,
         name: user.displayName,
@@ -36,12 +36,12 @@ export default function Login() {
 
       const response = await googleLogin(userData).unwrap();
 
-      console.log(response.data);
+      // console.log(response.data);
       console.log('Google login successful');
       navigate('/');
     } catch (e) {
       setError(e.message);
-      console.error(e);
+      // console.error(e);
     }
   };
 
@@ -58,7 +58,7 @@ let getEmail = ()=>{
     setError('');
     try {
       let res = await logInUser({ email, password }).unwrap();
-      console.log(res);
+      // console.log(res);
       localStorage.setItem('token', res?.data?.token);
       await signInWithEmailAndPassword(auth, email, password);
 
@@ -66,7 +66,7 @@ let getEmail = ()=>{
       navigate('/');
     } catch (e) {
       setError(e?.data?.message);
-      console.error(e.message);
+      // console.error(e.message);
     }
   };
 

@@ -18,25 +18,24 @@ export default function Main() {
   const [open, setOpen] = useState(true);
   const dispatch = useDispatch();
   let [logOutUser] = useLogOutUserMutation();
-  let [getMyuser] = useGetMyUserMutation()
+  let [getMyuser] = useGetMyUserMutation();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async user => {
       dispatch(setLoader(true));
-      console.log(user);
+
       if (user) {
         try {
-          console.log(user);
           // const res = await axios.get(
           //   `http://localhost:4000/gyanflow/user/role/${user?.email}`
           // );
           const res = await getMyuser(user?.email).unwrap();
-          console.log("our api response for user informations ",res)
+          // console.log('our api response for user informations ', res);
           dispatch(setUser(res?.data));
           dispatch(setLoader(false));
           console.log(res?.token);
           localStorage.setItem('token', res?.token);
         } catch (error) {
-          console.error('Error fetching user role:', error);
+          // console.error('Error fetching user role:', error);
         } finally {
           dispatch(setLoader(false));
         }
@@ -60,7 +59,7 @@ export default function Main() {
 
   return (
     <div className="w-full">
-      {/* {open && <WelcomeModal open={open} setOpen={setOpen} />} */}
+      {open && <WelcomeModal open={open} setOpen={setOpen} />}
       <ToastContainer />
 
       <Navbar></Navbar>

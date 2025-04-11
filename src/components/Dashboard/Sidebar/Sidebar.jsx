@@ -1,17 +1,21 @@
-import { IoSearch } from 'react-icons/io5';
+import { IoCreateOutline, IoSearch } from 'react-icons/io5';
+
 import { BiSolidUpArrow } from 'react-icons/bi';
 import { FaDollarSign, FaRegStar, FaRegUser, FaUsers } from 'react-icons/fa';
 
-import { IoIosAddCircle } from 'react-icons/io';
+import { IoIosAddCircle, IoIosAddCircleOutline } from 'react-icons/io';
 import { VscVmRunning } from 'react-icons/vsc';
 import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router';
 import { useEffect, useState } from 'react';
+import { MdOutlineCreateNewFolder } from 'react-icons/md';
+import { TfiAnnouncement } from 'react-icons/tfi';
+import { PiVideoCameraLight } from 'react-icons/pi';
 const Sidebar = () => {
   let { user, loader } = useSelector(state => state.authUser);
   let [role, setRole] = useState({});
 
-  console.log(user);
+  // console.log(user);
   // let adminRole = 'admin';
   // let student = 'student';
   // let instructor = ' instructor';
@@ -99,10 +103,14 @@ const Sidebar = () => {
               to={'/dashboard/studentDashboard'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
-              <BiSolidUpArrow />
-              Student Dashboard
+              <PiVideoCameraLight />
+              My Courses
             </NavLink>
-            <NavLink to={'/dashboard/create-meeting'} className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2" >
+            <NavLink
+              to={'/dashboard/create-meeting'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <IoIosAddCircleOutline />
               Join Meeting
             </NavLink>
             <NavLink
@@ -116,8 +124,8 @@ const Sidebar = () => {
               to={'/dashboard/courseAnnoucement'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
-              <BiSolidUpArrow />
-              Course
+              <TfiAnnouncement />
+              Announcement
             </NavLink>
           </div>
         ))}
@@ -135,10 +143,18 @@ const Sidebar = () => {
               <BiSolidUpArrow />
               Instructor Dashboard
             </NavLink>
-            <NavLink to={'/dashboard/create-meeting'} className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2" >
+            <NavLink
+              to={'/dashboard/create-meeting'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <MdOutlineCreateNewFolder />
               Create Meeting
             </NavLink>
-            <NavLink to={'/dashboard/create-module'} className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2" >
+            <NavLink
+              to={'/dashboard/create-module'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <IoCreateOutline />
               Create Module
             </NavLink>
           </div>

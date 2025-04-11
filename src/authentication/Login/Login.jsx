@@ -26,7 +26,7 @@ export default function Login() {
     try {
       const res = await signInWithPopup(auth, provider);
       let user = res.user;
-      console.log(res.user);
+      // console.log(res.user);
       const userData = {
         email: user.email,
         name: user.displayName,
@@ -36,41 +36,37 @@ export default function Login() {
 
       const response = await googleLogin(userData).unwrap();
 
-      console.log(response.data);
+      // console.log(response.data);
       console.log('Google login successful');
       navigate('/');
     } catch (e) {
       setError(e.message);
-      console.error(e);
+      // console.error(e);
     }
   };
+
+let getEmail = ()=>{
+  if(email){
+    navigate(`/forgot-pass/${email}`)
+  }else{
+    setError('type your email')
+  }
+}
 
   const handleEmailPasswordLogin = async e => {
     e.preventDefault();
     setError('');
     try {
       let res = await logInUser({ email, password }).unwrap();
-      console.log(res);
+      // console.log(res);
       localStorage.setItem('token', res?.data?.token);
-      // if (res?.success) {
       await signInWithEmailAndPassword(auth, email, password);
-      // const response = await axios.post('http://localhost:4000/gyanflow/user/login', { email, password }, {
-      //   withCredentials: true
-      // });
 
-      // const response = await axios.post(
-      //   'http://localhost:4000/gyanflow/user/login',
-      //   { email, password },
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
       console.log('Email/Password login successful');
       navigate('/');
-      // }
     } catch (e) {
       setError(e?.data?.message);
-      console.error(e.message);
+      // console.error(e.message);
     }
   };
 
@@ -118,8 +114,11 @@ export default function Login() {
               className=" w-full rounded-none outline-none border p-2"
               required
             />
+           
             {error && <p className="text-red-400 text-start ">{error}</p>}
-
+            <p onClick={getEmail} className='py-2 cursor-pointer'>
+              forgot password
+            </p>
             <button
               type="submit"
               className=" my-button w-full cursor-pointer rounded-none p-2 text-white "
@@ -137,7 +136,6 @@ export default function Login() {
           <p className="text-left">
             New here? Start your journey by{' '}
             <span className="text-blue-500 font-bold cursor-pointer underline">
-              {/* <Link to={'/register/:role'}>registering</Link> */}
               <Link to={'/register/student'}>register with student</Link>
             </span>{' '}
             {''}

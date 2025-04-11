@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const storage = getStorage(app); // getStorage ব্যবহার করে storage ইন্সট্যান্স তৈরি করা হয়েছে
+export const storage = getStorage(app);
 export const auth = getAuth(app);
 
 const analytics = getAnalytics(app);

@@ -52,7 +52,7 @@ export default function QuizList({ info }) {
       if (err) {
         alert(err?.response?.data?.message || 'internal server error');
       }
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -61,7 +61,7 @@ export default function QuizList({ info }) {
       <div className="h-[400px] bg-transparent ">something went wrong </div>
     );
   }
-  console.log(data?.data);
+
   return (
     <div className="h-full    ">
       {data?.data?.length === 0 ? (

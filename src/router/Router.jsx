@@ -29,6 +29,7 @@ import AllCourses from '@/pages/AllCourses/AllCourses';
 import CreateModule from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateModule';
 import SuccessPayment from '@/pages/Dashboard/StudentDashboard/SuccessPayment';
 import ActionalDashboard from '@/pages/Dashboard/StudentDashboard/ActionalDashboard';
+import ForgotPass from '@/authentication/Login/ForgotPass';
 
 export const router = createBrowserRouter([
   {
@@ -148,20 +149,20 @@ export const router = createBrowserRouter([
         children: [
           {
             path: 'see-video/:id',
-            element : <SeeVideo></SeeVideo>
+            element: <SeeVideo></SeeVideo>
           }
         ]
       }
       ,
       {
-        path : 'create-meeting',
-        element : <CreateMeeting></CreateMeeting>
+        path: 'create-meeting',
+        element: <CreateMeeting></CreateMeeting>
       },
       {
-        path : 'create-module',
-        element : <CreateModule></CreateModule>
+        path: 'create-module',
+        element: <CreateModule></CreateModule>
       }
-    
+
     ],
   },
   {
@@ -169,11 +170,15 @@ export const router = createBrowserRouter([
     element: <Error></Error>,
   },
   {
+    path: '/forgot-pass/:email',
+    element : <ForgotPass></ForgotPass>
+  },
+  {
     path: 'profile',
     element: <UserProfile></UserProfile>,
   },
   {
-    path : '/join-meeting',
-    element : <MeetingRoute><JoinClassRoom></JoinClassRoom></MeetingRoute>
+    path: '/join-meeting',
+    element: <MeetingRoute><JoinClassRoom></JoinClassRoom></MeetingRoute>
   }
 ]);

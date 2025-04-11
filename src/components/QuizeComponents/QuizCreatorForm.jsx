@@ -80,7 +80,7 @@ export default function QuizCreatorForm({ toggleQuizModule, info }) {
 
       info?.setToggle(!info?.toggle);
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       alert('Error submitting quiz.');
     }
   };

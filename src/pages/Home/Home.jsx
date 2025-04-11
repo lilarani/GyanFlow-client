@@ -9,7 +9,6 @@ import OurAllCourse from '@/components/Home/OurAllCourse/OurAllCourse';
 // import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
-  console.log('my info -- ', load().authUser);
   // let {data , isLoading , isError} = useGetUsersQuery();
   // // isLoading ? console.log(isLoading) :  console.log(data)
   // if(isLoading){

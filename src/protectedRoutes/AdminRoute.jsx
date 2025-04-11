@@ -1,10 +1,10 @@
-import React from 'react'
-import { Navigate } from 'react-router'
+import React from 'react';
+import { Navigate } from 'react-router';
 import { useSelector } from 'react-redux';
 
 export default function AdminRoute({ children }) {
     const { user, loader } = useSelector(state => state.authUser);
-    console.log({ user, loader })
+    // console.log({ user, loader })
     if (loader) {
         return (
             <div className="flex justify-center items-center h-screen">
@@ -17,7 +17,7 @@ export default function AdminRoute({ children }) {
         );
     }
 
-    if (user && user.data.role === "admin") {
+    if (user && user.role === "admin") {
 
         return children;
     }
@@ -26,5 +26,9 @@ export default function AdminRoute({ children }) {
         return <Navigate to="/login" replace />;
     }
 
+  if (!user) {
     return <Navigate to="/login" replace />;
+  }
+
+  return <Navigate to="/login" replace />;
 }

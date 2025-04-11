@@ -3,9 +3,9 @@ import './banner.css';
 import Button from '@/components/customs/Button';
 const Banner = () => {
   return (
-    <div className="w-full p-10 md:p-[122px] banner overflow-hidden min-h-screen flex md:justify-between items-center flex-col md:flex-row bg-opacity-25  bg-gradient-to-bl to-[#1a044d] from-[#100d1b]">
-      <div className="w-full md:w-[45%]  flex  justify-start items-start flex-col gap-6 md:gap-3  ">
-        <h1 className="text-2xl md:text-5xl text-textcolor text-left font-bold">
+    <div className="w-full p-10 md:p-[122px] banner overflow-hidden min-h-screen flex lg:justify-between items-center md:items-start lg:items-center flex-col lg:flex-row bg-opacity-25  bg-gradient-to-bl to-[#1a044d] from-[#100d1b]">
+      <div className="w-full lg:w-[45%]  flex  justify-start items-start flex-col gap-6 md:gap-3  ">
+        <h1 className="text-2xl lg:text-5xl md:text-5xl text-textcolor text-left font-bold">
           Best <span className="text-blue-500 ">Online Learning Platform</span>{' '}
           for <br /> Skill & Career Growth
         </h1>
@@ -17,7 +17,7 @@ const Banner = () => {
           <Button text="Discover More" url="/dashboard/studentDashboard" />
         </div>
       </div>
-      <div className="w-full md:w-1/2  relative">
+      <div className="w-full lg:w-1/2   relative ">
         <div
           className="absolute  top-[-300px]  md:top-[-200px] z-[-1] right-[-300px]   md:right-[-200px]  w-[500px]  h-[500px]    "
           style={{

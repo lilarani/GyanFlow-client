@@ -29,9 +29,15 @@ const OurAllCourse = () => {
         ))}
       </div>
 
+<<<<<<< HEAD
       <Link to={"/AllCourses"} className="my-14 text-3xl">
         <Button text={"All Courses"}></Button>
       </Link>
+=======
+      <div className="my-14 text-lg">
+        <Button text={'All Courses'} url={'/AllCourses'}></Button>
+      </div>
+>>>>>>> bb25c47ec52b258bfb8b39227ea833aaa9417ed9
     </div>
   );
 };

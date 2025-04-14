@@ -71,7 +71,7 @@ export default function QuizCreatorForm({ toggleQuizModule, info }) {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      // const res = await axios.post(`http://localhost:4000/gyanflow/quiz/addquiz/${instructorId}/${modulNo}`, quiz);
+      // const res = await axios.post(`https://gyanflow-server.onrender.com/gyanflow/quiz/addquiz/${instructorId}/${modulNo}`, quiz);
       // console.log("Quiz submitted:", res.data);
 
       await createQuiz({ instructorId, modulNo, quiz }).unwrap();
@@ -80,7 +80,7 @@ export default function QuizCreatorForm({ toggleQuizModule, info }) {
 
       info?.setToggle(!info?.toggle);
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       alert('Error submitting quiz.');
     }
   };

@@ -6,6 +6,7 @@ import {
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { ImCross } from 'react-icons/im';
+import Swal from 'sweetalert2';
 
 let ImageHostKey = '47b25851b9d300db92da4ca62f89a4bb';
 let ImageHosting = `https://api.imgbb.com/1/upload?key=${ImageHostKey}`;
@@ -41,6 +42,18 @@ const AddCourses = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     const form = e.target;
+
+    if (selectedInstructors.length === 0) {
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Please select instructor',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      return;
+    }
 
     const courseData = {
       title: form.title.value,
@@ -87,10 +100,19 @@ const AddCourses = () => {
       setSelectedInstructors([]);
       setStatus('');
 
-      toast('Course added successfully!');
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (error) {
-      console.error('Error adding course:', error);
-      toast.error('Failed to add course.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Failed!',
+        text: 'Failed to add course.',
+      });
     }
   };
 
@@ -126,7 +148,7 @@ const AddCourses = () => {
                       className="peer hidden"
                     />
 
-                    <div className="  rounded-md border border-gray-700 hover:bg-blue-100 flex felx-row gap-2 w-full p-2  peer-checked:bg-[#9593f457]">
+                    <div className="  rounded-md border border-gray-700 hover:bg-blue-100 flex felx-row gap-2 w-full p-2 hover:text-black  peer-checked:bg-[#9593f457]">
                       <img
                         className="h-10 w-10 rounded-full border"
                         src={instructor.picture}
@@ -166,10 +188,18 @@ const AddCourses = () => {
               onChange={e => setStatus(e.target.value)}
               className="w-full p-2 rounded  bg-[#f5f5f518] outline-none border border-gray-600"
             >
-              <option value="">Select Status</option>
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
-              <option value="Upcoming">Upcoming</option>
+              <option className="text-black" value="">
+                Select Status
+              </option>
+              <option className="text-black" value="Active">
+                Active
+              </option>
+              <option className="text-black" value="Inactive">
+                Inactive
+              </option>
+              <option className="text-black" value="Upcoming">
+                Upcoming
+              </option>
             </select>
             <textarea
               name="description"
@@ -196,10 +226,18 @@ const AddCourses = () => {
               onChange={e => setCategory(e.target.value)}
               className="w-full p-2 rounded  bg-[#f5f5f518] outline-none border border-gray-600"
             >
-              <option value="">Select Category</option>
-              <option value="Web development">Web development</option>
-              <option value="App Development">App Development</option>
-              <option value="Ai Learning">Ai Learning</option>
+              <option className="text-black" value="">
+                Select Category
+              </option>
+              <option className="text-black" value="Web development">
+                Web development
+              </option>
+              <option className="text-black" value="App Development">
+                App Development
+              </option>
+              <option className="text-black" value="Ai Learning">
+                Ai Learning
+              </option>
             </select>
             <textarea
               name="studyPlan"

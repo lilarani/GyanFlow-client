@@ -16,6 +16,8 @@
     "@radix-ui/react-slot": "^1.1.2",
     "@reduxjs/toolkit": "^2.6.1",
     "@tailwindcss/vite": "^4.0.12",
+    "@zegocloud/zego-uikit-prebuilt": "^2.14.3-beta",
+    "@zegocloud/zego-uikit-prebuilt-live-streaming-rn": "^2.5.3",
     "axios": "^1.8.3",
     "chart.js": "^4.4.8",
     "class-variance-authority": "^0.7.1",

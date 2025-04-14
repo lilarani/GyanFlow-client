@@ -27,7 +27,7 @@ export default function QuizList({ info }) {
   //     const getQuizes = async () => {
   //         // module_12345
   //         try {
-  //             const res = await axios.get(`http://localhost:4000/gyanflow/quiz/getquizforModule/${modulNo}`);
+  //             const res = await axios.get(`https://gyanflow-server.onrender.com/gyanflow/quiz/getquizforModule/${modulNo}`);
   //             setData(res.data)
   //         } catch (err) {
   //             console.log(err);
@@ -41,7 +41,7 @@ export default function QuizList({ info }) {
   const handleDelete = async id => {
     try {
       if (window.confirm('Are You sure want to delete this ')) {
-        // const res = await axios.delete(`http://localhost:4000/gyanflow/quiz/quizzes/${id}`);
+        // const res = await axios.delete(`https://gyanflow-server.onrender.com/gyanflow/quiz/quizzes/${id}`);
         await deleteQuiz(id).unwrap();
         alert('deleted successfully');
         //    setTimeout(() => {
@@ -52,7 +52,7 @@ export default function QuizList({ info }) {
       if (err) {
         alert(err?.response?.data?.message || 'internal server error');
       }
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -61,7 +61,7 @@ export default function QuizList({ info }) {
       <div className="h-[400px] bg-transparent ">something went wrong </div>
     );
   }
-  console.log(data?.data);
+
   return (
     <div className="h-full    ">
       {data?.data?.length === 0 ? (

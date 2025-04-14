@@ -12,12 +12,6 @@ export const apiSlice = createApi({
       providesTags: ['user'],
     }),
 
-    getMyUser: builder.query({
-      query: email => `/gyanflow/user/role/${email}`,
-      providesTags: ['update'],
-      method: 'GET',
-    }),
-
     // all instructors
     getInstructors: builder.query({
       query: () => '/gyanflow/user/all-instructors',
@@ -46,6 +40,13 @@ export const apiSlice = createApi({
     logOutUser: builder.mutation({
       query: () => ({
         url: '/gyanflow/user/logout',
+        method: 'GET',
+      }),
+    }),
+
+    getMyUser: builder.mutation({
+      query: email => ({
+        url: `/gyanflow/user/role/${email}`,
         method: 'GET',
       }),
     }),
@@ -107,7 +108,7 @@ export const apiSlice = createApi({
     // POST API - createUser
     createUser: builder.mutation({
       query: newUser => ({
-        //   http://localhost:4000
+        //   https://gyanflow-server.onrender.com
         url: '/gyanflow/user/regiser',
         method: 'POST',
         body: newUser,
@@ -180,13 +181,19 @@ export const apiSlice = createApi({
         method: 'POST',
       }),
     }),
+
+    // student purches courses
+    getStudentCourse: builder.query({
+      query: `/gyanflow/ssl-payment/student-courses`,
+      method: 'GET',
+    }),
   }),
 });
 
 export const {
   useCreateUserMutation,
   useGetUsersQuery,
-  useGetMyUserQuery,
+  useGetMyUserMutation,
   useLogOutUserMutation,
   useGoogleLoginMutation,
   useLogInUserMutation,
@@ -207,5 +214,6 @@ export const {
   useGetQuizForSpeceficModuleQuery,
   usePaymentMutation,
   useSuccessPaymentMutation,
+  useGetStudentCourseQuery,
 } = apiSlice;
 export default apiSlice;

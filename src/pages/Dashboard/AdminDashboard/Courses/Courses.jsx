@@ -32,8 +32,9 @@ import Swal from 'sweetalert2';
 const Courses = () => {
   const [mobileView, setMobileView] = useState(window.innerWidth < 768);
   const { data, isLoading, isError } = useGetCourseQuery();
-  // console.log(data);
+  console.log(data);
   const coursesData = data?.data || [];
+  
 
   const [deleteCourses] = useDeleteCoursesMutation();
 

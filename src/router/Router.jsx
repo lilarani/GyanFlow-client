@@ -150,7 +150,23 @@ export const router = createBrowserRouter([
       {
         path: "instructorDashboard/action/:id",
         element: <UploadModul></UploadModul>,
+        children: [
+          {
+            path: 'see-video/:id',
+            element: <SeeVideo></SeeVideo>
+          }
+        ]
+      }
+      ,
+      {
+        path: 'create-meeting',
+        element: <CreateMeeting></CreateMeeting>
       },
+      {
+        path: 'create-module',
+        element: <CreateModule></CreateModule>
+      }
+
     ],
   },
   {
@@ -158,7 +174,15 @@ export const router = createBrowserRouter([
     element: <Error></Error>,
   },
   {
+    path: '/forgot-pass/:email',
+    element : <ForgotPass></ForgotPass>
+  },
+  {
     path: "profile",
     element: <UserProfile></UserProfile>,
   },
+  {
+    path: '/join-meeting',
+    element: <MeetingRoute><JoinClassRoom></JoinClassRoom></MeetingRoute>
+  }
 ]);

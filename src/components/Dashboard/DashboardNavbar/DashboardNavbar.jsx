@@ -67,7 +67,7 @@ const DashboardNavbar = ({ navTitle }) => {
   };
 
   return (
-    <div className=" w-full h-20 p-4  items-center bg-gradient-to-bl to-[#080127] from-[#1a044d] text-white flex justify-between relative">
+    <div className=" w-full h-20 p-4  items-center bg-gradient-to-bl to-[#080127] from-[#0F172A] text-white flex justify-between relative">
       <div
         onClick={handleSidebar}
         className="text-white block lg:hidden text-2xl w-fit"
@@ -118,22 +118,22 @@ const DashboardNavbar = ({ navTitle }) => {
         <div className="relative">
           <img
             onClick={handleUserModal}
-            src={user?.data?.picture}
+            src={user?.picture}
             alt="user Images"
             className="w-12 h-12 rounded-full"
           />
           {openUserModal && (
-            <div className="absolute z-50 top-18 bg-white/10 backdrop-blur-md shadow-xl p-8 border border-white/20 text-white min-w-sm md:min-w-md right-4  p-6">
+            <div className="absolute z-50 top-18 bg-white/10 backdrop-blur-2xl shadow-xl p-8 border border-white/20 text-white min-w-sm md:min-w-md right-4 ">
               <div className="flex gap-2 items-center border-b-[1px] border-gray-700 p-2">
                 <img
                   referrerPolicy="no-referrer"
-                  src={user?.data?.picture}
+                  src={user?.picture}
                   alt="User image"
                   className="w-12 h-12 rounded-full"
                 />
                 <div>
-                  <p className="text-white">{user?.data?.name}</p>
-                  <p>{user?.data?.email}</p>
+                  <p className="text-white">{user?.name}</p>
+                  <p>{user?.email}</p>
                 </div>
               </div>
 

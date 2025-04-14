@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { IoSearch } from "react-icons/io5";
 import { BiSolidUpArrow } from "react-icons/bi";
 import { FaDollarSign, FaRegStar, FaRegUser, FaUsers } from "react-icons/fa";
@@ -9,9 +10,25 @@ import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router";
 import { useEffect, useState } from "react";
 import { GrAnnounce } from "react-icons/gr";
+=======
+import { IoCreateOutline, IoSearch } from 'react-icons/io5';
+
+import { BiSolidUpArrow } from 'react-icons/bi';
+import { FaDollarSign, FaRegStar, FaRegUser, FaUsers } from 'react-icons/fa';
+
+import { IoIosAddCircle, IoIosAddCircleOutline } from 'react-icons/io';
+import { VscVmRunning } from 'react-icons/vsc';
+import { useSelector } from 'react-redux';
+import { Link, NavLink } from 'react-router';
+import { useEffect, useState } from 'react';
+import { MdOutlineCreateNewFolder } from 'react-icons/md';
+import { TfiAnnouncement } from 'react-icons/tfi';
+import { PiVideoCameraLight } from 'react-icons/pi';
+>>>>>>> de2a55fd182fb559ef7de699cda708f8453caf27
 const Sidebar = () => {
   let { user, loader } = useSelector((state) => state.authUser);
   let [role, setRole] = useState({});
+
   // console.log(user);
   // let adminRole = 'admin';
   // let student = 'student';
@@ -21,13 +38,13 @@ const Sidebar = () => {
   // let { data } = useGetMyUserQuery(user?.email);
   // console.log(data?.user.role);
   useEffect(() => {
-    setRole(user?.data?.role);
+    setRole(user?.role);
   }, [user, loader]);
   // const role = user?.user?.role;
   // console.log(user)
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
+    <div className="w-full min-h-screen bg-gradient-to-bl to-[#0F172A] from-[#080127] text-white p-2 pt-8 md:p-8">
       <Link
         to={"/"}
         className="font-bold text-base md:text-2xl  md:block block"
@@ -107,8 +124,15 @@ const Sidebar = () => {
               to={"/dashboard/studentDashboard"}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
-              <BiSolidUpArrow />
-              Student Dashboard
+              <PiVideoCameraLight />
+              My Courses
+            </NavLink>
+            <NavLink
+              to={'/dashboard/create-meeting'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <IoIosAddCircleOutline />
+              Join Meeting
             </NavLink>
             <NavLink
               to={"/dashboard/actionaldashboard"}
@@ -121,8 +145,8 @@ const Sidebar = () => {
               to={"/dashboard/courseAnnoucement"}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
-              <BiSolidUpArrow />
-              Course
+              <TfiAnnouncement />
+              Announcement
             </NavLink>
           </div>
         ))}
@@ -138,7 +162,21 @@ const Sidebar = () => {
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />
-              instructor Dashboard
+              Instructor Dashboard
+            </NavLink>
+            <NavLink
+              to={'/dashboard/create-meeting'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <MdOutlineCreateNewFolder />
+              Create Meeting
+            </NavLink>
+            <NavLink
+              to={'/dashboard/create-module'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <IoCreateOutline />
+              Create Module
             </NavLink>
           </div>
         ))}

@@ -1,82 +1,83 @@
-import { createBrowserRouter } from 'react-router';
-import StudentDashboard from '@/pages/Dashboard/StudentDashboard/StudentDashboard';
-import AddCourses from '@/pages/Dashboard/AdminDashboard/AddCourses/AddCourses';
-import Main from '../layouts/MainLayout/Main';
-import Home from '../pages/Home/Home';
-import Login from '../authentication/Login/Login';
-import Register from '../authentication/Register/Register';
-import Support from '../pages/Support/Support';
-import About from '../pages/About/About';
-import Error from '@/pages/Error/Error';
-import Dashboard from '@/layouts/DashboardLayout/Dashboard/Dashboard';
-import Courses from '@/pages/Dashboard/AdminDashboard/Courses/Courses';
-import UserManagement from '@/pages/Dashboard/AdminDashboard/UserManagement/UserManagement';
-import InstructorDashboard from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboard';
-import UserProfile from '@/components/Dashboard/UserProfile/UserProfile';
-import AdminDashboard from '@/pages/Dashboard/AdminDashboard/AdminDashboard';
-import Career from '@/pages/Career/Career';
-import TecherDashboard from '@/pages/Dashboard/TecherDashboard/TecherDashboard';
-import StudentRoutes from './../protectedRoutes/StudentRoutes';
-import AdminRoute from './../protectedRoutes/AdminRoute';
-import UploadModul from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/UploadModul';
-import FeaturesCourseDetails from '@/pages/FeaturesCourseDetails/FeaturesCourseDetails';
-import CourseAnnoucement from '@/pages/Dashboard/StudentDashboard/CourseAnnoucement';
-import AllCourses from '@/pages/AllCourses/AllCourses';
-import SuccessPayment from '@/pages/Dashboard/StudentDashboard/SuccessPayment';
-import ActionalDashboard from '@/pages/Dashboard/StudentDashboard/ActionalDashboard';
+import { createBrowserRouter } from "react-router";
+import StudentDashboard from "@/pages/Dashboard/StudentDashboard/StudentDashboard";
+import AddCourses from "@/pages/Dashboard/AdminDashboard/AddCourses/AddCourses";
+import Main from "../layouts/MainLayout/Main";
+import Home from "../pages/Home/Home";
+import Login from "../authentication/Login/Login";
+import Register from "../authentication/Register/Register";
+import Support from "../pages/Support/Support";
+import About from "../pages/About/About";
+import Error from "@/pages/Error/Error";
+import Dashboard from "@/layouts/DashboardLayout/Dashboard/Dashboard";
+import Courses from "@/pages/Dashboard/AdminDashboard/Courses/Courses";
+import UserManagement from "@/pages/Dashboard/AdminDashboard/UserManagement/UserManagement";
+import InstructorDashboard from "@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboard";
+import UserProfile from "@/components/Dashboard/UserProfile/UserProfile";
+import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
+import Career from "@/pages/Career/Career";
+import TecherDashboard from "@/pages/Dashboard/TecherDashboard/TecherDashboard";
+import StudentRoutes from "./../protectedRoutes/StudentRoutes";
+import AdminRoute from "./../protectedRoutes/AdminRoute";
+import UploadModul from "@/pages/Dashboard/InstructorDashboard/InstructorDashboard/UploadModul";
+import FeaturesCourseDetails from "@/pages/FeaturesCourseDetails/FeaturesCourseDetails";
+import CourseAnnoucement from "@/pages/Dashboard/StudentDashboard/CourseAnnoucement";
+import AllCourses from "@/pages/AllCourses/AllCourses";
+import SuccessPayment from "@/pages/Dashboard/StudentDashboard/SuccessPayment";
+import ActionalDashboard from "@/pages/Dashboard/StudentDashboard/ActionalDashboard";
+import AddAnnouncement from "@/pages/Dashboard/AdminDashboard/AddAnnouncement/AddAnnouncement";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Main></Main>,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home></Home>,
       },
       {
-        path: '/about',
+        path: "/about",
         element: <About></About>,
       },
       {
-        path: '/support',
+        path: "/support",
         element: <Support></Support>,
       },
       {
-        path: '/career',
+        path: "/career",
         element: <Career></Career>,
       },
       {
-        path: '/featuresDetails/:id',
+        path: "/featuresDetails/:id",
         element: <FeaturesCourseDetails></FeaturesCourseDetails>,
       },
       {
-        path: '/AllCourses',
+        path: "/AllCourses",
         element: <AllCourses></AllCourses>,
       },
     ],
   },
   {
-    path: '/login',
+    path: "/login",
     element: <Login></Login>,
   },
   {
-    path: '/register/:role',
+    path: "/register/:role",
     element: <Register></Register>,
   },
   {
-    path: '/successedPayment',
+    path: "/successedPayment",
     element: <SuccessPayment></SuccessPayment>,
   },
 
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: <Dashboard></Dashboard>,
     children: [
       // admin related routes
 
       {
-        path: 'adminDashboard',
+        path: "adminDashboard",
         element: (
           <AdminRoute>
             <AdminDashboard></AdminDashboard>
@@ -84,7 +85,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'courses',
+        path: "courses",
         element: (
           <AdminRoute>
             <Courses />
@@ -93,7 +94,7 @@ export const router = createBrowserRouter([
       },
       {
         // dashboard/addCourse'
-        path: 'addCourse',
+        path: "addCourse",
         element: (
           <AdminRoute>
             <AddCourses />
@@ -101,12 +102,21 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'userManagement',
+        // dashboard/addAnnouncement'
+        path: "addAnnouncement",
+        element: (
+          <AdminRoute>
+            <AddAnnouncement />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "userManagement",
         element: <UserManagement></UserManagement>,
       },
       // student related  routes
       {
-        path: 'studentDashboard',
+        path: "studentDashboard",
         element: (
           <StudentRoutes>
             <StudentDashboard></StudentDashboard>
@@ -114,7 +124,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'actionaldashboard',
+        path: "actionaldashboard",
         element: (
           <StudentRoutes>
             <ActionalDashboard></ActionalDashboard>
@@ -122,33 +132,33 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'teacherDashboard',
+        path: "teacherDashboard",
 
         // dashboard/addCourse'
-        path: 'courseAnnoucement',
+        path: "courseAnnoucement",
         element: <CourseAnnoucement />,
       },
       {
-        path: 'teacherDashboard',
+        path: "teacherDashboard",
 
         element: <TecherDashboard></TecherDashboard>,
       },
       {
-        path: 'instructorDashboard',
+        path: "instructorDashboard",
         element: <InstructorDashboard></InstructorDashboard>,
       },
       {
-        path: 'instructorDashboard/action/:id',
+        path: "instructorDashboard/action/:id",
         element: <UploadModul></UploadModul>,
       },
     ],
   },
   {
-    path: '*',
+    path: "*",
     element: <Error></Error>,
   },
   {
-    path: 'profile',
+    path: "profile",
     element: <UserProfile></UserProfile>,
   },
 ]);

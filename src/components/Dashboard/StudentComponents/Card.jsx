@@ -41,7 +41,8 @@ const Card = ({ course }) => {
           <p className="text-gray-600 mt-2">{course?.shortDescription}</p>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1">
-              <img className="w-5"
+              <img
+                className="w-5"
                 src="https://img.icons8.com/?size=100&id=14831&format=png"
                 alt=""
               />

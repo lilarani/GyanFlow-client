@@ -25,6 +25,12 @@ import AllCourses from "@/pages/AllCourses/AllCourses";
 import SuccessPayment from "@/pages/Dashboard/StudentDashboard/SuccessPayment";
 import ActionalDashboard from "@/pages/Dashboard/StudentDashboard/ActionalDashboard";
 import AddAnnouncement from "@/pages/Dashboard/AdminDashboard/AddAnnouncement/AddAnnouncement";
+import SeeVideo from "@/shared/CustomButtons/SeeVideo";
+import CreateMeeting from "@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateMeeting";
+import CreateModule from "@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateModule";
+import ForgotPass from "../authentication/Login/ForgotPass"
+import MeetingRoute from "@/protectedRoutes/MeetingRoute";
+import JoinClassRoom from "../pages/Dashboard/InstructorDashboard/InstructorDashboard/JoinClassRoom"
 
 export const router = createBrowserRouter([
   {

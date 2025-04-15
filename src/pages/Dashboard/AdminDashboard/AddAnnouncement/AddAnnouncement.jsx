@@ -1,42 +1,29 @@
-import { useCreateCourseMutation } from "@/redux/ApiCalling/apiClice";
+import {
+  useCreateAnnouncementMutation,
+  useCreateCourseMutation,
+} from "@/redux/ApiCalling/apiClice";
 import React, { useState } from "react";
-import { ImCross } from "react-icons/im";
 
 const AddAnnouncement = () => {
-  const [status, setStatus] = useState("");
+  const [type, setType] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
-  const [selectedInstructors, setSelectedInstructors] = useState([]);
-  const [open, setModal] = useState(false);
-  const [category, setCategory] = useState();
-  const [createCourse, { data: addInfo, isLoading }] =
-    useCreateCourseMutation();
+  const [createAnnouncement, { data: addInfo, isLoading }] =
+    useCreateAnnouncementMutation();
 
   //   console.log(data);
   const handleFileChange = (e) => {
     setThumbnail(e.target.files[0]);
   };
 
-  const handleInstructorChange = (e) => {
-    const { value, checked } = e.target;
-    setSelectedInstructors((prev) =>
-      checked ? [...prev, value] : prev.filter((name) => name !== value)
-    );
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
 
-    const courseData = {
+    const announcementData = {
       title: form.title.value,
-      shortDescription: form.shortDescription.value,
       description: form.description.value,
-      batch: form.batch.value,
-      price: form.price.value,
-      studyPlan: form.studyPlan.value,
-      totalDuration: form.totalDuration.value,
-      category: category,
-      status: status,
-      instructors: selectedInstructors,
+      type: type,
+      date: date,
     };
 
     let thumbnailUrl = "";
@@ -59,22 +46,21 @@ const AddAnnouncement = () => {
       }
     }
 
-    courseData.thumbnail = thumbnailUrl;
+    announcementData.thumbnail = thumbnailUrl;
     // console.log("Final Data:", courseData);
 
     try {
-      const result = await createCourse(courseData).unwrap();
+      const result = await createAnnouncement(announcementData).unwrap();
       console.log("API Response:", result);
 
       form.reset();
       setThumbnail(null);
-      setSelectedInstructors([]);
-      setStatus("");
+      setType("");
 
-      toast("Course added successfully!");
+      toast("Announcement added successfully!");
     } catch (error) {
-      console.error("Error adding course:", error);
-      toast.error("Failed to add course.");
+      console.error("Error adding announcement:", error);
+      toast.error("Failed to add announcement.");
     }
   };
   return (
@@ -99,15 +85,25 @@ const AddAnnouncement = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-          <select
-              onChange={e => setStatus(e.target.value)}
+            <select
+              onChange={(e) => setType(e.target.value)}
               className="w-full p-2 rounded  bg-[#f5f5f518] outline-none border border-gray-600"
             >
-              <option className="bg-blue-950" value="">Announcement Type</option>
-              <option className="bg-blue-950" value="course">Course</option>
-              <option className="bg-blue-950" value="webminer">Webminer</option>
-              <option className="bg-blue-950" value="free_session">Free-session</option>
-              <option className="bg-blue-950" value="bootcamp">Bootcamp</option>
+              <option className="bg-blue-950" value="">
+                Announcement Type
+              </option>
+              <option className="bg-blue-950" value="course">
+                Course
+              </option>
+              <option className="bg-blue-950" value="webminer">
+                Webminer
+              </option>
+              <option className="bg-blue-950" value="free_session">
+                Free-session
+              </option>
+              <option className="bg-blue-950" value="bootcamp">
+                Bootcamp
+              </option>
             </select>
             <input
               type="file"

@@ -3,7 +3,7 @@ import React from "react";
 const Annoucement = () => {
   return (
     <div>
-      <p className="text-3xl font-bold text-center">No announcement found</p>
+      <p className="text-xl md:text-2xl lg:text-3xl font-bold text-center">No announcement found</p>
     </div>
   );
 };

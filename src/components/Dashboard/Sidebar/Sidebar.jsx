@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import { IoSearch } from "react-icons/io5";
-import { BiSolidUpArrow } from "react-icons/bi";
-import { FaDollarSign, FaRegStar, FaRegUser, FaUsers } from "react-icons/fa";
-
-import { IoIosAddCircle } from "react-icons/io";
-import { VscVmRunning } from "react-icons/vsc";
-import { useGetMyUserQuery } from "@/redux/ApiCalling/apiClice";
-import { useSelector } from "react-redux";
-import { Link, NavLink } from "react-router";
-import { useEffect, useState } from "react";
-import { GrAnnounce } from "react-icons/gr";
-=======
 import { IoCreateOutline, IoSearch } from 'react-icons/io5';
 
 import { BiSolidUpArrow } from 'react-icons/bi';
@@ -24,7 +11,7 @@ import { useEffect, useState } from 'react';
 import { MdOutlineCreateNewFolder } from 'react-icons/md';
 import { TfiAnnouncement } from 'react-icons/tfi';
 import { PiVideoCameraLight } from 'react-icons/pi';
->>>>>>> de2a55fd182fb559ef7de699cda708f8453caf27
+import { GrAnnounce } from 'react-icons/gr';
 const Sidebar = () => {
   let { user, loader } = useSelector((state) => state.authUser);
   let [role, setRole] = useState({});

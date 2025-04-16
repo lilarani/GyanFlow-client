@@ -34,7 +34,6 @@ const Courses = () => {
   const { data, isLoading, isError } = useGetCourseQuery();
   console.log(data);
   const coursesData = data?.data || [];
-  
 
   const [deleteCourses] = useDeleteCoursesMutation();
 
@@ -169,9 +168,9 @@ const Courses = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="text-gray-400 hover:text-white"
+                      className="text-gray-400"
                     >
-                      <Edit size={16} />
+                      <Edit size={16} className="hover:text-black" />
                     </Button>
                     <div onClick={() => deleteSignleCourse(course._id)}>
                       <Button
@@ -179,7 +178,10 @@ const Courses = () => {
                         size="icon"
                         className="text-gray-400 hover:text-white"
                       >
-                        <Trash2 size={16} className="text-red-400" />
+                        <Trash2
+                          size={16}
+                          className="text-red-400 hover:text-red-700"
+                        />
                       </Button>
                     </div>
                   </div>
@@ -193,7 +195,7 @@ const Courses = () => {
   };
 
   return (
-    <div className="w-full p-4 md:p-6 bg-[#0B1739] text-white min-h-screen">
+    <div className="w-full p-4 md:p-6 bg-gray-900 text-white min-h-screen">
       <h1 className="text-xl md:text-2xl font-bold">All available courses</h1>
       {mobileView ? renderMobileCards() : renderDesktopTable()}
     </div>

@@ -13,7 +13,7 @@ import { TfiAnnouncement } from 'react-icons/tfi';
 import { PiVideoCameraLight } from 'react-icons/pi';
 import { GrAnnounce } from 'react-icons/gr';
 const Sidebar = () => {
-  let { user, loader } = useSelector((state) => state.authUser);
+  let { user, loader } = useSelector(state => state.authUser);
   let [role, setRole] = useState({});
 
   // console.log(user);
@@ -33,7 +33,7 @@ const Sidebar = () => {
   return (
     <div className="w-full min-h-screen bg-gradient-to-bl to-[#0F172A] from-[#080127] text-white p-2 pt-8 md:p-8">
       <Link
-        to={"/"}
+        to={'/'}
         className="font-bold text-base md:text-2xl  md:block block"
       >
         <span className="text-yellow-300 ">Gyan</span>Flow
@@ -49,27 +49,27 @@ const Sidebar = () => {
       </div>
 
       {/* admin role */}
-      {role === "admin" &&
+      {role === 'admin' &&
         (loader ? (
-          "Loading"
+          'Loading'
         ) : (
           <div className="space-y-5 mt-10">
             <NavLink
-              to={"/dashboard/adminDashboard"}
+              to={'/dashboard/adminDashboard'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />
-              Dashboard
+              Admin Dashboard
             </NavLink>
             <NavLink
-              to={"/dashboard/addCourse"}
+              to={'/dashboard/addCourse'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <IoIosAddCircle />
               Add Course
             </NavLink>
             <NavLink
-              to={"/dashboard/courses"}
+              to={'/dashboard/courses'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <VscVmRunning />
@@ -77,38 +77,38 @@ const Sidebar = () => {
             </NavLink>
 
             <NavLink
-              to={"/dashboard/userManagement"}
+              to={'/dashboard/userManagement'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <FaUsers />
               Users Managment
             </NavLink>
+            <NavLink
+              to={'/dashboard/addAnnouncement'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <GrAnnounce />
+              Add Announcement
+            </NavLink>
 
             <div className="w-full mt-4  border-gray-600 border-t-[1px]">
               <NavLink
-                to={"/"}
+                to={'/'}
                 className="cursor-pointer block w-full text-sm md:text-base font-bold md:mt-8 hover:bg-[#ffffff44] px-4 py-2"
               >
                 Home
-              </NavLink>
-              <NavLink
-                to={"/dashboard/addAnnouncement"}
-                className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
-              >
-                <GrAnnounce />
-                Add Announcement
               </NavLink>
             </div>
           </div>
         ))}
       {/* student role */}
-      {role === "student" &&
+      {role === 'student' &&
         (loader ? (
-          "Loding"
+          'Loding'
         ) : (
           <div className="space-y-5 mt-10">
             <NavLink
-              to={"/dashboard/studentDashboard"}
+              to={'/dashboard/studentDashboard'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <PiVideoCameraLight />
@@ -122,14 +122,14 @@ const Sidebar = () => {
               Join Meeting
             </NavLink>
             <NavLink
-              to={"/dashboard/actionaldashboard"}
+              to={'/dashboard/actionaldashboard'}
               className="capitalize text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />
               Actionable Dashboard
             </NavLink>
             <NavLink
-              to={"/dashboard/courseAnnoucement"}
+              to={'/dashboard/courseAnnoucement'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <TfiAnnouncement />
@@ -139,13 +139,13 @@ const Sidebar = () => {
         ))}
 
       {/* Instructor role */}
-      {role === "instructor" &&
+      {role === 'instructor' &&
         (loader ? (
-          "Loading"
+          'Loading'
         ) : (
           <div className="space-y-5 mt-10">
             <NavLink
-              to={"/dashboard/instructorDashboard"}
+              to={'/dashboard/instructorDashboard'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />
@@ -167,13 +167,13 @@ const Sidebar = () => {
             </NavLink>
           </div>
         ))}
-      {role === "teacher" &&
+      {role === 'teacher' &&
         (loader ? (
-          "Loading"
+          'Loading'
         ) : (
           <div className="space-y-5 mt-10">
             <NavLink
-              to={"/dashboard/teacherDashboard"}
+              to={'/dashboard/teacherDashboard'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />

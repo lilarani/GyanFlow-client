@@ -79,7 +79,7 @@ const DashboardNavbar = ({ navTitle }) => {
         )}
       </div>
       {openSiderbar && (
-        <div className="absolute top-20 z-50">
+        <div className="absolute top-20 left-0 z-50">
           <Sidebar></Sidebar>
         </div>
       )}

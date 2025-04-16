@@ -146,7 +146,7 @@ const UserManagement = () => {
   };
 
   return (
-    <div className="w-full p-4 md:p-6 bg-[#0B1739] text-white min-h-screen">
+    <div className="w-full p-4 md:p-6 bg-gray-900 text-white min-h-screen">
       <h1 className="text-xl md:text-2xl font-bold ">Manage your users</h1>
       {mobileView ? renderMobileCards() : renderDesktopTable()}
     </div>

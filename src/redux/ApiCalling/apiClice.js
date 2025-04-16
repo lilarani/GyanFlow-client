@@ -1,201 +1,203 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { interceptorQuery } from "./../customInterceptor/interceptor";
+import { createApi } from '@reduxjs/toolkit/query/react';
+import { interceptorQuery } from './../customInterceptor/interceptor';
 
 export const apiSlice = createApi({
-  reducerPath: "api",
+  reducerPath: 'api',
   baseQuery: interceptorQuery,
-  tagTypes: ["user", "module", "video", "update", "quiz", "payment"],
-  endpoints: (builder) => ({
+  tagTypes: ['user', 'module', 'video', 'update', 'quiz', 'payment'],
+  endpoints: builder => ({
     // all GET API
     getUsers: builder.query({
-      query: () => "/gyanflow/user/users",
-      providesTags: ["user"],
+      query: () => '/gyanflow/user/users',
+      providesTags: ['user'],
     }),
 
     // all instructors
     getInstructors: builder.query({
-      query: () => "/gyanflow/user/all-instructors",
+      query: () => '/gyanflow/user/all-instructors',
     }),
 
     // course for instructor
     courseForInstructor: builder.query({
-      query: (id) => `/gyanflow/cours/course-for-instructor/${id}`,
+      query: id => `/gyanflow/cours/course-for-instructor/${id}`,
     }),
     allModules: builder.query({
-      query: (id) => `/gyanflow/instructor/all-modules/${id}`,
-      providesTags: ["video", "module"],
+      query: id => `/gyanflow/instructor/all-modules/${id}`,
+      providesTags: ['video', 'module'],
     }),
     // courses get api
     getCourse: builder.query({
-      query: () => "/gyanflow/cours/all-course",
-      providesTags: ["course"],
+      query: () => '/gyanflow/cours/all-course',
+      providesTags: ['course'],
     }),
 
     // features course api
     getFeaturesCourse: builder.query({
-      query: () => "/gyanflow/cours/features-course",
-      providesTags: ["course"],
+      query: () => '/gyanflow/cours/features-course',
+      providesTags: ['course'],
     }),
 
     logOutUser: builder.mutation({
       query: () => ({
-        url: "/gyanflow/user/logout",
-        method: "GET",
+        url: '/gyanflow/user/logout',
+        method: 'GET',
       }),
     }),
 
     getMyUser: builder.mutation({
-      query: (email) => ({
+      query: email => ({
         url: `/gyanflow/user/role/${email}`,
-        method: "GET",
+        method: 'GET',
       }),
     }),
 
     // features course details
     getFeaturesCourseDetails: builder.query({
-      query: (id) => ({
+      query: id => ({
         url: `/gyanflow/cours/features-course/${id}`,
-        providesTags: ["course"],
+        providesTags: ['course'],
       }),
     }),
 
     googleLogin: builder.mutation({
-      query: (data) => ({
-        url: "/gyanflow/user/googleLogin",
-        method: "POST",
+      query: data => ({
+        url: '/gyanflow/user/googleLogin',
+        method: 'POST',
         body: data,
       }),
     }),
 
     // course delete
     deleteCourses: builder.mutation({
-      query: (id) => ({
+      query: id => ({
         url: `/gyanflow/cours/course/${id}`,
-        method: "DELETE",
+        method: 'DELETE',
       }),
-      invalidatesTags: ["course"],
+      invalidatesTags: ['course'],
     }),
 
     // update user
     updateUser: builder.mutation({
       query: ({ id, info }) => ({
         url: `/gyanflow/user/updateUserInfo/${id}`,
-        method: "PUT",
+        method: 'PUT',
         body: info,
       }),
-      invalidatesTags: ["update"],
+      invalidatesTags: ['update'],
     }),
 
     // login user
     logInUser: builder.mutation({
-      query: (data) => ({
-        url: "/gyanflow/user/login",
-        method: "POST",
+      query: data => ({
+        url: '/gyanflow/user/login',
+        method: 'POST',
         body: data,
       }),
     }),
 
     // delete user
     deleteUser: builder.mutation({
-      query: (email) => ({
+      query: email => ({
         url: `/gyanflow/user/deleteUser/${email}`,
-        method: "DELETE",
+        method: 'DELETE',
         // params: { email: email },
       }),
-      invalidatesTags: ["user"],
+      invalidatesTags: ['user'],
     }),
 
     // POST API - createUser
     createUser: builder.mutation({
-      query: (newUser) => ({
-        //   https://gyanflow-server.onrender.com
-        url: "/gyanflow/user/regiser",
-        method: "POST",
+      query: newUser => ({
+        //   http://localhost:4000
+        url: '/gyanflow/user/regiser',
+        method: 'POST',
         body: newUser,
       }),
     }),
 
     createModule: builder.mutation({
-      query: (newModule) => ({
-        url: "/gyanflow/instructor/add-module",
-        method: "POST",
+      query: newModule => ({
+        url: '/gyanflow/instructor/add-module',
+        method: 'POST',
         body: newModule,
       }),
-      invalidatesTags: ["module"],
+      invalidatesTags: ['module'],
     }),
 
     createVideo: builder.mutation({
-      query: (newVedioInfo) => ({
-        url: "/gyanflow/instructor/add-video",
-        method: "POST",
+      query: newVedioInfo => ({
+        url: '/gyanflow/instructor/add-video',
+        method: 'POST',
         body: newVedioInfo,
       }),
-      invalidatesTags: ["video"],
+      invalidatesTags: ['video'],
     }),
     // /gyanflow/quiz/addquiz/${instructorId}/${modulNo}
     createQuiz: builder.mutation({
       query: ({ instructorId, modulNo, quiz }) => ({
         url: `/gyanflow/quiz/addquiz/${instructorId}/${modulNo}/`,
-        method: "POST",
+        method: 'POST',
         body: quiz,
       }),
     }),
 
     // gyanflow/quiz/getquizforModule/${modulNo}
     getQuizForSpeceficModule: builder.query({
-      query: (modulNo) => `gyanflow/quiz/getquizforModule/${modulNo}`,
-      providesTags: ["quiz"],
+      query: modulNo => `gyanflow/quiz/getquizforModule/${modulNo}`,
+      providesTags: ['quiz'],
     }),
     // /gyanflow/quiz/quizzes/${id}
     deleteQuiz: builder.mutation({
-      query: (id) => ({
+      query: id => ({
         url: `/gyanflow/quiz/quizzes/${id}`,
-        method: "DELETE",
+        method: 'DELETE',
       }),
-      invalidatesTags: ["quiz"],
+      invalidatesTags: ['quiz'],
     }),
     createCourse: builder.mutation({
-      query: (newCourse) => ({
-        url: "/gyanflow/cours/add-course",
-        method: "POST",
+      query: newCourse => ({
+        url: '/gyanflow/cours/add-course',
+        method: 'POST',
         body: newCourse,
       }),
-      invalidatesTags: ["quiz"],
+      invalidatesTags: ['quiz'],
     }),
 
     //create announcement
     createAnnouncement: builder.mutation({
-      query: (newAnnouncement) => ({
-        url: "/gyanflow/cours/add-announcement",
-        method: "POST",
+      query: newAnnouncement => ({
+        url: '/gyanflow/cours/add-announcement',
+        method: 'POST',
         body: newAnnouncement,
       }),
-      invalidatesTags: ["quiz"],
+      invalidatesTags: ['quiz'],
     }),
 
     // ssl payments apis
     payment: builder.mutation({
-      query: (paymentData) => ({
-        url: "/gyanflow/ssl-payment/init",
-        method: "POST",
+      query: paymentData => ({
+        url: '/gyanflow/ssl-payment/init',
+        method: 'POST',
         body: paymentData,
       }),
 
-      invalidatesTags: ["payment"],
+      invalidatesTags: ['payment'],
     }),
 
     // successPayment
     successPayment: builder.mutation({
       query: () => ({
-        url: "/gyanflow/ssl-payment/success-payment",
-        method: "POST",
+        url: '/gyanflow/ssl-payment/success-payment',
+        method: 'POST',
       }),
     }),
 
     // student purches courses
     getStudentCourse: builder.query({
-      query: `/gyanflow/ssl-payment/student-courses`,
-      method: "GET",
+      query: id => ({
+        url: `/gyanflow/ssl-payment/student-courses/${id}`,
+        method: 'GET',
+      }),
     }),
   }),
 });

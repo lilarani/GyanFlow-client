@@ -26,7 +26,7 @@ export default function Main() {
       if (user) {
         try {
           // const res = await axios.get(
-          //   `https://gyanflow-server.onrender.com/gyanflow/user/role/${user?.email}`
+          //   `http://localhost:4000/gyanflow/user/role/${user?.email}`
           // );
           const res = await getMyuser(user?.email).unwrap();
           // console.log('our api response for user informations ', res);
@@ -59,7 +59,7 @@ export default function Main() {
 
   return (
     <div className="w-full">
-      {open && <WelcomeModal open={open} setOpen={setOpen} />}
+      {/* {open && <WelcomeModal open={open} setOpen={setOpen} />} */}
       <ToastContainer />
 
       <Navbar></Navbar>

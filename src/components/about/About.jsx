@@ -25,7 +25,7 @@ const AboutUs = () => {
         <p className="mt-4 text-md">
           Join us today and start your journey towards mastering new skills!
         </p>
-        <Button text="Explore Courses" url="/dashboard/studentDashboard" />
+        <Button text="Explore Courses" url="/AllCourses" />
 
         {/*  Circles =================== */}
         <div className="absolute top-[-80px] left-[200px]">

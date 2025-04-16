@@ -30,7 +30,7 @@ const Courses = () => {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
       {courses?.data?.map((course, index) => (
         <div className="max-w-sm bg-default shadow  rounded-xl p-5 space-y-3 border hover:shadow-lg transition">
-          <div className="flex justify-between">
+          <div key={course?.courseId?._id} className="flex justify-between">
             <h2 className="text-xl font-semibold text-white">
               {course?.courseId?.title}
             </h2>

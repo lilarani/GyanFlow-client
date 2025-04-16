@@ -11,12 +11,12 @@ export default function ClassRoom() {
 
   const handleJoinOrCreate = async () => {
     if (!roomID) {
-      alert("Please enter Room ID");
+      alert('Please enter Room ID');
       return;
     }
 
     const appID = 1711344319;
-    const serverSecret = "ed5e7de9a6e7a3dc8c66f66804ae4ad1";
+    const serverSecret = 'ed5e7de9a6e7a3dc8c66f66804ae4ad1';
     const userID = `${user?.email}`;
     const userName = `${user.role} ${userID}`;
 
@@ -46,7 +46,7 @@ export default function ClassRoom() {
   };
 
   return (
-    <div className="w-screen h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] flex items-center justify-center px-5 overflow-hidden">
+    <div className="w-screen h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] flex items-center justify-center px-5 overflow-hidden ">
       {!isMeetingStarted ? (
         <motion.div
           className="backdrop-blur-xl bg-white/10 rounded-xl p-10 shadow-2xl text-center max-w-md w-full z-10"
@@ -60,14 +60,16 @@ export default function ClassRoom() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            {user.role === 'instructor' ? 'Create a Class Room' : 'Join Your Class'}
+            {user.role === 'instructor'
+              ? 'Create a Class Room'
+              : 'Join Your Class'}
           </motion.h2>
 
           <motion.input
             type="text"
             placeholder="Enter Room ID"
             value={roomID}
-            onChange={(e) => setRoomID(e.target.value)}
+            onChange={e => setRoomID(e.target.value)}
             className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 mb-4 focus:outline-none focus:ring-2 focus:ring-purple-400"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

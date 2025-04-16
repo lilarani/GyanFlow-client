@@ -25,6 +25,7 @@ export const apiSlice = createApi({
       query: id => `/gyanflow/instructor/all-modules/${id}`,
       providesTags: ['video', 'module'],
     }),
+
     // courses get api
     getCourse: builder.query({
       query: () => '/gyanflow/cours/all-course',
@@ -199,6 +200,12 @@ export const apiSlice = createApi({
         method: 'GET',
       }),
     }),
+
+    // get purches courses
+    getAllEnrolledCourse: builder.query({
+      query: () => '/gyanflow/ssl-payment/allCourse',
+      providesTags: 'payment',
+    }),
   }),
 });
 
@@ -228,5 +235,6 @@ export const {
   usePaymentMutation,
   useSuccessPaymentMutation,
   useGetStudentCourseQuery,
+  useGetAllEnrolledCourseQuery,
 } = apiSlice;
 export default apiSlice;

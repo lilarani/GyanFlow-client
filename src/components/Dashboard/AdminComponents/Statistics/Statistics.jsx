@@ -11,7 +11,11 @@ import {
 } from 'chart.js';
 import { Bar, Doughnut, Line } from 'react-chartjs-2';
 import lineData from './data/lineData.json';
-import doughnutData from './data/doughnutData.json';
+// import ourAllCourse from './data/ourAllCourse.json';
+import {
+  useGetAllEnrolledCourseQuery,
+  useGetCourseQuery,
+} from '@/redux/ApiCalling/apiClice';
 
 ChartJS.register(
   ArcElement,
@@ -24,6 +28,11 @@ ChartJS.register(
 );
 
 const Statistics = () => {
+  const { data: ourAllCourse } = useGetCourseQuery();
+  console.log(ourAllCourse?.data);
+
+  const { data: allEnrolledCourse } = useGetAllEnrolledCourseQuery();
+  console.log(allEnrolledCourse);
   const data = {
     labels: [
       'Jan',
@@ -74,17 +83,19 @@ const Statistics = () => {
       },
     },
   };
+
   return (
     <div className="w-full  bg-[#070f25] p-5">
       <div className="flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-8">
         <div className="w-full md:w-[480px] h-[400px] bg-[#0b1739] p-2 rounded-lg shadow-lg">
           <Doughnut
             data={{
-              labels: doughnutData.map(data => data.courseName),
+              labels: ourAllCourse?.data?.map(data => data?.title),
               datasets: [
                 {
                   label: 'Courses',
-                  data: doughnutData.map(data => data.enrolledStudents),
+                  data: ourAllCourse?.data?.map(data => data?.length || 0),
+
                   backgroundColor: [
                     'rgba(54, 162, 235, 0.8)', // Blue
                     'rgba(255, 99, 132, 0.8)', // Red

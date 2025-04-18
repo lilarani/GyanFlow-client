@@ -3,6 +3,10 @@ import {
   useCreateCourseMutation,
 } from "@/redux/ApiCalling/apiClice";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+
+let ImageHostKey = "47b25851b9d300db92da4ca62f89a4bb";
+let ImageHosting = `https://api.imgbb.com/1/upload?key=${ImageHostKey}`;
 
 const AddAnnouncement = () => {
   const [type, setType] = useState("");
@@ -23,7 +27,7 @@ const AddAnnouncement = () => {
       title: form.title.value,
       description: form.description.value,
       type: type,
-      date: date,
+      date: Date.now(),
     };
 
     let thumbnailUrl = "";
@@ -50,8 +54,8 @@ const AddAnnouncement = () => {
     // console.log("Final Data:", courseData);
 
     try {
+      console.log("Annouce", announcementData);
       const result = await createAnnouncement(announcementData).unwrap();
-      console.log("API Response:", result);
 
       form.reset();
       setThumbnail(null);
@@ -109,12 +113,6 @@ const AddAnnouncement = () => {
               type="file"
               onChange={handleFileChange}
               className="w-full p-2 rounded  bg-[#f5f5f518] outline-none border border-gray-600"
-            />
-            <input
-              type="date"
-              name="date"
-              placeholder="Date"
-              className="w-full p-2 rounded bg-[#f5f5f518] outline-none border border-gray-600"
             />
           </div>
 

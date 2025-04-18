@@ -80,7 +80,7 @@ const Navbar = () => {
                 className="py-3 px-6 rounded hover:bg-[#ffffff44]"
                 to="/support"
               >
-                Support
+                Contact
               </NavLink>
             </li>
             <li>

@@ -32,7 +32,8 @@ const Statistics = () => {
   console.log(ourAllCourse?.data);
 
   const { data: allEnrolledCourse } = useGetAllEnrolledCourseQuery();
-  console.log(allEnrolledCourse);
+  console.log(allEnrolledCourse, 'enrolles courses');
+
   const data = {
     labels: [
       'Jan',

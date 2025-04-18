@@ -167,7 +167,7 @@ export const apiSlice = createApi({
     //create announcement
     createAnnouncement: builder.mutation({
       query: newAnnouncement => ({
-        url: '/gyanflow/cours/add-announcement',
+        url: '/gyanflow/annoucement/addAnnouncement',
         method: 'POST',
         body: newAnnouncement,
       }),

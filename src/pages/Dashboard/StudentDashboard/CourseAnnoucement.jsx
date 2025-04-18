@@ -4,7 +4,7 @@ import React from "react";
 
 const CourseAnnoucement = () => {
   return (
-    <div>
+    <div className="bg-[#0F172A] min-h-screen pt-16 text-white">
       <AnnouncementBanner />
       <Annoucement/>
     </div>

@@ -1,4 +1,4 @@
-import { IoCreateOutline, IoSearch } from 'react-icons/io5';
+import { IoCreateOutline, IoHome, IoSearch } from 'react-icons/io5';
 
 import { BiSolidUpArrow } from 'react-icons/bi';
 import { FaDollarSign, FaRegStar, FaRegUser, FaUsers } from 'react-icons/fa';
@@ -11,6 +11,8 @@ import { useEffect, useState } from 'react';
 import { MdOutlineCreateNewFolder } from 'react-icons/md';
 import { TfiAnnouncement } from 'react-icons/tfi';
 import { PiVideoCameraLight } from 'react-icons/pi';
+import { GrAnnounce } from 'react-icons/gr';
+import { AiTwotoneHome } from 'react-icons/ai';
 const Sidebar = () => {
   let { user, loader } = useSelector(state => state.authUser);
   let [role, setRole] = useState({});
@@ -30,7 +32,7 @@ const Sidebar = () => {
   // console.log(user)
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
+    <div className="w-full min-h-screen bg-gradient-to-bl to-[#0F172A] from-[#080127] text-white p-2 pt-8 md:p-8">
       <Link
         to={'/'}
         className="font-bold text-base md:text-2xl  md:block block"
@@ -58,7 +60,7 @@ const Sidebar = () => {
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />
-              Dashboard
+              Admin Dashboard
             </NavLink>
             <NavLink
               to={'/dashboard/addCourse'}
@@ -82,12 +84,20 @@ const Sidebar = () => {
               <FaUsers />
               Users Managment
             </NavLink>
+            <NavLink
+              to={'/dashboard/addAnnouncement'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <GrAnnounce />
+              Add Announcement
+            </NavLink>
 
             <div className="w-full mt-4  border-gray-600 border-t-[1px]">
               <NavLink
                 to={'/'}
-                className="cursor-pointer block w-full text-sm md:text-base font-bold md:mt-8 hover:bg-[#ffffff44] px-4 py-2"
+                className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
               >
+                <IoHome />
                 Home
               </NavLink>
             </div>

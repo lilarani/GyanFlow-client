@@ -59,7 +59,7 @@ export default function Main() {
 
   return (
     <div className="w-full">
-      {open && <WelcomeModal open={open} setOpen={setOpen} />}
+      {/* {open && <WelcomeModal open={open} setOpen={setOpen} />} */}
       <ToastContainer />
 
       <Navbar></Navbar>

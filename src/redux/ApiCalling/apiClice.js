@@ -206,6 +206,15 @@ export const apiSlice = createApi({
       query: () => '/gyanflow/ssl-payment/allCourse',
       providesTags: 'payment',
     }),
+
+    // chat bot response
+    message: builder.mutation({
+      query: ({ prompt }) => ({
+        url: '/gyanflow/chatbot/chatbot-ask',
+        method: 'POST',
+        body: { prompt },
+      }),
+    }),
   }),
 });
 
@@ -236,5 +245,6 @@ export const {
   useSuccessPaymentMutation,
   useGetStudentCourseQuery,
   useGetAllEnrolledCourseQuery,
+  useMessageMutation,
 } = apiSlice;
 export default apiSlice;

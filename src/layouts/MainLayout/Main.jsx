@@ -66,7 +66,10 @@ export default function Main() {
       <div>
         <Outlet></Outlet>
       </div>
-      <Footer></Footer>
+
+      <div>
+        <Footer></Footer>
+      </div>
     </div>
   );
 }

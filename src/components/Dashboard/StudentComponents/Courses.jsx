@@ -9,34 +9,26 @@ const Courses = () => {
   const { user } = useSelector(state => state.authUser);
 
   const { data: courses } = useGetStudentCourseQuery(user?._id);
+  console.log({ courses }, 'neela rani');
 
-  // const courses = [
-  //   {
-  //     title: 'React Fundamentals',
-  //     instructor: 'John Doe',
-  //     progress: 80,
-  //     status: 'Ongoing',
-  //     type: 'conceptul',
-  //   },
-  //   {
-  //     title: 'Tailwind CSS Mastery',
-  //     instructor: 'Sarah Smith',
-  //     progress: 100,
-  //     status: 'Completed',
-  //     type: 'default',
-  //   },
-  // ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 ">
       {courses?.data?.map((course, index) => (
-        <div className="max-w-sm bg-default shadow  rounded-xl p-5 space-y-3 border hover:shadow-lg transition">
+        <div className=" bg-default shadow  rounded-xl p-5 space-y-3 border hover:shadow-lg transition">
           <div key={course?.courseId?._id} className="flex justify-between">
+            <img
+              src={course?.courseId?.thumbnail}
+              alt=""
+              className="h-52 w-full"
+            />
+          </div>
+          <div className="space-y-2">
             <h2 className="text-xl font-semibold text-white">
               {course?.courseId?.title}
             </h2>
             <Link
               to={`/CourseVideo/${course?.courseId?._id}`}
-              className="px-4 py-1 bg-[#0000ff9c] text-white"
+              className="px-4 py-2 border-[1px] border-blue-800 rounded-xl text-white"
             >
               Ongoing
             </Link>

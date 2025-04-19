@@ -31,8 +31,6 @@ const Statistics = () => {
   const { data: ourAllCourse } = useGetCourseQuery();
   console.log(ourAllCourse?.data);
 
-  const { data: allEnrolledCourse } = useGetAllEnrolledCourseQuery();
-  console.log(allEnrolledCourse);
   const data = {
     labels: [
       'Jan',
@@ -94,7 +92,9 @@ const Statistics = () => {
               datasets: [
                 {
                   label: 'Courses',
-                  data: ourAllCourse?.data?.map(data => data?.length || 0),
+                  data: ourAllCourse?.data?.map(
+                    data => data?.enrolledStudents?.length || 0
+                  ),
 
                   backgroundColor: [
                     'rgba(54, 162, 235, 0.8)', // Blue

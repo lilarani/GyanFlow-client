@@ -1,8 +1,11 @@
+import { useGetStatsQuery } from "@/redux/ApiCalling/apiClice";
 import React from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 
 const Impact = () => {
+  const { data, isLoading, isError } = useGetStatsQuery();
+  console.log(data);
   const { ref, inView } = useInView({ triggerOnce: true });
   return (
     <div
@@ -14,7 +17,7 @@ const Impact = () => {
           <CountUp
             className="text-[#facc15] text-5xl font-bold"
             start={0}
-            end={889}
+            end={data?.data?.totalStudents}
             duration={4}
             delay={0}
             suffix="+"
@@ -71,7 +74,7 @@ const Impact = () => {
           <CountUp
             className="text-[#f59e0b] text-5xl font-bold"
             start={0}
-            end={89}
+            end={data?.data?.totalCourse}
             duration={4}
             delay={0}
           />

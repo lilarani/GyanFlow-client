@@ -106,7 +106,6 @@ const Footer = () => {
                   </p>
                   <div className="w-full h-60 overflow-y-auto space-y-4 mb-4">
                     {response?.map(res => (
-                      // className="flex flex-col md:flex-row justify-between gap-4"
                       <div key={res?._id} className="space-y-2 ">
                         {/* User Prompt - Right */}
                         <div className="flex justify-end">

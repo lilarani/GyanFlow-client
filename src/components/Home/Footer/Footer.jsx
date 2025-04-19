@@ -106,15 +106,19 @@ const Footer = () => {
                   </p>
                   <div className="w-full h-60 overflow-y-auto space-y-4 mb-4">
                     {response?.map(res => (
+                      // className="flex flex-col md:flex-row justify-between gap-4"
                       <div key={res?._id} className="space-y-2 ">
-                        <div className="flex flex-col md:flex-row justify-between gap-4">
-                          {/* Gemini Response */}
+                        {/* User Prompt - Right */}
+                        <div className="flex justify-end">
+                          <p className="bg-blue-100 p-3 rounded-lg text-sm text-blue-900 w-fit max-w-[80%]">
+                            {res.userPrompt}
+                          </p>
+                        </div>
+
+                        {/* Gemini Response - Left */}
+                        <div className="flex justify-start">
                           <p className="bg-gray-200 p-3 rounded-lg text-sm text-gray-800 w-fit max-w-[80%]">
                             {res.geminiResponse}
-                          </p>
-                          {/* User Prompt */}
-                          <p className="bg-blue-100 mt-18 p-3 rounded-lg text-sm text-blue-900 w-fit max-w-[80%]">
-                            {res.userPrompt}
                           </p>
                         </div>
                       </div>

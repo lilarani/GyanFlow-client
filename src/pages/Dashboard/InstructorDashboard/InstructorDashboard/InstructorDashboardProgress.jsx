@@ -21,21 +21,27 @@ ChartJS.register(
 );
 
 import {
+  useCourseForInstructorQuery,
   useGetAllEnrolledCourseQuery,
   useGetCourseQuery,
   useGetStudentCourseQuery,
 } from '@/redux/ApiCalling/apiClice';
 import { Doughnut } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';
 
 const InstructorDashboardProgress = () => {
   const { data } = useGetAllEnrolledCourseQuery();
   const { data: allCourse } = useGetCourseQuery();
   const { data: ourAllCourse } = useGetCourseQuery();
-  console.log(ourAllCourse?.data);
+  const { user } = useSelector(state => state.authUser);
+  const instructorId = user?._id; // or user.id depending on your schema
+
+  let { data: invitedCourse } = useCourseForInstructorQuery(instructorId);
+  console.log(invitedCourse);
 
   return (
     <div className="bg-gradient-to-br from-[#0F0C29] via-[#302B63] to-[#24243E]  text-white py-12 min-h-screen ">
-      <h2 className="text-xl font-semibold text-center text-gray-400">
+      <h2 className="text-xl font-semibold text-center text-gray-500">
         {' '}
         Welcome to your Dashboard!
       </h2>
@@ -53,6 +59,14 @@ const InstructorDashboardProgress = () => {
           <h2 className="text-gray-300 text-xl">Total Students Enrolled</h2>
           <p className="text-3xl font-semibold text-gray-400">
             {data?.data.length}
+          </p>
+        </div>
+
+        {/* Total Invited Courses */}
+        <div className="bg-black/30 backdrop-blur-2xl p-4 rounded-xl shadow-md border border-gray-700 w-full h-52 flex justify-center items-center flex-col  font-bold">
+          <h2 className="text-gray-300 text-xl">Total Invited Courses</h2>
+          <p className="text-3xl font-semibold text-gray-400 ">
+            {invitedCourse.length}
           </p>
         </div>
       </div>

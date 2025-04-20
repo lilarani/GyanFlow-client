@@ -100,11 +100,13 @@ const Navbar = () => {
           {/* <Link className="text-md flex flex-row gap-2 items-center font-bold py-3 px-6 hover:bg-[#ffffff44] ">
             <CiSearch /> Search
           </Link> */}
+
+          {/* search bar */}
           <div className="justify-center items-center flex">
             <input
               type="text"
               placeholder="Search course..."
-              className="border-[1px] text-base border-gray-500 p-2 rounded-lg focus:ring-gray-500"
+              className="border-[1px] text-base border-gray-500 p-2 rounded-lg focus:ring-gray-800 focus:border-gray-500"
             />
           </div>
           {!user ? (

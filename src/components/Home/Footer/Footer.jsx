@@ -81,7 +81,7 @@ const Footer = () => {
             </div>
           </div>
           {/* chatbot logo */}
-          <div className="fixed bottom-16 right-10 z-50">
+          <div className="fixed bottom-16 right-10 z-10">
             <img
               onClick={handleChatBot}
               src={chatBotLogo}
@@ -91,7 +91,7 @@ const Footer = () => {
 
             {/* Modal on click */}
             {openChat && (
-              <div className="fixed bottom-16 right-10 z-50 p-8 flex justify-center items-center">
+              <div className="fixed bottom-16 right-10 z-10 p-8 flex justify-center items-center">
                 <div className="bg-white rounded-xl p-6 md:w-lg shadow-xl relative">
                   <button
                     className="absolute top-2 right-2 text-gray-600 hover:text-black"
@@ -105,7 +105,7 @@ const Footer = () => {
                   <p className="text-gray-700 text-base md:text-lg">
                     How can I help you today?
                   </p>
-                  <div className="w-full h-16 md:h-60 overflow-y-auto space-y-4 mb-4">
+                  <div className="w-full h-16 md:h-60 overflow-y-auto space-y-4 mb-4 z-50">
                     {response?.map(res => (
                       <div key={res?._id} className="space-y-2 ">
                         {/* User Prompt - Right */}

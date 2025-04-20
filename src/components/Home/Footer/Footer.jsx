@@ -105,7 +105,7 @@ const Footer = () => {
                   <p className="text-gray-700 text-base md:text-lg">
                     How can I help you today?
                   </p>
-                  <div className="w-full h-16 md:h-60 overflow-y-auto space-y-4 mb-4 z-50">
+                  <div className="w-full h-16 md:h-48 overflow-y-auto space-y-4 mb-4 z-50">
                     {response?.map(res => (
                       <div key={res?._id} className="space-y-2 ">
                         {/* User Prompt - Right */}

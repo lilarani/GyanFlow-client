@@ -21,6 +21,7 @@ const Footer = () => {
     try {
       const res = await sendChatMessage({ prompt: message }).unwrap();
       setResponse([...response, res?.data]);
+      setMessage('');
     } catch (err) {
       console.error('Chatbot error:', err);
     }
@@ -104,7 +105,7 @@ const Footer = () => {
                   <p className="text-gray-700 text-base md:text-lg">
                     How can I help you today?
                   </p>
-                  <div className="w-full h-60 overflow-y-auto space-y-4 mb-4">
+                  <div className="w-full h-16 md:h-60 overflow-y-auto space-y-4 mb-4">
                     {response?.map(res => (
                       <div key={res?._id} className="space-y-2 ">
                         {/* User Prompt - Right */}
@@ -125,7 +126,9 @@ const Footer = () => {
                   </div>
 
                   <input
+                    value={message}
                     onChange={e => setMessage(e.target.value)}
+                    onKeyDown={e => e.key === 'Enter' && handleMessage()}
                     type="text"
                     className="text-base border-2 p-2 w-full relative"
                   />

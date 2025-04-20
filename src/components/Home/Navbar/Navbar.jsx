@@ -97,9 +97,16 @@ const Navbar = () => {
         {/* Before Sign-in/Sign-up */}
 
         <div className="xl:flex flex-row hidden gap-4">
-          <Link className="text-md flex flex-row gap-2 items-center font-bold py-3 px-6 hover:bg-[#ffffff44] ">
+          {/* <Link className="text-md flex flex-row gap-2 items-center font-bold py-3 px-6 hover:bg-[#ffffff44] ">
             <CiSearch /> Search
-          </Link>
+          </Link> */}
+          <div className="justify-center items-center flex">
+            <input
+              type="text"
+              placeholder="Search course..."
+              className="border-[1px] text-base border-gray-500 p-2 rounded-lg focus:ring-gray-500"
+            />
+          </div>
           {!user ? (
             <div className="flex flex-row">
               {' '}
@@ -120,12 +127,12 @@ const Navbar = () => {
                   >
                     Student Sign-up
                   </Link>
-                  <Link
+                  {/* <Link
                     to={'/register/teacher'}
                     className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                   >
                     Teacher Sign-up
-                  </Link>
+                  </Link> */}
                   <Link
                     to={'/register/instructor'}
                     className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"

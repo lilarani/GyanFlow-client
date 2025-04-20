@@ -32,6 +32,7 @@ import ForgotPass from '../authentication/Login/ForgotPass';
 import MeetingRoute from '@/protectedRoutes/MeetingRoute';
 import JoinClassRoom from '../pages/Dashboard/InstructorDashboard/InstructorDashboard/JoinClassRoom';
 import MyCoursesVideo from '@/pages/Dashboard/StudentDashboard/MyCoursesVideo';
+import InstructorDashboardProgress from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboardProgress';
 
 // import { createBrowserRouter } from 'react-router';
 // import StudentDashboard from '@/pages/Dashboard/StudentDashboard/StudentDashboard';
@@ -209,6 +210,10 @@ export const router = createBrowserRouter([
       {
         path: 'create-module',
         element: <CreateModule></CreateModule>,
+      },
+      {
+        path: 'instructor-Dashboard-progress',
+        element: <InstructorDashboardProgress></InstructorDashboardProgress>,
       },
     ],
   },

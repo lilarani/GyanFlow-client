@@ -8,7 +8,7 @@ import { VscVmRunning } from 'react-icons/vsc';
 import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router';
 import { useEffect, useState } from 'react';
-import { MdOutlineCreateNewFolder } from 'react-icons/md';
+import { MdDashboard, MdOutlineCreateNewFolder } from 'react-icons/md';
 import { TfiAnnouncement } from 'react-icons/tfi';
 import { PiVideoCameraLight } from 'react-icons/pi';
 import { GrAnnounce } from 'react-icons/gr';
@@ -59,7 +59,7 @@ const Sidebar = () => {
               to={'/dashboard/adminDashboard'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
-              <BiSolidUpArrow />
+              <MdDashboard />
               Admin Dashboard
             </NavLink>
             <NavLink
@@ -91,16 +91,6 @@ const Sidebar = () => {
               <GrAnnounce />
               Add Announcement
             </NavLink>
-
-            <div className="w-full mt-4  border-gray-600 border-t-[1px]">
-              <NavLink
-                to={'/'}
-                className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
-              >
-                <IoHome />
-                Home
-              </NavLink>
-            </div>
           </div>
         ))}
       {/* student role */}
@@ -127,7 +117,7 @@ const Sidebar = () => {
               to={'/dashboard/actionaldashboard'}
               className="capitalize text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
-              <BiSolidUpArrow />
+              <MdDashboard />
               Actionable Dashboard
             </NavLink>
             <NavLink
@@ -146,6 +136,13 @@ const Sidebar = () => {
           'Loading'
         ) : (
           <div className="space-y-5 mt-10">
+            <NavLink
+              to={'/dashboard/instructor-Dashboard-progress'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <MdDashboard />
+              Instructor dashboard
+            </NavLink>
             <NavLink
               to={'/dashboard/instructorDashboard'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
@@ -183,6 +180,15 @@ const Sidebar = () => {
             </NavLink>
           </div>
         ))}
+      <div className="w-full mt-4  border-gray-600 border-t-[1px]">
+        <NavLink
+          to={'/'}
+          className="text-sm md:text-base font-bold mt-8 flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+        >
+          <IoHome />
+          Home
+        </NavLink>
+      </div>
     </div>
   );
 };

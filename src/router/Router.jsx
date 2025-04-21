@@ -29,6 +29,7 @@ import AllCourses from '@/pages/AllCourses/AllCourses';
 import CreateModule from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateModule';
 import SuccessPayment from '@/pages/Dashboard/StudentDashboard/SuccessPayment';
 import ActionalDashboard from '@/pages/Dashboard/StudentDashboard/ActionalDashboard';
+import { Chat } from '@/pages/Dashboard/Chat/Chat';
 
 export const router = createBrowserRouter([
   {
@@ -157,6 +158,7 @@ export const router = createBrowserRouter([
         path : 'create-meeting',
         element : <CreateMeeting></CreateMeeting>
       },
+    
       {
         path : 'create-module',
         element : <CreateModule></CreateModule>
@@ -167,6 +169,10 @@ export const router = createBrowserRouter([
   {
     path: '*',
     element: <Error></Error>,
+  },
+  {
+    path : 'chat',
+    element : <Chat></Chat>
   },
   {
     path: 'profile',

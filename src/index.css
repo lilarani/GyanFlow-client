@@ -12,7 +12,8 @@
 }
 
 .scrollbar-hidden {
-  scrollbar-width: none;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
 /* custom design for create modul and video */

@@ -1,7 +1,8 @@
 import { useGetCourseQuery } from "@/redux/ApiCalling/apiClice";
-import Card from "@/components/Dashboard/StudentComponents/card";
+// import Card from "@/components/Dashboard/StudentComponents/card";
 import Button from "@/components/customs/Button";
 import { Link } from "react-router";
+import Card from "@/components/Dashboard/StudentComponents/Card";
 
 const OurAllCourse = () => {
   const { data, isLoading, isError } = useGetCourseQuery();

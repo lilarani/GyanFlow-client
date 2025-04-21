@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import NewsLetter from '../NewsLetter/NewsLetter';
 import Button from '@/components/customs/Button';
-import chatBotLogo from '../../../assets/images/chatBot.png';
+import chatBotLogo from '../../../assets/images/chatbot.png';
+
 import { LuSend, LuSendHorizontal } from 'react-icons/lu';
 import { useMessageMutation } from '@/redux/ApiCalling/apiClice';
 

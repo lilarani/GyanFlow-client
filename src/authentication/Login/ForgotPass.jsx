@@ -32,10 +32,13 @@ const ForgotPassword = () => {
     }
 
     try {
-      await axios.post('http://localhost:4000/gyanflow/user/forgot-pass', {
-        email,
-        password: confirmPassword,
-      });
+      await axios.post(
+        'http://localhost:4000/gyanflow/user/forgot-pass',
+        {
+          email,
+          password: confirmPassword,
+        }
+      );
 
       Swal.fire({
         icon: 'success',

@@ -70,9 +70,7 @@ const UserManagement = () => {
           <div key={user._id} className="bg-navy-900 rounded-lg p-4 space-y-3">
             <div className="flex justify-between items-center">
               <span className="font-medium">{user.name}</span>
-              <Badge className={getStatusColor(user.status)}>
-                {user.status}
-              </Badge>
+             
             </div>
             <div className="space-y-2">
               <p className="font-medium">{user.email}</p>
@@ -101,11 +99,10 @@ const UserManagement = () => {
         <Table>
           <TableHeader className="bg-navy-900">
             <TableRow className="border-b border-navy-800">
-              <TableHead>ID</TableHead>
+              <TableHead>Image</TableHead>
               <TableHead>Name</TableHead>
               <TableHead>Email</TableHead>
               <TableHead>Phone</TableHead>
-              <TableHead>Status</TableHead>
               <TableHead>Role</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
@@ -113,15 +110,13 @@ const UserManagement = () => {
           <TableBody>
             {info?.map(user => (
               <TableRow key={user.id} className="border-b border-navy-800">
-                <TableCell>{user.id}</TableCell>
+                <TableCell>
+                  <img src={user.picture} className='h-12 rounded-full w-12' alt="" />
+                </TableCell>
                 <TableCell className="font-medium">{user.name}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>{user.phone}</TableCell>
-                <TableCell>
-                  <Badge className={getStatusColor(user.status)}>
-                    {user.status}
-                  </Badge>
-                </TableCell>
+               
                 <TableCell>{user.role}</TableCell>
                 <TableCell className="text-right">
                   <div

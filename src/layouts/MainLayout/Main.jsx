@@ -20,6 +20,7 @@ export default function Main() {
   let [logOutUser] = useLogOutUserMutation();
   let [getMyuser] = useGetMyUserMutation();
   useEffect(() => {
+
     const unsubscribe = onAuthStateChanged(auth, async user => {
       dispatch(setLoader(true));
 
@@ -32,7 +33,8 @@ export default function Main() {
           // console.log('our api response for user informations ', res);
           dispatch(setUser(res?.data));
           dispatch(setLoader(false));
-          console.log(res?.token);
+          
+          // console.log(res?.data);
           localStorage.setItem('token', res?.token);
         } catch (error) {
           // console.error('Error fetching user role:', error);
@@ -60,13 +62,17 @@ export default function Main() {
   return (
     <div className="w-full">
       {/* {open && <WelcomeModal open={open} setOpen={setOpen} />} */}
-      <ToastContainer />
 
       <Navbar></Navbar>
       <div>
         <Outlet></Outlet>
+        <ToastContainer />
+
       </div>
-      <Footer></Footer>
+
+      <div>
+        <Footer></Footer>
+      </div>
     </div>
   );
 }

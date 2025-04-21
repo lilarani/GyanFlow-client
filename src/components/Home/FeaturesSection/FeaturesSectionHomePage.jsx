@@ -25,7 +25,10 @@ export default function FeaturesSectionHomePage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {data?.data?.map(course => (
-          <div className=" flex flex-col h-full hover:scale-105 rounded-lg shadow-md transition-all duration-700">
+          <div
+            key={course?._id}
+            className=" flex flex-col h-full hover:scale-105 rounded-lg shadow-md transition-all duration-700"
+          >
             <figure>
               <img
                 className="rounded-t-lg w-full h-56 object-cover"

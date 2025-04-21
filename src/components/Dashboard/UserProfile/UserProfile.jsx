@@ -85,7 +85,7 @@ const UserProfile = () => {
         <DashboardNavbar
           navTitle={
             <Link to={'/'}>
-              <span className="text-yellow-300">Gyan</span>Flow
+              <span className="logoColor">Gyan</span>Flow
             </Link>
           }
         />
@@ -101,7 +101,7 @@ const UserProfile = () => {
               <li className="font-semibold text-lg">{user?.name}</li>
               <li className="font-semibold text-base">{user?.email}</li>
               <li className="font-semibold ">
-                Phone:
+                Phone: {''}
                 {user?.phone || 'N/A'}
               </li>
             </ul>

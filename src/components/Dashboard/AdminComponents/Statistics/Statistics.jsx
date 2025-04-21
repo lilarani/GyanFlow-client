@@ -91,7 +91,7 @@ const Statistics = () => {
               labels: ourAllCourse?.data?.map(data => data?.title),
               datasets: [
                 {
-                  label: 'Courses',
+                  label: 'Students',
                   data: ourAllCourse?.data?.map(
                     data => data?.enrolledStudents?.length || 0
                   ),

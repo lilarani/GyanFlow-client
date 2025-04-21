@@ -15,6 +15,7 @@ const InstructorDashboard = () => {
   useEffect(() => {
     setId(user?._id);
   }, [user]);
+
   return (
     <div className="bg-black h-full">
       <p className="text-xl sticky top-0 z-20 bg-black text-center font-bold text-blue-200 py-4">

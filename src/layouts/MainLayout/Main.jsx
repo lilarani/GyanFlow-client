@@ -20,20 +20,19 @@ export default function Main() {
   let [logOutUser] = useLogOutUserMutation();
   let [getMyuser] = useGetMyUserMutation();
   useEffect(() => {
-
     const unsubscribe = onAuthStateChanged(auth, async user => {
       dispatch(setLoader(true));
 
       if (user) {
         try {
           // const res = await axios.get(
-          //   `http://localhost:4000/gyanflow/user/role/${user?.email}`
+          //   `https://gyanflow-server.onrender.com/gyanflow/user/role/${user?.email}`
           // );
           const res = await getMyuser(user?.email).unwrap();
           // console.log('our api response for user informations ', res);
           dispatch(setUser(res?.data));
           dispatch(setLoader(false));
-          
+
           // console.log(res?.data);
           localStorage.setItem('token', res?.token);
         } catch (error) {
@@ -67,7 +66,6 @@ export default function Main() {
       <div>
         <Outlet></Outlet>
         <ToastContainer />
-
       </div>
 
       <div>

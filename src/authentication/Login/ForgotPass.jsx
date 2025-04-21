@@ -33,7 +33,7 @@ const ForgotPassword = () => {
 
     try {
       await axios.post(
-        'http://localhost:4000/gyanflow/user/forgot-pass',
+        'https://gyanflow-server.onrender.com/gyanflow/user/forgot-pass',
         {
           email,
           password: confirmPassword,

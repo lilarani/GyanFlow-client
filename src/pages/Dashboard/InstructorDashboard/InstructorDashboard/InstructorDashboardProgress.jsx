@@ -45,26 +45,26 @@ const InstructorDashboardProgress = () => {
         {' '}
         Welcome to your Dashboard!
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 mx-auto w-10/12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 mx-auto w-10/12">
         {/* Total Courses */}
-        <div className="bg-black/30 backdrop-blur-2xl p-4 rounded-xl shadow-md border border-gray-700 w-full h-52 flex justify-center items-center flex-col  font-bold">
-          <h2 className="text-gray-300 text-xl">Total Courses</h2>
+        <div className="bg-black/30 backdrop-blur-2xl p-4 rounded-xl shadow-md border border-gray-700 w-full h-40 flex justify-center items-center flex-col  font-bold">
+          <h2 className="text-gray-300 text-lg">Total Courses</h2>
           <p className="text-3xl font-semibold text-gray-400 ">
             {allCourse?.data.length}
           </p>
         </div>
 
         {/* Total Students Enrolled */}
-        <div className="bg-black/30 p-4 rounded-xl shadow-md border border-gray-700 w-full h-52 flex justify-center items-center flex-col  font-bold">
-          <h2 className="text-gray-300 text-xl">Total Students Enrolled</h2>
+        <div className="bg-black/30 p-4 rounded-xl shadow-md border border-gray-700 w-full h-40 flex justify-center items-center flex-col  font-bold">
+          <h2 className="text-gray-300 text-lg">Total Students Enrolled</h2>
           <p className="text-3xl font-semibold text-gray-400">
             {data?.data.length}
           </p>
         </div>
 
         {/* Total Invited Courses */}
-        <div className="bg-black/30 backdrop-blur-2xl p-4 rounded-xl shadow-md border border-gray-700 w-full h-52 flex justify-center items-center flex-col  font-bold">
-          <h2 className="text-gray-300 text-xl">Total Invited Courses</h2>
+        <div className="bg-black/30 backdrop-blur-2xl p-4 rounded-xl shadow-md border border-gray-700 w-full h-40 flex justify-center items-center flex-col  font-bold">
+          <h2 className="text-gray-300 text-lg">Total Invited Courses</h2>
           <p className="text-3xl font-semibold text-gray-400 ">
             {invitedCourse.length}
           </p>

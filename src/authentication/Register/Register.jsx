@@ -69,7 +69,6 @@ export default function Register() {
       return false;
     }
 
-
     setErrorMsg('');
     return true;
   };
@@ -105,18 +104,19 @@ export default function Register() {
 
   return (
     <div className="bg-gradient-to-bl to-[#1a044d] from-[#080127]">
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen items-center justify-center mx-auto p-6 w-10/12 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen items-center justify-center mx-auto p-6 w-10/12  my-shadow ">
         <div className="h-full relative w-full">
           <img
             src={regImg}
             alt="register image"
-            className="object-cover bg-blue-500 opacity-40 h-full w-full bg-blend-overlay"
+            className="object-cover bg-blue-500 opacity-25 h-full w-full bg-blend-overlay"
           />
           <div className="text-white absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-            <h2 className="text-base md:text-3xl font-bold">
-              GyanFlow - Where Learning Meets Innovation
+            <h2 className="text-base md:text-3xl text-blue-100 font-bold">
+              <span className="text-yellow-300">Gyan</span>Flow - Where Learning
+              Meets Innovation
             </h2>
-            <p className="text-sm md:text-base text-gray-300 p-3 font-medium">
+            <p className="text-sm md:text-base text-blue-100 p-3 font-medium">
               Join GyanFlow’s interactive classroom to learn, connect, and
               grow—all in one place.
             </p>
@@ -124,8 +124,10 @@ export default function Register() {
         </div>
 
         {/* register form */}
-        <div className="w-full text-white my-shadow h-full rounded-none p-6 shadow-md flex flex-col items-center justify-center">
-          <h2 className="mb-4 text-center text-2xl font-bold">Register {role}</h2>
+        <div className="w-full text-white  h-full rounded-none p-6 shadow-md flex flex-col items-center justify-center">
+          <h2 className="mb-4 text-center text-2xl font-bold">
+            Register {role}
+          </h2>
           <form onSubmit={handleRegister} className="w-full">
             <input
               type="text"
@@ -177,7 +179,9 @@ export default function Register() {
             </button>
 
             {errorMsg && (
-              <p className="text-red-500 text-sm mt-2 text-center">{errorMsg}</p>
+              <p className="text-red-500 text-sm mt-2 text-center">
+                {errorMsg}
+              </p>
             )}
 
             <p className="text-left mt-3">

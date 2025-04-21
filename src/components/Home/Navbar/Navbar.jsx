@@ -114,7 +114,7 @@ const Navbar = () => {
               {' '}
               <Link
                 to={'/login'}
-                className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
+                className="text-md font-bold py-4  px-8 hover:bg-[#ffffff44]"
               >
                 Sign-in
               </Link>

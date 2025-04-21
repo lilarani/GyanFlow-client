@@ -24,6 +24,7 @@ import CourseAnnoucement from '@/pages/Dashboard/StudentDashboard/CourseAnnoucem
 import AllCourses from '@/pages/AllCourses/AllCourses';
 import SuccessPayment from '@/pages/Dashboard/StudentDashboard/SuccessPayment';
 import ActionalDashboard from '@/pages/Dashboard/StudentDashboard/ActionalDashboard';
+import { Chat } from '@/pages/Dashboard/Chat/Chat';
 import AddAnnouncement from '@/pages/Dashboard/AdminDashboard/AddAnnouncement/AddAnnouncement';
 import SeeVideo from '@/shared/CustomButtons/SeeVideo';
 import CreateMeeting from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateMeeting';
@@ -203,6 +204,7 @@ export const router = createBrowserRouter([
           },
         ],
       },
+    
       {
         path: 'create-meeting',
         element: <CreateMeeting></CreateMeeting>,
@@ -220,6 +222,11 @@ export const router = createBrowserRouter([
   {
     path: '*',
     element: <Error></Error>,
+  },
+  {
+    path : 'chat',
+    element : <Chat></Chat>
+   
   },
   {
     path: '/forgot-pass/:email',

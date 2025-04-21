@@ -5,10 +5,13 @@ import FeaturesSectionHomePage from '../../components/Home/FeaturesSection/Featu
 import Banner from '../../components/Home/banner/Banner';
 import { load } from 'redux-localstorage-simple';
 import OurAllCourse from '@/components/Home/OurAllCourse/OurAllCourse';
+import { useEffect } from 'react';
+import socket from '@/socket';
 
 // import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
+  let {user} = useSelector(state => state.authUser)
   // let {data , isLoading , isError} = useGetUsersQuery();
   // // isLoading ? console.log(isLoading) :  console.log(data)
   // if(isLoading){
@@ -18,6 +21,11 @@ const Home = () => {
   // }else{
   //   console.log(data)
   // }
+  useEffect(() => {
+    if (user?._id) {
+      socket.emit("userConnected", user._id);
+    }
+  },[])
 
   return (
     <div>

@@ -85,6 +85,23 @@ const Sidebar = () => {
               Users Managment
             </NavLink>
             <NavLink
+              to={'/chat'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <IoIosAddCircleOutline />
+              Chat
+            </NavLink>
+
+            <div className="w-full mt-4  border-gray-600 border-t-[1px]">
+              <NavLink
+                to={'/'}
+                className="cursor-pointer block w-full text-sm md:text-base font-bold md:mt-8 hover:bg-[#ffffff44] px-4 py-2"
+              >
+                Home
+              </NavLink>
+            </div>
+            <NavLink
+
               to={'/dashboard/addAnnouncement'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
@@ -112,6 +129,13 @@ const Sidebar = () => {
             >
               <IoIosAddCircleOutline />
               Join Meeting
+            </NavLink>
+            <NavLink
+              to={'/chat'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <IoIosAddCircleOutline />
+              Chat
             </NavLink>
             <NavLink
               to={'/dashboard/actionaldashboard'}

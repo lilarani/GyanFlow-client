@@ -44,13 +44,13 @@ const Navbar = () => {
   let handleDropdown = () => {
     setDropdown(!dropdown);
   };
-
+  // bg-gradient-to-bl to-[#1a044d] from-[#080127]
   return (
     <div className="sticky top-0 left-0 w-full h-max z-50">
-      <nav className="flex   text-gray-200 font-bold flex-row justify-between bg-gradient-to-bl to-[#1a044d] from-[#080127] items-center md:px-[48px] lg:px-[110px] py-2">
+      <nav className="flex  backdrop-blur-xl text-gray-200 font-bold flex-row justify-between bg-gradient-to-bl to-[#0F172A] from-[#080127] items-center md:px-[48px] lg:px-[110px] py-2 shadow-2xl">
         <div className="flex flex-row justify-between w-full xl:w-fit items-center ">
           <Link to={'/'} className="py-4 px-4 text-2xl ">
-            <span className="text-yellow-300 cursor-pointer">Gyan</span>Flow
+            <span className="text-yellow-500 cursor-pointer">Gyan</span>Flow
           </Link>
           <div
             className="py-4 w-fit h-fit xl:hidden cursor-pointer px-8"
@@ -80,7 +80,7 @@ const Navbar = () => {
                 className="py-3 px-6 rounded hover:bg-[#ffffff44]"
                 to="/support"
               >
-                Support
+                Contact
               </NavLink>
             </li>
             <li>
@@ -97,15 +97,24 @@ const Navbar = () => {
         {/* Before Sign-in/Sign-up */}
 
         <div className="xl:flex flex-row hidden gap-4">
-          <Link className="text-md flex flex-row gap-2 items-center font-bold py-3 px-6 hover:bg-[#ffffff44] ">
+          {/* <Link className="text-md flex flex-row gap-2 items-center font-bold py-3 px-6 hover:bg-[#ffffff44] ">
             <CiSearch /> Search
-          </Link>
+          </Link> */}
+
+          {/* search bar */}
+          <div className="justify-center items-center flex">
+            <input
+              type="text"
+              placeholder="Search course..."
+              className="border-[1px] text-base border-gray-500 p-2 rounded-lg focus:ring-gray-800 focus:border-gray-500"
+            />
+          </div>
           {!user ? (
             <div className="flex flex-row">
               {' '}
               <Link
                 to={'/login'}
-                className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
+                className="text-md font-bold py-4  px-8 hover:bg-[#ffffff44]"
               >
                 Sign-in
               </Link>
@@ -120,12 +129,12 @@ const Navbar = () => {
                   >
                     Student Sign-up
                   </Link>
-                  <Link
+                  {/* <Link
                     to={'/register/teacher'}
                     className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"
                   >
                     Teacher Sign-up
-                  </Link>
+                  </Link> */}
                   <Link
                     to={'/register/instructor'}
                     className="text-md font-bold py-4 px-8 hover:bg-[#ffffff44]"

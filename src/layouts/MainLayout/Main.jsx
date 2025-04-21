@@ -69,7 +69,10 @@ export default function Main() {
         <ToastContainer />
 
       </div>
-      <Footer></Footer>
+
+      <div>
+        <Footer></Footer>
+      </div>
     </div>
   );
 }

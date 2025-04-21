@@ -12,6 +12,7 @@ import {
   useLogInUserMutation,
 } from '../../redux/ApiCalling/apiClice';
 import logImg from '../../assets/images/login.jpg';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function Login() {
   let navigate = useNavigate();
@@ -20,6 +21,7 @@ export default function Login() {
   const [error, setError] = useState('');
   let [googleLogin] = useGoogleLoginMutation();
   let [logInUser] = useLogInUserMutation();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
@@ -45,6 +47,14 @@ export default function Login() {
     }
   };
 
+  let getEmail = () => {
+    if (email) {
+      navigate(`/forgot-pass/${email}`);
+    } else {
+      setError('type your email');
+    }
+  };
+
   const handleEmailPasswordLogin = async e => {
     e.preventDefault();
     setError('');
@@ -52,40 +62,34 @@ export default function Login() {
       let res = await logInUser({ email, password }).unwrap();
       // console.log(res);
       localStorage.setItem('token', res?.data?.token);
-      // if (res?.success) {
       await signInWithEmailAndPassword(auth, email, password);
-      // const response = await axios.post('http://localhost:4000/gyanflow/user/login', { email, password }, {
-      //   withCredentials: true
-      // });
 
-      // const response = await axios.post(
-      //   'http://localhost:4000/gyanflow/user/login',
-      //   { email, password },
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
-      // console.log('Email/Password login successful');
+      console.log('Email/Password login successful');
       navigate('/');
-      // }
     } catch (e) {
       setError(e?.data?.message);
       // console.error(e.message);
     }
   };
+  //  toggle password
+  const togglePassword = () => {
+    setTimeout(() => {
+      setShowPassword(prev => !prev);
+    }, 150);
+  };
 
   return (
     <div className="bg-gradient-to-bl to-[#1a044d] from-[#080127] ">
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen items-center justify-center p-6 w-10/12 mx-auto ">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen items-center justify-center p-6 w-10/12 mx-auto my-shadow">
         <div className="relative h-full ">
           <img
             src={logImg}
             alt="login image"
-            className="bg-blue-500 opacity-50 h-full w-full bg-blend-overlay"
+            className="bg-blue-500 opacity-25 h-full w-full bg-blend-overlay"
           />
           <div className="text-white absolute inset-0 flex flex-col items-center justify-center text-center p-6">
             <h2 className="text-base md:text-3xl  font-bold">
-              Welcome Back to GyanFlow
+              Welcome Back to <span className="text-yellow-300">Gyan</span>Flow
             </h2>
             <p className="text-base  text-gray-300 p-3 font-medium">
               Log in to continue your learning journey. Access interactive
@@ -96,8 +100,8 @@ export default function Login() {
         </div>
 
         {/* login form */}
-        <div className="w-full text-white my-shadow h-full rounded-none p-6 shadow-md flex flex-col items-center justify-center">
-          <h2 className="mb-4 text-center text-2xl font-bold">Login</h2>
+        <div className="w-full text-white  h-full rounded-none p-6 shadow-md flex flex-col items-center justify-center">
+          <h2 className="mb-4 text-center text-2xl font-bold">Sign-in</h2>
           <form
             className="flex flex-col gap-5 w-full"
             onSubmit={handleEmailPasswordLogin}
@@ -110,25 +114,37 @@ export default function Login() {
               className=" w-full rounded-none outline-none border p-2"
               required
             />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              className=" w-full rounded-none outline-none border p-2"
-              required
-            />
-            {error && <p className="text-red-400 text-start ">{error}</p>}
 
+            <div className="relative mb-4">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                className=" w-full rounded-none outline-none border p-2"
+                required
+              />
+              <span
+                onClick={togglePassword}
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </span>
+            </div>
+
+            {error && <p className="text-red-400 text-start ">{error}</p>}
+            <p onClick={getEmail} className="py-2 cursor-pointer">
+              forgot password
+            </p>
             <button
               type="submit"
-              className=" my-button w-full cursor-pointer rounded-none p-2 text-white "
+              className=" my-button w-full cursor-pointer rounded-none p-2 text-white font-bold "
             >
               Sign In
             </button>
             <p
               onClick={handleGoogleLogin}
-              className=" my-button w-full cursor-pointer rounded-none p-2 text-white text-center"
+              className=" my-button w-full cursor-pointer rounded-none p-2 text-white text-center font-bold"
             >
               Sign in with Google
             </p>
@@ -137,7 +153,6 @@ export default function Login() {
           <p className="text-left">
             New here? Start your journey by{' '}
             <span className="text-blue-500 font-bold cursor-pointer underline">
-              {/* <Link to={'/register/:role'}>registering</Link> */}
               <Link to={'/register/student'}>register with student</Link>
             </span>{' '}
             {''}

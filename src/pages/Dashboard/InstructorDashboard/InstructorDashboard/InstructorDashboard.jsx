@@ -15,8 +15,9 @@ const InstructorDashboard = () => {
   useEffect(() => {
     setId(user?._id);
   }, [user]);
+
   return (
-    <div className="bg-black ">
+    <div className="bg-black h-full">
       <p className="text-xl sticky top-0 z-20 bg-black text-center font-bold text-blue-200 py-4">
         Invited Courses Lists
       </p>
@@ -34,15 +35,16 @@ const InstructorDashboard = () => {
                 className="w-full flex-1 h-[200px]  object-cover"
               />
               <div className="p-4 flex-1 flex flex-col justify-between text-blue-200 ">
-                <div>
+                <div className="flex justify-between">
+                  <h2 className="text-xl font-bold">{course.title}</h2>
                   <Link
-                    className="px-4 text-blue-200 py-1 rounded-full border-r border-l"
+                    className="px-4 text-blue-200 py-2 rounded-full border-r border-l"
                     to={`action/${course._id}`}
                   >
-                    Go to action
+                    See Deatils
                   </Link>
                 </div>
-                <h2 className="text-xl font-bold">{course.title}</h2>
+
                 <p className=" text-xs mt-1">{course.description}</p>
                 <div className="flex justify-between items-center mt-4">
                   <span className="text-lg font-semibold ">

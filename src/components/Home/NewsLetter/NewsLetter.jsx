@@ -4,7 +4,7 @@ import newsImg from '../../../assets/images/newsletter.png';
 
 const NewsLetter = () => {
   return (
-    <div className="w-10/12 mx-auto bg-gradient-to-bl to-sky-100 from-[#bfb2f8]  bg-opacity-20 z-30 relative top-24 p-8 container border-[1px] border-gray-300">
+    <div className="w-10/12 mx-auto bg-gradient-to-bl to-sky-100 from-[#bfb2f8]  bg-opacity-20 z-10 relative top-24 p-8 container border-[1px] border-gray-300">
       <div
         className="hero  flex justify-center "
         style={{

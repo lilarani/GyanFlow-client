@@ -45,6 +45,7 @@ export const Chat = () => {
             text: messageText,
             timestamp: Date.now(),
         };
+        
 
         socket.emit("sendMessage", newMessage);
         setFetch(!fetch)
@@ -71,7 +72,6 @@ export const Chat = () => {
 
     return (
         <div className="h-screen flex bg-gray-100">
-            {/* Sidebar for small devices */}
             <div className={`lg:w-1/4 w-full bg-gradient-to-br from-[#010009] via-[#0f0b3e] to-[#0b0b0c] p-6  shadow-xl overflow-y-auto text-white ${sidebarVisible ? "block" : "hidden"} lg:block`}>
                 <h2 className="text-2xl font-semibold sticky top-0 py-6 uppercase z-50 mb-6 hidden md:flex">Messages</h2>
                 {info.map((user) => (

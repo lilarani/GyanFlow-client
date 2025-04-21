@@ -16,6 +16,11 @@
   -ms-overflow-style: none; /* IE and Edge */
 }
 
+/* logo color */
+.logoColor {
+  color: #eab308;
+}
+
 /* custom design for create modul and video */
 .input-field {
   width: 100%;

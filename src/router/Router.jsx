@@ -19,17 +19,55 @@ import TecherDashboard from '@/pages/Dashboard/TecherDashboard/TecherDashboard';
 import StudentRoutes from './../protectedRoutes/StudentRoutes';
 import AdminRoute from './../protectedRoutes/AdminRoute';
 import UploadModul from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/UploadModul';
-import SeeVideo from './../shared/CustomButtons/SeeVideo';
-import CreateMeeting from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateMeeting';
-import JoinClassRoom from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/JoinClassRoom';
-import MeetingRoute from '@/protectedRoutes/MeetingRoute';
 import FeaturesCourseDetails from '@/pages/FeaturesCourseDetails/FeaturesCourseDetails';
 import CourseAnnoucement from '@/pages/Dashboard/StudentDashboard/CourseAnnoucement';
 import AllCourses from '@/pages/AllCourses/AllCourses';
-import CreateModule from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateModule';
 import SuccessPayment from '@/pages/Dashboard/StudentDashboard/SuccessPayment';
 import ActionalDashboard from '@/pages/Dashboard/StudentDashboard/ActionalDashboard';
 import { Chat } from '@/pages/Dashboard/Chat/Chat';
+import AddAnnouncement from '@/pages/Dashboard/AdminDashboard/AddAnnouncement/AddAnnouncement';
+import SeeVideo from '@/shared/CustomButtons/SeeVideo';
+import CreateMeeting from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateMeeting';
+import CreateModule from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateModule';
+import ForgotPass from '../authentication/Login/ForgotPass';
+import MeetingRoute from '@/protectedRoutes/MeetingRoute';
+import JoinClassRoom from '../pages/Dashboard/InstructorDashboard/InstructorDashboard/JoinClassRoom';
+import MyCoursesVideo from '@/pages/Dashboard/StudentDashboard/MyCoursesVideo';
+import InstructorDashboardProgress from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboardProgress';
+
+// import { createBrowserRouter } from 'react-router';
+// import StudentDashboard from '@/pages/Dashboard/StudentDashboard/StudentDashboard';
+// import AddCourses from '@/pages/Dashboard/AdminDashboard/AddCourses/AddCourses';
+// import Main from '../layouts/MainLayout/Main';
+// import Home from '../pages/Home/Home';
+// import Login from '../authentication/Login/Login';
+// import Register from '../authentication/Register/Register';
+// import Support from '../pages/Support/Support';
+// import About from '../pages/About/About';
+// import Error from '@/pages/Error/Error';
+// import Dashboard from '@/layouts/DashboardLayout/Dashboard/Dashboard';
+// import Courses from '@/pages/Dashboard/AdminDashboard/Courses/Courses';
+// import UserManagement from '@/pages/Dashboard/AdminDashboard/UserManagement/UserManagement';
+// import InstructorDashboard from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboard';
+// import UserProfile from '@/components/Dashboard/UserProfile/UserProfile';
+// import AdminDashboard from '@/pages/Dashboard/AdminDashboard/AdminDashboard';
+// import Career from '@/pages/Career/Career';
+// import TecherDashboard from '@/pages/Dashboard/TecherDashboard/TecherDashboard';
+// import StudentRoutes from './../protectedRoutes/StudentRoutes';
+// import AdminRoute from './../protectedRoutes/AdminRoute';
+// import UploadModul from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/UploadModul';
+// import SeeVideo from './../shared/CustomButtons/SeeVideo';
+// import CreateMeeting from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateMeeting';
+// import JoinClassRoom from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/JoinClassRoom';
+// import MeetingRoute from '@/protectedRoutes/MeetingRoute';
+// import FeaturesCourseDetails from '@/pages/FeaturesCourseDetails/FeaturesCourseDetails';
+// import CourseAnnoucement from '@/pages/Dashboard/StudentDashboard/CourseAnnoucement';
+// import AllCourses from '@/pages/AllCourses/AllCourses';
+// import CreateModule from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/CreateModule';
+// import SuccessPayment from '@/pages/Dashboard/StudentDashboard/SuccessPayment';
+// import ActionalDashboard from '@/pages/Dashboard/StudentDashboard/ActionalDashboard';
+// import ForgotPass from '@/authentication/Login/ForgotPass';
+// import MyCoursesVideo from '@/pages/Dashboard/StudentDashboard/MyCoursesVideo';
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +89,10 @@ export const router = createBrowserRouter([
       {
         path: '/career',
         element: <Career></Career>,
+      },
+      {
+        path: '/CourseVideo/:courseId',
+        element: <MyCoursesVideo></MyCoursesVideo>,
       },
       {
         path: '/featuresDetails/:id',
@@ -107,6 +149,15 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        // dashboard/addAnnouncement'
+        path: 'addAnnouncement',
+        element: (
+          <AdminRoute>
+            <AddAnnouncement />
+          </AdminRoute>
+        ),
+      },
+      {
         path: 'userManagement',
         element: <UserManagement></UserManagement>,
       },
@@ -149,21 +200,23 @@ export const router = createBrowserRouter([
         children: [
           {
             path: 'see-video/:id',
-            element : <SeeVideo></SeeVideo>
-          }
-        ]
-      }
-      ,
-      {
-        path : 'create-meeting',
-        element : <CreateMeeting></CreateMeeting>
+            element: <SeeVideo></SeeVideo>,
+          },
+        ],
       },
     
       {
-        path : 'create-module',
-        element : <CreateModule></CreateModule>
-      }
-    
+        path: 'create-meeting',
+        element: <CreateMeeting></CreateMeeting>,
+      },
+      {
+        path: 'create-module',
+        element: <CreateModule></CreateModule>,
+      },
+      {
+        path: 'instructor-Dashboard-progress',
+        element: <InstructorDashboardProgress></InstructorDashboardProgress>,
+      },
     ],
   },
   {
@@ -173,13 +226,22 @@ export const router = createBrowserRouter([
   {
     path : 'chat',
     element : <Chat></Chat>
+   
+  },
+  {
+    path: '/forgot-pass/:email',
+    element: <ForgotPass></ForgotPass>,
   },
   {
     path: 'profile',
     element: <UserProfile></UserProfile>,
   },
   {
-    path : '/join-meeting',
-    element : <MeetingRoute><JoinClassRoom></JoinClassRoom></MeetingRoute>
-  }
+    path: '/join-meeting',
+    element: (
+      <MeetingRoute>
+        <JoinClassRoom></JoinClassRoom>
+      </MeetingRoute>
+    ),
+  },
 ]);

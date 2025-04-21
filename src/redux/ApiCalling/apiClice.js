@@ -12,6 +12,11 @@ export const apiSlice = createApi({
       providesTags: ['user'],
     }),
 
+    //all stats
+    getStats: builder.query({
+      query: () => 'gyanflow/all-stats/stats',
+    }),
+
     // all instructors
     getInstructors: builder.query({
       query: () => '/gyanflow/user/all-instructors',
@@ -25,6 +30,7 @@ export const apiSlice = createApi({
       query: id => `/gyanflow/instructor/all-modules/${id}`,
       providesTags: ['video', 'module'],
     }),
+
     // courses get api
     getCourse: builder.query({
       query: () => '/gyanflow/cours/all-course',
@@ -163,6 +169,16 @@ export const apiSlice = createApi({
       invalidatesTags: ['quiz'],
     }),
 
+    //create announcement
+    createAnnouncement: builder.mutation({
+      query: newAnnouncement => ({
+        url: '/gyanflow/annoucement/addAnnouncement',
+        method: 'POST',
+        body: newAnnouncement,
+      }),
+      invalidatesTags: ['quiz'],
+    }),
+
     // ssl payments apis
     payment: builder.mutation({
       query: paymentData => ({
@@ -184,8 +200,25 @@ export const apiSlice = createApi({
 
     // student purches courses
     getStudentCourse: builder.query({
-      query: `/gyanflow/ssl-payment/student-courses`,
-      method: 'GET',
+      query: id => ({
+        url: `/gyanflow/ssl-payment/student-courses/${id}`,
+        method: 'GET',
+      }),
+    }),
+
+    // get purches courses
+    getAllEnrolledCourse: builder.query({
+      query: () => '/gyanflow/ssl-payment/allCourse',
+      providesTags: 'payment',
+    }),
+
+    // chat bot response
+    message: builder.mutation({
+      query: ({ prompt }) => ({
+        url: '/gyanflow/chatbot/chatbot-ask',
+        method: 'POST',
+        body: { prompt },
+      }),
     }),
   }),
 });
@@ -202,6 +235,7 @@ export const {
   useGetFeaturesCourseDetailsQuery,
   useDeleteCoursesMutation,
   useDeleteUserMutation,
+  useCreateAnnouncementMutation,
   useCreateCourseMutation,
   useGetInstructorsQuery,
   useCourseForInstructorQuery,
@@ -215,5 +249,8 @@ export const {
   usePaymentMutation,
   useSuccessPaymentMutation,
   useGetStudentCourseQuery,
+  useGetAllEnrolledCourseQuery,
+  useMessageMutation,
+  useGetStatsQuery,
 } = apiSlice;
 export default apiSlice;

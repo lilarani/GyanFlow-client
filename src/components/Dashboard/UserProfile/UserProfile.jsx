@@ -18,8 +18,8 @@ let ImageHosting = `https://api.imgbb.com/1/upload?key=${ImageHostKey}`;
 const UserProfile = () => {
   const { user } = useSelector(state => state.authUser);
   console.log(user?._id);
-  let [getMyuser] = useGetMyUserMutation()
-  let dispatch = useDispatch()
+  let [getMyuser] = useGetMyUserMutation();
+  let dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
   const [name, setName] = useState(user?.name);
   const [phone, setPhone] = useState(user?.phone);
@@ -73,26 +73,25 @@ const UserProfile = () => {
     let info = { name, phone, picture: changesData };
     await updateUser({ id, info }).unwrap();
     const res = await getMyuser(user?.email).unwrap();
-    console.log("our api response for user informations ", res)
+    console.log('our api response for user informations ', res);
     dispatch(setUser(res?.data));
     dispatch(setLoader(false));
     setEditMode(false);
-
   };
 
   return (
-    <div className="bg-gradient-to-bl to-[#0e0227] from-[#0b022e] px-8">
+    <div className="bg-gradient-to-bl to-[#07021f] from-[#0a101d] px-8">
       <div className="">
         <DashboardNavbar
           navTitle={
             <Link to={'/'}>
-              <span className="text-yellow-300">Gyan</span>Flow
+              <span className="logoColor">Gyan</span>Flow
             </Link>
           }
         />
         <div className="min-h-screen flex flex-col md:flex-row gap-5 container mx-auto">
           {/* Sidebar */}
-          <div className="w-80 bg-gradient-to-bl to-[#1a044d] from-[#080127] shadow-lg p-8  mt-4 text-gray-300 flex flex-col items-center">
+          <div className="w-80 bg-gradient-to-bl to-[#080127] from-[#0F172A] shadow-lg p-8  mt-4 text-gray-300 flex flex-col items-center">
             <img
               src={user?.picture}
               alt="user image"
@@ -102,7 +101,7 @@ const UserProfile = () => {
               <li className="font-semibold text-lg">{user?.name}</li>
               <li className="font-semibold text-base">{user?.email}</li>
               <li className="font-semibold ">
-                Phone:
+                Phone: {''}
                 {user?.phone || 'N/A'}
               </li>
             </ul>
@@ -110,7 +109,7 @@ const UserProfile = () => {
 
           {/* Profile Section */}
           <div className="flex-1 mt-6 ">
-            <div className="bg-[#0B1739] shadow-md rounded-lg text-gray-300 ">
+            <div className="bg-[#070910] shadow-md rounded-lg text-gray-300 ">
               <div className="flex items-center p-6 justify-between border-dashed border-b-[1px] border-gray-500">
                 <h2 className="text-xl font-semibold">My Profile</h2>
                 <FiEdit
@@ -135,10 +134,7 @@ const UserProfile = () => {
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
-                      <h2 className="text-lg font-semibold">
-                        {' '}
-                        {user?.name}
-                      </h2>
+                      <h2 className="text-lg font-semibold"> {user?.name}</h2>
                     )}
                   </div>
                   <div>
@@ -153,10 +149,7 @@ const UserProfile = () => {
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
-                      <h2 className="text-lg font-semibold">
-                        {' '}
-                        {user?.email}
-                      </h2>
+                      <h2 className="text-lg font-semibold"> {user?.email}</h2>
                     )}
                   </div>
                 </div>
@@ -174,9 +167,7 @@ const UserProfile = () => {
                         className="w-full p-2 rounded bg-gray-800 text-white"
                       />
                     ) : (
-                      <h2 className="text-lg font-semibold">
-                        {user?._id}
-                      </h2>
+                      <h2 className="text-lg font-semibold">{user?._id}</h2>
                     )}
                   </div>
                   <div>

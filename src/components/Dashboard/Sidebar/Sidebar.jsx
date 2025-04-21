@@ -1,4 +1,4 @@
-import { IoCreateOutline, IoSearch } from 'react-icons/io5';
+import { IoCreateOutline, IoHome, IoSearch } from 'react-icons/io5';
 
 import { BiSolidUpArrow } from 'react-icons/bi';
 import { FaDollarSign, FaRegStar, FaRegUser, FaUsers } from 'react-icons/fa';
@@ -8,9 +8,11 @@ import { VscVmRunning } from 'react-icons/vsc';
 import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router';
 import { useEffect, useState } from 'react';
-import { MdOutlineCreateNewFolder } from 'react-icons/md';
+import { MdDashboard, MdOutlineCreateNewFolder } from 'react-icons/md';
 import { TfiAnnouncement } from 'react-icons/tfi';
 import { PiVideoCameraLight } from 'react-icons/pi';
+import { GrAnnounce } from 'react-icons/gr';
+import { AiTwotoneHome } from 'react-icons/ai';
 const Sidebar = () => {
   let { user, loader } = useSelector(state => state.authUser);
   let [role, setRole] = useState({});
@@ -30,12 +32,12 @@ const Sidebar = () => {
   // console.log(user)
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-bl to-[#1a044d] from-[#080127] text-white p-2 pt-8 md:p-8">
+    <div className="w-full min-h-screen bg-gradient-to-bl to-[#0F172A] from-[#080127] text-white p-2 pt-8 md:p-8">
       <Link
         to={'/'}
         className="font-bold text-base md:text-2xl  md:block block"
       >
-        <span className="text-yellow-300 ">Gyan</span>Flow
+        <span className="logoColor">Gyan</span>Flow
       </Link>
 
       <div className="relative flex items-center space-y-3 mt-10">
@@ -57,8 +59,8 @@ const Sidebar = () => {
               to={'/dashboard/adminDashboard'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
-              <BiSolidUpArrow />
-              Dashboard
+              <MdDashboard />
+              Admin Dashboard
             </NavLink>
             <NavLink
               to={'/dashboard/addCourse'}
@@ -98,6 +100,14 @@ const Sidebar = () => {
                 Home
               </NavLink>
             </div>
+            <NavLink
+
+              to={'/dashboard/addAnnouncement'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <GrAnnounce />
+              Add Announcement
+            </NavLink>
           </div>
         ))}
       {/* student role */}
@@ -131,7 +141,7 @@ const Sidebar = () => {
               to={'/dashboard/actionaldashboard'}
               className="capitalize text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
-              <BiSolidUpArrow />
+              <MdDashboard />
               Actionable Dashboard
             </NavLink>
             <NavLink
@@ -151,11 +161,18 @@ const Sidebar = () => {
         ) : (
           <div className="space-y-5 mt-10">
             <NavLink
+              to={'/dashboard/instructor-Dashboard-progress'}
+              className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+            >
+              <MdDashboard />
+              Instructor dashboard
+            </NavLink>
+            <NavLink
               to={'/dashboard/instructorDashboard'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <BiSolidUpArrow />
-              Instructor Dashboard
+              Invited Courses
             </NavLink>
             <NavLink
               to={'/dashboard/create-meeting'}
@@ -187,6 +204,15 @@ const Sidebar = () => {
             </NavLink>
           </div>
         ))}
+      <div className="w-full mt-4  border-gray-600 border-t-[1px]">
+        <NavLink
+          to={'/'}
+          className="text-sm md:text-base font-bold mt-8 flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
+        >
+          <IoHome />
+          Home
+        </NavLink>
+      </div>
     </div>
   );
 };

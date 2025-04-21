@@ -37,7 +37,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-start md:justify-between pl-4 container mx-auto text-white space-y-5">
             <div className="text-start space-y-3">
               <h3 className="text-xl font-bold ">
-                <span className="text-yellow-300">A</span>bout Us
+                <span className="logoColor">A</span>bout Us
               </h3>
               <p className="text-base md:text-lg text-gray-400">
                 We are a passionate team <br /> dedicated to providing the best
@@ -46,7 +46,7 @@ const Footer = () => {
             </div>
             <div className="text-start space-y-3">
               <h3 className="text-xl font-bold">
-                <span className="text-yellow-300">Q</span>uick Links
+                <span className="logoColor">Q</span>uick Links
               </h3>
               <ul className="text-base md:text-lg text-gray-400 md:list-disc md:ml-6">
                 <li>
@@ -65,7 +65,7 @@ const Footer = () => {
             </div>
             <div className=" text-start space-y-3 ">
               <h3 className="font-bold text-xl">
-                <span className="text-yellow-300">S</span>ubscribe
+                <span className="logoColor">S</span>ubscribe
               </h3>
               <p className="text-gray-400 text-base md:text-lg">
                 Subscribe to our newsletter for the <br /> latest updates.

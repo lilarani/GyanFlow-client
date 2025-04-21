@@ -37,7 +37,7 @@ const Sidebar = () => {
         to={'/'}
         className="font-bold text-base md:text-2xl  md:block block"
       >
-        <span className="text-yellow-300 ">Gyan</span>Flow
+        <span className="logoColor">Gyan</span>Flow
       </Link>
 
       <div className="relative flex items-center space-y-3 mt-10">

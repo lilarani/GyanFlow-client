@@ -50,7 +50,7 @@ const Navbar = () => {
       <nav className="flex  backdrop-blur-xl text-gray-200 font-bold flex-row justify-between bg-gradient-to-bl to-[#0F172A] from-[#080127] items-center md:px-[48px] lg:px-[110px] py-2 shadow-2xl">
         <div className="flex flex-row justify-between w-full xl:w-fit items-center ">
           <Link to={'/'} className="py-4 px-4 text-2xl ">
-            <span className="text-yellow-300 cursor-pointer">Gyan</span>Flow
+            <span className="text-yellow-500 cursor-pointer">Gyan</span>Flow
           </Link>
           <div
             className="py-4 w-fit h-fit xl:hidden cursor-pointer px-8"

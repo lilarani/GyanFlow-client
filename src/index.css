@@ -15,6 +15,11 @@
   scrollbar-width: none;
 }
 
+/* logo color */
+.logoColor {
+  color: #eab308;
+}
+
 /* custom design for create modul and video */
 .input-field {
   width: 100%;

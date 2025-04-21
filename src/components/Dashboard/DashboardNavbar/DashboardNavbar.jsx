@@ -149,13 +149,6 @@ const DashboardNavbar = ({ navTitle }) => {
                   to={'#'}
                   className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer"
                 >
-                  <IoMdNotificationsOutline className="" />
-                  Notification
-                </Link>
-                <Link
-                  to={'#'}
-                  className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer"
-                >
                   <TbHelpSquare />
                   Help Center
                 </Link>

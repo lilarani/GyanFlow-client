@@ -98,7 +98,7 @@ const Footer = () => {
                     className="absolute top-3 right-3 text-gray-600 hover:text-black text-xl transition-transform hover:scale-110"
                     onClick={handleChatBot}
                   >
-                    ✖
+                    <span className="text-red-500"> ✖</span>
                   </button>
                   <h2 className="text-xl md:text-2xl font-semibold mb-2 text-blue-600">
                     Hi! I’m your chatbot 🤖
@@ -144,7 +144,6 @@ const Footer = () => {
                 </div>
               </div>
             )}
-
           </div>
 
           {/* divider */}

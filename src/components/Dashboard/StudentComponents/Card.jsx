@@ -1,10 +1,10 @@
-import "./card.css";
-import { Link } from "react-router";
-import { TbCoinTaka, TbCurrencyTaka } from "react-icons/tb";
-import { SiGoogleclassroom } from "react-icons/si";
-import { MdLiveTv } from "react-icons/md";
-import { HiCursorClick } from "react-icons/hi";
-import { IoMdClock } from "react-icons/io";
+import './card.css';
+import { Link } from 'react-router';
+import { TbCoinTaka, TbCurrencyTaka } from 'react-icons/tb';
+import { SiGoogleclassroom } from 'react-icons/si';
+import { MdLiveTv } from 'react-icons/md';
+import { HiCursorClick } from 'react-icons/hi';
+import { IoMdClock } from 'react-icons/io';
 const Card = ({ course }) => {
   return (
     <div>
@@ -82,7 +82,7 @@ const Card = ({ course }) => {
               className="flex justify-center"
             >
               <button className="flex items-center gap-1 px-3 py-2 hover:bg-[#0B1739] bg-[#352b61] text-white/80 duration-500 rounded-md">
-                See Details{" "}
+                See Details{' '}
                 <span>
                   <HiCursorClick />
                 </span>

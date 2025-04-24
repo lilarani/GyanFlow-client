@@ -46,7 +46,7 @@ const AddCourses = () => {
     if (selectedInstructors.length === 0) {
       Swal.fire({
         position: 'top-center',
-        icon: 'success',
+        icon: 'error',
         title: 'Please select instructor',
         showConfirmButton: false,
         timer: 1500,
@@ -103,7 +103,7 @@ const AddCourses = () => {
       Swal.fire({
         position: 'top-center',
         icon: 'success',
-        title: 'Your work has been saved',
+        title: 'Course Added Successfully!',
         showConfirmButton: false,
         timer: 1500,
       });

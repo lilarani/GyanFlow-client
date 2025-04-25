@@ -34,6 +34,7 @@ import JoinClassRoom from '../pages/Dashboard/InstructorDashboard/InstructorDash
 import MyCoursesVideo from '@/pages/Dashboard/StudentDashboard/MyCoursesVideo';
 import InstructorDashboardProgress from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboardProgress';
 import CourseAnnouncement from '@/pages/Dashboard/StudentDashboard/CourseAnnouncement';
+import HelpDesk from '@/pages/HelpDesk/HelpDesk';
 
 // import { createBrowserRouter } from 'react-router';
 // import StudentDashboard from '@/pages/Dashboard/StudentDashboard/StudentDashboard';
@@ -89,6 +90,10 @@ export const router = createBrowserRouter([
       {
         path: '/career',
         element: <Career></Career>,
+      },
+      {
+        path: '/helpDesk',
+        element: <HelpDesk></HelpDesk>,
       },
       {
         path: '/CourseVideo/:courseId',
@@ -202,7 +207,7 @@ export const router = createBrowserRouter([
           },
         ],
       },
-    
+
       {
         path: 'create-meeting',
         element: <CreateMeeting></CreateMeeting>,
@@ -222,9 +227,8 @@ export const router = createBrowserRouter([
     element: <Error></Error>,
   },
   {
-    path : 'chat',
-    element : <Chat></Chat>
-   
+    path: 'chat',
+    element: <Chat></Chat>,
   },
   {
     path: '/forgot-pass/:email',

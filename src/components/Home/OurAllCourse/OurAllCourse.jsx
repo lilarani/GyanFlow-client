@@ -8,7 +8,7 @@ import { CardForCourse } from '@/shared/CustomButtons/CardForCourse';
 const OurAllCourse = () => {
   const { data, isLoading, isError } = useGetCourseQuery();
   const coursesData = data?.data.slice(0, 6) || [];
-  console.log(coursesData, "my data")
+  // console.log(coursesData, "my data")
   return (
     <div className="w-10/12 mx-auto my-28 ">
       <div className="flex justify-center items-center text-center my-10">

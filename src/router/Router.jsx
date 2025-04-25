@@ -20,7 +20,6 @@ import StudentRoutes from './../protectedRoutes/StudentRoutes';
 import AdminRoute from './../protectedRoutes/AdminRoute';
 import UploadModul from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/UploadModul';
 import FeaturesCourseDetails from '@/pages/FeaturesCourseDetails/FeaturesCourseDetails';
-import CourseAnnoucement from '@/pages/Dashboard/StudentDashboard/CourseAnnoucement';
 import AllCourses from '@/pages/AllCourses/AllCourses';
 import SuccessPayment from '@/pages/Dashboard/StudentDashboard/SuccessPayment';
 import ActionalDashboard from '@/pages/Dashboard/StudentDashboard/ActionalDashboard';
@@ -34,6 +33,7 @@ import MeetingRoute from '@/protectedRoutes/MeetingRoute';
 import JoinClassRoom from '../pages/Dashboard/InstructorDashboard/InstructorDashboard/JoinClassRoom';
 import MyCoursesVideo from '@/pages/Dashboard/StudentDashboard/MyCoursesVideo';
 import InstructorDashboardProgress from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboardProgress';
+import CourseAnnouncement from '@/pages/Dashboard/StudentDashboard/CourseAnnouncement';
 
 // import { createBrowserRouter } from 'react-router';
 // import StudentDashboard from '@/pages/Dashboard/StudentDashboard/StudentDashboard';
@@ -179,11 +179,9 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'teacherDashboard',
-
-        // dashboard/addCourse'
-        path: 'courseAnnoucement',
-        element: <CourseAnnoucement />,
+        // dashboard/allAnnouncement'
+        path: 'allAnnouncement',
+        element: <CourseAnnouncement />,
       },
       {
         path: 'teacherDashboard',

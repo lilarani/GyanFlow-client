@@ -136,7 +136,7 @@ const Sidebar = () => {
               Actionable Dashboard
             </NavLink>
             <NavLink
-              to={'/dashboard/courseAnnoucement'}
+              to={'/dashboard/allAnnouncement'}
               className="text-sm md:text-base font-bold flex gap-2 items-center cursor-pointer hover:bg-[#ffffff44] md:px-4 py-2"
             >
               <TfiAnnouncement />

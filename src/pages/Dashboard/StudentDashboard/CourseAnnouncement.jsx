@@ -1,14 +1,14 @@
-import Annoucement from "@/components/Dashboard/StudentComponents/Annoucement";
+import Announcement from "@/components/Dashboard/StudentComponents/Announcement";
 import AnnouncementBanner from "@/components/Dashboard/StudentComponents/AnnouncementBanner";
 import React from "react";
 
-const CourseAnnoucement = () => {
+const CourseAnnouncement = () => {
   return (
     <div className="bg-[#0F172A] min-h-screen pt-16 text-white">
       <AnnouncementBanner />
-      <Annoucement/>
+      <Announcement/>
     </div>
   );
 };
 
-export default CourseAnnoucement;
+export default CourseAnnouncement;

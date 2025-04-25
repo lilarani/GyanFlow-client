@@ -17,6 +17,11 @@ export const apiSlice = createApi({
       query: () => 'gyanflow/all-stats/stats',
     }),
 
+    //all announcement
+    getAnnouncement: builder.query({
+      query: () => '/gyanflow/annoucement/all-announcement',
+    }),
+
     // all instructors
     getInstructors: builder.query({
       query: () => '/gyanflow/user/all-instructors',
@@ -236,6 +241,7 @@ export const {
   useDeleteCoursesMutation,
   useDeleteUserMutation,
   useCreateAnnouncementMutation,
+  useGetAnnouncementQuery,
   useCreateCourseMutation,
   useGetInstructorsQuery,
   useCourseForInstructorQuery,

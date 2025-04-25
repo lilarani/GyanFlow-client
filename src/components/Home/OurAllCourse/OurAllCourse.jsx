@@ -2,13 +2,15 @@ import { useGetCourseQuery } from '@/redux/ApiCalling/apiClice';
 // import Card from '@/components/Dashboard/StudentComponents/card';
 import Button from '@/components/customs/Button';
 import { Link } from 'react-router';
-import { Card } from '@/components/ui/card';
+
 import { CardForCourse } from '@/shared/CustomButtons/CardForCourse';
+import Card from '@/components/Dashboard/StudentComponents/Card';
 
 const OurAllCourse = () => {
   const { data, isLoading, isError } = useGetCourseQuery();
   const coursesData = data?.data.slice(0, 6) || [];
-  // console.log(coursesData, "my data")
+  console.log(coursesData, 'my data');
+
   return (
     <div className="w-10/12 mx-auto my-28 ">
       <div className="flex justify-center items-center text-center my-10">
@@ -22,7 +24,7 @@ const OurAllCourse = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {coursesData.map((course, index) => (
-          <CardForCourse course={course}></CardForCourse>
+          <Card course={course}></Card>
           // <Card key={index} course={course} />
         ))}
       </div>

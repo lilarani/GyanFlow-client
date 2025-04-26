@@ -13,6 +13,7 @@ import {
   useGetMyUserMutation,
 } from '@/redux/ApiCalling/apiClice';
 import WelcomeModal from '@/components/welcomModal/WelcomeModal';
+import { Toaster } from 'react-hot-toast';
 
 export default function Main() {
   const [open, setOpen] = useState(true);
@@ -71,6 +72,7 @@ export default function Main() {
       <div>
         <Footer></Footer>
       </div>
+      <Toaster />
     </div>
   );
 }

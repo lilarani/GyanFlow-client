@@ -1,0 +1,5 @@
+/* Add this CSS somewhere (global css or in your component style) */
+.clip-diagonal {
+    clip-path: polygon(0 0, 100% 0%, 96% 100%, 0 100%);
+  }
+  

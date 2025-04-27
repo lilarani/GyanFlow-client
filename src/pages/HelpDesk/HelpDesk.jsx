@@ -139,7 +139,7 @@ const HelpDesk = () => {
                       className="w-full p-3 rounded-lg bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-600 placeholder-gray-400"
                     />
                     <button className="mt-2 absolute right-4 top-1 text-blue-500 rounded-lg text-base">
-                      <LuSend className="text-2xl" />
+                      <LuSend className="text-2xl cursor-pointer" />
                     </button>
                   </div>
                 )}

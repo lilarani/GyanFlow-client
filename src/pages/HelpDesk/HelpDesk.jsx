@@ -10,15 +10,25 @@ import { FaRegComment } from 'react-icons/fa6';
 import { LuSend } from 'react-icons/lu';
 import { PiShareFat } from 'react-icons/pi';
 import { useSelector } from 'react-redux';
+import { FacebookShareButton, FacebookShareCount } from 'react-share';
 import { toast } from 'react-toastify';
+
+const reactions = [
+  { emoji: '👍', label: 'Like' },
+  { emoji: '❤️', label: 'Love' },
+  { emoji: '😢', label: 'Sad' },
+  { emoji: '😡', label: 'Angry' },
+  { emoji: '😂', label: 'Haha' },
+  { emoji: '😮', label: 'Wow' },
+];
 
 const HelpDesk = () => {
   const [activePostId, setActivePostId] = useState(null);
   const [post, setPost] = useState('');
   const [addPost] = usePostsMutation();
   const { data } = useGetAllPostsQuery();
-  console.log(data);
   const { user } = useSelector(state => state?.authUser);
+  const [selectedReaction, setSelectedReaction] = useState({});
 
   const handleAddPost = async () => {
     const newPost = {
@@ -31,18 +41,16 @@ const HelpDesk = () => {
       await addPost(newPost).unwrap();
       toast.success('Post added successfully');
     } catch (err) {
-      toast.error('Failed Post Added!');
+      toast.error('Failed to add post!');
     }
   };
 
   return (
     <div>
-      <HelpDeskNavbar></HelpDeskNavbar>
+      <HelpDeskNavbar />
       <div className="bg-gradient-to-br from-[#010009] via-[#0f0b3e] to-[#0b0b0c]">
-        <div className="grid grid-cols-12 w-10/12 mx-auto py-16 gap-5 relative ">
-          {/* Left Sidebar (Create Post) */}
-          <div className="col-span-5 sticky  top-18 self-start p-4 border border-gray-700 rounded-2xl shadow-md bg-black">
-            {/* User Info */}
+        <div className="grid grid-cols-12 w-10/12 mx-auto py-16 gap-5 relative">
+          <div className="col-span-5 sticky top-18 self-start p-4 border border-gray-700 rounded-2xl shadow-md bg-black">
             <div className="flex items-center mb-4">
               <img
                 src="https://via.placeholder.com/40"
@@ -54,12 +62,10 @@ const HelpDesk = () => {
                 name="post"
                 value={post}
                 onChange={e => setPost(e.target.value)}
-                placeholder="What's on your mind ?"
+                placeholder="What's on your mind?"
                 className="flex-1 border-none focus:ring-0 outline-none text-gray-300 placeholder-gray-300 font-semibold bg-transparent"
               />
             </div>
-
-            {/* Optional Buttons */}
             <div className="flex justify-between items-center border-t pt-3 text-sm text-gray-300">
               <button className="flex items-center space-x-1 hover:text-blue-500">
                 <span>📷</span>
@@ -74,19 +80,16 @@ const HelpDesk = () => {
                 <span>Feeling/Activity</span>
               </button>
             </div>
-
-            {/* Post Button */}
             <div onClick={handleAddPost} className="mt-4">
-              <Button text={'Post'}></Button>
+              <Button text={'Post'} />
             </div>
           </div>
 
-          {/* Right Section (Posts) */}
           <div className="col-span-7 p-6 border border-gray-700 rounded-2xl shadow-lg bg-gradient-to-br from-black via-gray-900 to-black text-gray-300">
             {data?.data?.map(post => (
               <div
                 key={post._id}
-                className="mb-7 p-5 border border-gray-600 rounded-xl  transition-transform duration-300 shadow-md text-gray-100"
+                className="mb-7 p-5 border border-gray-600 rounded-xl transition-transform duration-300 shadow-md text-gray-100"
               >
                 <div className="flex items-center gap-4 mb-2">
                   <img
@@ -104,17 +107,43 @@ const HelpDesk = () => {
                   </div>
                 </div>
 
-                <p className=" text-lg leading-relaxed font-medium">
+                <p className="text-lg leading-relaxed font-medium">
                   {post?.description}
                 </p>
-                {/* actions */}
-                <div className="flex justify-between mt-6">
-                  <button className="cursor-pointer hover:bg-gray-500 px-2 py-1 duration-300 transition-all ease-in flex gap-1  items-center text-lg justify-center">
-                    <AiTwotoneLike className="" />
+
+                <div className="flex justify-between mt-12 border-t-2 relative">
+                  <div className="absolute -top-8">
+                    {selectedReaction[post._id] && (
+                      <p>
+                        <span>{selectedReaction[post._id]}</span>
+                      </p>
+                    )}
+                  </div>
+
+                  <button className="cursor-pointer hover:bg-gray-500 px-2 py-1 duration-300 transition-all ease-in flex gap-1 items-center text-lg justify-center">
+                    <AiTwotoneLike />
                     Like
+                    <div className="reaction-popup">
+                      {reactions.map((reaction, index) => (
+                        <button
+                          key={index}
+                          className="text-2xl hover:scale-125 transition-transform duration-200"
+                          onClick={() => {
+                            setSelectedReaction(prev => ({
+                              ...prev,
+                              [post._id]: reaction.emoji,
+                            }));
+                            toast.success(`You reacted with ${reaction.emoji}`);
+                          }}
+                        >
+                          {reaction.emoji}
+                        </button>
+                      ))}
+                    </div>
                   </button>
+
                   <button
-                    className="cursor-pointer hover:bg-gray-500 px-2 py-1 duration-300 transition-all ease-in  flex gap-1  items-center text-lg justify-center"
+                    className="cursor-pointer hover:bg-gray-500 px-2 py-1 duration-300 transition-all ease-in flex gap-1 items-center text-lg justify-center"
                     onClick={() =>
                       setActivePostId(
                         activePostId === post._id ? null : post._id
@@ -124,13 +153,26 @@ const HelpDesk = () => {
                     <FaRegComment />
                     Comment
                   </button>
-                  <button className="cursor-pointer hover:bg-gray-500 px-2 py-1 duration-300 transition-all ease-in  flex gap-1  items-center text-lg justify-center">
-                    <PiShareFat />
-                    Share
-                  </button>
+                  {/* Facebook Share Button */}
+                  <FacebookShareButton
+                    url={`http://localhost:4000/posts/${post._id}`}
+                  >
+                    <button className="cursor-pointer hover:bg-blue-500 px-2 py-1 duration-300 transition-all ease-in flex gap-1 items-center text-lg justify-center">
+                      <PiShareFat />
+                      Share
+                    </button>
+                  </FacebookShareButton>
+
+                  {/* Share Count */}
+                  <FacebookShareCount
+                    url={`http://localhost:4000/posts/${post._id}`}
+                  >
+                    {count => (
+                      <p className="text-sm text-gray-400">{count} Shares</p>
+                    )}
+                  </FacebookShareCount>
                 </div>
 
-                {/* Comment Input */}
                 {activePostId === post._id && (
                   <div className="mt-4 flex gap-2 relative">
                     <input

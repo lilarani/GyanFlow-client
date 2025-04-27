@@ -91,10 +91,7 @@ export const router = createBrowserRouter([
         path: '/career',
         element: <Career></Career>,
       },
-      {
-        path: '/helpDesk',
-        element: <HelpDesk></HelpDesk>,
-      },
+
       {
         path: '/CourseVideo/:courseId',
         element: <MyCoursesVideo></MyCoursesVideo>,
@@ -245,5 +242,9 @@ export const router = createBrowserRouter([
         <JoinClassRoom></JoinClassRoom>
       </MeetingRoute>
     ),
+  },
+  {
+    path: '/helpDesk',
+    element: <HelpDesk></HelpDesk>,
   },
 ]);

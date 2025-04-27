@@ -3,7 +3,8 @@ import {
   useCreateCourseMutation,
 } from "@/redux/ApiCalling/apiClice";
 import React, { useState } from "react";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
+// import { toast } from "react-toastify";
 
 let ImageHostKey = "47b25851b9d300db92da4ca62f89a4bb";
 let ImageHosting = `https://api.imgbb.com/1/upload?key=${ImageHostKey}`;
@@ -29,6 +30,7 @@ const AddAnnouncement = () => {
       type: type,
       date: Date.now(),
     };
+    console.log(announcementData)
 
     let thumbnailUrl = "";
     if (thumbnail) {
@@ -54,14 +56,14 @@ const AddAnnouncement = () => {
     // console.log("Final Data:", courseData);
 
     try {
-      console.log("Annouce", announcementData);
+  
       const result = await createAnnouncement(announcementData).unwrap();
 
       form.reset();
       setThumbnail(null);
       setType("");
 
-      toast("Announcement added successfully!");
+      toast.success("Announcement added successfully!");
     } catch (error) {
       console.error("Error adding announcement:", error);
       toast.error("Failed to add announcement.");

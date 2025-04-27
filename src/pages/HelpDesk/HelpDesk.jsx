@@ -5,10 +5,15 @@ import {
   usePostsMutation,
 } from '@/redux/ApiCalling/apiClice';
 import React, { useState } from 'react';
+import { AiTwotoneLike } from 'react-icons/ai';
+import { FaRegComment } from 'react-icons/fa6';
+import { LuSend } from 'react-icons/lu';
+import { PiShareFat } from 'react-icons/pi';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 const HelpDesk = () => {
+  const [activePostId, setActivePostId] = useState(null);
   const [post, setPost] = useState('');
   const [addPost] = usePostsMutation();
   const { data } = useGetAllPostsQuery();
@@ -77,12 +82,67 @@ const HelpDesk = () => {
           </div>
 
           {/* Right Section (Posts) */}
-          <div className="col-span-7 p-4 borderborder-gray-700 rounded-2xl shadow-md  bg-black text-gray-300">
+          <div className="col-span-7 p-6 border border-gray-700 rounded-2xl shadow-lg bg-gradient-to-br from-black via-gray-900 to-black text-gray-300">
             {data?.data?.map(post => (
-              <div key={post._id} my-shadow>
-                <p className="text-gray-300 text-base leading-relaxed">
+              <div
+                key={post._id}
+                className="mb-7 p-5 border border-gray-600 rounded-xl  transition-transform duration-300 shadow-md text-gray-100"
+              >
+                <div className="flex items-center gap-4 mb-2">
+                  <img
+                    src={post?.userId?.picture}
+                    alt="User Picture"
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <h2 className="text-lg font-bold text-white">
+                      {post?.userId?.name || 'Anonymous'}
+                    </h2>
+                    <p className="text-sm text-gray-400">
+                      {post?.userId?.email || 'No email'}
+                    </p>
+                  </div>
+                </div>
+
+                <p className=" text-lg leading-relaxed font-medium">
                   {post?.description}
                 </p>
+                {/* actions */}
+                <div className="flex justify-between mt-6">
+                  <button className="cursor-pointer hover:bg-gray-500 px-2 py-1 duration-300 transition-all ease-in flex gap-1  items-center text-lg justify-center">
+                    <AiTwotoneLike className="" />
+                    Like
+                  </button>
+                  <button
+                    className="cursor-pointer hover:bg-gray-500 px-2 py-1 duration-300 transition-all ease-in  flex gap-1  items-center text-lg justify-center"
+                    onClick={() =>
+                      setActivePostId(
+                        activePostId === post._id ? null : post._id
+                      )
+                    }
+                  >
+                    <FaRegComment />
+                    Comment
+                  </button>
+                  <button className="cursor-pointer hover:bg-gray-500 px-2 py-1 duration-300 transition-all ease-in  flex gap-1  items-center text-lg justify-center">
+                    <PiShareFat />
+                    Share
+                  </button>
+                </div>
+
+                {/* Comment Input */}
+                {activePostId === post._id && (
+                  <div className="mt-4 flex gap-2 relative">
+                    <input
+                      type="text"
+                      placeholder="Write a comment..."
+                      className="w-full p-3 rounded-lg bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-600 placeholder-gray-400"
+                    />
+                    <button className="mt-2 absolute right-4 top-1 text-blue-500 rounded-lg text-base">
+                      <LuSend className="text-2xl" />
+                    </button>
+                  </div>
+                )}
               </div>
             ))}
           </div>

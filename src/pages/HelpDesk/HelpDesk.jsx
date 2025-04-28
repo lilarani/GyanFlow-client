@@ -1,6 +1,7 @@
 import Button from '@/components/customs/Button';
 import HelpDeskNavbar from '@/components/Home/HelpDeskNavbar/HelpDeskNavbar';
 import {
+  useCommentsMutation,
   useGetAllPostsQuery,
   usePostsMutation,
 } from '@/redux/ApiCalling/apiClice';
@@ -27,8 +28,10 @@ const HelpDesk = () => {
   const [post, setPost] = useState('');
   const [addPost] = usePostsMutation();
   const { data } = useGetAllPostsQuery();
+  const [addComment] = useCommentsMutation();
   const { user } = useSelector(state => state?.authUser);
   const [selectedReaction, setSelectedReaction] = useState({});
+  const [commentText, setCommentText] = useState('');
 
   const handleAddPost = async () => {
     const newPost = {
@@ -42,6 +45,29 @@ const HelpDesk = () => {
       toast.success('Post added successfully');
     } catch (err) {
       toast.error('Failed to add post!');
+    }
+  };
+
+  const handleCommentSubmit = async postId => {
+    if (!commentText.trim()) {
+      toast.error('Please write a comment!');
+      return;
+    }
+
+    // commentData
+    const commentData = {
+      text: commentText,
+      postId: postId,
+      userId: user?._id,
+    };
+
+    try {
+      await addComment(commentData).unwrap();
+      toast.success('Comment added successfully!');
+      setCommentText('');
+    } catch (error) {
+      toast.error('Failed to add comment!');
+      console.log(error);
     }
   };
 
@@ -111,6 +137,7 @@ const HelpDesk = () => {
                   {post?.description}
                 </p>
 
+                {/* reactions */}
                 <div className="flex justify-between mt-12 border-t-2 relative">
                   <div className="absolute -top-8">
                     {selectedReaction[post._id] && (
@@ -120,6 +147,7 @@ const HelpDesk = () => {
                     )}
                   </div>
 
+                  {/* Like btn */}
                   <button className="cursor-pointer hover:bg-gray-500 px-2 py-1 duration-300 transition-all ease-in flex gap-1 items-center text-lg justify-center">
                     <AiTwotoneLike />
                     Like
@@ -142,6 +170,7 @@ const HelpDesk = () => {
                     </div>
                   </button>
 
+                  {/* comment btn */}
                   <button
                     className="cursor-pointer hover:bg-gray-500 px-2 py-1 duration-300 transition-all ease-in flex gap-1 items-center text-lg justify-center"
                     onClick={() =>
@@ -153,6 +182,8 @@ const HelpDesk = () => {
                     <FaRegComment />
                     Comment
                   </button>
+
+                  {/* share btn */}
                   {/* Facebook Share Button */}
                   <FacebookShareButton
                     url={`http://localhost:4000/posts/${post._id}`}
@@ -164,23 +195,28 @@ const HelpDesk = () => {
                   </FacebookShareButton>
 
                   {/* Share Count */}
-                  <FacebookShareCount
+                  {/* <FacebookShareCount
                     url={`http://localhost:4000/posts/${post._id}`}
                   >
                     {count => (
-                      <p className="text-sm text-gray-400">{count} Shares</p>
+                      <p className="text-sm text-gray-400">count</p>
                     )}
-                  </FacebookShareCount>
+                  </FacebookShareCount> */}
                 </div>
 
                 {activePostId === post._id && (
                   <div className="mt-4 flex gap-2 relative">
                     <input
+                      value={commentText} // State থেকে আসবে
+                      onChange={e => setCommentText(e.target.value)}
                       type="text"
                       placeholder="Write a comment..."
                       className="w-full p-3 rounded-lg bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-600 placeholder-gray-400"
                     />
-                    <button className="mt-2 absolute right-4 top-1 text-blue-500 rounded-lg text-base">
+                    <button
+                      onClick={() => handleCommentSubmit(post._id)}
+                      className="mt-2 absolute right-4 top-1 text-blue-500 rounded-lg text-base"
+                    >
                       <LuSend className="text-2xl cursor-pointer" />
                     </button>
                   </div>

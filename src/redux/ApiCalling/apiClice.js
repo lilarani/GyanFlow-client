@@ -242,6 +242,15 @@ export const apiSlice = createApi({
         method: 'GET',
       }),
     }),
+
+    // comment
+    comments: builder.mutation({
+      query: commentData => ({
+        url: '/gyanflow/comments/user-comment',
+        method: 'POST',
+        body: commentData,
+      }),
+    }),
   }),
 });
 
@@ -277,5 +286,6 @@ export const {
   useGetStatsQuery,
   usePostsMutation,
   useGetAllPostsQuery,
+  useCommentsMutation,
 } = apiSlice;
 export default apiSlice;

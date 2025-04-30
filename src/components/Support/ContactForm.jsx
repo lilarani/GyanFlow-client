@@ -9,6 +9,7 @@ import {
   FaChevronUp,
 } from 'react-icons/fa';
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -29,7 +30,14 @@ export default function ContactForm() {
     e.preventDefault();
     // Here you would handle form submission, e.g. API call
     console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
+    Swal.fire({
+      position: 'top-center',
+      icon: 'success',
+      title: 'Thank you for your message! We will get back to you soon.',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
     setFormData({ name: '', email: '', message: '' });
   };
 

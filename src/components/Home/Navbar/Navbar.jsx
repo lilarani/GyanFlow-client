@@ -59,14 +59,14 @@ const Navbar = () => {
             <FaBars />
           </div>
           <ul className="xl:flex flex-row hidden gap-2">
-            <li>
+            {/* <li>
               <NavLink
                 className="py-3 px-6 rounded hover:bg-[#ffffff44]"
                 to="/"
               >
                 Home
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink
                 className="py-3 px-6 rounded hover:bg-[#ffffff44]"
@@ -89,6 +89,14 @@ const Navbar = () => {
                 to="/career"
               >
                 Career
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="py-3 px-6 rounded hover:bg-[#ffffff44]"
+                to="/helpDesk"
+              >
+                Help-Desk
               </NavLink>
             </li>
           </ul>

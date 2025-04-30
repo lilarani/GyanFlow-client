@@ -11,7 +11,7 @@ import socket from '@/socket';
 // import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
-  let {user} = useSelector(state => state.authUser)
+  let { user } = useSelector(state => state.authUser);
   // let {data , isLoading , isError} = useGetUsersQuery();
   // // isLoading ? console.log(isLoading) :  console.log(data)
   // if(isLoading){
@@ -23,9 +23,9 @@ const Home = () => {
   // }
   useEffect(() => {
     if (user?._id) {
-      socket.emit("userConnected", user._id);
+      socket.emit('userConnected', user._id);
     }
-  },[])
+  }, []);
 
   return (
     <div>
@@ -43,7 +43,7 @@ const Home = () => {
         <OurAllCourse></OurAllCourse>
         {/* Trasted Features */}
         <TrustedPartner />
-        {/* <About/> */}
+
         {/* Impact at a glance  */}
         <Impact />
       </section>

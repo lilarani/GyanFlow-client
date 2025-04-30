@@ -119,7 +119,7 @@ export const apiSlice = createApi({
     // POST API - createUser
     createUser: builder.mutation({
       query: newUser => ({
-        //   http://localhost:4000
+        //   https://gyanflow-server.onrender.com
         url: '/gyanflow/user/regiser',
         method: 'POST',
         body: newUser,

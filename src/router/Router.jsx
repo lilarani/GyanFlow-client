@@ -34,11 +34,8 @@ import JoinClassRoom from '../pages/Dashboard/InstructorDashboard/InstructorDash
 import MyCoursesVideo from '@/pages/Dashboard/StudentDashboard/MyCoursesVideo';
 import InstructorDashboardProgress from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboardProgress';
 import CourseAnnouncement from '@/pages/Dashboard/StudentDashboard/CourseAnnouncement';
-<<<<<<< HEAD
 import PaymentHistory from '@/pages/Dashboard/AdminDashboard/AddAnnouncement/PaymentHistory/PaymentHistory';
-=======
 import HelpDesk from '@/pages/HelpDesk/HelpDesk';
->>>>>>> 53a62572d445b0dbc11c5ae30c66082fc7a48873
 
 // import { createBrowserRouter } from 'react-router';
 // import StudentDashboard from '@/pages/Dashboard/StudentDashboard/StudentDashboard';

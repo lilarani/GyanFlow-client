@@ -290,12 +290,9 @@ export const {
   useGetAllEnrolledCourseQuery,
   useMessageMutation,
   useGetStatsQuery,
-<<<<<<< HEAD
-  useGetAllPaymentHistoryQuery
-=======
+  useGetAllPaymentHistoryQuery,
   usePostsMutation,
   useGetAllPostsQuery,
   useCommentsMutation,
->>>>>>> 53a62572d445b0dbc11c5ae30c66082fc7a48873
 } = apiSlice;
 export default apiSlice;

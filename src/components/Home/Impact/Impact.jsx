@@ -10,7 +10,7 @@ const Impact = () => {
   return (
     <div
       ref={ref}
-      className="flex  flex-col md:flex-row text-center items-center justify-center gap-6 md:gap10 border-t border-b border-gray-300 p-10 bg my-16 bg-[#ededed]"
+      className="flex  flex-col md:flex-row text-center items-center justify-center gap-6 md:gap10 border-t border-b border-gray-300 p-10 bg md:my-16 bg-[#ededed]"
     >
       <div className="border-gray-200 p-10">
         {inView && (
@@ -23,7 +23,7 @@ const Impact = () => {
             suffix="+"
           />
         )}
-        <p className="text-2xl text-[#1e293b] mt-2">Students</p>{" "}
+        <p className="text-2xl text-[#1e293b] mt-2">Students</p>{' '}
         {/* Darker slate */}
       </div>
 
@@ -64,7 +64,7 @@ const Impact = () => {
       <div className="border-gray-200 p-10">
         {inView && (
           <CountUp
-          className="text-[#0d9488] text-5xl font-bold" // unchanged
+            className="text-[#0d9488] text-5xl font-bold" // unchanged
             start={0}
             end={data?.data?.totalInstructors}
             duration={4}
@@ -86,7 +86,7 @@ const Impact = () => {
             delay={0}
           />
         )}
-        <p className="text-2xl text-[#1e293b] mt-2">Live Courses</p>{" "}
+        <p className="text-2xl text-[#1e293b] mt-2">Live Courses</p>{' '}
         {/* Darker slate */}
       </div>
     </div>

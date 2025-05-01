@@ -123,7 +123,7 @@ const DashboardNavbar = ({ navTitle }) => {
             className="w-12 h-12 rounded-full"
           />
           {openUserModal && (
-            <div className="absolute z-50 top-18 bg-white/10 backdrop-blur-2xl shadow-xl p-8 border border-white/20 text-white min-w-sm md:min-w-md right-4 ">
+            <div className="absolute z-50 top-18 bg-white/10 backdrop-blur-2xl shadow-xl md:p-8 border border-white/20 text-white  md:min-w-md right-4 p-10">
               <div className="flex gap-2 items-center border-b-[1px] border-gray-700 p-2">
                 <img
                   referrerPolicy="no-referrer"

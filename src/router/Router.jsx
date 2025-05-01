@@ -34,6 +34,7 @@ import JoinClassRoom from '../pages/Dashboard/InstructorDashboard/InstructorDash
 import MyCoursesVideo from '@/pages/Dashboard/StudentDashboard/MyCoursesVideo';
 import InstructorDashboardProgress from '@/pages/Dashboard/InstructorDashboard/InstructorDashboard/InstructorDashboardProgress';
 import CourseAnnouncement from '@/pages/Dashboard/StudentDashboard/CourseAnnouncement';
+import PaymentHistory from '@/pages/Dashboard/AdminDashboard/AddAnnouncement/PaymentHistory/PaymentHistory';
 import HelpDesk from '@/pages/HelpDesk/HelpDesk';
 
 // import { createBrowserRouter } from 'react-router';
@@ -156,6 +157,15 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AddAnnouncement />
+          </AdminRoute>
+        ),
+      },
+      {
+        // dashboard/paymentHistory'
+        path: 'paymentHistory',
+        element: (
+          <AdminRoute>
+            <PaymentHistory/>
           </AdminRoute>
         ),
       },

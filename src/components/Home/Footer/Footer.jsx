@@ -103,7 +103,7 @@ const Footer = () => {
                   <h2 className="text-xl md:text-2xl font-semibold mb-2 text-blue-600">
                     Hi! I’m your chatbot 🤖
                   </h2>
-                  <p className="text-gray-700 text-base md:text-lg mb-4">
+                  <p className="text-gray-500 text-base md:text-lg mb-4">
                     How can I help you today?
                   </p>
 

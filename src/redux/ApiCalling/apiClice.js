@@ -119,7 +119,7 @@ export const apiSlice = createApi({
     // POST API - createUser
     createUser: builder.mutation({
       query: newUser => ({
-        //   http://localhost:4000
+        //   https://gyanflow-server.onrender.com
         url: '/gyanflow/user/regiser',
         method: 'POST',
         body: newUser,
@@ -231,6 +231,32 @@ export const apiSlice = createApi({
         body: { prompt },
       }),
     }),
+
+    // add posts
+    Posts: builder.mutation({
+      query: newPost => ({
+        url: '/gyanflow/posts/addPosts',
+        method: 'POST',
+        body: newPost,
+      }),
+    }),
+
+    // get all posts
+    getAllPosts: builder.query({
+      query: () => ({
+        url: '/gyanflow/posts/all-posts',
+        method: 'GET',
+      }),
+    }),
+
+    // comment
+    comments: builder.mutation({
+      query: commentData => ({
+        url: '/gyanflow/comments/user-comment',
+        method: 'POST',
+        body: commentData,
+      }),
+    }),
   }),
 });
 
@@ -264,6 +290,12 @@ export const {
   useGetAllEnrolledCourseQuery,
   useMessageMutation,
   useGetStatsQuery,
+<<<<<<< HEAD
   useGetAllPaymentHistoryQuery
+=======
+  usePostsMutation,
+  useGetAllPostsQuery,
+  useCommentsMutation,
+>>>>>>> 53a62572d445b0dbc11c5ae30c66082fc7a48873
 } = apiSlice;
 export default apiSlice;

@@ -1,11 +1,11 @@
-import { useGetStatsQuery } from "@/redux/ApiCalling/apiClice";
-import React from "react";
-import CountUp from "react-countup";
-import { useInView } from "react-intersection-observer";
+import { useGetStatsQuery } from '@/redux/ApiCalling/apiClice';
+import React from 'react';
+import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
 
 const Impact = () => {
   const { data, isLoading, isError } = useGetStatsQuery();
-  console.log(data);
+
   const { ref, inView } = useInView({ triggerOnce: true });
   return (
     <div
@@ -34,7 +34,7 @@ const Impact = () => {
           <CountUp
             className="text-[#0e7490] text-5xl font-bold" // unchanged
             start={0}
-            end={400}
+            end={10}
             duration={4}
             delay={0}
             suffix="+"
@@ -50,7 +50,7 @@ const Impact = () => {
           <CountUp
             className="text-[#15803d] text-5xl font-bold" // unchanged
             start={0}
-            end={100}
+            end={15}
             duration={4}
             delay={0}
             suffix="+"

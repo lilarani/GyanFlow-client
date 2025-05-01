@@ -1,4 +1,3 @@
-
 import {
   Table,
   TableBody,
@@ -126,7 +125,7 @@ const Courses = () => {
     <motion.div
       className="bg-[#142447] shadow-xl mt-6 overflow-hidden scrollbar-hidden transition-all duration-300 hover:shadow-blue-500/30"
       initial="hidden"
-      animate="visible" 
+      animate="visible"
       variants={fadeUp}
       custom={0}
     >
@@ -152,7 +151,9 @@ const Courses = () => {
               custom={index}
             >
               <TableCell className="font-semibold">{course.title}</TableCell>
-              <TableCell>{course.instructors?.map(ins => ins.name).join(', ')}</TableCell>
+              <TableCell>
+                {course.instructors?.map(ins => ins.name).join(', ')}
+              </TableCell>
               <TableCell>
                 <Badge className={getCategoryColor(course.status)}>
                   {course.status}
@@ -162,7 +163,11 @@ const Courses = () => {
               <TableCell className="text-right">${course.price}</TableCell>
               <TableCell className="text-right">
                 <div className="flex justify-end gap-2">
-                  <Button variant="ghost" size="icon" className="hover:text-white">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="hover:text-green-800"
+                  >
                     <Edit size={18} />
                   </Button>
                   <Button
@@ -189,7 +194,7 @@ const Courses = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-         All Available Courses
+        All Available Courses
       </motion.h1>
       {mobileView ? renderMobileCards() : renderDesktopTable()}
     </div>

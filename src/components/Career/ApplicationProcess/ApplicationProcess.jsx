@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 const ApplicationProcess = () => {
   return (
-    <div className="my-28">
+    <div className="md:my-28 p-6">
       <h1 className="font-bold  my-4 text-3xl md:text-4xl lg:text-5xl text-center">
         Application Process
       </h1>
-      <p className="text-lg text-gray-800 text-center mb-10">
+      <p className="text-lg text-gray-800 text-center mb-10 ">
         Our application process is designed to find talent for our dynamic IT
         environment. Begin with an online application to showcase your
         qualifications

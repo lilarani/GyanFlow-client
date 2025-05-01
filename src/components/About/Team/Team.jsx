@@ -8,7 +8,7 @@ import './Team.css';
 
 const Team = () => {
   return (
-    <div className="my-44 bg-[#0f172a] py-10">
+    <div className="md:my-44 bg-[#0f172a] py-10">
       <h1 className="text-5xl font-bold text-center text-white">Team</h1>
       <Swiper
         loop={true}

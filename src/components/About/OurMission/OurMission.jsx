@@ -6,7 +6,7 @@ const OurMission = () => {
   return (
     <div className="bg-gradient-to-bl to-[#0F172A] from-[#080127] mt-20 p-4 ">
       <div className="w-10/12 mx-auto text-center p-4">
-        <h1 className="text-4xl font-extrabold text-white mb-6">
+        <h1 className="text-xl md:text-5xl font-extrabold text-white mb-6">
           <span className="text-yellow-200">O</span>ur Mission
         </h1>
         <p className="text-base text-gray-400 mb-12 max-w-3xl mx-auto">
@@ -17,10 +17,10 @@ const OurMission = () => {
 
         {/* Main Section */}
         <div className="text-white ">
-          <div className="flex bg-gradient-to-bl to-[#0B1120] from-[#080127] p-8 justify-between">
+          <div className="flex bg-gradient-to-bl to-[#0B1120] from-[#080127] p-8 justify-between ">
             <div className="text-left md:w-3/4 rounded-2xl">
               <h2 className="uppercase font-bold">WHY</h2>
-              <p className="text-base text-gray-400">
+              <p className="text-base text-gray-400 ">
                 We are passionate about empowering individuals to transform
                 their lives through the power of coding. We believe that
                 everyone should have access to high-quality, affordable coding
@@ -30,7 +30,7 @@ const OurMission = () => {
             <img src={whyImg} alt="" className="w-52  hidden md:block" />
           </div>
           {/*  */}
-          <div className="flex gap-5 grid grid-cols-1 md:grid-cols-2 mt-5 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 w-full ">
             <div className="flex  bg-gradient-to-bl to-[#0B1120] from-[#080127] px-8 relative">
               <div className="text-left p-4 rounded-2xl ">
                 <h2 className="uppercase font-bold"> what</h2>

@@ -5,6 +5,11 @@ import chatBotLogo from '../../../assets/images/chatbot.png';
 
 import { LuSend, LuSendHorizontal } from 'react-icons/lu';
 import { useMessageMutation } from '@/redux/ApiCalling/apiClice';
+import { Link } from 'react-router';
+import { FaGithub } from 'react-icons/fa6';
+import { CiFacebook, CiLinkedin } from 'react-icons/ci';
+import sslLogo from '../../../assets/images/ssl-logo.png';
+import sslCommerze from '../../../assets/images/SSL-commerz.png';
 
 const Footer = () => {
   const [openChat, setOpenChat] = useState(false);
@@ -29,9 +34,9 @@ const Footer = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <NewsLetter></NewsLetter>
-      <div className="bg-[#06091A]">
+      <div className="animate-gradient-x text-white">
         <footer className="footer footer-center  pt-40 w-10/12 mx-auto">
           {/* <img src={footerIcon} alt="" /> */}
 
@@ -40,37 +45,51 @@ const Footer = () => {
               <h3 className="text-xl font-bold ">
                 <span className="logoColor">A</span>bout Us
               </h3>
-              <p className="text-base md:text-lg text-gray-400">
-                We are a passionate team <br /> dedicated to providing the best
-                <br /> services to our customers.
+              <p className="text-base md:text-lg text-gray-300">
+                We’re GyanFlow — a passionate team transforming <br /> learning
+                through smart, tech-driven experiences.
               </p>
+              <div className="mt-8 text-base md:text-lg text-gray-300">
+                <h2>Address</h2>
+                <p>Level-4, 34, Awal Centre, Banani, Dhaka</p>
+                <p>Support: gyanflow5.com</p>
+                <p>(Available : 10:00am to 07:00pm)</p>
+              </div>
             </div>
             <div className="text-start space-y-3">
               <h3 className="text-xl font-bold">
                 <span className="logoColor">Q</span>uick Links
               </h3>
-              <ul className="text-base md:text-lg text-gray-400 md:list-disc md:ml-6">
+              <ul className="text-base md:text-lg text-gray-300 md:list-disc md:ml-6">
                 <li>
-                  <a href="#">Home</a>
+                  <Link to={'/'}>Home</Link>
                 </li>
                 <li>
-                  <a href="#">Services</a>
+                  <Link to={'/career'}>Career</Link>
                 </li>
                 <li>
-                  <a href="#">About</a>
+                  <Link to={'/support'}>Contact</Link>
                 </li>
                 <li>
-                  <a href="#">Contact</a>
+                  <Link to={'/helpDesk'}>Help-Desk</Link>
                 </li>
               </ul>
             </div>
             <div className=" text-start space-y-3 ">
               <h3 className="font-bold text-xl">
-                <span className="logoColor">S</span>ubscribe
+                <span className="logoColor">F</span>ollow Us
               </h3>
-              <p className="text-gray-400 text-base md:text-lg">
-                Subscribe to our newsletter for the <br /> latest updates.
-              </p>
+              <div className="flex gap-3 mt-6">
+                <a href="https://github.com/abuhayat02">
+                  <FaGithub className="text-4xl" />
+                </a>
+                <a href="https://www.linkedin.com/in/ankonchybd/">
+                  <CiLinkedin className="text-4xl" />
+                </a>
+                <a href="https://www.facebook.com/lilaranii">
+                  <CiFacebook className="text-4xl" />
+                </a>
+              </div>
               {/* <div className="flex">
                 <input
                   className="p-2 rounded-l-lg text-white outline-none border-gray-500 border-[1px] border-r-0"
@@ -87,7 +106,7 @@ const Footer = () => {
               onClick={handleChatBot}
               src={chatBotLogo}
               alt=""
-              className="w-24 h-24"
+              className="w-16 h-16 md:w-24 md:h-24"
             />
 
             {/* Modal on click */}
@@ -147,10 +166,18 @@ const Footer = () => {
           </div>
 
           {/* divider */}
-          <div className="w-full border-t border-gray-700 my-6"></div>
-          <p className="text-gray-500 pb-7 text-center p-2 text-base md:text-lg">
-            @2025 GyanFlow All Rights Reserved.
-          </p>
+          {/* <div className="w-full border-t border-gray-700 my-6"></div> */}
+          <div className="md:flex justify-between relative mt-10">
+            <div>
+              <h2>Pay with</h2>
+
+              <img src={sslLogo} alt="" className="w-42" />
+              <img src={sslCommerze} alt="" />
+            </div>
+            <p className="text-gray-400 pb-7 md:absolute bottom-0 md:right-0 p-2 text-base md:text-lg">
+              @2025 GyanFlow All Rights Reserved💞
+            </p>
+          </div>
         </footer>
       </div>
     </div>

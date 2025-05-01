@@ -16,6 +16,23 @@
   -ms-overflow-style: none; /* IE and Edge */
 }
 
+/* footer styles */
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 6s ease infinite;
+  background-size: 200% 200%;
+  background-image: linear-gradient(90deg, #06091a, #1a093b, #06091a);
+}
+
 /* logo color */
 .logoColor {
   color: #eab308;

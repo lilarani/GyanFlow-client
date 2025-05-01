@@ -10,12 +10,12 @@ const Impact = () => {
   return (
     <div
       ref={ref}
-      className="flex  flex-col md:flex-row text-center items-center justify-center gap-6 md:gap10 border-t border-b border-gray-300 p-10 bg my-16 bg-[#0f172a]"
+      className="flex  flex-col md:flex-row text-center items-center justify-center gap-6 md:gap10 border-t border-b border-gray-300 p-10 bg md:my-16 bg-[#ededed]"
     >
-      <div className=" border-gray-200 p-10">
+      <div className="border-gray-200 p-10">
         {inView && (
           <CountUp
-            className="text-[#facc15] text-5xl font-bold"
+            className="text-[#1e40af] text-5xl font-bold" // deep violet, contrasts softly on light bg
             start={0}
             end={data?.data?.totalStudents}
             duration={4}
@@ -23,13 +23,16 @@ const Impact = () => {
             suffix="+"
           />
         )}
-        <p className="text-2xl text-[#e2e8f0] mt-2">Students</p>
+        <p className="text-2xl text-[#1e293b] mt-2">Students</p>{' '}
+        {/* Darker slate */}
       </div>
+
       <div className="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
-      <div className=" border-gray-200 p-10 ">
+
+      <div className="border-gray-200 p-10">
         {inView && (
           <CountUp
-            className="text-[#06b6d4] text-5xl font-bold"
+            className="text-[#0e7490] text-5xl font-bold" // unchanged
             start={0}
             end={10}
             duration={4}
@@ -37,13 +40,15 @@ const Impact = () => {
             suffix="+"
           />
         )}
-        <p className="text-2xl text-[#e2e8f0] mt-2">Job Placement</p>
+        <p className="text-2xl text-[#334155] mt-2">Job Placement</p>
       </div>
+
       <div className="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
-      <div className=" border-gray-200 p-10 ">
+
+      <div className="border-gray-200 p-10">
         {inView && (
           <CountUp
-            className="text-[#22c55e] text-5xl font-bold"
+            className="text-[#15803d] text-5xl font-bold" // unchanged
             start={0}
             end={15}
             duration={4}
@@ -51,36 +56,38 @@ const Impact = () => {
             suffix="+"
           />
         )}
-        <p className="text-2xl text-[#94a3b8] mt-2">Companies</p>
+        <p className="text-2xl text-[#334155] mt-2">Companies</p>
       </div>
+
       <div className="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
 
-      <div className=" border-gray-200 p-10">
+      <div className="border-gray-200 p-10">
         {inView && (
           <CountUp
-            className="text-[#a78bfa] text-5xl font-bold"
+            className="text-[#0d9488] text-5xl font-bold" // unchanged
             start={0}
-            end={50}
+            end={data?.data?.totalInstructors}
             duration={4}
             delay={0}
           />
         )}
-
-        <p className="text-2xl text-[#f1f5f9] mt-2">Instructors</p>
+        <p className="text-2xl text-[#334155] mt-2">Instructors</p>
       </div>
+
       <div className="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
+
       <div className="p-10">
         {inView && (
           <CountUp
-            className="text-[#f59e0b] text-5xl font-bold"
+            className="text-[#e11d48] text-5xl font-bold" // deep red, bold but elegant on light bg
             start={0}
             end={data?.data?.totalCourse}
             duration={4}
             delay={0}
           />
         )}
-
-        <p className="text-2xl text-[#cbd5e1] mt-2">Live Courses</p>
+        <p className="text-2xl text-[#1e293b] mt-2">Live Courses</p>{' '}
+        {/* Darker slate */}
       </div>
     </div>
   );

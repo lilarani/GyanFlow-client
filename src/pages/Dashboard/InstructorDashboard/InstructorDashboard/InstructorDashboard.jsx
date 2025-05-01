@@ -22,13 +22,13 @@ const InstructorDashboard = () => {
         Invited Courses Lists
       </p>
 
-      <div className="flex flex-col  gap-16 p-6">
+      <div className="flex flex-col   gap-16 p-6">
         {data?.map(course => (
           <div
             key={course._id}
             className="border my-shadow sticky md:relative top-3 flex flex-col "
           >
-            <div className="md:flex bg-[#050520e9] flex-row gap-4">
+            <div className="md:flex  bg-[#050520e9] flex-row gap-4">
               <img
                 src={course.thumbnail}
                 alt={course.title}
@@ -46,7 +46,7 @@ const InstructorDashboard = () => {
                 </div>
 
                 <p className=" text-xs mt-1">{course.description}</p>
-                <div className="flex justify-between items-center mt-4">
+                <div className="flex flex-col md:flex-row justify-between items-center mt-4">
                   <span className="text-lg font-semibold ">
                     ৳{course.price}
                   </span>

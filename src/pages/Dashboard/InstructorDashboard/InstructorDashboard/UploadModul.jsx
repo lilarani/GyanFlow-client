@@ -112,14 +112,14 @@ export default function CreateUploadModule() {
           </div> */}
         </div>
 
-        <div className="grid grid-cols-3 gap-3">
+        <div className="md:grid grid-cols-3 gap-3">
           <div className="col-span-2 bg-black/30 text-white p-4 rounded-lg h-full">
             {selectedVideo && selectedVideo.url ? (
               <div>
                 <h2 className="text-xl font-semibold mb-2">
                   {selectedVideo.videoTitle}
                 </h2>
-                <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg">
+                <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg ">
                   <iframe
                     className="w-full h-full"
                     src={selectedVideo.url}
@@ -141,7 +141,7 @@ export default function CreateUploadModule() {
           </div>
 
           {/* Modules & Videos */}
-          <div className="px-2 py-1 col-span-1 bg-white/10 backdrop-blur-md shadow-xl p-8 border border-white/20">
+          <div className="px-2 py-1 col-span-1  bg-white/10 backdrop-blur-md shadow-xl p-8 border border-white/20">
             {modules?.data?.map((module, index) => (
               <details
                 key={index}

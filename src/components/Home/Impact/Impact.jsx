@@ -10,9 +10,9 @@ const Impact = () => {
   return (
     <div
       ref={ref}
-      className="flex  flex-col md:flex-row text-center items-center justify-center gap-6 md:gap10 border-t border-b border-gray-300 p-10 bg md:my-16 bg-[#ededed]"
+      className="flex shadow-none my-shadow2 flex-col md:flex-row text-center items-center justify-center gap-6 md:gap10 border-t border-b border-gray-300 p-10 bg md:my-16 bg-[#ededed]"
     >
-      <div className="border-gray-200 p-10">
+      <div className="border-gray-200 p-10 my-shadow2 lg:no-my-shadow2">
         {inView && (
           <CountUp
             className="text-[#1e40af] text-5xl font-bold" // deep violet, contrasts softly on light bg
@@ -29,7 +29,7 @@ const Impact = () => {
 
       <div className="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
 
-      <div className="border-gray-200 p-10">
+      <div className="border-gray-200 p-10 my-shadow2 lg:no-my-shadow2">
         {inView && (
           <CountUp
             className="text-[#0e7490] text-5xl font-bold" // unchanged
@@ -45,7 +45,7 @@ const Impact = () => {
 
       <div className="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
 
-      <div className="border-gray-200 p-10">
+      <div className="border-gray-200 p-10 my-shadow2 lg:no-my-shadow2">
         {inView && (
           <CountUp
             className="text-[#15803d] text-5xl font-bold" // unchanged
@@ -61,7 +61,7 @@ const Impact = () => {
 
       <div className="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
 
-      <div className="border-gray-200 p-10">
+      <div className="border-gray-200 p-10 my-shadow2 lg:no-my-shadow2">
         {inView && (
           <CountUp
             className="text-[#0d9488] text-5xl font-bold" // unchanged
@@ -76,7 +76,7 @@ const Impact = () => {
 
       <div className="md:h-32 w-4/5 md:w-0 md:border-l-2 border-gray-300"></div>
 
-      <div className="p-10">
+      <div className="p-10 my-shadow2 lg:no-my-shadow2 ">
         {inView && (
           <CountUp
             className="text-[#e11d48] text-5xl font-bold" // deep red, bold but elegant on light bg

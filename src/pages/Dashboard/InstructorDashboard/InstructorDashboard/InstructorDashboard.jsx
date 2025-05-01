@@ -52,7 +52,7 @@ const InstructorDashboard = () => {
                   </span>
                   <span>Total Duration: {course.totalDuration} month</span>
                   <span>Batch: {course.batch}</span>
-                  <span className="text-xs px-2 py-1 bg-green-600 rounded-full">
+                  <span className="text-xs px-3 py-1 text-white bg-green-600 rounded-full">
                     {course.status}
                   </span>
                 </div>

@@ -116,6 +116,15 @@ button:hover .reaction-popup {
 .my-shadow {
   box-shadow: 0px 0px 20px rgba(76, 221, 240, 0.482);
 }
+.my-shadow2 {
+  box-shadow: 0px 0px 20px rgba(200, 183, 241, 0.808);
+}
+
+@media (min-width: 850px) {
+  .lg\:no-my-shadow2 {
+    box-shadow: none !important;
+  }
+}
 
 .button:active .front {
   transform: translateY(-2px);

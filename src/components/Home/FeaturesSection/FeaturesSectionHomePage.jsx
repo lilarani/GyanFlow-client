@@ -1,4 +1,3 @@
-
 import { useGetFeaturesCourseQuery } from '@/redux/ApiCalling/apiClice';
 import { CardForCourse } from '@/shared/CustomButtons/CardForCourse';
 
@@ -11,7 +10,9 @@ export default function FeaturesSectionHomePage() {
       <div>
         <div className="flex justify-center items-center text-center my-10">
           <div className="md:w-2/3">
-            <h2 className="font-bold  my-4 text-5xl">Featured Courses</h2>
+            <h2 className="font-bold  my-4 text-xl lg:text-5xl">
+              Featured Courses
+            </h2>
             <p className="my-4 text-base">
               Explore professional courses crafted to enhance your expertise.
               Achieve your career goals with comprehensive, industry-relevant

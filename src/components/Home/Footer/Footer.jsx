@@ -10,6 +10,7 @@ import { FaGithub } from 'react-icons/fa6';
 import { CiFacebook, CiLinkedin } from 'react-icons/ci';
 import sslLogo from '../../../assets/images/ssl-logo.png';
 import sslCommerze from '../../../assets/images/SSL-commerz.png';
+import footerBg from '../../../assets/images/footer-bg.png';
 
 const Footer = () => {
   const [openChat, setOpenChat] = useState(false);
@@ -174,7 +175,7 @@ const Footer = () => {
               <img src={sslLogo} alt="" className="w-42" />
               <img src={sslCommerze} alt="" />
             </div>
-            <p className="text-gray-400 pb-7 md:absolute bottom-0 md:right-0 p-2 text-base md:text-lg">
+            <p className="text-gray-400 pb-7 md:absolute bottom-0 md:right-0 p-2 text-xs md:text-lg">
               @2025 GyanFlow All Rights Reserved💞
             </p>
           </div>

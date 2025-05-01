@@ -15,7 +15,9 @@ const OurAllCourse = () => {
     <div className="w-10/12 mx-auto my-28 ">
       <div className="flex justify-center items-center text-center my-10">
         <div className="md:w-2/3">
-          <h1 className="font-bold text-5xl text-center">Our Courses</h1>
+          <h1 className="font-bold text-xl md:text-5xl text-center">
+            Our Courses
+          </h1>
           <p className="text-center text-gray-600 my-3">
             Explore a range of fitness courses designed to energize your body
             and elevate your wellness journey.

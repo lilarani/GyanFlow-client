@@ -36,7 +36,9 @@ export default function TrustedPartner() {
   return (
     <>
       <div className="w-full md:my-28">
-        <h1 className="font-bold text-5xl text-center">Our trusted partners</h1>
+        <h1 className="font-bold text-xl md:text-5xl text-center">
+          Our trusted partners
+        </h1>
         <p className="text-center text-gray-600 my-3">
           Collaborating with reliable partners to ensure quality, innovation,
           and success.

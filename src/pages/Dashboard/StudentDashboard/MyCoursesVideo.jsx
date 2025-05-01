@@ -6,16 +6,16 @@ const MyCoursesVideo = () => {
   const { courseId } = useParams();
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  // console.log(courseId);
   const { data } = useAllModulesQuery(courseId);
   console.log(data);
+
   return (
-    <div className="bg-gradient-to-bl to-[#0F172A] from-[#080127] text-white py-16">
-      <div className="grid grid-cols-1 md:grid-cols-7 h-full w-10/12 mx-auto  gap-6">
+    <div className="bg-gradient-to-bl  from-[#100d1b] to-[#1a044d] text-white py-32">
+      <div className="grid grid-cols-1 md:grid-cols-7 h-full w-10/12 mx-auto gap-6">
         <div className="col-span-5">
           {selectedVideo && selectedVideo.url ? (
-            <div>
-              <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg">
+            <div className="animate__animated animate__fadeIn">
+              <div className="w-full aspect-video rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition duration-300">
                 <iframe
                   className="w-full h-full"
                   src={selectedVideo.url}
@@ -25,38 +25,28 @@ const MyCoursesVideo = () => {
                   allowFullScreen
                 ></iframe>
               </div>
-              <h2 className="text-xl font-semibold mb-2">
-                {selectedVideo.videoTitle}
-              </h2>
-              <p className="mt-2 text-sm ">
-                Duration: {selectedVideo.duration} minutes
-              </p>
+              <h2 className="text-xl font-semibold mt-4">{selectedVideo.videoTitle}</h2>
+              <p className="mt-2 text-sm">Duration: {selectedVideo.duration} minutes</p>
             </div>
           ) : (
-            <p className="text-center text-gray-400">
-              Click a video to preview it here 🎬
-            </p>
+            <p className="text-center py-60 border my-shadow text-gray-400">Click a video to preview it here </p>
           )}
         </div>
-        <div className="col-span-2 ">
+        <div className="col-span-2 space-y-4">
           {data?.data?.map((module, index) => (
-            <details
-              key={index}
-              className="mb-2 border border-white/20 rounded-lg"
-            >
-              <summary className="p-2 cursor-pointer bg-white/20">
+            <details key={index} className="mb-4 border border-white/20 rounded-lg overflow-hidden">
+              <summary className="p-4 cursor-pointer bg-[#160e2f] hover:bg-[#1a044d] transition duration-300">
                 {module?.title}
               </summary>
-              <div className="p-2 ">
+              <div className="p-4">
                 {module?.videos?.length > 0 ? (
                   module.videos.map((video, idx) => (
                     <p
                       key={idx}
-                      className={`py-1 px-3 cursor-pointer ${
-                        selectedVideo?.url === video.url
-                          ? 'text-[#2bff00] bg-[#f6f6f875] font-bold'
-                          : ''
-                      }`}
+                      className={`py-2 px-4 cursor-pointer transition duration-300 hover:bg-[#1a044d] ${selectedVideo?.url === video.url
+                        ? 'text-[#2bff00] bg-[#f6f6f875] font-bold'
+                        : 'text-gray-300'
+                        }`}
                       onClick={() => setSelectedVideo(video)}
                     >
                       {video.videoTitle}

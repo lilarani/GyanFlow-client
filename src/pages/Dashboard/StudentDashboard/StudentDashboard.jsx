@@ -1,39 +1,40 @@
 import ConceptualClasses from '@/components/Dashboard/StudentComponents/ConceptualClasses';
 import Courses from '@/components/Dashboard/StudentComponents/Courses';
-import RewardCard from '@/components/Dashboard/StudentComponents/RewardCard';
-import Strak from '@/components/Dashboard/StudentComponents/Streak';
-import Upcomming from '@/components/Dashboard/StudentComponents/Upcomming';
-
 import { useState } from 'react';
+import { FaBookOpen, FaVideo, FaFire, FaTrophy, FaCalendarAlt, FaClock } from 'react-icons/fa';
 
 const StudentDashboard = () => {
-  const [toggleCourse, setToggleCourse] = useState(false);
+  const [toggleCourse, setToggleCourse] = useState(true);
 
   return (
-    <div className="bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e]">
-      <div className="w-[100%] mx-auto  p-7 h-full">
-        {/* <Upcomming/> */}
-
-        <div className="w-[90%]  mx-auto flex items-center  justify-center  md:gap-2  capitalize flex-col md:flex-row  py-5 ">
+    <div className="bg-gradient-to-b from-[#1e1e2f] via-[#292947] to-[#1f1f2e] min-h-screen text-white font-inter">
+      <div className="w-full mx-auto px-6 py-10">
+        {/* Toggle Buttons */}
+        <div className="w-full md:w-[80%] mx-auto flex items-center justify-center gap-6 flex-col md:flex-row py-8 animate-fadeIn">
           <button
             onClick={() => setToggleCourse(false)}
-            className={`border  px-7 py-2 ${
-              !toggleCourse ? 'bg-yellow-700' : ' bg-default'
-            }  text-white rounded border-amber-500 md:my-3`}
+            className={`transition-all duration-300 ease-in-out px-10 py-3 text-white rounded-full font-semibold shadow-xl border border-purple-500 flex items-center gap-3 tracking-wide text-lg
+              ${!toggleCourse ? 'bg-gradient-to-r from-purple-500 to-indigo-600 scale-105' : 'bg-transparent hover:bg-purple-700/20'}`}
           >
-            {' '}
-            Courses
+            <FaBookOpen className="text-xl" /> My Class
           </button>
+
           <button
             onClick={() => setToggleCourse(true)}
-            className={`${
-              toggleCourse ? 'bg-yellow-700' : ' bg-default'
-            } border  px-7 py-2  text-white rounded border-yellow-500 my-3`}
+            className={`transition-all duration-300 ease-in-out px-10 py-3 text-white rounded-full font-semibold shadow-xl border border-purple-500 flex items-center gap-3 tracking-wide text-lg
+              ${toggleCourse ? 'bg-gradient-to-r from-purple-500 to-indigo-600 scale-105' : 'bg-transparent hover:bg-purple-700/20'}`}
           >
-            Conteptual videos
+            <FaVideo className="text-xl" /> Learning Snapshot
           </button>
         </div>
-        {toggleCourse ? <ConceptualClasses /> : <Courses />}
+
+        {/* Section Content */}
+        <div className="mt-12 animate-slideInUp">
+          {toggleCourse ? <ConceptualClasses /> : <Courses />}
+        </div>
+
+        {/* Dashboard Highlights */}
+
       </div>
     </div>
   );

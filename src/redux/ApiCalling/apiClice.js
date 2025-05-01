@@ -217,6 +217,12 @@ export const apiSlice = createApi({
       providesTags: 'payment',
     }),
 
+    // get all payment history 
+    getAllPaymentHistory: builder.query({
+      query: () => '/gyanflow/paymentHistory/all-payment',
+      
+    }),
+
     // chat bot response
     message: builder.mutation({
       query: ({ prompt }) => ({
@@ -284,6 +290,7 @@ export const {
   useGetAllEnrolledCourseQuery,
   useMessageMutation,
   useGetStatsQuery,
+  useGetAllPaymentHistoryQuery,
   usePostsMutation,
   useGetAllPostsQuery,
   useCommentsMutation,

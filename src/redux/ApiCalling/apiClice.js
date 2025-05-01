@@ -4,7 +4,7 @@ import { interceptorQuery } from './../customInterceptor/interceptor';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: interceptorQuery,
-  tagTypes: ['user', 'module', 'video', 'update', 'quiz', 'payment'],
+  tagTypes: ['user', 'module', 'cmmentAndPosts', 'video', 'update', 'quiz', 'payment'],
   endpoints: builder => ({
     // all GET API
     getUsers: builder.query({
@@ -239,6 +239,7 @@ export const apiSlice = createApi({
         method: 'POST',
         body: newPost,
       }),
+      invalidatesTags: ['cmmentAndPosts']
     }),
 
     // get all posts
@@ -247,6 +248,7 @@ export const apiSlice = createApi({
         url: '/gyanflow/posts/all-posts',
         method: 'GET',
       }),
+      providesTags: ['cmmentAndPosts']
     }),
 
     // comment
@@ -256,6 +258,7 @@ export const apiSlice = createApi({
         method: 'POST',
         body: commentData,
       }),
+      invalidatesTags: ['cmmentAndPosts']
     }),
   }),
 });

@@ -27,8 +27,9 @@ const fadeUp = {
 const PaymentHistory = () => {
   const [mobileView, setMobileView] = useState(false);
   const { data } = useGetAllPaymentHistoryQuery();
- 
+  
   const paymentData = data?.data || [];
+  console.log(paymentData)
 
   useEffect(() => {
     setMobileView(window.innerWidth < 768);

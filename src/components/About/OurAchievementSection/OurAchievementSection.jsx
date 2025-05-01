@@ -16,9 +16,11 @@ export default function OurAchievementSection() {
   return (
     <div className="w-10/12 mx-auto">
       <div>
-        <div className="flex justify-center items-center text-center my-10">
+        <div className="flex justify-center items-center text-center md:my-10 mt-12">
           <div className="md:w-2/3">
-            <h2 className="font-bold  my-4 text-5xl">Our Achievements</h2>
+            <h2 className="font-bold  md:my-4 text-xl md:text-5xl">
+              Our Achievements
+            </h2>
           </div>
         </div>
       </div>
@@ -51,7 +53,7 @@ export default function OurAchievementSection() {
             </div>
             <div className="flex-1 flex items-center justify-center">
               <div className=" flex w-11/12 md:w-9/12 text-center lg:text-left  justify-center flex-col">
-                <h2 className="text-4xl my-3 font-bold">
+                <h2 className="text-lg md:text-4xl my-3 font-bold">
                   Responsive Web Design Excellence
                 </h2>
                 <p>
@@ -79,7 +81,7 @@ export default function OurAchievementSection() {
             </div>
             <div className="flex-1 flex items-center justify-center">
               <div className=" flex w-11/12 md:w-9/12   text-center lg:text-left   justify-center flex-col">
-                <h2 className="text-4xl my-3 font-bold">
+                <h2 className="text-lg md:text-4xl my-3 font-bold">
                   Full-Stack Web Application Development
                 </h2>
                 <p>
@@ -106,7 +108,7 @@ export default function OurAchievementSection() {
             </div>
             <div className="flex-1 flex items-center justify-center">
               <div className=" flex w-11/12 md:w-9/12   text-center lg:text-left   justify-center flex-col">
-                <h2 className="text-4xl my-3 font-bold">
+                <h2 className="text-lg md:text-4xl my-3 font-bold">
                   Optimized Performance & SEO Implementation
                 </h2>
                 <p>
@@ -134,7 +136,7 @@ export default function OurAchievementSection() {
             </div>
             <div className="flex-1 flex items-center justify-center">
               <div className=" flex w-11/12 md:w-9/12   text-center lg:text-left   justify-center flex-col">
-                <h2 className="text-4xl my-3 font-bold">
+                <h2 className="text-lg md:text-4xl my-3 font-bold">
                   Firebase Integration & Authentication
                 </h2>
                 <p>
@@ -162,7 +164,7 @@ export default function OurAchievementSection() {
             </div>
             <div className="flex-1 flex items-center justify-center">
               <div className=" flex w-11/12 md:w-9/12   text-center lg:text-left   justify-center flex-col">
-                <h2 className="text-4xl my-3 font-bold">
+                <h2 className="text-lg md:text-4xl my-3 font-bold">
                   Version Control & Collaboration with GitHub
                 </h2>
                 <p>

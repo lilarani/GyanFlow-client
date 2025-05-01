@@ -156,7 +156,7 @@ const UserProfile = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
                   <div>
-                    <label className="text-lg font-bold text-gray-400">
+                    <label className="text-xs md:text-lg font-bold text-gray-400">
                       Student Id
                     </label>
                     {editMode ? (
@@ -281,7 +281,7 @@ const UserProfile = () => {
                   Device Activity
                 </h2>
 
-                <div className="mt-6">
+                <div className="mt-6 overflow-x-auto">
                   <table className="w-full">
                     <thead className="">
                       <tr className="bg-gray-800 text-gray-300 text-sm md:text-lg">
